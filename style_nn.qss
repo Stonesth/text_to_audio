@@ -1,0 +1,144 @@
+/* Styles généraux */
+QMainWindow {
+    background-color: #FFFFFF;
+}
+
+QWidget {
+    font-family: "NN Dagny", Arial, sans-serif;
+    font-size: 16px;
+    color: #333333;
+}
+
+/* Titres et labels */
+QLabel {
+    color: #000000;
+    font-size: 16px;
+    padding: 8px 0;
+}
+
+/* Boutons */
+QPushButton {
+    background-color: #FF6200;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 24px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #E65800;
+}
+
+QPushButton:disabled {
+    background-color: #666666;
+}
+
+/* Boutons secondaires */
+QPushButton#secondaryButton {
+    background-color: transparent;
+    color: #FF6200;
+    border: 2px solid #FF6200;
+}
+
+QPushButton#secondaryButton:hover {
+    background-color: #FFF0E6;
+}
+
+/* ComboBox */
+QComboBox {
+    border: 1px solid #666666;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: #FFFFFF;
+    color: #333333;
+}
+
+QComboBox:hover {
+    border-color: #FF6200;
+}
+
+QComboBox::drop-down {
+    border: none;
+}
+
+QComboBox::down-arrow {
+    image: url(down-arrow.png);
+    width: 12px;
+    height: 12px;
+}
+
+/* Style du menu déroulant */
+QComboBox QAbstractItemView {
+    background-color: #FFFFFF;
+    border: 1px solid #666666;
+    color: #333333;
+    selection-background-color: #FFF0E6;
+    selection-color: #FF6200;
+}
+
+QComboBox QAbstractItemView::item {
+    padding: 8px;
+    min-height: 24px;
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: #FFF0E6;
+    color: #FF6200;
+}
+
+/* Zone de texte */
+QTextEdit {
+    border: 1px solid #666666;
+    border-radius: 8px;
+    padding: 12px;
+    background-color: #FFFFFF;
+}
+
+QTextEdit:focus {
+    border-color: #FF6200;
+}
+
+/* Barre de progression */
+QProgressBar {
+    border: 1px solid #666666;
+    border-radius: 4px;
+    text-align: center;
+    background-color: #F5F5F5;
+}
+
+QProgressBar::chunk {
+    background-color: #00A1E1;
+    border-radius: 3px;
+}
+
+/* CheckBox */
+QCheckBox {
+    spacing: 8px;
+}
+
+QCheckBox::indicator {
+    width: 18px;
+    height: 18px;
+}
+
+QCheckBox::indicator:unchecked {
+    border: 2px solid #666666;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+}
+
+QCheckBox::indicator:checked {
+    border: 2px solid #FF6200;
+    border-radius: 4px;
+    background-color: #FF6200;
+}
+
+/* Zone de log */
+QTextEdit#logText {
+    background-color: #F5F5F5;
+    border: 1px solid #666666;
+    border-radius: 8px;
+    color: #333333;
+    font-family: monospace;
+}

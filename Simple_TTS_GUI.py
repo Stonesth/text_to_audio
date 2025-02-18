@@ -8,6 +8,7 @@ from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
                             QHBoxLayout, QLabel, QComboBox, QTextEdit, QPushButton,
                             QFileDialog, QProgressBar, QCheckBox)
 from PyQt6.QtCore import Qt, QThread, pyqtSignal
+from PyQt6.QtGui import QFont, QFontDatabase, QPixmap, QScreen
 import torch
 from TTS.api import TTS
 from TTS.tts.configs.xtts_config import XttsConfig
@@ -191,23 +192,69 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Simple TTS GUI")
-        self.setMinimumSize(600, 400)
+        
+        # Configuration en plein écran
+        screen = QApplication.primaryScreen().geometry()
+        self.setGeometry(0, 0, screen.width(), screen.height())
+        
+        # Chargement du style
+        style_file = os.path.join(os.path.dirname(__file__), "style_nn.qss")
+        if os.path.exists(style_file):
+            with open(style_file, "r") as f:
+                self.setStyleSheet(f.read())
+        
+        # Configuration de la police
+        font_id = QFontDatabase.addApplicationFont(os.path.join(os.path.dirname(__file__), "fonts/NNDagny-Regular.ttf"))
+        if font_id != -1:
+            font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
+            self.setFont(QFont(font_family, 16))
         
         # Dossier de sortie par défaut
         self.output_dir = os.path.join(os.getcwd(), "story_output")
         os.makedirs(self.output_dir, exist_ok=True)
         
-        # Widget principal
+        # Widget principal avec marges
         main_widget = QWidget()
         self.setCentralWidget(main_widget)
         layout = QVBoxLayout(main_widget)
+        layout.setContentsMargins(24, 24, 24, 24)
+        layout.setSpacing(16)
+
+        # En-tête avec logo et titre
+        header_layout = QHBoxLayout()
+        
+        # Logo NN
+        logo_label = QLabel()
+        logo_path = os.path.join(os.path.dirname(__file__), "resources/nn_logo.png")
+        if os.path.exists(logo_path):
+            pixmap = QPixmap(logo_path)
+            # Agrandissement du logo à 48x48 pixels
+            scaled_pixmap = pixmap.scaled(48, 48, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+            logo_label.setPixmap(scaled_pixmap)
+            logo_label.setContentsMargins(0, 4, 24, 0)  # Augmentation de la marge droite
+        header_layout.addWidget(logo_label)
+        
+        # Titre de l'application
+        title_label = QLabel("Générateur de Voix")
+        title_label.setStyleSheet("font-size: 24px; font-weight: bold; color: #000000;")
+        header_layout.addWidget(title_label)
+        header_layout.addStretch()
+        
+        layout.addLayout(header_layout)
+
+        # Séparateur
+        separator = QWidget()
+        separator.setFixedHeight(1)
+        separator.setStyleSheet("background-color: #E5E5E5;")
+        layout.addWidget(separator)
 
         # Dossier de sortie
         output_layout = QHBoxLayout()
         output_label = QLabel("Dossier de sortie:")
         self.output_path_label = QLabel(self.output_dir)
-        self.output_path_label.setStyleSheet("background-color: white; padding: 5px; border: 1px solid gray;")
+        self.output_path_label.setStyleSheet("padding: 8px; border: 1px solid #666666; border-radius: 4px;")
         output_button = QPushButton("Choisir...")
+        output_button.setProperty("class", "secondaryButton")
         output_layout.addWidget(output_label)
         output_layout.addWidget(self.output_path_label, stretch=1)
         output_layout.addWidget(output_button)
@@ -226,7 +273,7 @@ class MainWindow(QMainWindow):
         model_layout = QHBoxLayout()
         model_label = QLabel("Modèle:")
         self.model_combo = QComboBox()
-        self.update_model_list(0)  # Par défaut: Anglais
+        self.update_model_list(0)
         model_layout.addWidget(model_label)
         model_layout.addWidget(self.model_combo)
         layout.addLayout(model_layout)
@@ -251,8 +298,9 @@ class MainWindow(QMainWindow):
         ref_audio_layout = QHBoxLayout()
         ref_audio_label = QLabel("Audio de référence (XTTS):")
         self.ref_audio_path = QLabel("Non sélectionné")
-        self.ref_audio_path.setStyleSheet("background-color: white; padding: 5px; border: 1px solid gray;")
+        self.ref_audio_path.setStyleSheet("padding: 8px; border: 1px solid #666666; border-radius: 4px;")
         ref_audio_button = QPushButton("Choisir...")
+        ref_audio_button.setProperty("class", "secondaryButton")
         ref_audio_layout.addWidget(ref_audio_label)
         ref_audio_layout.addWidget(self.ref_audio_path, stretch=1)
         ref_audio_layout.addWidget(ref_audio_button)
@@ -265,15 +313,19 @@ class MainWindow(QMainWindow):
         cuda_layout.addWidget(self.cuda_check)
         layout.addLayout(cuda_layout)
 
-        # Zone de texte avec support copier-coller
+        # Zone de texte
+        text_label = QLabel("Texte à convertir:")
+        layout.addWidget(text_label)
         self.text_edit = CustomTextEdit()
-        self.text_edit.setPlaceholderText("Entrez votre texte ici... (Ctrl+V pour coller)")
+        self.text_edit.setPlaceholderText("Entrez votre texte ici...")
+        self.text_edit.setMinimumHeight(150)
         layout.addWidget(self.text_edit)
 
         # Boutons
         button_layout = QHBoxLayout()
         self.generate_button = QPushButton("Générer")
         self.cancel_button = QPushButton("Annuler")
+        self.cancel_button.setProperty("class", "secondaryButton")
         self.cancel_button.setEnabled(False)
         button_layout.addWidget(self.generate_button)
         button_layout.addWidget(self.cancel_button)
@@ -284,10 +336,13 @@ class MainWindow(QMainWindow):
         self.progress_bar.setTextVisible(False)
         layout.addWidget(self.progress_bar)
 
-        # Log (QTextEdit en lecture seule)
+        # Log
+        log_label = QLabel("Messages:")
+        layout.addWidget(log_label)
         self.log_text = CustomTextEdit()
         self.log_text.setReadOnly(True)
         self.log_text.setMaximumHeight(100)
+        self.log_text.setObjectName("logText")
         self.log_text.setPlaceholderText("Les messages de log apparaîtront ici...")
         layout.addWidget(self.log_text)
 
