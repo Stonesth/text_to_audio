@@ -6,6 +6,10 @@ call venv_build\Scripts\activate.bat
 echo Installation des dépendances...
 pip install -r requirements_build.txt
 
+echo Nettoyage des anciens fichiers...
+rmdir /s /q dist build
+del /f /q *.spec
+
 echo Compilation avec PyInstaller...
 pyinstaller --name="Simple_TTS" ^
             --windowed ^
@@ -14,30 +18,26 @@ pyinstaller --name="Simple_TTS" ^
             --add-data "venv_build\Lib\site-packages\TTS\config;TTS\config" ^
             --add-data "venv_build\Lib\site-packages\TTS\utils;TTS\utils" ^
             --hidden-import="scipy.special.cython_special" ^
+            --collect-all PyQt6 ^
+            --collect-all PyQt6.QtGui ^
             Simple_TTS_GUI.py
 
-echo Nettoyage...
-deactivate
-rmdir /s /q venv_build build
-del *.spec
-
-echo Création du dossier de distribution...
-mkdir dist\Simple_TTS
-move dist\Simple_TTS.exe dist\Simple_TTS\
-copy test_fr.txt dist\Simple_TTS\
-copy test_en.txt dist\Simple_TTS\
-
-echo Création du fichier README...
-echo Simple TTS - Application de synthèse vocale > dist\Simple_TTS\README.txt
-echo. >> dist\Simple_TTS\README.txt
-echo Instructions d'installation : >> dist\Simple_TTS\README.txt
-echo 1. Décompressez l'archive >> dist\Simple_TTS\README.txt
-echo 2. Double-cliquez sur Simple_TTS.exe pour lancer l'application >> dist\Simple_TTS\README.txt
-echo. >> dist\Simple_TTS\README.txt
-echo Note : Lors du premier lancement, l'application téléchargera automatiquement les modèles nécessaires. >> dist\Simple_TTS\README.txt
-
+echo Création du package de distribution...
 cd dist
-powershell Compress-Archive -Path Simple_TTS -DestinationPath Simple_TTS_Windows.zip
-cd ..
+mkdir Simple_TTS
+copy Simple_TTS.exe Simple_TTS\
+copy ..\test_*.txt Simple_TTS\
+copy ..\README.txt Simple_TTS\
 
-echo Compilation terminée ! L'application se trouve dans dist\Simple_TTS_Windows.zip
+echo Création du fichier ZIP...
+powershell Compress-Archive -Path Simple_TTS -DestinationPath Simple_TTS_Windows.zip -Force
+rmdir /s /q Simple_TTS
+
+echo Nettoyage final...
+cd ..
+rmdir /s /q build
+del /f /q *.spec
+deactivate
+rmdir /s /q venv_build
+
+echo Compilation terminée ! Le fichier se trouve dans dist/Simple_TTS_Windows.zip
