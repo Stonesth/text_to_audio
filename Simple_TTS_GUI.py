@@ -12,6 +12,7 @@ from PyQt6.QtGui import QFont, QFontDatabase, QPixmap, QScreen
 import torch
 from TTS.api import TTS
 from TTS.tts.configs.xtts_config import XttsConfig
+from datetime import datetime
 
 # Configuration pour PyTorch 2.6+
 torch.serialization.add_safe_globals([XttsConfig])
@@ -100,14 +101,13 @@ class TTSWorker(QThread):
 
             # Génération audio
             self.progress.emit("Génération audio en cours...")
-            output_path = os.path.join(self.params['output_dir'], f"output{self.get_model_suffix()}.wav")
             tts.tts_to_file(
                 text=self.params['text'],
-                file_path=output_path,
+                file_path=self.params['output_file'],
                 **kwargs
             )
             
-            self.progress.emit(f"Fichier audio généré avec succès : {output_path}")
+            self.progress.emit(f"Fichier audio généré avec succès : {self.params['output_file']}")
             self.finished.emit()
 
         except Exception as e:
@@ -139,38 +139,6 @@ class TTSWorker(QThread):
             ]
         
         return models[model_idx]
-
-    def get_model_suffix(self):
-        """Retourne un suffixe distinctif pour le nom du fichier."""
-        suffixes = {
-            0: {  # Anglais
-                0: "_en_jenny",
-                1: "_en_tacotron2",
-                2: "_en_glowtts",
-                3: "_en_speedyspeech",
-                4: "_en_neuralhmm"
-            },
-            1: {  # Français
-                0: "_fr_xtts_v2",
-                1: "_fr_vits",
-                2: "_fr_yourtts",
-                3: "_fr_yourtts"
-            },
-            2: {  # Anglais avec VCTK
-                0: "_vctk_en"  # Le speaker sera ajouté après
-            }
-        }
-        
-        suffix = suffixes[self.params['lang']].get(
-            self.params['en_model'] if self.params['lang'] != 1 else self.params['fr_model'],
-            "_unknown"
-        )
-        
-        # Ajouter le speaker pour VCTK
-        if self.params['lang'] == 2:
-            suffix += f"_{self.params['speaker']}"
-            
-        return suffix
 
 class CustomTextEdit(QTextEdit):
     def __init__(self, parent=None):
@@ -325,10 +293,14 @@ class MainWindow(QMainWindow):
         button_layout = QHBoxLayout()
         self.generate_button = QPushButton("Générer")
         self.cancel_button = QPushButton("Annuler")
+        self.play_button = QPushButton("Écouter")
+        self.play_button.setEnabled(False)
+        self.play_button.setProperty("class", "secondaryButton")
         self.cancel_button.setProperty("class", "secondaryButton")
         self.cancel_button.setEnabled(False)
         button_layout.addWidget(self.generate_button)
         button_layout.addWidget(self.cancel_button)
+        button_layout.addWidget(self.play_button)
         layout.addLayout(button_layout)
 
         # Barre de progression
@@ -353,9 +325,10 @@ class MainWindow(QMainWindow):
         ref_audio_button.clicked.connect(self.choose_ref_audio)
         self.generate_button.clicked.connect(self.generate_audio)
         self.cancel_button.clicked.connect(self.cancel_generation)
+        self.play_button.clicked.connect(self.play_audio)
 
-        # Worker
-        self.worker = None
+        # Variables pour suivre le dernier fichier généré
+        self.last_generated_file = None
 
     def update_model_list(self, lang_index):
         """Met à jour la liste des modèles en fonction de la langue."""
@@ -424,42 +397,56 @@ class MainWindow(QMainWindow):
 
     def generate_audio(self):
         """Lance la génération audio."""
-        if not self.text_edit.toPlainText():
+        if not self.text_edit.toPlainText().strip():
             self.log_text.append("Erreur : Veuillez entrer du texte")
             return
 
-        # Vérification pour XTTS v2
-        if (self.lang_combo.currentIndex() == 1 and 
-            self.model_combo.currentIndex() == 0 and 
-            self.ref_audio_path.text() == "Non sélectionné"):
-            self.log_text.append("Erreur : Veuillez sélectionner un fichier audio de référence pour XTTS v2")
-            return
+        # Création du nom de fichier
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        model_suffix = ""
+        if self.model_combo.currentText() == "XTTS v2":
+            model_suffix = "_xtts"
+        elif self.model_combo.currentText() == "VITS":
+            model_suffix = "_vits"
+        elif "YourTTS" in self.model_combo.currentText():
+            model_suffix = "_yourtts"
+        
+        output_file = os.path.join(
+            self.output_dir,
+            f"audio_{timestamp}{model_suffix}.wav"
+        )
+        
+        # Stocke le fichier qui va être généré
+        self.last_generated_file = output_file
+        self.play_button.setEnabled(False)
 
-        # Préparation des paramètres
+        # Configuration des paramètres
         params = {
-            'text': self.text_edit.toPlainText(),
-            'lang': self.lang_combo.currentIndex(),
-            'en_model': self.model_combo.currentIndex(),
-            'fr_model': self.model_combo.currentIndex(),
-            'speaker': self.get_speaker(),
-            'use_cuda': self.cuda_check.isChecked(),
-            'output_dir': self.output_dir
+            "text": self.text_edit.toPlainText().strip(),
+            "output_file": output_file,
+            "lang": self.lang_combo.currentIndex(),
+            "en_model": self.model_combo.currentIndex(),
+            "fr_model": self.model_combo.currentIndex(),
+            "speaker": self.get_speaker(),
+            "use_cuda": self.cuda_check.isChecked()
         }
 
-        # Ajout du fichier audio de référence pour XTTS v2
-        if self.lang_combo.currentIndex() == 1 and self.model_combo.currentIndex() == 0:
-            params['reference_audio'] = self.ref_audio_path.text()
+        # Ajout des paramètres spécifiques selon le modèle
+        if self.model_combo.currentText() == "XTTS v2":
+            if not self.ref_audio_path.text() or self.ref_audio_path.text() == "Non sélectionné":
+                self.log_text.append("Erreur : Veuillez sélectionner un fichier audio de référence pour XTTS.")
+                return
+            params["reference_audio"] = self.ref_audio_path.text()
 
-        # Démarrage du worker
+        # Démarrage de la génération
         self.worker = TTSWorker(params)
         self.worker.progress.connect(self.update_progress)
         self.worker.error.connect(self.show_error)
         self.worker.finished.connect(self.generation_finished)
         
-        self.generate_button.setEnabled(False)
-        self.cancel_button.setEnabled(True)
-        self.progress_bar.setRange(0, 0)
         self.worker.start()
+        self.update_ui_elements()
+        self.progress_bar.setValue(0)
 
     def cancel_generation(self):
         """Annule la génération en cours."""
@@ -480,9 +467,28 @@ class MainWindow(QMainWindow):
 
     def generation_finished(self):
         """Gère la fin de la génération."""
-        self.generate_button.setEnabled(True)
-        self.cancel_button.setEnabled(False)
-        self.progress_bar.setRange(0, 100)
+        self.update_ui_elements()
+        self.progress_bar.setValue(100)
+        self.worker = None
+        
+        # Active le bouton d'écoute si un fichier a été généré
+        if self.last_generated_file and os.path.exists(self.last_generated_file):
+            self.play_button.setEnabled(True)
+            self.update_progress(f"Génération terminée ! Fichier créé : {os.path.basename(self.last_generated_file)}")
+        else:
+            self.play_button.setEnabled(False)
+            self.update_progress("Génération terminée !")
+
+    def play_audio(self):
+        """Ouvre le fichier audio avec le lecteur par défaut."""
+        if self.last_generated_file and os.path.exists(self.last_generated_file):
+            if sys.platform == "darwin":  # macOS
+                os.system(f'open "{self.last_generated_file}"')
+            else:  # Autres systèmes
+                if sys.platform == "win32":
+                    os.startfile(self.last_generated_file)
+                else:  # Linux
+                    os.system(f'xdg-open "{self.last_generated_file}"')
 
     def get_speaker(self):
         """Retourne l'ID du speaker sans la description."""
@@ -491,6 +497,26 @@ class MainWindow(QMainWindow):
             # Extraire uniquement l'ID du speaker (VCTK_pXXX) de la description
             return speaker.split(" ")[0]
         return speaker
+
+    def get_model_name(self):
+        """Retourne le nom du modèle en fonction de la langue choisie."""
+        lang_idx = self.lang_combo.currentIndex()
+        model_idx = self.model_combo.currentIndex()
+        
+        # Modèles pour l'anglais
+        if lang_idx == 0:
+            models = ["tts_models/en/jenny/jenny", "tts_models/en/ljspeech/tacotron2-DDC", 
+                     "tts_models/en/ljspeech/glow-tts", "tts_models/en/ljspeech/speedy-speech",
+                     "tts_models/en/ljspeech/neural_hmm"]
+        # Modèles pour le français
+        elif lang_idx == 1:
+            models = ["tts_models/multilingual/multi-dataset/xtts_v2", "tts_models/fr/mai/vits",
+                     "tts_models/multilingual/multi-dataset/your_tts", "tts_models/multilingual/multi-dataset/your_tts"]
+        # Modèles VCTK
+        else:
+            models = ["tts_models/en/vctk/vits"]
+        
+        return models[model_idx]
 
     def update_ui_elements(self):
         pass
