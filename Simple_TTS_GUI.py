@@ -7,8 +7,8 @@ import os
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
                             QHBoxLayout, QLabel, QComboBox, QTextEdit, QPushButton,
                             QFileDialog, QProgressBar, QCheckBox)
-from PyQt6.QtCore import Qt, QThread, pyqtSignal
-from PyQt6.QtGui import QFont, QFontDatabase, QPixmap, QScreen
+from PyQt6.QtCore import Qt, QThread, pyqtSignal, QPropertyAnimation, QEasingCurve, QPoint, QTimer
+from PyQt6.QtGui import QFont, QFontDatabase, QPixmap, QScreen, QColor
 import torch
 from TTS.api import TTS
 from TTS.tts.configs.xtts_config import XttsConfig
@@ -196,25 +196,41 @@ class MainWindow(QMainWindow):
         logo_path = os.path.join(os.path.dirname(__file__), "resources/nn_logo.png")
         if os.path.exists(logo_path):
             pixmap = QPixmap(logo_path)
-            # Agrandissement du logo à 48x48 pixels
-            scaled_pixmap = pixmap.scaled(48, 48, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+            # Agrandissement du logo à 128x128 pixels
+            scaled_pixmap = pixmap.scaled(128, 128, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
             logo_label.setPixmap(scaled_pixmap)
-            logo_label.setContentsMargins(0, 4, 24, 0)  # Augmentation de la marge droite
+            logo_label.setContentsMargins(0, 4, 48, 0)  # Augmentation de la marge droite pour compenser la taille
         header_layout.addWidget(logo_label)
         
         # Titre de l'application
         title_label = QLabel("Générateur de Voix")
-        title_label.setStyleSheet("font-size: 24px; font-weight: bold; color: #000000;")
+        title_label.setStyleSheet("font-size: 32px; font-weight: bold; color: #000000;")  # Augmentation de la taille du titre
         header_layout.addWidget(title_label)
         header_layout.addStretch()
         
         layout.addLayout(header_layout)
 
-        # Séparateur
-        separator = QWidget()
-        separator.setFixedHeight(1)
-        separator.setStyleSheet("background-color: #E5E5E5;")
-        layout.addWidget(separator)
+        # Séparateur avec animation de couleur
+        self.separator = QWidget()
+        self.separator.setFixedHeight(2)  # Augmentation de l'épaisseur
+        self.separator.setStyleSheet("background-color: #E5E5E5;")
+        layout.addWidget(self.separator)
+        
+        # Animation du séparateur
+        self.separator_animation = QPropertyAnimation(self.separator, b"styleSheet")
+        self.separator_animation.setDuration(1000)  # 1 seconde
+        self.separator_animation.setLoopCount(-1)  # Boucle infinie
+        
+        def update_separator_color():
+            self.separator_animation.setStartValue("background-color: #E5E5E5;")
+            self.separator_animation.setEndValue("background-color: #FF6200;")
+            self.separator_animation.start()
+            QTimer.singleShot(1000, lambda: self.separator_animation.setStartValue("background-color: #FF6200;"))
+            QTimer.singleShot(1000, lambda: self.separator_animation.setEndValue("background-color: #E5E5E5;"))
+        
+        # Démarrage de l'animation du séparateur
+        update_separator_color()
+        QTimer.singleShot(2000, update_separator_color)  # Répétition toutes les 2 secondes
 
         # Dossier de sortie
         output_layout = QHBoxLayout()
@@ -398,8 +414,30 @@ class MainWindow(QMainWindow):
     def generate_audio(self):
         """Lance la génération audio."""
         if not self.text_edit.toPlainText().strip():
-            self.log_text.append("Erreur : Veuillez entrer du texte")
+            self.show_error("Veuillez entrer du texte à convertir.")
             return
+
+        # Animation de la barre de progression
+        self.progress_bar.setStyleSheet("""
+            QProgressBar {
+                border: 1px solid #666666;
+                border-radius: 4px;
+                text-align: center;
+                background-color: #F5F5F5;
+            }
+            QProgressBar::chunk {
+                background-color: #00A1E1;
+                border-radius: 3px;
+            }
+        """)
+        
+        # Animation du bouton générer
+        self.generate_button.setEnabled(False)
+        fade_animation = QPropertyAnimation(self.generate_button, b"styleSheet")
+        fade_animation.setDuration(300)
+        fade_animation.setStartValue("background-color: #FF6200; color: #FFFFFF; border: none; border-radius: 4px; padding: 12px 24px;")
+        fade_animation.setEndValue("background-color: #666666; color: #FFFFFF; border: none; border-radius: 4px; padding: 12px 24px;")
+        fade_animation.start()
 
         # Création du nom de fichier
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -468,16 +506,41 @@ class MainWindow(QMainWindow):
     def generation_finished(self):
         """Gère la fin de la génération."""
         self.update_ui_elements()
-        self.progress_bar.setValue(100)
+        
+        # Animation de complétion
+        self.progress_bar.setValue(0)
+        completion_animation = QPropertyAnimation(self.progress_bar, b"value")
+        completion_animation.setDuration(500)
+        completion_animation.setStartValue(0)
+        completion_animation.setEndValue(100)
+        completion_animation.setEasingCurve(QEasingCurve.Type.OutCubic)
+        completion_animation.start()
+        
+        # Animation du bouton générer
+        enable_animation = QPropertyAnimation(self.generate_button, b"styleSheet")
+        enable_animation.setDuration(300)
+        enable_animation.setStartValue("background-color: #666666; color: #FFFFFF; border: none; border-radius: 4px; padding: 12px 24px;")
+        enable_animation.setEndValue("background-color: #FF6200; color: #FFFFFF; border: none; border-radius: 4px; padding: 12px 24px;")
+        enable_animation.start()
+        
         self.worker = None
         
-        # Active le bouton d'écoute si un fichier a été généré
+        # Active le bouton d'écoute avec animation
         if self.last_generated_file and os.path.exists(self.last_generated_file):
             self.play_button.setEnabled(True)
+            play_animation = QPropertyAnimation(self.play_button, b"styleSheet")
+            play_animation.setDuration(300)
+            play_animation.setStartValue("background-color: transparent; color: #666666; border: 2px solid #666666;")
+            play_animation.setEndValue("background-color: transparent; color: #FF6200; border: 2px solid #FF6200;")
+            play_animation.start()
+            
             self.update_progress(f"Génération terminée ! Fichier créé : {os.path.basename(self.last_generated_file)}")
         else:
             self.play_button.setEnabled(False)
             self.update_progress("Génération terminée !")
+            
+        # Réactivation du bouton générer
+        QTimer.singleShot(300, lambda: self.generate_button.setEnabled(True))
 
     def play_audio(self):
         """Ouvre le fichier audio avec le lecteur par défaut."""
