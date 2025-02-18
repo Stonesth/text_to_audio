@@ -65,7 +65,7 @@ class TTSWorker(QThread):
             kwargs = {}
             
             if self.params['lang'] == 1:  # Français
-                if self.params['fr_model'] == 3:  # XTTS v2
+                if self.params['fr_model'] == 0:  # XTTS v2
                     kwargs['speaker_wav'] = self.params.get('reference_audio')
                     kwargs['language'] = 'fr'
                     self.progress.emit(f"Configuration XTTS v2 - Langue: fr, Fichier audio: {self.params.get('reference_audio')}")
@@ -73,6 +73,8 @@ class TTSWorker(QThread):
                     kwargs['speaker'] = 'male-en-2' if self.params['fr_model'] == 1 else 'female-en-5'
                     kwargs['language'] = 'fr-fr'
                     self.progress.emit(f"Configuration YourTTS - Langue: fr-fr, Speaker: {'male-en-2' if self.params['fr_model'] == 1 else 'female-en-5'}")
+                elif self.params['fr_model'] == 3:  # VITS
+                    self.progress.emit(f"Configuration VITS")
             elif self.params['lang'] == 2:  # VCTK
                 speaker = self.params['speaker']
                 if speaker.startswith("VCTK_"):
@@ -125,10 +127,10 @@ class TTSWorker(QThread):
             ]
         elif lang_idx == 1:  # Français
             models = [
+                "tts_models/multilingual/multi-dataset/xtts_v2",
                 "tts_models/fr/css10/vits",
                 "tts_models/multilingual/multi-dataset/your_tts",
-                "tts_models/multilingual/multi-dataset/your_tts",
-                "tts_models/multilingual/multi-dataset/xtts_v2"
+                "tts_models/multilingual/multi-dataset/your_tts"
             ]
         else:  # Anglais (VCTK)
             models = [
@@ -148,10 +150,10 @@ class TTSWorker(QThread):
                 4: "_en_neuralhmm"
             },
             1: {  # Français
-                0: "_fr_vits",
-                1: "_fr_yourtts",
+                0: "_fr_xtts_v2",
+                1: "_fr_vits",
                 2: "_fr_yourtts",
-                3: "_fr_xtts_v2"
+                3: "_fr_yourtts"
             },
             2: {  # Anglais avec VCTK
                 0: "_vctk_en"  # Le speaker sera ajouté après
@@ -313,10 +315,10 @@ class MainWindow(QMainWindow):
             ])
         elif lang_index == 1:  # Français
             self.model_combo.addItems([
+                "XTTS v2",
                 "VITS",
                 "YourTTS (voix masculine)",
-                "YourTTS (voix féminine)",
-                "XTTS v2"
+                "YourTTS (voix féminine)"
             ])
         else:  # Anglais (VCTK)
             self.model_combo.addItems([
@@ -339,12 +341,12 @@ class MainWindow(QMainWindow):
         self.update_model_list(lang_index)
         self.speaker_combo.setEnabled(lang_index == 2)  # Active VCTK speakers uniquement pour VCTK
         # Active le choix du fichier audio de référence uniquement pour XTTS v2
-        self.ref_audio_path.setEnabled(lang_index == 1 and self.model_combo.currentIndex() == 3)
+        self.ref_audio_path.setEnabled(lang_index == 1 and self.model_combo.currentIndex() == 0)
 
     def on_model_changed(self, index):
         """Gère le changement de modèle."""
         # Active le choix du fichier audio de référence uniquement pour XTTS v2
-        is_xtts = self.lang_combo.currentIndex() == 1 and index == 3
+        is_xtts = self.lang_combo.currentIndex() == 1 and index == 0
         self.ref_audio_path.setEnabled(is_xtts)
 
     def choose_output_dir(self):
@@ -373,7 +375,7 @@ class MainWindow(QMainWindow):
 
         # Vérification pour XTTS v2
         if (self.lang_combo.currentIndex() == 1 and 
-            self.model_combo.currentIndex() == 3 and 
+            self.model_combo.currentIndex() == 0 and 
             self.ref_audio_path.text() == "Non sélectionné"):
             self.log_text.append("Erreur : Veuillez sélectionner un fichier audio de référence pour XTTS v2")
             return
@@ -390,7 +392,7 @@ class MainWindow(QMainWindow):
         }
 
         # Ajout du fichier audio de référence pour XTTS v2
-        if self.lang_combo.currentIndex() == 1 and self.model_combo.currentIndex() == 3:
+        if self.lang_combo.currentIndex() == 1 and self.model_combo.currentIndex() == 0:
             params['reference_audio'] = self.ref_audio_path.text()
 
         # Démarrage du worker
