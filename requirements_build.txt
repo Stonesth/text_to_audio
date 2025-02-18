@@ -1,0 +1,5 @@
+pyinstaller==6.3.0
+TTS==0.22.0
+PyQt6==6.4.2
+numpy==1.26.3
+torch==2.1.2
