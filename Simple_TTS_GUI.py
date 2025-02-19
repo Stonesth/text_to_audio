@@ -6,7 +6,8 @@ import sys
 import os
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
                             QHBoxLayout, QLabel, QComboBox, QTextEdit, QPushButton,
-                            QFileDialog, QProgressBar, QCheckBox, QGraphicsOpacityEffect)
+                            QFileDialog, QProgressBar, QCheckBox, QGraphicsOpacityEffect,
+                            QSizePolicy)
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QPropertyAnimation, QEasingCurve, QPoint, QTimer
 from PyQt6.QtGui import QFont, QFontDatabase, QPixmap, QScreen, QColor
 import torch
@@ -161,9 +162,29 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Simple TTS GUI")
         
-        # Configuration en plein écran
-        screen = QApplication.primaryScreen().geometry()
-        self.setGeometry(0, 0, screen.width(), screen.height())
+        # Charger les polices
+        font_dir = os.path.join(os.path.dirname(__file__), "fonts")
+        font_files = ["NNDagny-Regular.ttf"]
+        
+        # Police par défaut au cas où
+        default_font = QFont()
+        default_font.setPointSize(12)
+        self.setFont(default_font)
+        
+        # Tentative de chargement de la police personnalisée
+        for font_file in font_files:
+            font_path = os.path.join(font_dir, font_file)
+            if os.path.exists(font_path):
+                font_id = QFontDatabase.addApplicationFont(font_path)
+                if font_id != -1:
+                    families = QFontDatabase.applicationFontFamilies(font_id)
+                    if families:
+                        self.setFont(QFont(families[0], 12))
+                        break
+        
+        # Configuration de la fenêtre
+        self.resize(800, 700)  # Taille initiale raisonnable
+        self.setMinimumSize(800, 700)  # Taille minimum pour garantir la lisibilité
         
         # Chargement du style
         style_file = os.path.join(os.path.dirname(__file__), "style_nn.qss")
@@ -171,11 +192,14 @@ class MainWindow(QMainWindow):
             with open(style_file, "r") as f:
                 self.setStyleSheet(f.read())
         
-        # Configuration de la police
-        font_id = QFontDatabase.addApplicationFont(os.path.join(os.path.dirname(__file__), "fonts/NNDagny-Regular.ttf"))
-        if font_id != -1:
-            font_family = QFontDatabase.applicationFontFamilies(font_id)[0]
-            self.setFont(QFont(font_family, 16))
+        # Centrer la fenêtre sur l'écran
+        screen = QApplication.primaryScreen().geometry()
+        x = (screen.width() - self.width()) // 2
+        y = (screen.height() - self.height()) // 2
+        self.move(x, y)
+        
+        # Politique de redimensionnement
+        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         
         # Dossier de sortie par défaut
         self.output_dir = os.path.join(os.getcwd(), "story_output")
@@ -225,22 +249,43 @@ class MainWindow(QMainWindow):
         # En-tête avec logo et titre
         header_layout = QHBoxLayout()
         
-        # Logo NN
+        # Logo
         logo_label = QLabel()
-        logo_path = os.path.join(os.path.dirname(__file__), "resources/nn_logo.png")
-        if os.path.exists(logo_path):
-            pixmap = QPixmap(logo_path)
-            # Agrandissement du logo à 128x128 pixels
-            scaled_pixmap = pixmap.scaled(128, 128, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
-            logo_label.setPixmap(scaled_pixmap)
-            logo_label.setContentsMargins(0, 4, 48, 0)  # Augmentation de la marge droite pour compenser la taille
+        logo_pixmap = QPixmap(os.path.join(os.path.dirname(__file__), "resources/nn_logo.png"))
+        # Taille plus petite pour le logo
+        logo_container_width = 80
+        logo_container_height = 80
+        logo_label.setMinimumSize(logo_container_width, logo_container_height)
+        # Redimensionner le logo en préservant le ratio avec une meilleure qualité
+        scaled_pixmap = logo_pixmap.scaled(logo_container_width, logo_container_height, 
+                                         Qt.AspectRatioMode.KeepAspectRatio, 
+                                         Qt.TransformationMode.SmoothTransformation)
+        logo_label.setPixmap(scaled_pixmap)
+        logo_label.setStyleSheet("""
+            QLabel {
+                background-color: transparent;
+                padding: 5px;
+                margin-right: 10px;
+            }
+        """)
         header_layout.addWidget(logo_label)
         
-        # Titre de l'application
+        # Titre avec gestion de l'espace
         title_label = QLabel("Générateur de Voix")
-        title_label.setStyleSheet("font-size: 32px; font-weight: bold; color: #000000;")  # Augmentation de la taille du titre
+        title_label.setStyleSheet("""
+            QLabel {
+                color: #333333;
+                font-size: 24px;
+                font-weight: bold;
+                padding: 0 20px;
+                min-width: 200px;
+            }
+        """)
+        title_label.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
         header_layout.addWidget(title_label)
-        header_layout.addStretch()
+        
+        # Ajout d'un spacer flexible à la fin du header
+        header_layout.addStretch(1)
         
         self.main_layout.addLayout(header_layout)
 
@@ -305,7 +350,7 @@ class MainWindow(QMainWindow):
             "VCTK_p273 (femme, bien)",
             "VCTK_p278 (femme, bien)",
             "VCTK_p279 (homme, bien)",
-            "VCTK_p304 (femme, voix préférée)"
+            "VCTK_p304 (femme)"
         ])
         speaker_layout.addWidget(speaker_label)
         speaker_layout.addWidget(self.speaker_combo)
@@ -331,23 +376,90 @@ class MainWindow(QMainWindow):
         cuda_layout.addWidget(self.cuda_check)
         self.main_layout.addLayout(cuda_layout)
 
-        # Zone de texte
+        # Zone de texte avec taille minimum
         text_label = QLabel("Texte à convertir:")
         self.main_layout.addWidget(text_label)
         self.text_edit = CustomTextEdit()
         self.text_edit.setPlaceholderText("Entrez votre texte ici...")
-        self.text_edit.setMinimumHeight(150)
+        self.text_edit.setMinimumHeight(100)
+        self.text_edit.setMinimumWidth(400)
+        self.text_edit.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         self.main_layout.addWidget(self.text_edit)
 
         # Boutons
         button_layout = QHBoxLayout()
+        
+        # Bouton générer
         self.generate_button = QPushButton("Générer")
+        self.generate_button.setStyleSheet("""
+            QPushButton {
+                background-color: #FF6200;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                padding: 12px 24px;
+                font-weight: bold;
+            }
+            QPushButton:hover {
+                background-color: #FF8533;
+            }
+            QPushButton:pressed {
+                background-color: #CC4E00;
+            }
+            QPushButton:disabled {
+                background-color: #666666;
+            }
+        """)
+        
+        # Bouton annuler
         self.cancel_button = QPushButton("Annuler")
+        self.cancel_button.setStyleSheet("""
+            QPushButton {
+                background-color: #666666;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                padding: 12px 24px;
+                font-weight: bold;
+            }
+            QPushButton:hover {
+                background-color: #808080;
+            }
+            QPushButton:pressed {
+                background-color: #4D4D4D;
+            }
+            QPushButton:disabled {
+                background-color: #999999;
+            }
+        """)
+        
+        # Bouton écouter
         self.play_button = QPushButton("Écouter")
+        self.play_button.setStyleSheet("""
+            QPushButton {
+                background-color: #444444;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                padding: 12px 24px;
+                font-weight: bold;
+            }
+            QPushButton:hover {
+                background-color: #666666;
+            }
+            QPushButton:pressed {
+                background-color: #333333;
+            }
+            QPushButton:disabled {
+                background-color: #999999;
+            }
+        """)
+        
+        # Configuration des boutons
         self.play_button.setEnabled(False)
-        self.play_button.setProperty("class", "secondaryButton")
-        self.cancel_button.setProperty("class", "secondaryButton")
         self.cancel_button.setEnabled(False)
+        
+        # Ajout des boutons au layout
         button_layout.addWidget(self.generate_button)
         button_layout.addWidget(self.cancel_button)
         button_layout.addWidget(self.play_button)
@@ -358,13 +470,16 @@ class MainWindow(QMainWindow):
         self.progress_bar.setTextVisible(False)
         self.main_layout.addWidget(self.progress_bar)
 
-        # Log
+        # Log avec taille minimum
         log_label = QLabel("Messages:")
         self.main_layout.addWidget(log_label)
         self.log_text = CustomTextEdit()
         self.log_text.setReadOnly(True)
-        self.log_text.setMaximumHeight(100)
-        self.log_text.setObjectName("logText")
+        self.log_text.setMinimumHeight(60)
+        self.log_text.setMinimumWidth(400)
+        self.log_text.setMaximumHeight(150)
+        self.log_text.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.log_text.setStyleSheet("background-color: #F5F5F5; border: 1px solid #CCCCCC;")
         self.log_text.setPlaceholderText("Les messages de log apparaîtront ici...")
         self.main_layout.addWidget(self.log_text)
 
@@ -553,7 +668,7 @@ class MainWindow(QMainWindow):
         enable_animation.setStartValue("background-color: #666666; color: #FFFFFF; border: none; border-radius: 4px; padding: 12px 24px;")
         enable_animation.setEndValue("background-color: #FF6200; color: #FFFFFF; border: none; border-radius: 4px; padding: 12px 24px;")
         enable_animation.start()
-        
+
         self.worker = None
         
         # Active le bouton d'écoute avec animation
