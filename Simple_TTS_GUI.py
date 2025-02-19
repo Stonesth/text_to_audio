@@ -6,7 +6,7 @@ import sys
 import os
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
                             QHBoxLayout, QLabel, QComboBox, QTextEdit, QPushButton,
-                            QFileDialog, QProgressBar, QCheckBox, QGraphicsOpacityEffect,
+                            QFileDialog, QCheckBox, QGraphicsOpacityEffect,
                             QSizePolicy)
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QPropertyAnimation, QEasingCurve, QPoint, QTimer
 from PyQt6.QtGui import QFont, QFontDatabase, QPixmap, QScreen, QColor
@@ -21,7 +21,6 @@ torch.serialization.add_safe_globals([XttsConfig])
 class TTSWorker(QThread):
     """Thread worker pour la génération TTS"""
     finished = pyqtSignal()
-    progress = pyqtSignal(str)
     error = pyqtSignal(str)
 
     def __init__(self, params):
@@ -31,23 +30,10 @@ class TTSWorker(QThread):
     def run(self):
         """Exécute la génération TTS dans un thread séparé."""
         try:
-            # Affichage des paramètres sélectionnés
-            self.progress.emit("\n=== Configuration ===")
-            self.progress.emit(f"Langue : {self.params['lang']}")
-            self.progress.emit(f"Modèle : {self.get_model_name()}")
-            if self.params['speaker']:
-                self.progress.emit(f"Speaker : {self.params['speaker']}")
-            if self.params.get('reference_audio'):
-                self.progress.emit(f"Fichier audio de référence : {self.params['reference_audio']}")
-            self.progress.emit(f"Texte à synthétiser : {self.params['text']}")
-            self.progress.emit("=" * 20 + "\n")
-
             # Configuration du device
             device = "cuda" if torch.cuda.is_available() and self.params['use_cuda'] else "cpu"
-            self.progress.emit(f"Utilisation du device : {device}")
             
             model_name = self.get_model_name()
-            self.progress.emit(f"Chargement du modèle : {model_name}")
 
             # Patch temporaire pour PyTorch 2.6 si c'est XTTS v2
             if "xtts_v2" in model_name:
@@ -71,44 +57,24 @@ class TTSWorker(QThread):
                 if self.params['fr_model'] == 0:  # XTTS v2
                     kwargs['speaker_wav'] = self.params.get('reference_audio')
                     kwargs['language'] = 'fr'
-                    self.progress.emit(f"Configuration XTTS v2 - Langue: fr, Fichier audio: {self.params.get('reference_audio')}")
                 elif self.params['fr_model'] in [1, 2]:  # YourTTS
                     kwargs['speaker'] = 'male-en-2' if self.params['fr_model'] == 1 else 'female-en-5'
                     kwargs['language'] = 'fr-fr'
-                    self.progress.emit(f"Configuration YourTTS - Langue: fr-fr, Speaker: {'male-en-2' if self.params['fr_model'] == 1 else 'female-en-5'}")
                 elif self.params['fr_model'] == 3:  # VITS
-                    self.progress.emit(f"Configuration VITS")
+                    pass
             elif self.params['lang'] == 2:  # VCTK
                 speaker = self.params['speaker']
                 if speaker.startswith("VCTK_"):
                     speaker = speaker[5:]
                 kwargs['speaker'] = speaker
-                self.progress.emit(f"Configuration VCTK - Speaker: {speaker}")
             
-            # Affichage de la commande équivalente
-            cmd = f"python Simple_TTS.py --lang {self.params['lang']} "
-            if self.params['lang'] == 1:
-                cmd += f"--fr-model {self.params['fr_model']} "
-            else:
-                cmd += f"--en-model {self.params['en_model']} "
-            if self.params['speaker']:
-                cmd += f"--speaker {self.params['speaker']} "
-            if self.params.get('reference_audio'):
-                cmd += f"--reference-audio {self.params['reference_audio']} "
-            if self.params['use_cuda']:
-                cmd += "--use-cuda "
-            self.progress.emit("\nCommande équivalente :")
-            self.progress.emit(cmd + "\n")
-
             # Génération audio
-            self.progress.emit("Génération audio en cours...")
             tts.tts_to_file(
                 text=self.params['text'],
                 file_path=self.params['output_file'],
                 **kwargs
             )
             
-            self.progress.emit(f"Fichier audio généré avec succès : {self.params['output_file']}")
             self.finished.emit()
 
         except Exception as e:
@@ -161,6 +127,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Simple TTS GUI")
+        self.setMinimumWidth(800)
         
         # Charger les polices
         font_dir = os.path.join(os.path.dirname(__file__), "fonts")
@@ -324,15 +291,22 @@ class MainWindow(QMainWindow):
         output_layout.addWidget(output_button)
         self.main_layout.addLayout(output_layout)
 
+        # Options de langue et modèle sur la même ligne
+        options_layout = QHBoxLayout()
+        
         # Langue
         lang_layout = QHBoxLayout()
         lang_label = QLabel("Langue:")
         self.lang_combo = QComboBox()
         self.lang_combo.addItems(["Anglais", "Français", "Anglais (VCTK)"])
+        self.lang_combo.currentIndexChanged.connect(self.on_lang_changed)
         lang_layout.addWidget(lang_label)
         lang_layout.addWidget(self.lang_combo)
-        self.main_layout.addLayout(lang_layout)
+        options_layout.addLayout(lang_layout)
 
+        # Espacement entre les options
+        options_layout.addSpacing(20)
+        
         # Modèle
         model_layout = QHBoxLayout()
         model_label = QLabel("Modèle:")
@@ -340,7 +314,11 @@ class MainWindow(QMainWindow):
         self.update_model_list(0)
         model_layout.addWidget(model_label)
         model_layout.addWidget(self.model_combo)
-        self.main_layout.addLayout(model_layout)
+        self.model_combo.currentIndexChanged.connect(self.on_model_changed)
+        options_layout.addLayout(model_layout)
+        
+        # Ajout du layout des options au layout principal
+        self.main_layout.addLayout(options_layout)
 
         # VCTK Speakers
         speaker_layout = QHBoxLayout()
@@ -390,59 +368,39 @@ class MainWindow(QMainWindow):
         # Boutons
         button_layout = QHBoxLayout()
         
-        # Bouton générer
+        # Bouton Générer
         self.generate_button = QPushButton("Générer")
         self.generate_button.setStyleSheet("""
             QPushButton {
                 background-color: #FF6200;
                 color: white;
                 border: none;
+                padding: 8px 16px;
                 border-radius: 4px;
-                padding: 12px 24px;
                 font-weight: bold;
             }
             QPushButton:hover {
-                background-color: #FF8533;
+                background-color: #FF7D00;
             }
             QPushButton:pressed {
-                background-color: #CC4E00;
+                background-color: #E65A00;
             }
             QPushButton:disabled {
-                background-color: #666666;
+                background-color: #CCCCCC;
             }
         """)
+        button_layout.addWidget(self.generate_button)
         
-        # Bouton annuler
-        self.cancel_button = QPushButton("Annuler")
-        self.cancel_button.setStyleSheet("""
-            QPushButton {
-                background-color: #666666;
-                color: white;
-                border: none;
-                border-radius: 4px;
-                padding: 12px 24px;
-                font-weight: bold;
-            }
-            QPushButton:hover {
-                background-color: #808080;
-            }
-            QPushButton:pressed {
-                background-color: #4D4D4D;
-            }
-            QPushButton:disabled {
-                background-color: #999999;
-            }
-        """)
-        
-        # Bouton écouter
+        # Bouton Écouter
         self.play_button = QPushButton("Écouter")
+        self.play_button.setEnabled(False)
         self.play_button.setStyleSheet("""
             QPushButton {
                 background-color: #444444;
                 color: white;
                 border: none;
+                padding: 8px 16px;
                 border-radius: 4px;
-                padding: 12px 24px;
                 font-weight: bold;
             }
             QPushButton:hover {
@@ -452,24 +410,12 @@ class MainWindow(QMainWindow):
                 background-color: #333333;
             }
             QPushButton:disabled {
-                background-color: #999999;
+                background-color: #CCCCCC;
             }
         """)
-        
-        # Configuration des boutons
-        self.play_button.setEnabled(False)
-        self.cancel_button.setEnabled(False)
-        
-        # Ajout des boutons au layout
-        button_layout.addWidget(self.generate_button)
-        button_layout.addWidget(self.cancel_button)
         button_layout.addWidget(self.play_button)
+        
         self.main_layout.addLayout(button_layout)
-
-        # Barre de progression
-        self.progress_bar = QProgressBar()
-        self.progress_bar.setTextVisible(False)
-        self.main_layout.addWidget(self.progress_bar)
 
         # Log avec taille minimum
         log_label = QLabel("Messages:")
@@ -485,12 +431,9 @@ class MainWindow(QMainWindow):
         self.main_layout.addWidget(self.log_text)
 
         # Connexions
-        self.lang_combo.currentIndexChanged.connect(self.on_lang_changed)
-        self.model_combo.currentIndexChanged.connect(self.on_model_changed)
         output_button.clicked.connect(self.choose_output_dir)
         ref_audio_button.clicked.connect(self.choose_ref_audio)
         self.generate_button.clicked.connect(self.generate_audio)
-        self.cancel_button.clicked.connect(self.cancel_generation)
         self.play_button.clicked.connect(self.play_audio)
 
     def update_model_list(self, lang_index):
@@ -559,33 +502,15 @@ class MainWindow(QMainWindow):
             self.ref_audio_path.setText(file_path)
 
     def generate_audio(self):
-        """Lance la génération audio."""
+        """Génère l'audio à partir du texte."""
         if not self.text_edit.toPlainText().strip():
-            self.show_error("Veuillez entrer du texte à convertir.")
+            self.log_text.append("Erreur : Veuillez entrer du texte à convertir.")
             return
-
-        # Animation de la barre de progression
-        self.progress_bar.setStyleSheet("""
-            QProgressBar {
-                border: 1px solid #666666;
-                border-radius: 4px;
-                text-align: center;
-                background-color: #F5F5F5;
-            }
-            QProgressBar::chunk {
-                background-color: #00A1E1;
-                border-radius: 3px;
-            }
-        """)
+            
+        if not hasattr(self, 'output_dir') or not self.output_dir:
+            self.log_text.append("Erreur : Veuillez sélectionner un dossier de sortie.")
+            return
         
-        # Animation du bouton générer
-        self.generate_button.setEnabled(False)
-        fade_animation = QPropertyAnimation(self.generate_button, b"styleSheet")
-        fade_animation.setDuration(300)
-        fade_animation.setStartValue("background-color: #FF6200; color: #FFFFFF; border: none; border-radius: 4px; padding: 12px 24px;")
-        fade_animation.setEndValue("background-color: #666666; color: #FFFFFF; border: none; border-radius: 4px; padding: 12px 24px;")
-        fade_animation.start()
-
         # Création du nom de fichier
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         model_suffix = ""
@@ -601,11 +526,10 @@ class MainWindow(QMainWindow):
             f"audio_{timestamp}{model_suffix}.wav"
         )
         
-        # Stocke le fichier qui va être généré
+        # Stockage du fichier qui va être généré
         self.last_generated_file = output_file
-        self.play_button.setEnabled(False)
-
-        # Configuration des paramètres
+        
+        # Préparation des paramètres
         params = {
             "text": self.text_edit.toPlainText().strip(),
             "output_file": output_file,
@@ -615,35 +539,23 @@ class MainWindow(QMainWindow):
             "speaker": self.get_speaker(),
             "use_cuda": self.cuda_check.isChecked()
         }
-
+        
         # Ajout des paramètres spécifiques selon le modèle
         if self.model_combo.currentText() == "XTTS v2":
             if not self.ref_audio_path.text() or self.ref_audio_path.text() == "Non sélectionné":
                 self.log_text.append("Erreur : Veuillez sélectionner un fichier audio de référence pour XTTS.")
                 return
             params["reference_audio"] = self.ref_audio_path.text()
-
-        # Démarrage de la génération
-        self.worker = TTSWorker(params)
-        self.worker.progress.connect(self.update_progress)
-        self.worker.error.connect(self.show_error)
-        self.worker.finished.connect(self.generation_finished)
         
+        # Désactivation des boutons pendant la génération
+        self.generate_button.setEnabled(False)
+        self.play_button.setEnabled(False)
+        
+        # Création et démarrage du worker
+        self.worker = TTSWorker(params)
+        self.worker.finished.connect(self.generation_finished)
+        self.worker.error.connect(self.show_error)
         self.worker.start()
-        self.update_ui_elements()
-        self.progress_bar.setValue(0)
-
-    def cancel_generation(self):
-        """Annule la génération en cours."""
-        if hasattr(self, 'worker'):
-            self.worker.terminate()
-            self.worker.wait()
-            self.generation_finished()
-            self.log_text.append("Génération annulée")
-
-    def update_progress(self, message):
-        """Met à jour le message de progression."""
-        self.log_text.append(message)
 
     def show_error(self, error_message):
         """Affiche un message d'erreur."""
@@ -652,43 +564,17 @@ class MainWindow(QMainWindow):
 
     def generation_finished(self):
         """Gère la fin de la génération."""
-        self.update_ui_elements()
+        # Réactivation du bouton générer
+        self.generate_button.setEnabled(True)
         
-        # Animation de complétion
-        self.progress_bar.setValue(0)
-        completion_animation = QPropertyAnimation(self.progress_bar, b"value")
-        completion_animation.setDuration(500)
-        completion_animation.setStartValue(0)
-        completion_animation.setEndValue(100)
-        completion_animation.setEasingCurve(QEasingCurve.Type.OutCubic)
-        completion_animation.start()
-        
-        # Animation du bouton générer
-        enable_animation = QPropertyAnimation(self.generate_button, b"styleSheet")
-        enable_animation.setDuration(300)
-        enable_animation.setStartValue("background-color: #666666; color: #FFFFFF; border: none; border-radius: 4px; padding: 12px 24px;")
-        enable_animation.setEndValue("background-color: #FF6200; color: #FFFFFF; border: none; border-radius: 4px; padding: 12px 24px;")
-        enable_animation.start()
-
-        self.worker = None
-        
-        # Active le bouton d'écoute avec animation
+        # Active le bouton d'écoute si le fichier existe
         if self.last_generated_file and os.path.exists(self.last_generated_file):
             self.play_button.setEnabled(True)
-            play_animation = QPropertyAnimation(self.play_button, b"styleSheet")
-            play_animation.setDuration(300)
-            play_animation.setStartValue("background-color: transparent; color: #666666; border: 2px solid #666666;")
-            play_animation.setEndValue("background-color: transparent; color: #FF6200; border: 2px solid #FF6200;")
-            play_animation.start()
-            
-            self.update_progress(f"Génération terminée ! Fichier créé : {os.path.basename(self.last_generated_file)}")
+            self.update_log(f"Génération terminée ! Fichier créé : {os.path.basename(self.last_generated_file)}")
         else:
             self.play_button.setEnabled(False)
-            self.update_progress("Génération terminée !")
+            self.update_log("Génération terminée !")
             
-        # Réactivation du bouton générer
-        QTimer.singleShot(300, lambda: self.generate_button.setEnabled(True))
-
     def play_audio(self):
         """Ouvre le fichier audio avec le lecteur par défaut."""
         if self.last_generated_file and os.path.exists(self.last_generated_file):
@@ -730,6 +616,9 @@ class MainWindow(QMainWindow):
 
     def update_ui_elements(self):
         pass
+
+    def update_log(self, message):
+        self.log_text.append(message)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
