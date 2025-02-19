@@ -6,7 +6,7 @@ import sys
 import os
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
                             QHBoxLayout, QLabel, QComboBox, QTextEdit, QPushButton,
-                            QFileDialog, QProgressBar, QCheckBox)
+                            QFileDialog, QProgressBar, QCheckBox, QGraphicsOpacityEffect)
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QPropertyAnimation, QEasingCurve, QPoint, QTimer
 from PyQt6.QtGui import QFont, QFontDatabase, QPixmap, QScreen, QColor
 import torch
@@ -182,12 +182,46 @@ class MainWindow(QMainWindow):
         os.makedirs(self.output_dir, exist_ok=True)
         
         # Widget principal avec marges
-        main_widget = QWidget()
-        self.setCentralWidget(main_widget)
-        layout = QVBoxLayout(main_widget)
-        layout.setContentsMargins(24, 24, 24, 24)
-        layout.setSpacing(16)
+        self.main_widget = QWidget()
+        self.setCentralWidget(self.main_widget)
+        
+        # Création du layout principal
+        self.main_layout = QVBoxLayout(self.main_widget)
+        self.main_layout.setContentsMargins(24, 24, 24, 24)
+        self.main_layout.setSpacing(16)
+        
+        # Créer l'interface
+        self.setup_ui()
+        
+        # Effet d'opacité initial
+        self.opacity_effect = QGraphicsOpacityEffect(self.main_widget)
+        self.opacity_effect.setOpacity(0.0)
+        self.main_widget.setGraphicsEffect(self.opacity_effect)
+        
+        # Configuration de l'animation de fade in
+        self.fade_animation = QPropertyAnimation(self.opacity_effect, b"opacity")
+        self.fade_animation.setDuration(3000)  # 3 secondes
+        self.fade_animation.setStartValue(0.0)
+        self.fade_animation.setEndValue(1.0)
+        self.fade_animation.setEasingCurve(QEasingCurve.Type.InOutCubic)
+        
+        # Démarrer l'animation après un délai plus court
+        QTimer.singleShot(500, self.start_fade_in)
+        
+        # Afficher la fenêtre
+        self.show()
 
+    def start_fade_in(self):
+        """Démarre l'animation de fade in."""
+        self.fade_animation.start()
+    
+    def setup_ui(self):
+        """Configure l'interface utilisateur."""
+        # Initialisation des variables importantes
+        self.worker = None
+        self.last_generated_file = None
+        self.ref_audio_path = None
+        
         # En-tête avec logo et titre
         header_layout = QHBoxLayout()
         
@@ -208,13 +242,13 @@ class MainWindow(QMainWindow):
         header_layout.addWidget(title_label)
         header_layout.addStretch()
         
-        layout.addLayout(header_layout)
+        self.main_layout.addLayout(header_layout)
 
         # Séparateur avec animation de couleur
         self.separator = QWidget()
         self.separator.setFixedHeight(2)  # Augmentation de l'épaisseur
         self.separator.setStyleSheet("background-color: #E5E5E5;")
-        layout.addWidget(self.separator)
+        self.main_layout.addWidget(self.separator)
         
         # Animation du séparateur
         self.separator_animation = QPropertyAnimation(self.separator, b"styleSheet")
@@ -242,7 +276,7 @@ class MainWindow(QMainWindow):
         output_layout.addWidget(output_label)
         output_layout.addWidget(self.output_path_label, stretch=1)
         output_layout.addWidget(output_button)
-        layout.addLayout(output_layout)
+        self.main_layout.addLayout(output_layout)
 
         # Langue
         lang_layout = QHBoxLayout()
@@ -251,7 +285,7 @@ class MainWindow(QMainWindow):
         self.lang_combo.addItems(["Anglais", "Français", "Anglais (VCTK)"])
         lang_layout.addWidget(lang_label)
         lang_layout.addWidget(self.lang_combo)
-        layout.addLayout(lang_layout)
+        self.main_layout.addLayout(lang_layout)
 
         # Modèle
         model_layout = QHBoxLayout()
@@ -260,7 +294,7 @@ class MainWindow(QMainWindow):
         self.update_model_list(0)
         model_layout.addWidget(model_label)
         model_layout.addWidget(self.model_combo)
-        layout.addLayout(model_layout)
+        self.main_layout.addLayout(model_layout)
 
         # VCTK Speakers
         speaker_layout = QHBoxLayout()
@@ -276,7 +310,7 @@ class MainWindow(QMainWindow):
         speaker_layout.addWidget(speaker_label)
         speaker_layout.addWidget(self.speaker_combo)
         self.speaker_combo.setEnabled(False)
-        layout.addLayout(speaker_layout)
+        self.main_layout.addLayout(speaker_layout)
 
         # XTTS Reference Audio
         ref_audio_layout = QHBoxLayout()
@@ -288,22 +322,22 @@ class MainWindow(QMainWindow):
         ref_audio_layout.addWidget(ref_audio_label)
         ref_audio_layout.addWidget(self.ref_audio_path, stretch=1)
         ref_audio_layout.addWidget(ref_audio_button)
-        layout.addLayout(ref_audio_layout)
+        self.main_layout.addLayout(ref_audio_layout)
 
         # CUDA
         cuda_layout = QHBoxLayout()
         self.cuda_check = QCheckBox("Utiliser CUDA (si disponible)")
         self.cuda_check.setChecked(True)
         cuda_layout.addWidget(self.cuda_check)
-        layout.addLayout(cuda_layout)
+        self.main_layout.addLayout(cuda_layout)
 
         # Zone de texte
         text_label = QLabel("Texte à convertir:")
-        layout.addWidget(text_label)
+        self.main_layout.addWidget(text_label)
         self.text_edit = CustomTextEdit()
         self.text_edit.setPlaceholderText("Entrez votre texte ici...")
         self.text_edit.setMinimumHeight(150)
-        layout.addWidget(self.text_edit)
+        self.main_layout.addWidget(self.text_edit)
 
         # Boutons
         button_layout = QHBoxLayout()
@@ -317,22 +351,22 @@ class MainWindow(QMainWindow):
         button_layout.addWidget(self.generate_button)
         button_layout.addWidget(self.cancel_button)
         button_layout.addWidget(self.play_button)
-        layout.addLayout(button_layout)
+        self.main_layout.addLayout(button_layout)
 
         # Barre de progression
         self.progress_bar = QProgressBar()
         self.progress_bar.setTextVisible(False)
-        layout.addWidget(self.progress_bar)
+        self.main_layout.addWidget(self.progress_bar)
 
         # Log
         log_label = QLabel("Messages:")
-        layout.addWidget(log_label)
+        self.main_layout.addWidget(log_label)
         self.log_text = CustomTextEdit()
         self.log_text.setReadOnly(True)
         self.log_text.setMaximumHeight(100)
         self.log_text.setObjectName("logText")
         self.log_text.setPlaceholderText("Les messages de log apparaîtront ici...")
-        layout.addWidget(self.log_text)
+        self.main_layout.addWidget(self.log_text)
 
         # Connexions
         self.lang_combo.currentIndexChanged.connect(self.on_lang_changed)
@@ -342,9 +376,6 @@ class MainWindow(QMainWindow):
         self.generate_button.clicked.connect(self.generate_audio)
         self.cancel_button.clicked.connect(self.cancel_generation)
         self.play_button.clicked.connect(self.play_audio)
-
-        # Variables pour suivre le dernier fichier généré
-        self.last_generated_file = None
 
     def update_model_list(self, lang_index):
         """Met à jour la liste des modèles en fonction de la langue."""
@@ -573,7 +604,7 @@ class MainWindow(QMainWindow):
                      "tts_models/en/ljspeech/neural_hmm"]
         # Modèles pour le français
         elif lang_idx == 1:
-            models = ["tts_models/multilingual/multi-dataset/xtts_v2", "tts_models/fr/mai/vits",
+            models = ["tts_models/multilingual/multi-dataset/xtts_v2", "tts_models/fr/css10/vits",
                      "tts_models/multilingual/multi-dataset/your_tts", "tts_models/multilingual/multi-dataset/your_tts"]
         # Modèles VCTK
         else:
@@ -587,5 +618,4 @@ class MainWindow(QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = MainWindow()
-    window.show()
     sys.exit(app.exec())
