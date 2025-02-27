@@ -1,16 +1,10 @@
-===== DEBUT INSTALLATION 27-02-25 13:15:59,22 ===== 
-[27-02-25 13:15:59,22] [INFO] [MODE SANS REGISTRE] Les modifications système seront désactivées 
-[27-02-25 13:15:59,25] [INFO] Mode debug activé - Fichier log: logs\setup_env_log.txt 
-[27-02-25 13:15:59,25] [DEBUG] Configuration des chemins sécurisés 
-[27-02-25 13:15:59,27] [DEBUG] PROGRAM_FILES: C:\Program Files 
-[27-02-25 13:15:59,27] [DEBUG] PROGRAM_FILES_X86: C:\Program Files (x86) 
-[27-02-25 13:15:59,27] [INFO] Vérifications préliminaires... 
-[27-02-25 13:15:59,31] [INFO] Recherche de Python 3.10... 
-[27-02-25 13:15:59,31] [DEBUG] Chemin Python trouvé:  
-[27-02-25 13:15:59,32] [DEBUG] Commande Python:  
-[27-02-25 13:15:59,34] [INFO] Python 3.10 trouvé dans C:\Program Files\Python310 
-[27-02-25 13:15:59,35] [DEBUG] Chemin Python: C:\Program Files\Python310 
-[27-02-25 13:15:59,35] [DEBUG] Commande Python: C:\Program Files\Python310\python.exe 
-[27-02-25 13:15:59,36] [INFO] Vérification du SDK Windows 10 ignorée en mode sans registre 
-[27-02-25 13:15:59,36] [DEBUG] Configuration des chemins SDK Windows 
-[27-02-25 13:15:59,38] [DEBUG] WindowsSdkDir: C:\Program Files (x86)\Windows Kits\10 
+===== DEBUT INSTALLATION 27-02-25 13:23:16,49 ===== 
+[27-02-25 13:23:16,49] [INFO] [MODE SANS REGISTRE] Les modifications système seront désactivées 
+[27-02-25 13:23:16,51] [INFO] Mode debug activé - Fichier log: logs\setup_env_log.txt 
+[27-02-25 13:23:16,54] [DEBUG] PATH initial: c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;C:\Program Files\OpenLogic\jdk-17.0.13.11-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk-11\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Scripts;C:\ProgramData\Anaconda3\Scripts;C:\Users\JF30LB\OneDrive - NN\Programmes\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\;C:\Users\JF30LB\AppData\Local\Programs\Python\Launcher\;C:\Users\JF30LB\scoop\apps\nodejs-lts\current\bin;C:\Users\JF30LB\scoop\apps\nodejs-lts\current;C:\Users\JF30LB\scoop\shims;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files (x86)\Common Files\Pulse Secure\TNC Client Plugin\;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\Programs\Microsoft VS Code\bin;C:\ProgramData\Anaconda3;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\JetBrains\IntelliJ IDEA 2023.2.5\bin;C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_1.11.11421.0_x64__8wekyb3d8bbwe;C:\Users\JF30LB\AppData\Roaming\npm 
+
+   .\setup_env_v21.bat --no-registry --debug
+[MODE SANS REGISTRE] Les modifications systÃ¨me seront dÃ©sactivÃ©es
+Mode debug activÃ© - Fichier log: logs\setup_env_log.txt
+\Common était inattendu.
+PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio>
