@@ -82,12 +82,70 @@ if not exist "%VS_PATH%\VC\Tools\MSVC" (
 
 REM Vérification des redistribuables VC++
 call :log INFO "Vérification des redistribuables VC++..."
-reg query "HKLM\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" /v Installed >nul 2>&1
-if %ERRORLEVEL% neq 0 (
+set VC_REDIST_INSTALLED=0
+
+REM Méthode 1: Vérification basée sur les fichiers DLL avec contrôle de version
+if exist "C:\Windows\System32\vcruntime140.dll" (
+    call :log DEBUG "vcruntime140.dll trouvé, vérification de la version..."
+    
+    REM Création d'un script PowerShell temporaire pour vérifier la version du fichier
+    echo $file = Get-Item "C:\Windows\System32\vcruntime140.dll" > "%TEMP%\check_vc_version.ps1"
+    echo if ($file.VersionInfo.FileVersion -ge "14.30") { exit 0 } else { exit 1 } >> "%TEMP%\check_vc_version.ps1"
+    
+    REM Exécution du script PowerShell
+    powershell -ExecutionPolicy Bypass -File "%TEMP%\check_vc_version.ps1" >nul 2>&1
+    if %ERRORLEVEL% equ 0 (
+        set VC_REDIST_INSTALLED=1
+        call :log DEBUG "vcruntime140.dll est de version 14.30 ou supérieure"
+    ) else (
+        call :log DEBUG "vcruntime140.dll est présent mais d'une version antérieure"
+    )
+    del "%TEMP%\check_vc_version.ps1"
+)
+
+REM Méthode 2: Vérification de la présence d'autres DLL spécifiques à VC++ 2022
+if %VC_REDIST_INSTALLED% equ 0 (
+    if exist "C:\Windows\System32\msvcp140.dll" (
+        if exist "C:\Windows\System32\vcruntime140_1.dll" (
+            call :log DEBUG "msvcp140.dll et vcruntime140_1.dll trouvés, probablement VC++ 2022 installé"
+            set VC_REDIST_INSTALLED=1
+        )
+    )
+)
+
+REM Méthode 3: Test fonctionnel - création d'un petit programme de test
+if %VC_REDIST_INSTALLED% equ 0 (
+    call :log DEBUG "Création d'un programme de test pour vérifier les redistribuables VC++..."
+    
+    REM Création d'un fichier source C++ temporaire
+    echo #include ^<iostream^> > "%TEMP%\vc_test.cpp"
+    echo int main() { std::cout ^<^< "VC++ Test OK" ^<^< std::endl; return 0; } >> "%TEMP%\vc_test.cpp"
+    
+    REM Tentative de compilation avec cl.exe si disponible
+    where cl.exe >nul 2>&1
+    if %ERRORLEVEL% equ 0 (
+        cl.exe /nologo /EHsc "%TEMP%\vc_test.cpp" /Fe:"%TEMP%\vc_test.exe" >nul 2>&1
+        if %ERRORLEVEL% equ 0 (
+            "%TEMP%\vc_test.exe" >nul 2>&1
+            if %ERRORLEVEL% equ 0 (
+                set VC_REDIST_INSTALLED=1
+                call :log DEBUG "Test de compilation et d'exécution réussi, VC++ installé"
+            )
+            del "%TEMP%\vc_test.exe" 2>nul
+        )
+        del "%TEMP%\vc_test.obj" 2>nul
+    )
+    del "%TEMP%\vc_test.cpp" 2>nul
+)
+
+REM Installation si nécessaire
+if %VC_REDIST_INSTALLED% equ 0 (
     call :log INFO "Installation des redistribuables VC++ 2022..."
     call :exec_and_log "curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe" "Téléchargement VC++ Redistributable"
     call :exec_and_log ""%TEMP%\vc_redist.x64.exe" /quiet /norestart" "Installation VC++ Redistributable"
     del "%TEMP%\vc_redist.x64.exe"
+) else (
+    call :log INFO "Redistribuables VC++ 2022 déjà installés."
 )
 
 REM Réinitialisation des variables d'environnement
