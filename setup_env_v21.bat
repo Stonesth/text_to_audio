@@ -245,15 +245,6 @@ REM Installation des dépendances système
 curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe
 "%TEMP%\vc_redist.x64.exe" /quiet /norestart
 
-REM Installation des dépendances Python
-call :log INFO "Installation des dépendances Python..."
-"!PYTHON_CMD!" -m pip install --upgrade pip
-"!PYTHON_CMD!" -m pip install Cython
-"!PYTHON_CMD!" -m pip install torch==2.1.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-"!PYTHON_CMD!" -m pip install TTS --no-deps --no-cache-dir
-"!PYTHON_CMD!" -m pip install PyQt6==6.4.2
-"!PYTHON_CMD!" -m pip install pyinstaller==6.3.0
-
 REM Création de l'environnement virtuel
 call :log INFO "Création de l'environnement virtuel..."
 call :log DEBUG "Suppression de l'environnement virtuel existant si présent"
@@ -267,23 +258,39 @@ if not exist "venv_py310\Scripts\activate.bat" (
     exit /b 1
 )
 
-REM Installation des dépendances
+REM Activation de l'environnement virtuel
+call :log INFO "Activation de l'environnement virtuel..."
+call "venv_py310\Scripts\activate.bat"
+call :log DEBUG "Vérification de l'activation"
+"!PYTHON_CMD!" -c "import sys; print('Environnement virtuel actif:', sys.prefix)" >> "!LOG_FILE!" 2>&1
+
+REM Installation des dépendances de base
 call :log INFO "Installation des dépendances de base..."
 "!PYTHON_CMD!" -m pip install --upgrade pip setuptools wheel
 
 REM Installation des dépendances TTS
 for %%p in (
-    "librosa==0.10.0"
-    "soundfile==0.12.1"
-    "scipy==1.11.4"
-    "tensorboard==2.14.1"
-    "Unidecode==1.3.7"
+    "numpy==1.24.3"
+    "torch==2.1.0+cpu" "--index-url" "https://download.pytorch.org/whl/cpu"
     "tqdm==4.65.0"
 ) do (
     call :log INFO "Installation de %%p..."
-    "!PYTHON_CMD!" -m pip install %%p --only-binary :all:
+    "!PYTHON_CMD!" -m pip install %%p --no-cache-dir
 )
 
+REM Installation de TTS avec toutes les dépendances
+call :log INFO "Installation de TTS..."
+"!PYTHON_CMD!" -m pip install TTS --no-cache-dir
+
+REM Installation de PyQt6
+call :log INFO "Installation de PyQt6..."
+"!PYTHON_CMD!" -m pip install PyQt6==6.4.2 --no-cache-dir
+
+REM Installation de pyinstaller
+call :log INFO "Installation de pyinstaller..."
+"!PYTHON_CMD!" -m pip install pyinstaller==6.3.0 --no-cache-dir
+
+REM Vérification de l'installation
 call :log INFO "Vérification de l'installation..."
 "!PYTHON_CMD!" -c "import numpy; print('numpy', numpy.__version__)" 2>nul && ^
 "!PYTHON_CMD!" -c "import torch; print('torch', torch.__version__)" 2>nul && ^
