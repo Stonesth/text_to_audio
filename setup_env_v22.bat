@@ -125,7 +125,7 @@ if %VC_REDIST_INSTALLED% equ 0 (
     
     REM Création d'un fichier source C++ temporaire
     echo #include ^<iostream^> > "%TEMP%\vc_test.cpp"
-    echo int main() { std::cout ^<^< "VC++ Test OK" ^<^< std::endl; return 0; } >> "%TEMP%\vc_test.cpp"
+    echo int main() ^^^{ std::cout ^<^< "VC++ Test OK" ^<^< std::endl; return 0; ^^^} >> "%TEMP%\vc_test.cpp"
     
     REM Tentative de compilation avec cl.exe si disponible
     where cl.exe >nul 2>&1
