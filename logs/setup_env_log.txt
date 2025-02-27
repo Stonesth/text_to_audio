@@ -1,74 +1,234 @@
-===== DEBUT INSTALLATION 27-02-25 14:43:27,92 ===== 
-[27-02-25 14:43:27,92] [INFO] [MODE SANS REGISTRE] Les modifications système seront désactivées 
-[27-02-25 14:43:27,94] [INFO] Mode debug activé - Fichier log: logs\setup_env_log.txt 
-[27-02-25 14:43:27,96] [DEBUG] PATH initial: c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;C:\Program Files\OpenLogic\jdk-17.0.13.11-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk-11\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Scripts;C:\ProgramData\Anaconda3\Scripts;C:\Users\JF30LB\OneDrive - NN\Programmes\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\;C:\Users\JF30LB\AppData\Local\Programs\Python\Launcher\;C:\Users\JF30LB\scoop\apps\nodejs-lts\current\bin;C:\Users\JF30LB\scoop\apps\nodejs-lts\current;C:\Users\JF30LB\scoop\shims;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files (x86)\Common Files\Pulse Secure\TNC Client Plugin\;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\Programs\Microsoft VS Code\bin;C:\ProgramData\Anaconda3;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\JetBrains\IntelliJ IDEA 2023.2.5\bin;C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_1.11.11421.0_x64__8wekyb3d8bbwe;C:\Users\JF30LB\AppData\Roaming\npm 
-[27-02-25 14:43:27,97] [DEBUG] Configuration des chemins sécurisés 
-[27-02-25 14:43:28,02] [DEBUG] PROGRAM_FILES: C:\Program Files 
-[27-02-25 14:43:28,06] [DEBUG] PROGRAM_FILES_X86: C:\Program Files (x86) 
-[27-02-25 14:43:28,11] [INFO] Vérifications préliminaires... 
-[27-02-25 14:43:28,18] [INFO] Vérification de Python... 
-[27-02-25 14:43:28,20] [INFO] Python trouvé dans C:\Program Files\Python310 
-[27-02-25 14:43:28,21] [DEBUG] Exécution: "\python.exe" --version 
-[27-02-25 14:43:28,25] [COMMAND] Version Python - Début d'exécution 
-'"\python.exe"' n�est pas reconnu en tant que commande interne
-ou externe, un programme ex�cutable ou un fichier de commandes.
-[27-02-25 14:43:28,34] [COMMAND] Version Python - Fin d'exécution (code: 9009) 
-[27-02-25 14:43:28,41] [INFO] Vérification de Visual Studio... 
-[27-02-25 14:43:28,42] [INFO] Visual Studio 2022 trouvé dans C:\Program Files\Microsoft Visual Studio\2022\Community 
-[27-02-25 14:43:28,44] [DEBUG] Exécution: dir "C:\Program 
-[27-02-25 14:43:28,45] [COMMAND] Files\Microsoft - Début d'exécution 
- Le volume dans le lecteur C s�appelle OS
- Le num�ro de s�rie du volume est B4F8-1874
+===== DEBUT INSTALLATION 27-02-25 15:05:25,96 ===== 
+[27-02-25 15:05:25,97] [INFO] Verification de Python 3.10... 
+[27-02-25 15:05:26,12] [COMMAND] Vérification Python 3.10 via py launcher - Début d'exécution 
+Python 3.10.9
+[27-02-25 15:05:26,16] [COMMAND] Vérification Python 3.10 via py launcher - Fin d'exécution (code: 0) 
+[27-02-25 15:05:26,17] [INFO] Python 3.10 trouve via py launcher 
+[27-02-25 15:05:26,20] [INFO] Verification de Visual Studio... 
+[27-02-25 15:05:26,23] [INFO] Configuration des chemins... 
+[27-02-25 15:05:26,26] [INFO] Configuration des includes... 
+[27-02-25 15:05:26,27] [INFO] Configuration des bibliothèques... 
+[27-02-25 15:05:26,28] [INFO] Configuration du PATH... 
+[27-02-25 15:05:26,29] [INFO] Configuration de l'environnement de build... 
+[27-02-25 15:05:26,30] [COMMAND] Files\Microsoft - Début d'exécution 
+[27-02-25 15:05:26,30] [COMMAND] Files\Microsoft - Fin d'exécution (code: 123) 
+[27-02-25 15:05:26,31] [ERROR] Erreur lors de l'exécution de la commande: Files\Microsoft (code: 123) 
+[27-02-25 15:05:26,32] [INFO] Creation de l'environnement virtuel... 
+[27-02-25 15:05:26,54] [COMMAND] Création environnement virtuel - Début d'exécution 
+[27-02-25 15:05:37,41] [COMMAND] Création environnement virtuel - Fin d'exécution (code: 0) 
+[27-02-25 15:05:37,53] [INFO] Installation des dependances de base... 
+[27-02-25 15:05:37,54] [COMMAND] Installation pip/setuptools/wheel - Début d'exécution 
+Requirement already satisfied: pip in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (22.3.1)
+Collecting pip
+  Using cached pip-25.0.1-py3-none-any.whl (1.8 MB)
+Requirement already satisfied: setuptools in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (65.5.0)
+Collecting setuptools
+  Using cached setuptools-75.8.2-py3-none-any.whl (1.2 MB)
+Collecting wheel
+  Using cached wheel-0.45.1-py3-none-any.whl (72 kB)
+Installing collected packages: wheel, setuptools, pip
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 65.5.0
+    Uninstalling setuptools-65.5.0:
+      Successfully uninstalled setuptools-65.5.0
+  Attempting uninstall: pip
+    Found existing installation: pip 22.3.1
+    Uninstalling pip-22.3.1:
+      Successfully uninstalled pip-22.3.1
+Successfully installed pip-25.0.1 setuptools-75.8.2 wheel-0.45.1
+[27-02-25 15:05:52,96] [COMMAND] Installation pip/setuptools/wheel - Fin d'exécution (code: 0) 
+[27-02-25 15:05:52,96] [INFO] Installation des packages principaux... 
+[27-02-25 15:05:52,99] [COMMAND] Installation numpy - Début d'exécution 
+Collecting numpy==1.22.0
+  Using cached numpy-1.22.0-cp310-cp310-win_amd64.whl.metadata (2.1 kB)
+Using cached numpy-1.22.0-cp310-cp310-win_amd64.whl (14.7 MB)
+Installing collected packages: numpy
+Successfully installed numpy-1.22.0
+[27-02-25 15:06:06,71] [COMMAND] Installation numpy - Fin d'exécution (code: 0) 
+[27-02-25 15:06:06,72] [COMMAND] Installation torch - Début d'exécution 
+Looking in indexes: https://download.pytorch.org/whl/cu117
+Collecting torch==2.0.1
+  Using cached https://download.pytorch.org/whl/cu117/torch-2.0.1%2Bcu117-cp310-cp310-win_amd64.whl (2343.6 MB)
+Collecting torchvision==0.15.2
+  Using cached https://download.pytorch.org/whl/cu117/torchvision-0.15.2%2Bcu117-cp310-cp310-win_amd64.whl (4.9 MB)
+Collecting torchaudio==2.0.2
+  Using cached https://download.pytorch.org/whl/cu117/torchaudio-2.0.2%2Bcu117-cp310-cp310-win_amd64.whl (2.5 MB)
+Collecting filelock (from torch==2.0.1)
+  Using cached https://download.pytorch.org/whl/filelock-3.13.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting typing-extensions (from torch==2.0.1)
+  Using cached https://download.pytorch.org/whl/typing_extensions-4.12.2-py3-none-any.whl.metadata (3.0 kB)
+Collecting sympy (from torch==2.0.1)
+  Using cached https://download.pytorch.org/whl/sympy-1.13.1-py3-none-any.whl (6.2 MB)
+Collecting networkx (from torch==2.0.1)
+  Using cached https://download.pytorch.org/whl/networkx-3.3-py3-none-any.whl.metadata (5.1 kB)
+Collecting jinja2 (from torch==2.0.1)
+  Using cached https://download.pytorch.org/whl/Jinja2-3.1.4-py3-none-any.whl.metadata (2.6 kB)
+Requirement already satisfied: numpy in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torchvision==0.15.2) (1.22.0)
+Collecting requests (from torchvision==0.15.2)
+  Using cached https://download.pytorch.org/whl/requests-2.28.1-py3-none-any.whl (62 kB)
+Collecting pillow!=8.3.*,>=5.3.0 (from torchvision==0.15.2)
+  Using cached https://download.pytorch.org/whl/pillow-11.0.0-cp310-cp310-win_amd64.whl.metadata (9.3 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch==2.0.1)
+  Using cached https://download.pytorch.org/whl/MarkupSafe-2.1.5-cp310-cp310-win_amd64.whl (17 kB)
+Collecting charset-normalizer<3,>=2 (from requests->torchvision==0.15.2)
+  Using cached https://download.pytorch.org/whl/charset_normalizer-2.1.1-py3-none-any.whl (39 kB)
+Collecting idna<4,>=2.5 (from requests->torchvision==0.15.2)
+  Using cached https://download.pytorch.org/whl/idna-3.4-py3-none-any.whl (61 kB)
+Collecting urllib3<1.27,>=1.21.1 (from requests->torchvision==0.15.2)
+  Using cached https://download.pytorch.org/whl/urllib3-1.26.13-py2.py3-none-any.whl (140 kB)
+Collecting certifi>=2017.4.17 (from requests->torchvision==0.15.2)
+  Using cached https://download.pytorch.org/whl/certifi-2022.12.7-py3-none-any.whl (155 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy->torch==2.0.1)
+  Using cached https://download.pytorch.org/whl/mpmath-1.3.0-py3-none-any.whl (536 kB)
+Using cached https://download.pytorch.org/whl/pillow-11.0.0-cp310-cp310-win_amd64.whl (2.6 MB)
+Using cached https://download.pytorch.org/whl/filelock-3.13.1-py3-none-any.whl (11 kB)
+Using cached https://download.pytorch.org/whl/Jinja2-3.1.4-py3-none-any.whl (133 kB)
+Using cached https://download.pytorch.org/whl/networkx-3.3-py3-none-any.whl (1.7 MB)
+Using cached https://download.pytorch.org/whl/typing_extensions-4.12.2-py3-none-any.whl (37 kB)
+Installing collected packages: mpmath, urllib3, typing-extensions, sympy, pillow, networkx, MarkupSafe, idna, filelock, charset-normalizer, certifi, requests, jinja2, torch, torchvision, torchaudio
+Successfully installed MarkupSafe-2.1.5 certifi-2022.12.7 charset-normalizer-2.1.1 filelock-3.13.1 idna-3.4 jinja2-3.1.4 mpmath-1.3.0 networkx-3.3 pillow-11.0.0 requests-2.28.1 sympy-1.13.1 torch-2.0.1+cu117 torchaudio-2.0.2+cu117 torchvision-0.15.2+cu117 typing-extensions-4.12.2 urllib3-1.26.13
+[27-02-25 15:08:02,57] [COMMAND] Installation torch - Fin d'exécution (code: 0) 
+[27-02-25 15:08:02,57] [INFO] Installation des dependances TTS... 
+[27-02-25 15:08:02,59] [COMMAND] Installation librosa - Début d'exécution 
+Collecting librosa==0.10.0
+  Using cached librosa-0.10.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting audioread>=2.1.9 (from librosa==0.10.0)
+  Using cached audioread-3.0.1-py3-none-any.whl.metadata (8.4 kB)
+Requirement already satisfied: numpy>=1.20.3 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (1.22.0)
+Collecting scipy>=1.2.0 (from librosa==0.10.0)
+  Using cached scipy-1.15.2-cp310-cp310-win_amd64.whl.metadata (60 kB)
+Collecting scikit-learn>=0.20.0 (from librosa==0.10.0)
+  Using cached scikit_learn-1.6.1-cp310-cp310-win_amd64.whl.metadata (15 kB)
+Collecting joblib>=0.14 (from librosa==0.10.0)
+  Using cached joblib-1.4.2-py3-none-any.whl.metadata (5.4 kB)
+Collecting decorator>=4.3.0 (from librosa==0.10.0)
+  Using cached decorator-5.2.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting numba>=0.51.0 (from librosa==0.10.0)
+  Using cached numba-0.61.0-cp310-cp310-win_amd64.whl.metadata (2.8 kB)
+Collecting soundfile>=0.12.1 (from librosa==0.10.0)
+  Using cached soundfile-0.13.1-py2.py3-none-win_amd64.whl.metadata (16 kB)
+Collecting pooch>=1.0 (from librosa==0.10.0)
+  Using cached pooch-1.8.2-py3-none-any.whl.metadata (10 kB)
+Collecting soxr>=0.3.2 (from librosa==0.10.0)
+  Using cached soxr-0.5.0.post1-cp310-cp310-win_amd64.whl.metadata (5.6 kB)
+Requirement already satisfied: typing-extensions>=4.1.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (4.12.2)
+Collecting lazy-loader>=0.1 (from librosa==0.10.0)
+  Using cached lazy_loader-0.4-py3-none-any.whl.metadata (7.6 kB)
+Collecting msgpack>=1.0 (from librosa==0.10.0)
+  Using cached msgpack-1.1.0-cp310-cp310-win_amd64.whl.metadata (8.6 kB)
+Collecting packaging (from lazy-loader>=0.1->librosa==0.10.0)
+  Using cached packaging-24.2-py3-none-any.whl.metadata (3.2 kB)
+Collecting llvmlite<0.45,>=0.44.0dev0 (from numba>=0.51.0->librosa==0.10.0)
+  Using cached llvmlite-0.44.0-cp310-cp310-win_amd64.whl.metadata (5.0 kB)
+Collecting numpy>=1.20.3 (from librosa==0.10.0)
+  Using cached numpy-2.1.3-cp310-cp310-win_amd64.whl.metadata (60 kB)
+Collecting platformdirs>=2.5.0 (from pooch>=1.0->librosa==0.10.0)
+  Using cached platformdirs-4.3.6-py3-none-any.whl.metadata (11 kB)
+Requirement already satisfied: requests>=2.19.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pooch>=1.0->librosa==0.10.0) (2.28.1)
+Collecting threadpoolctl>=3.1.0 (from scikit-learn>=0.20.0->librosa==0.10.0)
+  Using cached threadpoolctl-3.5.0-py3-none-any.whl.metadata (13 kB)
+Collecting cffi>=1.0 (from soundfile>=0.12.1->librosa==0.10.0)
+  Using cached cffi-1.17.1-cp310-cp310-win_amd64.whl.metadata (1.6 kB)
+Collecting pycparser (from cffi>=1.0->soundfile>=0.12.1->librosa==0.10.0)
+  Using cached pycparser-2.22-py3-none-any.whl.metadata (943 bytes)
+Requirement already satisfied: charset-normalizer<3,>=2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0) (2.1.1)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0) (3.4)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0) (1.26.13)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0) (2022.12.7)
+Using cached librosa-0.10.0-py3-none-any.whl (252 kB)
+Using cached audioread-3.0.1-py3-none-any.whl (23 kB)
+Using cached decorator-5.2.1-py3-none-any.whl (9.2 kB)
+Using cached joblib-1.4.2-py3-none-any.whl (301 kB)
+Using cached lazy_loader-0.4-py3-none-any.whl (12 kB)
+Using cached msgpack-1.1.0-cp310-cp310-win_amd64.whl (74 kB)
+Using cached numba-0.61.0-cp310-cp310-win_amd64.whl (2.8 MB)
+Using cached numpy-2.1.3-cp310-cp310-win_amd64.whl (12.9 MB)
+Using cached pooch-1.8.2-py3-none-any.whl (64 kB)
+Using cached scikit_learn-1.6.1-cp310-cp310-win_amd64.whl (11.1 MB)
+Using cached scipy-1.15.2-cp310-cp310-win_amd64.whl (41.2 MB)
+Using cached soundfile-0.13.1-py2.py3-none-win_amd64.whl (1.0 MB)
+Using cached soxr-0.5.0.post1-cp310-cp310-win_amd64.whl (166 kB)
+Using cached cffi-1.17.1-cp310-cp310-win_amd64.whl (181 kB)
+Using cached llvmlite-0.44.0-cp310-cp310-win_amd64.whl (30.3 MB)
+Using cached packaging-24.2-py3-none-any.whl (65 kB)
+Using cached platformdirs-4.3.6-py3-none-any.whl (18 kB)
+Using cached threadpoolctl-3.5.0-py3-none-any.whl (18 kB)
+Using cached pycparser-2.22-py3-none-any.whl (117 kB)
+Installing collected packages: threadpoolctl, pycparser, platformdirs, packaging, numpy, msgpack, llvmlite, joblib, decorator, audioread, soxr, scipy, pooch, numba, lazy-loader, cffi, soundfile, scikit-learn, librosa
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.22.0
+    Uninstalling numpy-1.22.0:
+      Successfully uninstalled numpy-1.22.0
+Successfully installed audioread-3.0.1 cffi-1.17.1 decorator-5.2.1 joblib-1.4.2 lazy-loader-0.4 librosa-0.10.0 llvmlite-0.44.0 msgpack-1.1.0 numba-0.61.0 numpy-2.1.3 packaging-24.2 platformdirs-4.3.6 pooch-1.8.2 pycparser-2.22 scikit-learn-1.6.1 scipy-1.15.2 soundfile-0.13.1 soxr-0.5.0.post1 threadpoolctl-3.5.0
+[27-02-25 15:09:07,52] [COMMAND] Installation librosa - Fin d'exécution (code: 0) 
+[27-02-25 15:09:07,55] [COMMAND] Installation soundfile - Début d'exécution 
+Collecting soundfile==0.12.1
+  Using cached soundfile-0.12.1-py2.py3-none-win_amd64.whl.metadata (14 kB)
+Requirement already satisfied: cffi>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from soundfile==0.12.1) (1.17.1)
+Requirement already satisfied: pycparser in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from cffi>=1.0->soundfile==0.12.1) (2.22)
+Using cached soundfile-0.12.1-py2.py3-none-win_amd64.whl (1.0 MB)
+Installing collected packages: soundfile
+  Attempting uninstall: soundfile
+    Found existing installation: soundfile 0.13.1
+    Uninstalling soundfile-0.13.1:
+      Successfully uninstalled soundfile-0.13.1
+Successfully installed soundfile-0.12.1
+[27-02-25 15:09:09,36] [COMMAND] Installation soundfile - Fin d'exécution (code: 0) 
+[27-02-25 15:09:09,38] [COMMAND] Installation Unidecode - Début d'exécution 
+Collecting Unidecode==1.3.7
+  Using cached Unidecode-1.3.7-py3-none-any.whl.metadata (13 kB)
+Using cached Unidecode-1.3.7-py3-none-any.whl (235 kB)
+Installing collected packages: Unidecode
+Successfully installed Unidecode-1.3.7
+[27-02-25 15:09:15,74] [COMMAND] Installation Unidecode - Fin d'exécution (code: 0) 
+[27-02-25 15:09:15,76] [COMMAND] Installation tqdm - Début d'exécution 
+Collecting tqdm
+  Using cached tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+Collecting colorama (from tqdm)
+  Using cached colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Using cached tqdm-4.67.1-py3-none-any.whl (78 kB)
+Using cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Installing collected packages: colorama, tqdm
+Successfully installed colorama-0.4.6 tqdm-4.67.1
+[27-02-25 15:09:18,16] [COMMAND] Installation tqdm - Fin d'exécution (code: 0) 
+[27-02-25 15:09:18,19] [INFO] Installation de TTS... 
+[27-02-25 15:09:18,23] [COMMAND] Désinstallation TTS - Début d'exécution 
+WARNING: Skipping TTS as it is not installed.
+[27-02-25 15:09:19,00] [COMMAND] Désinstallation TTS - Fin d'exécution (code: 0) 
+[27-02-25 15:09:19,03] [COMMAND] Installation TTS - Début d'exécution 
+ERROR: Could not find a version that satisfies the requirement TTS==0.17.6 (from versions: none)
+ERROR: No matching distribution found for TTS==0.17.6
+[27-02-25 15:09:20,04] [COMMAND] Installation TTS - Fin d'exécution (code: 1) 
+[27-02-25 15:09:20,06] [ERROR] Erreur lors de l'exécution de la commande: Installation TTS (code: 1) 
+[27-02-25 15:09:20,08] [INFO] Installation de PyQt6... 
+[27-02-25 15:09:20,11] [COMMAND] Désinstallation PyQt6 - Début d'exécution 
+WARNING: Skipping PyQt6 as it is not installed.
+WARNING: Skipping PyQt6-Qt6 as it is not installed.
+WARNING: Skipping PyQt6-sip as it is not installed.
+[27-02-25 15:09:20,80] [COMMAND] Désinstallation PyQt6 - Fin d'exécution (code: 0) 
+[27-02-25 15:09:20,83] [COMMAND] Installation PyQt6 - Début d'exécution 
+Collecting PyQt6==6.5.2
+  Using cached PyQt6-6.5.2-cp37-abi3-win_amd64.whl.metadata (2.2 kB)
+Collecting PyQt6-Qt6==6.5.2
+  Using cached PyQt6_Qt6-6.5.2-py3-none-win_amd64.whl.metadata (551 bytes)
+Collecting PyQt6-sip==13.5.2
+  Using cached PyQt6_sip-13.5.2-cp310-cp310-win_amd64.whl.metadata (524 bytes)
+Using cached PyQt6-6.5.2-cp37-abi3-win_amd64.whl (6.5 MB)
+Using cached PyQt6_Qt6-6.5.2-py3-none-win_amd64.whl (59.3 MB)
+Using cached PyQt6_sip-13.5.2-cp310-cp310-win_amd64.whl (72 kB)
+Installing collected packages: PyQt6-Qt6, PyQt6-sip, PyQt6
+Successfully installed PyQt6-6.5.2 PyQt6-Qt6-6.5.2 PyQt6-sip-13.5.2
+[27-02-25 15:09:27,32] [COMMAND] Installation PyQt6 - Fin d'exécution (code: 0) 
+[27-02-25 15:09:27,42] [INFO] Installation terminee 
+[27-02-25 15:09:27,47] [INFO] Pour tester, executez: 
+[27-02-25 15:09:27,52] [INFO] call .\venv_py310\Scripts\activate.bat 
+[27-02-25 15:09:27,62] [INFO] python Simple_TTS_GUI.py 
+[27-02-25 15:09:27,68] [INFO] Fichier log disponible: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\setup_env_log.txt 
 
- R�pertoire de C:\
-
-Fichier introuvable
-[27-02-25 14:43:28,56] [COMMAND] Files\Microsoft - Fin d'exécution (code: 1) 
-[27-02-25 14:43:28,62] [DEBUG] Chemin Visual Studio: C:\Program Files\Microsoft Visual Studio\2022\Community 
-Fichier vcvarsall.bat trouvé dans C:\Program Files\Microsoft Visual Studio\2022\Community
-Exécution: dir "C:\Program
-[27-02-25 14:43:28,75] [INFO] Version MSVC trouvée: 14.43.34808 
-[27-02-25 14:43:28,78] [DEBUG] Chemin MSVC: C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808 
-[27-02-25 14:43:28,79] [INFO] Configuration des variables d'environnement Visual Studio... 
-**********************************************************************
-** Visual Studio 2022 Developer Command Prompt v17.13.2
-** Copyright (c) 2022 Microsoft Corporation
-**********************************************************************
-[vcvarsall.bat] Environment initialized for: 'x64'
-[27-02-25 14:43:30,41] [COMMAND] Configuration vcvarsall - Fin d'exécution (code: 0) 
-[27-02-25 14:43:30,49] [WARNING] Fichier vcvarsall.bat non trouvé. Les variables d'environnement Visual Studio ne seront pas configurées. 
-[27-02-25 14:43:30,53] [INFO] Vérification du SDK Windows 10 ignorée en mode sans registre 
-[27-02-25 14:43:30,58] [DEBUG] Configuration des chemins SDK Windows 
-[27-02-25 14:43:30,64] [DEBUG] WindowsSdkDir: C:\Program Files (x86)\Windows Kits\10 
-[27-02-25 14:43:30,69] [DEBUG] WindowsSdkVerBinPath: C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64 
-[27-02-25 14:43:30,74] [INFO] Vérification des redistribuables VC++... 
-[27-02-25 14:43:30,79] [INFO] Installation des redistribuables VC++... 
-[27-02-25 14:43:30,83] [DEBUG] Exécution: curl -L -o "C:\Users\JF30LB\AppData\Local\Temp\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe 
-[27-02-25 14:43:30,88] [COMMAND] Téléchargement VC++ Redist - Début d'exécution 
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-  0 24.4M    0 51794    0     0  98789      0  0:04:19 --:--:--  0:04:19 98789 40 24.4M   40  9.8M    0     0  6616k      0  0:00:03  0:00:01  0:00:02  9.8M 83 24.4M   83 20.3M    0     0  8243k      0  0:00:03  0:00:02  0:00:01 10.1M100 24.4M  100 24.4M    0     0  8532k      0  0:00:02  0:00:02 --:--:-- 10.1M
-[27-02-25 14:43:33,94] [COMMAND] Téléchargement VC++ Redist - Fin d'exécution (code: 0) 
-[27-02-25 14:43:33,97] [DEBUG] Exécution: "C:\Users\JF30LB\AppData\Local\Temp\vc_redist.x64.exe" /quiet /norestart 
-[27-02-25 14:43:34,02] [COMMAND] Installation VC++ Redist - Début d'exécution 
-[27-02-25 14:43:57,44] [COMMAND] Installation VC++ Redist - Fin d'exécution (code: 0) 
-[27-02-25 14:43:57,44] [INFO] Vérification des en-têtes système Windows... 
-[27-02-25 14:43:57,47] [INFO] Les en-têtes système sont déjà installés 
-SDK Windows 10 trouvé dans C:\Program Files (x86)\Windows Kits\10
-[27-02-25 14:43:57,48] [COMMAND] Versions SDK disponibles - Fin d'exécution (code: 0
-[27-02-25 14:43:57,50] [WARNING] SDK Windows 10 non trouvé 
-[27-02-25 14:43:57,51] [DEBUG] Configuration de l'environnement de développement 
-[27-02-25 14:43:57,55] [DEBUG] Recherche de la version MSVC 
-[27-02-25 14:43:57,59] [DEBUG] Version MSVC trouvée: 14.43.34808 
-[27-02-25 14:43:57,66] [DEBUG] Appel de vcvarsall.bat 
-Exécution de C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat
-[27-02-25 14:43:57,67] [COMMAND] Configuration vcvars64 - Fin d'exécution (code: 0
-[27-02-25 14:43:58,82] [WARNING] [AVERTISSEMENT] Fichier vcvars64.bat non trouvé 
-[27-02-25 14:43:58,84] [DEBUG] Chemin recherché: C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat 
-[27-02-25 14:43:58,89] [DEBUG] PATH après configuration: C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files\Microsoft Visual Studio\2022\Community\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe 
-[27-02-25 14:43:58,91] [DEBUG] Exécution: --no-registry 
-[27-02-25 14:43:58,94] [COMMAND] --debug - Début d'exécution 
-'--no-registry' n�est pas reconnu en tant que commande interne
-ou externe, un programme ex�cutable ou un fichier de commandes.
-[27-02-25 14:43:59,01] [COMMAND] --debug - Fin d'exécution (code: 9009) 
+Voici se qui se passe quand je lance la commande : python Simple_TTS_GUI.py
+Traceback (most recent call last):
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.py", line 7, in <module>
+    from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ImportError: DLL load failed while importing QtCore: La procédure spécifiée est introuvable.
+PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> 
