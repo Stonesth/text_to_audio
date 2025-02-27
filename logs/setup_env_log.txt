@@ -1,0 +1,2 @@
+===== DEBUT INSTALLATION 27-02-25 12:55:52,91 ===== 
+[27-02-25 12:55:52,92] [--no-registry] --DEBUG 

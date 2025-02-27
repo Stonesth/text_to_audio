@@ -503,6 +503,55 @@ if exist "%PYTHON_EXE%" (
 - Vérifier l'existence des chemins avant utilisation
 - Utiliser setlocal enabledelayedexpansion pour la manipulation des variables
 
+## 16. Page de codes et encodage de caractères
+**Message :**
+```
+Page de codes active : 1252
+```
+
+**Analyse :**
+- La page de code 1252 est l'encodage Windows par défaut pour l'Europe occidentale (Windows-1252)
+- Cette page de code est utilisée pour afficher correctement les caractères accentués dans la console Windows
+- La commande `chcp 1252` au début du script configure cet encodage
+
+**Problèmes possibles :**
+1. Caractères accentués mal affichés dans la console
+2. Erreurs de lecture/écriture de fichiers avec accents
+3. Messages d'erreur illisibles contenant des caractères spéciaux
+
+**Solutions :**
+1. Vérifier l'encodage de la console :
+```batch
+REM Afficher la page de codes actuelle
+chcp
+
+REM Forcer l'encodage UTF-8
+chcp 65001
+
+REM Forcer l'encodage Windows-1252 (Europe occidentale)
+chcp 1252
+```
+
+2. Utilisation d'UTF-8 dans les scripts :
+```batch
+REM En début de script
+@echo off
+chcp 65001 > nul
+setlocal enabledelayedexpansion
+```
+
+3. Pour les fichiers de sortie :
+```batch
+REM Redirection avec encodage correct
+echo Mon texte accentué > output.txt
+type output.txt | more /c
+```
+
+**Important :**
+- Windows-1252 (code page 1252) est l'encodage historique de Windows pour l'Europe occidentale
+- UTF-8 (code page 65001) est recommandé pour une meilleure compatibilité
+- L'encodage doit être cohérent entre la console, les fichiers et les scripts
+
 ## Problèmes connus restants
 - Problèmes de compilation avec les dépendances qui nécessitent une compilation (NumPy, TTS)
 - Nécessité d'avoir Visual Studio Community 2022 complet

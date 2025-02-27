@@ -3,8 +3,9 @@ chcp 1252
 setlocal enabledelayedexpansion
 
 REM Configuration de la journalisation
-set "LOG_FILE=%TEMP%\setup_env_log.txt"
-set "LOG_LEVEL=INFO"
+if not exist "logs" mkdir logs
+set "LOG_FILE=logs\setup_env_log.txt"
+set "LOG_LEVEL=DEBUG"
 set "DEBUG_MODE=0"
 
 REM Initialisation du fichier de log
