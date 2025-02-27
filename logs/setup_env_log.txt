@@ -1,15 +1,16 @@
-===== DEBUT INSTALLATION 27-02-25 13:10:23,53 ===== 
-[27-02-25 13:10:23,54] [INFO] [MODE SANS REGISTRE] Les modifications système seront désactivées 
-[27-02-25 13:10:23,54] [INFO] Mode debug activé - Fichier log: logs\setup_env_log.txt 
-[27-02-25 13:10:23,55] [INFO] Vérifications préliminaires... 
-[27-02-25 13:10:23,57] [INFO] Recherche de Python 3.10... 
-[27-02-25 13:10:23,58] [INFO] Python 3.10 trouvé dans C:\Program Files\Python310 
-[27-02-25 13:10:23,60] [DEBUG] Chemin Python: C:\Program Files\Python310 
-[27-02-25 13:10:23,62] [DEBUG] Commande Python: \python.exe 
-[27-02-25 13:10:23,64] [DEBUG] Configuration des chemins sécurisés 
-[27-02-25 13:10:23,66] [DEBUG] PROGRAM_FILES: C:\Program Files 
-[27-02-25 13:10:23,66] [DEBUG] PROGRAM_FILES_X86: C:\Program Files (x86) 
-[27-02-25 13:10:23,68] [INFO] Vérification du SDK Windows 10 ignorée en mode sans registre 
-[27-02-25 13:10:23,70] [DEBUG] Configuration des chemins SDK Windows 
-[27-02-25 13:10:23,72] [DEBUG] WindowsSdkDir: C:\Program Files (x86)\Windows Kits\10 
-\Windows était inattendu
+===== DEBUT INSTALLATION 27-02-25 13:15:59,22 ===== 
+[27-02-25 13:15:59,22] [INFO] [MODE SANS REGISTRE] Les modifications système seront désactivées 
+[27-02-25 13:15:59,25] [INFO] Mode debug activé - Fichier log: logs\setup_env_log.txt 
+[27-02-25 13:15:59,25] [DEBUG] Configuration des chemins sécurisés 
+[27-02-25 13:15:59,27] [DEBUG] PROGRAM_FILES: C:\Program Files 
+[27-02-25 13:15:59,27] [DEBUG] PROGRAM_FILES_X86: C:\Program Files (x86) 
+[27-02-25 13:15:59,27] [INFO] Vérifications préliminaires... 
+[27-02-25 13:15:59,31] [INFO] Recherche de Python 3.10... 
+[27-02-25 13:15:59,31] [DEBUG] Chemin Python trouvé:  
+[27-02-25 13:15:59,32] [DEBUG] Commande Python:  
+[27-02-25 13:15:59,34] [INFO] Python 3.10 trouvé dans C:\Program Files\Python310 
+[27-02-25 13:15:59,35] [DEBUG] Chemin Python: C:\Program Files\Python310 
+[27-02-25 13:15:59,35] [DEBUG] Commande Python: C:\Program Files\Python310\python.exe 
+[27-02-25 13:15:59,36] [INFO] Vérification du SDK Windows 10 ignorée en mode sans registre 
+[27-02-25 13:15:59,36] [DEBUG] Configuration des chemins SDK Windows 
+[27-02-25 13:15:59,38] [DEBUG] WindowsSdkDir: C:\Program Files (x86)\Windows Kits\10 
