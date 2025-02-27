@@ -57,16 +57,38 @@ if not exist "%VS_PATH%\VC\Tools\MSVC" (
     exit /b 1
 )
 
+REM Vérification précise des composants requis
+reg query "HKLM\SOFTWARE\Microsoft\Windows Kits\Installed Roots" /v KitsRoot10 >nul || (
+    echo Installation du SDK Windows 10...
+    curl -L -o "%TEMP%\winsdksetup.exe" https://go.microsoft.com/fwlink/p/?LinkID=2033908
+    "%TEMP%\winsdksetup.exe" /quiet /norestart
+)
+
+REM Configuration précise des chemins SDK
+set "WindowsSdkDir=C:\Program Files (x86)\Windows Kits\10"
+set "WindowsSdkVerBinPath=%WindowsSdkDir%\bin\10.0.19041.0\x64"
+set "PATH=%WindowsSdkVerBinPath%;%PATH%"
+
 REM Vérification des redistribuables Visual C++
 echo Vérification des redistribuables Visual C++...
-reg query "HKLM\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" /v Version >nul 2>&1
-if %errorlevel% equ 0 (
-    echo Les redistribuables Visual C++ 2015-2022 sont déjà installés
-) else (
-    echo Installation des redistribuables Visual C++ 2015-2022...
+reg query "HKLM\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" /v Version | find "v14" >nul || (
+    echo Installation des redistribuables VS 2015-2022...
     curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe
-    "%TEMP%\vc_redist.x64.exe" /quiet /norestart
+    "%TEMP%\vc_redist.x64.exe" /install /quiet /norestart
+)
+
+REM Vérification des en-têtes système Windows
+echo Vérification des en-têtes système Windows...
+if not exist "%ProgramFiles(x86)%\Windows Kits\10\Include\10.0.19041.0\um\windows.h" (
+    echo Installation des en-têtes système manquants...
+    winget install --id Microsoft.WindowsSDK --version 10.0.19041.0 --silent
+    if %errorlevel% neq 0 (
+        echo Erreur lors de l'installation des en-têtes système
+        exit /b 1
+    )
     echo Installation terminée
+) else (
+    echo Les en-têtes système sont déjà installés
 )
 
 REM Nettoyage et configuration de l'environnement
@@ -79,22 +101,20 @@ REM Configuration des chemins Visual Studio
 set "MSVC_PATH=%VS_PATH%\VC\Tools\MSVC"
 for /f "delims=" %%i in ('dir /b /ad "%MSVC_PATH%"') do set "MSVC_VERSION=%%i"
 set "MSVC_FULL=%MSVC_PATH%\%MSVC_VERSION%"
-set "SDK_PATH=C:\Program Files (x86)\Windows Kits\10"
-set "SDK_VER=10.0.22621.0"
 
 REM Configuration des includes sans duplication
 set "INCLUDE=%MSVC_FULL%\include"
 set "INCLUDE=%INCLUDE%;%VS_PATH%\VC\Auxiliary\VS\include"
 set "INCLUDE=%INCLUDE%;%MSVC_FULL%\ATLMFC\include"
-set "INCLUDE=%INCLUDE%;%SDK_PATH%\Include\%SDK_VER%\ucrt"
-set "INCLUDE=%INCLUDE%;%SDK_PATH%\Include\%SDK_VER%\um"
-set "INCLUDE=%INCLUDE%;%SDK_PATH%\Include\%SDK_VER%\shared"
+set "INCLUDE=%INCLUDE%;%WindowsSdkDir%\Include\10.0.19041.0\ucrt"
+set "INCLUDE=%INCLUDE%;%WindowsSdkDir%\Include\10.0.19041.0\um"
+set "INCLUDE=%INCLUDE%;%WindowsSdkDir%\Include\10.0.19041.0\shared"
 
 REM Configuration des bibliothèques
 set "LIB=%MSVC_FULL%\lib\x64"
 set "LIB=%LIB%;%MSVC_FULL%\ATLMFC\lib\x64"
-set "LIB=%LIB%;%SDK_PATH%\Lib\%SDK_VER%\ucrt\x64"
-set "LIB=%LIB%;%SDK_PATH%\Lib\%SDK_VER%\um\x64"
+set "LIB=%LIB%;%WindowsSdkDir%\Lib\10.0.19041.0\ucrt\x64"
+set "LIB=%LIB%;%WindowsSdkDir%\Lib\10.0.19041.0\um\x64"
 
 REM Configuration de l'environnement de build
 set DISTUTILS_USE_SDK=1
@@ -109,17 +129,15 @@ REM Installation des dépendances système
 curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe
 "%TEMP%\vc_redist.x64.exe" /quiet /norestart
 
-REM Configuration des variables d'environnement pour le SDK Windows
-set "WindowsSdkDir=C:\Program Files (x86)\Windows Kits\10"
-set "INCLUDE=%WindowsSdkDir%\Include\10.0.19041.0\ucrt;%WindowsSdkDir%\Include\10.0.19041.0\shared;%WindowsSdkDir%\Include\10.0.19041.0\um;%INCLUDE%"
-set "LIB=%WindowsSdkDir%\Lib\10.0.19041.0\ucrt\x64;%WindowsSdkDir%\Lib\10.0.19041.0\um\x64;%LIB%"
+REM Installation spécifique de numpy compatible
+%PYTHON_CMD% -m pip install "numpy==1.23.5" --only-binary=:all: --no-cache-dir
 
 REM Installation des dépendances Python
 %PYTHON_CMD% -m pip install --upgrade pip
 %PYTHON_CMD% -m pip install Cython
-%PYTHON_CMD% -m pip install numpy==1.26.0
 %PYTHON_CMD% -m pip install torch==2.1.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-%PYTHON_CMD% -m pip install TTS==0.22.0 --no-cache-dir
+%PYTHON_CMD% -m pip install TTS --no-deps --no-cache-dir
+%PYTHON_CMD% -c "import os, site; print('Répertoires Python:', site.getsitepackages())"
 %PYTHON_CMD% -m pip install PyQt6==6.4.2
 %PYTHON_CMD% -m pip install pyinstaller==6.3.0
 
