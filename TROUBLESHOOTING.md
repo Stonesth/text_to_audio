@@ -516,7 +516,7 @@ if exist "%PYTHON_EXE%" (
 1. Exécuter le script sans droits administrateur
 2. Utiliser cette commande alternative :
 ```bash
-setup_env_v21.bat --no-registry
+.\setup_env_v21.bat --no-registry
 ```
 
 ## Problèmes de registre Windows
@@ -525,7 +525,7 @@ setup_env_v21.bat --no-registry
 **Solution :**
 - Exécutez le script avec l'option :
   ```batch
-  setup_env_v21.bat --no-registry
+  .\setup_env_v21.bat --no-registry
   ```
 - Configurez manuellement le PATH système avec :
   ```
