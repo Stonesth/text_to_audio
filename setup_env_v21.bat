@@ -1,12 +1,46 @@
 @echo off
-chcp 1252 > nul
-setlocal enabledelayedexpansion
+setlocal EnableDelayedExpansion
+
+REM ===== Configuration initiale =====
+set "SCRIPT_DIR=%~dp0"
+cd /d "%SCRIPT_DIR%"
+
+REM Vérification des arguments
+set NO_REGISTRY=0
+set DEBUG=0
+
+:parse_args
+if "%1"=="" goto :end_parse_args
+if "%1"=="--no-registry" (
+    set NO_REGISTRY=1
+    shift
+    goto :parse_args
+)
+if "%1"=="--debug" (
+    set DEBUG=1
+    shift
+    goto :parse_args
+)
+:end_parse_args
+
+REM Création du dossier logs s'il n'existe pas
+if not exist "logs" mkdir logs
+set "LOG_FILE=%SCRIPT_DIR%logs\setup_env_log.txt"
+
+REM Initialisation du fichier de log
+echo ===== DEBUT INSTALLATION %DATE% %TIME% ===== > "!LOG_FILE!"
+
+if %NO_REGISTRY% equ 1 (
+    call :log INFO "[MODE SANS REGISTRE] Les modifications système seront désactivées"
+)
+
+if %DEBUG% equ 1 (
+    call :log INFO "Mode debug activé - Fichier log: !LOG_FILE!"
+    call :log DEBUG "PATH initial: %PATH%"
+)
 
 REM Configuration de la journalisation
-if not exist "logs" mkdir logs
-set "LOG_FILE=logs\setup_env_log.txt"
 set "LOG_LEVEL=DEBUG"
-set "DEBUG_MODE=0"
 
 REM Initialisation du fichier de log
 echo ===== DEBUT INSTALLATION %DATE% %TIME% ===== > "!LOG_FILE!"
@@ -66,7 +100,8 @@ if exist "%PROGRAM_FILES%\Python310\python.exe" (
     set "PYTHON_CMD=%PYTHON_PATH%\python.exe"
     set "PYTHON_FOUND=1"
     call :log INFO "Python trouvé dans !PYTHON_PATH!"
-    call :exec_and_log ""!PYTHON_CMD!" --version" "Version Python"
+    "!PYTHON_CMD!" --version >> "!LOG_FILE!" 2>&1
+    echo [%DATE% %TIME%] [COMMAND] Version Python - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
 )
 
 REM Recherche dans le répertoire des programmes (x86)
@@ -76,7 +111,8 @@ if %PYTHON_FOUND% equ 0 (
         set "PYTHON_CMD=%PYTHON_PATH%\python.exe"
         set "PYTHON_FOUND=1"
         call :log INFO "Python trouvé dans !PYTHON_PATH!"
-        call :exec_and_log ""!PYTHON_CMD!" --version" "Version Python"
+        "!PYTHON_CMD!" --version >> "!LOG_FILE!" 2>&1
+        echo [%DATE% %TIME%] [COMMAND] Version Python - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
     )
 )
 
@@ -87,7 +123,8 @@ if %PYTHON_FOUND% equ 0 (
         set "PYTHON_CMD=%PYTHON_PATH%\python.exe"
         set "PYTHON_FOUND=1"
         call :log INFO "Python trouvé dans !PYTHON_PATH!"
-        call :exec_and_log ""!PYTHON_CMD!" --version" "Version Python"
+        "!PYTHON_CMD!" --version >> "!LOG_FILE!" 2>&1
+        echo [%DATE% %TIME%] [COMMAND] Version Python - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
     )
 )
 
@@ -102,7 +139,8 @@ if %PYTHON_FOUND% equ 0 (
             set "PYTHON_PATH=!PYTHON_PATH:~0,-1!"
             set "PYTHON_FOUND=1"
             call :log INFO "Python trouvé dans !PYTHON_PATH!"
-            call :exec_and_log ""!PYTHON_CMD!" --version" "Version Python"
+            "!PYTHON_CMD!" --version >> "!LOG_FILE!" 2>&1
+            echo [%DATE% %TIME%] [COMMAND] Version Python - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
             goto :python_found
         )
     )
@@ -124,7 +162,8 @@ if exist "%PROGRAM_FILES%\Microsoft Visual Studio\2022\Community\Common7\IDE\dev
     set "VS_PATH=%PROGRAM_FILES%\Microsoft Visual Studio\2022\Community"
     set "VS_FOUND=1"
     call :log INFO "Visual Studio 2022 trouvé dans !VS_PATH!"
-    call :exec_and_log "dir "!VS_PATH!\VC\Tools\MSVC" /b" "Versions MSVC disponibles"
+    dir "!VS_PATH!\VC\Tools\MSVC" /b >> "!LOG_FILE!" 2>&1
+    echo [%DATE% %TIME%] [COMMAND] Versions MSVC disponibles - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
 )
 
 REM Recherche de Visual Studio 2019
@@ -133,7 +172,8 @@ if %VS_FOUND% equ 0 (
         set "VS_PATH=%PROGRAM_FILES%\Microsoft Visual Studio\2019\Community"
         set "VS_FOUND=1"
         call :log INFO "Visual Studio 2019 trouvé dans !VS_PATH!"
-        call :exec_and_log "dir "!VS_PATH!\VC\Tools\MSVC" /b" "Versions MSVC disponibles"
+        dir "!VS_PATH!\VC\Tools\MSVC" /b >> "!LOG_FILE!" 2>&1
+        echo [%DATE% %TIME%] [COMMAND] Versions MSVC disponibles - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
     )
 )
 
@@ -141,11 +181,16 @@ if %VS_FOUND% equ 0 (
     call :log WARNING "Visual Studio non trouvé. L'installation pourrait échouer."
     call :log INFO "Installation de Visual Studio Build Tools..."
     if not defined NO_REGISTRY (
-        call :exec_and_log "winget install Microsoft.VisualStudio.2022.BuildTools --silent --override "--wait --quiet --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended"" "Installation VS Build Tools"
+        call :log INFO "Installation VS Build Tools..."
+        call "!VS_PATH!\VC\Auxiliary\Build\vcvarsall.bat" x64 > "!LOG_FILE!.vs_vars" 2>&1
+        type "!LOG_FILE!.vs_vars" >> "!LOG_FILE!"
+        echo [%DATE% %TIME%] [COMMAND] Configuration vcvarsall - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
     ) else (
         call :log INFO "Téléchargement manuel de Visual Studio Build Tools..."
-        call :exec_and_log "curl -L -o "%TEMP%\vs_buildtools.exe" https://aka.ms/vs/17/release/vs_buildtools.exe" "Téléchargement VS Build Tools"
-        call :exec_and_log ""%TEMP%\vs_buildtools.exe" --quiet --wait --norestart --nocache --installPath "%PROGRAM_FILES%\Microsoft Visual Studio\2022\BuildTools" --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended" "Installation VS Build Tools"
+        call :log INFO "Installation VS Build Tools..."
+        call "!VS_PATH!\VC\Auxiliary\Build\vcvarsall.bat" x64 > "!LOG_FILE!.vs_vars" 2>&1
+        type "!LOG_FILE!.vs_vars" >> "!LOG_FILE!"
+        echo [%DATE% %TIME%] [COMMAND] Configuration vcvarsall - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
     )
 )
 
@@ -155,7 +200,8 @@ call :log DEBUG "Chemin Visual Studio: !VS_PATH!"
 REM Configuration des chemins Visual Studio
 if exist "!VS_PATH!\VC\Auxiliary\Build\vcvarsall.bat" (
     call :log INFO "Fichier vcvarsall.bat trouvé dans !VS_PATH!"
-    call :exec_and_log "dir "!VS_PATH!\VC\Tools\MSVC" /b" "Versions MSVC disponibles"
+    dir "!VS_PATH!\VC\Tools\MSVC" /b >> "!LOG_FILE!" 2>&1
+    echo [%DATE% %TIME%] [COMMAND] Versions MSVC disponibles - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
     
     REM Trouver la dernière version de MSVC
     for /f "tokens=*" %%v in ('dir "!VS_PATH!\VC\Tools\MSVC" /b /ad /o-n') do (
@@ -181,15 +227,19 @@ REM Vérifications précise des composants requis
 if not defined NO_REGISTRY (
     reg query "HKLM\SOFTWARE\Microsoft\Windows Kits\Installed Roots" /v KitsRoot10 >nul 2>&1 || (
         call :log INFO "Installation du SDK Windows 10..."
-        curl -L -o "%TEMP%\winsdksetup.exe" https://go.microsoft.com/fwlink/p/?LinkID=2033908
-        "%TEMP%\winsdksetup.exe" /quiet /norestart
+        curl -L -o "%TEMP%\winsdksetup.exe" https://go.microsoft.com/fwlink/p/?LinkID=2033908 >> "!LOG_FILE!" 2>&1
+        echo [%DATE% %TIME%] [COMMAND] Téléchargement SDK Windows - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+        "%TEMP%\winsdksetup.exe" /quiet /norestart >> "!LOG_FILE!" 2>&1
+        echo [%DATE% %TIME%] [COMMAND] Installation SDK Windows - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
     )
 ) else (
     call :log INFO "Vérification du SDK Windows 10 ignorée en mode sans registre"
     if not exist "%PROGRAM_FILES_X86%\Windows Kits\10" (
         call :log INFO "Installation du SDK Windows 10..."
-        curl -L -o "%TEMP%\winsdksetup.exe" https://go.microsoft.com/fwlink/p/?LinkID=2033908
-        "%TEMP%\winsdksetup.exe" /quiet /norestart
+        curl -L -o "%TEMP%\winsdksetup.exe" https://go.microsoft.com/fwlink/p/?LinkID=2033908 >> "!LOG_FILE!" 2>&1
+        echo [%DATE% %TIME%] [COMMAND] Téléchargement SDK Windows - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+        "%TEMP%\winsdksetup.exe" /quiet /norestart >> "!LOG_FILE!" 2>&1
+        echo [%DATE% %TIME%] [COMMAND] Installation SDK Windows - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
     )
 )
 
@@ -205,8 +255,10 @@ REM Vérification des redistribuables Visual C++
 call :log INFO "Vérification des redistribuables VC++..."
 if not exist "%PROGRAM_FILES_X86%\Microsoft Visual C++ Redistributable for Visual Studio 2022" (
     call :log INFO "Installation des redistribuables VC++..."
-    call :exec_and_log "curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe" "Téléchargement VC++ Redist"
-    call :exec_and_log ""%TEMP%\vc_redist.x64.exe" /quiet /norestart" "Installation VC++ Redist"
+    curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe >> "!LOG_FILE!" 2>&1
+    echo [%DATE% %TIME%] [COMMAND] Téléchargement VC++ Redist - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+    "%TEMP%\vc_redist.x64.exe" /quiet /norestart >> "!LOG_FILE!" 2>&1
+    echo [%DATE% %TIME%] [COMMAND] Installation VC++ Redist - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
 ) else (
     call :log INFO "Les redistribuables VC++ sont déjà installés"
 )
@@ -216,11 +268,10 @@ call :log INFO "Vérification des en-têtes système Windows..."
 if not exist "%PROGRAM_FILES_X86%\Windows Kits\10\Include\10.0.19041.0\um\windows.h" (
     call :log INFO "Installation des en-têtes système manquants..."
     if not defined NO_REGISTRY (
-        call :exec_and_log "winget install --id Microsoft.WindowsSDK --version 10.0.19041.0 --silent" "Installation SDK Windows via winget"
+        call :log INFO "Installation SDK Windows via winget..."
     ) else (
         call :log INFO "Téléchargement manuel du SDK Windows..."
-        call :exec_and_log "curl -L -o "%TEMP%\winsdksetup.exe" https://go.microsoft.com/fwlink/p/?LinkID=2033908" "Téléchargement SDK Windows"
-        call :exec_and_log ""%TEMP%\winsdksetup.exe" /quiet /norestart" "Installation SDK Windows"
+        call :log INFO "Installation SDK Windows..."
     )
     if %errorlevel% neq 0 (
         call :log ERROR "Erreur lors de l'installation des en-têtes système"
@@ -285,6 +336,22 @@ set DISTUTILS_USE_SDK=1
 set MSSdk=1
 set "CL=/MP"
 
+REM Fonction pour exécuter une commande et enregistrer sa sortie dans le fichier de log
+:exec_and_log
+set "CMD=%~1"
+set "DESC=%~2"
+
+call :log COMMAND "%DESC% - Début d'exécution"
+%CMD% >> "!LOG_FILE!" 2>&1
+set "ERROR_CODE=%ERRORLEVEL%"
+call :log COMMAND "%DESC% - Fin d'exécution (code: %ERROR_CODE%)"
+
+if %ERROR_CODE% neq 0 (
+    call :log ERROR "Erreur lors de l'exécution de la commande: %DESC% (code: %ERROR_CODE%)"
+)
+
+exit /b %ERROR_CODE%
+
 REM Appeler vcvarsall.bat et restaurer le chemin Python
 call :log DEBUG "Appel de vcvarsall.bat"
 if exist "!VS_PATH!\VC\Auxiliary\Build\vcvars64.bat" (
@@ -303,86 +370,116 @@ REM Installation des dépendances système
 REM curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe
 REM "%TEMP%\vc_redist.x64.exe" /quiet /norestart
 
-REM Fonction pour exécuter une commande et enregistrer sa sortie dans le fichier de log
-:exec_and_log
-set "CMD_TO_RUN=%~1"
-set "LOG_PREFIX=%~2"
-call :log DEBUG "Exécution: !CMD_TO_RUN!"
-echo [%DATE% %TIME%] [COMMAND] !LOG_PREFIX! - Début d'exécution >> "!LOG_FILE!"
-!CMD_TO_RUN! >> "!LOG_FILE!" 2>&1
-set LAST_ERROR=%ERRORLEVEL%
-echo [%DATE% %TIME%] [COMMAND] !LOG_PREFIX! - Fin d'exécution (code: !LAST_ERROR!) >> "!LOG_FILE!"
-exit /b !LAST_ERROR!
+REM Vérification du SDK Windows 10
+if not defined NO_REGISTRY (
+    call :log INFO "Vérification du SDK Windows 10..."
+    
+    REM Vérifier si le SDK Windows 10 est installé
+    if exist "%PROGRAM_FILES_X86%\Windows Kits\10" (
+        call :log INFO "SDK Windows 10 trouvé dans %PROGRAM_FILES_X86%\Windows Kits\10"
+        dir "%PROGRAM_FILES_X86%\Windows Kits\10\Include" /b >> "!LOG_FILE!" 2>&1
+        echo [%DATE% %TIME%] [COMMAND] Versions SDK disponibles - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+    ) else (
+        call :log WARNING "SDK Windows 10 non trouvé"
+        call :log INFO "Installation du SDK Windows 10..."
+        
+        REM Télécharger et installer le SDK Windows 10
+        curl -L -o "%TEMP%\winsdksetup.exe" https://go.microsoft.com/fwlink/p/?LinkID=2033908 >> "!LOG_FILE!" 2>&1
+        echo [%DATE% %TIME%] [COMMAND] Téléchargement SDK Windows - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+        
+        "%TEMP%\winsdksetup.exe" /quiet /norestart /features OptionId.WindowsDesktopDebuggers OptionId.WindowsSoftwareDevelopmentKit >> "!LOG_FILE!" 2>&1
+        echo [%DATE% %TIME%] [COMMAND] Installation SDK Windows - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+    )
+) else (
+    call :log INFO "Vérification du SDK Windows 10 ignorée en mode sans registre"
+)
 
 REM Création de l'environnement virtuel
 call :log INFO "Création de l'environnement virtuel..."
 call :log DEBUG "Suppression de l'environnement virtuel existant si présent"
 if exist venv_py310 rmdir /s /q venv_py310
 call :log DEBUG "Création d'un nouvel environnement virtuel avec !PYTHON_CMD!"
-"!PYTHON_CMD!" -m venv venv_py310 >> "!LOG_FILE!" 2>&1
-echo [%DATE% %TIME%] [COMMAND] Création environnement virtuel - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+call :exec_and_log ""!PYTHON_CMD!" -m venv venv_py310" "Création environnement virtuel"
 
 REM Activation de l'environnement virtuel
 call :log INFO "Activation de l'environnement virtuel..."
-call "venv_py310\Scripts\activate.bat"
+call venv_py310\Scripts\activate.bat
+set "PYTHON_CMD=venv_py310\Scripts\python.exe"
 call :log DEBUG "Vérification de l'activation"
-"!PYTHON_CMD!" -c "import sys; print('Environnement virtuel actif:', sys.prefix)" >> "!LOG_FILE!" 2>&1
-echo [%DATE% %TIME%] [COMMAND] Vérification environnement - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+call :exec_and_log ""!PYTHON_CMD!" -c "import sys; print('Environnement virtuel actif:', sys.prefix)"" "Vérification environnement"
 
 REM Installation des dépendances de base
 call :log INFO "Installation des dépendances de base..."
-"!PYTHON_CMD!" -m pip install --upgrade pip setuptools wheel >> "!LOG_FILE!" 2>&1
-echo [%DATE% %TIME%] [COMMAND] Installation pip/setuptools/wheel - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+call :exec_and_log ""!PYTHON_CMD!" -m pip install --upgrade pip setuptools wheel" "Installation pip/setuptools/wheel"
 
 REM Installation des dépendances TTS
 call :log INFO "Installation des dépendances principales..."
-"!PYTHON_CMD!" -m pip install numpy==1.24.3 --no-cache-dir >> "!LOG_FILE!" 2>&1
-echo [%DATE% %TIME%] [COMMAND] Installation numpy - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
 
-"!PYTHON_CMD!" -m pip install torch==2.1.0+cpu --index-url https://download.pytorch.org/whl/cpu --no-cache-dir >> "!LOG_FILE!" 2>&1
-echo [%DATE% %TIME%] [COMMAND] Installation torch - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+REM Installation de numpy
+call :log INFO "Installation de numpy..."
+call :exec_and_log ""!PYTHON_CMD!" -m pip install numpy==1.24.3 --no-cache-dir" "Installation numpy"
+set NUMPY_INSTALL_ERROR=%ERRORLEVEL%
 
-"!PYTHON_CMD!" -m pip install tqdm==4.65.0 --no-cache-dir >> "!LOG_FILE!" 2>&1
-echo [%DATE% %TIME%] [COMMAND] Installation tqdm - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+REM Installation de torch
+call :log INFO "Installation de torch..."
+call :exec_and_log ""!PYTHON_CMD!" -m pip install torch==2.1.0+cpu --index-url https://download.pytorch.org/whl/cpu --no-cache-dir" "Installation torch"
+set TORCH_INSTALL_ERROR=%ERRORLEVEL%
+
+REM Installation de tqdm
+call :log INFO "Installation de tqdm..."
+call :exec_and_log ""!PYTHON_CMD!" -m pip install tqdm==4.65.0 --no-cache-dir" "Installation tqdm"
+set TQDM_INSTALL_ERROR=%ERRORLEVEL%
 
 REM Installation de TTS avec toutes les dépendances
 call :log INFO "Installation de TTS..."
-"!PYTHON_CMD!" -m pip install TTS --no-cache-dir >> "!LOG_FILE!" 2>&1
-echo [%DATE% %TIME%] [COMMAND] Installation TTS - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+call :exec_and_log ""!PYTHON_CMD!" -m pip install TTS --no-cache-dir" "Installation TTS"
+set TTS_INSTALL_ERROR=%ERRORLEVEL%
 
 REM Installation de PyQt6
 call :log INFO "Installation de PyQt6..."
-"!PYTHON_CMD!" -m pip install PyQt6==6.4.2 --no-cache-dir >> "!LOG_FILE!" 2>&1
-echo [%DATE% %TIME%] [COMMAND] Installation PyQt6 - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+call :exec_and_log ""!PYTHON_CMD!" -m pip install PyQt6==6.4.2 --no-cache-dir" "Installation PyQt6"
+set PYQT_INSTALL_ERROR=%ERRORLEVEL%
 
 REM Installation de pyinstaller
 call :log INFO "Installation de pyinstaller..."
-"!PYTHON_CMD!" -m pip install pyinstaller==6.3.0 --no-cache-dir >> "!LOG_FILE!" 2>&1
-echo [%DATE% %TIME%] [COMMAND] Installation pyinstaller - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+call :exec_and_log ""!PYTHON_CMD!" -m pip install pyinstaller==6.3.0 --no-cache-dir" "Installation pyinstaller"
+set PYINSTALLER_INSTALL_ERROR=%ERRORLEVEL%
 
 REM Vérification de l'installation
 call :log INFO "Vérification de l'installation..."
 set VERIFICATION_ERROR=0
 
-"!PYTHON_CMD!" -c "import numpy; print('numpy', numpy.__version__)" >> "!LOG_FILE!" 2>&1
+REM Vérification de numpy
+call :exec_and_log ""!PYTHON_CMD!" -c "import numpy; print('numpy', numpy.__version__)"" "Vérification numpy"
 set NUMPY_ERROR=%ERRORLEVEL%
-echo [%DATE% %TIME%] [COMMAND] Vérification numpy - Fin d'exécution (code: !NUMPY_ERROR!) >> "!LOG_FILE!"
-if !NUMPY_ERROR! neq 0 set VERIFICATION_ERROR=1
+if !NUMPY_ERROR! neq 0 (
+    set VERIFICATION_ERROR=1
+    call :log ERROR "Erreur lors de la vérification de numpy"
+)
 
-"!PYTHON_CMD!" -c "import torch; print('torch', torch.__version__)" >> "!LOG_FILE!" 2>&1
+REM Vérification de torch
+call :exec_and_log ""!PYTHON_CMD!" -c "import torch; print('torch', torch.__version__)"" "Vérification torch"
 set TORCH_ERROR=%ERRORLEVEL%
-echo [%DATE% %TIME%] [COMMAND] Vérification torch - Fin d'exécution (code: !TORCH_ERROR!) >> "!LOG_FILE!"
-if !TORCH_ERROR! neq 0 set VERIFICATION_ERROR=1
+if !TORCH_ERROR! neq 0 (
+    set VERIFICATION_ERROR=1
+    call :log ERROR "Erreur lors de la vérification de torch"
+)
 
-"!PYTHON_CMD!" -c "import TTS; print('TTS OK')" >> "!LOG_FILE!" 2>&1
+REM Vérification de TTS
+call :exec_and_log ""!PYTHON_CMD!" -c "import TTS; print('TTS OK')"" "Vérification TTS"
 set TTS_ERROR=%ERRORLEVEL%
-echo [%DATE% %TIME%] [COMMAND] Vérification TTS - Fin d'exécution (code: !TTS_ERROR!) >> "!LOG_FILE!"
-if !TTS_ERROR! neq 0 set VERIFICATION_ERROR=1
+if !TTS_ERROR! neq 0 (
+    set VERIFICATION_ERROR=1
+    call :log ERROR "Erreur lors de la vérification de TTS"
+)
 
-"!PYTHON_CMD!" -c "from PyQt6.QtWidgets import QApplication; print('PyQt6 OK')" >> "!LOG_FILE!" 2>&1
+REM Vérification de PyQt6
+call :exec_and_log ""!PYTHON_CMD!" -c "from PyQt6.QtWidgets import QApplication; print('PyQt6 OK')"" "Vérification PyQt6"
 set PYQT_ERROR=%ERRORLEVEL%
-echo [%DATE% %TIME%] [COMMAND] Vérification PyQt6 - Fin d'exécution (code: !PYQT_ERROR!) >> "!LOG_FILE!"
-if !PYQT_ERROR! neq 0 set VERIFICATION_ERROR=1
+if !PYQT_ERROR! neq 0 (
+    set VERIFICATION_ERROR=1
+    call :log ERROR "Erreur lors de la vérification de PyQt6"
+)
 
 if !VERIFICATION_ERROR! equ 1 (
     call :log ERROR "ATTENTION: Installation incomplète"
