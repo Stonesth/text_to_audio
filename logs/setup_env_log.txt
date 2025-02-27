@@ -1,29 +1,1482 @@
-===== DEBUT INSTALLATION 27-02-25 16:12:46,14 ===== 
-[27-02-25 16:12:46,14] [INFO] Verification de Python 3.10... 
-[27-02-25 16:12:46,28] [INFO] Verification Python 3.10 via py launcher 
-[27-02-25 16:12:46,29] [COMMAND] Vérification Python 3.10 via py launcher - Début d'exécution 
+===== DEBUT INSTALLATION 27-02-25 17:15:04,54 ===== 
+[27-02-25 17:15:04,55] [INFO] Verification de Python 3.10... 
+[27-02-25 17:15:04,69] [INFO] Verification Python 3.10 via py launcher 
+[27-02-25 17:15:04,70] [COMMAND] Vérification Python 3.10 via py launcher - Debut d'execution 
 Python 3.10.9
-[27-02-25 16:12:46,33] [COMMAND] Vérification Python 3.10 via py launcher - Fin d'exécution (code: 0) 
-[27-02-25 16:12:46,34] [INFO] Python 3.10 trouve via py launcher 
-[27-02-25 16:12:46,37] [INFO] Verification de Visual Studio... 
-[27-02-25 16:12:46,37] [INFO] Vérification des redistribuables VC++... 
-[27-02-25 16:12:46,38] [DEBUG] vcruntime140.dll trouvé, vérification de la version... 
-[27-02-25 16:12:47,33] [DEBUG] vcruntime140.dll est de version 14.30 ou supérieure 
+[27-02-25 17:15:04,75] [COMMAND] Vérification Python 3.10 via py launcher - Fin d'exécution (code: 0) 
+[27-02-25 17:15:04,77] [INFO] Python 3.10 trouve via py launcher 
+[27-02-25 17:15:04,79] [INFO] Verification de Visual Studio... 
+[27-02-25 17:15:04,82] [INFO] Vérification des redistribuables VC++... 
+[27-02-25 17:15:04,84] [DEBUG] vcruntime140.dll trouvé, vérification de la version... 
+[27-02-25 17:15:04,86] [DEBUG] Version du fichier vcruntime140.dll: 
+[27-02-25 17:15:05,02] [DEBUG] msvcp140.dll et vcruntime140_1.dll trouvés, probablement VC++ 2022 installé 
+[27-02-25 17:15:05,04] [INFO] Redistribuables VC++ 2022 déjà installés. 
+[27-02-25 17:15:05,06] [INFO] Configuration des chemins... 
+[27-02-25 17:15:05,07] [DEBUG] Version MSVC détectée: 14.43.34808 
+[27-02-25 17:15:05,08] [INFO] Configuration des includes... 
+[27-02-25 17:15:05,09] [DEBUG] INCLUDE=C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\ATLMFC\include;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\winrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\cppwinrt 
+[27-02-25 17:15:05,09] [INFO] Configuration des bibliothèques... 
+[27-02-25 17:15:05,10] [DEBUG] LIB=C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\lib\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\ATLMFC\lib\x64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22621.0\ucrt\x64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22621.0\um\x64 
+[27-02-25 17:15:05,10] [INFO] Configuration du PATH... 
+[27-02-25 17:15:05,11] [INFO] Configuration de l'environnement de build... 
+[27-02-25 17:15:05,12] [DEBUG] Appel de vcvarsall.bat 
+[27-02-25 17:15:06,27] [DEBUG] vcvars64.bat exécuté avec succès 
+[27-02-25 17:15:06,28] [INFO] Vérification de Python après configuration de l'environnement... 
+[27-02-25 17:15:06,31] [INFO] Creation de l'environnement virtuel... 
+[27-02-25 17:15:06,67] [COMMAND] Création environnement virtuel - Debut d'execution 
+[27-02-25 17:15:17,93] [COMMAND] Création environnement virtuel - Fin d'exécution (code: 0) 
+[27-02-25 17:15:18,00] [DEBUG] Environnement virtuel activé 
+[27-02-25 17:15:18,00] [INFO] Installation des dependances de base... 
+[27-02-25 17:15:18,02] [COMMAND] Installation pip/setuptools/wheel - Debut d'execution 
+Requirement already satisfied: pip in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (22.3.1)
+Collecting pip
+  Downloading pip-25.0.1-py3-none-any.whl (1.8 MB)
+     ---------------------------------------- 1.8/1.8 MB 6.9 MB/s eta 0:00:00
+Requirement already satisfied: setuptools in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (65.5.0)
+Collecting setuptools
+  Downloading setuptools-75.8.2-py3-none-any.whl (1.2 MB)
+     ---------------------------------------- 1.2/1.2 MB 9.8 MB/s eta 0:00:00
+Collecting wheel
+  Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+     ---------------------------------------- 72.5/72.5 kB 3.9 MB/s eta 0:00:00
+Installing collected packages: wheel, setuptools, pip
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 65.5.0
+    Uninstalling setuptools-65.5.0:
+      Successfully uninstalled setuptools-65.5.0
+  Attempting uninstall: pip
+    Found existing installation: pip 22.3.1
+    Uninstalling pip-22.3.1:
+      Successfully uninstalled pip-22.3.1
+Successfully installed pip-25.0.1 setuptools-75.8.2 wheel-0.45.1
+[27-02-25 17:15:37,98] [COMMAND] Installation pip/setuptools/wheel - Fin d'exécution (code: 0) 
+[27-02-25 17:15:38,02] [INFO] Vérification des dépendances requises... 
+[27-02-25 17:15:38,03] [COMMAND] Installation Cython - Debut d'execution 
+Collecting Cython
+  Downloading Cython-3.0.12-cp310-cp310-win_amd64.whl.metadata (3.6 kB)
+Downloading Cython-3.0.12-cp310-cp310-win_amd64.whl (2.8 MB)
+   ---------------------------------------- 2.8/2.8 MB 8.0 MB/s eta 0:00:00
+Installing collected packages: Cython
+Successfully installed Cython-3.0.12
+[27-02-25 17:15:45,51] [COMMAND] Installation Cython - Fin d'exécution (code: 0) 
+[27-02-25 17:15:45,52] [INFO] Installation des packages principaux... 
+[27-02-25 17:15:45,53] [COMMAND] Installation numpy - Debut d'execution 
+Collecting numpy==1.22.0
+  Downloading numpy-1.22.0-cp310-cp310-win_amd64.whl.metadata (2.1 kB)
+Downloading numpy-1.22.0-cp310-cp310-win_amd64.whl (14.7 MB)
+   ---------------------------------------- 14.7/14.7 MB 11.0 MB/s eta 0:00:00
+Installing collected packages: numpy
+Successfully installed numpy-1.22.0
+[27-02-25 17:15:59,70] [COMMAND] Installation numpy - Fin d'exécution (code: 0) 
+[27-02-25 17:15:59,73] [INFO] Installation de PyTorch avec gestion des timeout... 
+[27-02-25 17:15:59,76] [INFO] Tentative d'installation de PyTorch (1/3)... 
+[27-02-25 17:15:59,79] [COMMAND] Installation torch - Debut d'execution 
+Looking in indexes: https://download.pytorch.org/whl/cpu
+Collecting torch==2.0.1
+  Downloading https://download.pytorch.org/whl/cpu/torch-2.0.1%2Bcpu-cp310-cp310-win_amd64.whl (174.0 MB)
+     ------------------------------------- 174.0/174.0 MB 10.7 MB/s eta 0:00:00
+Collecting torchvision==0.15.2
+  Downloading https://download.pytorch.org/whl/cpu/torchvision-0.15.2%2Bcpu-cp310-cp310-win_amd64.whl (1.2 MB)
+     ---------------------------------------- 1.2/1.2 MB 9.9 MB/s eta 0:00:00
+Collecting torchaudio==2.0.2
+  Downloading https://download.pytorch.org/whl/cpu/torchaudio-2.0.2%2Bcpu-cp310-cp310-win_amd64.whl (2.1 MB)
+     ---------------------------------------- 2.1/2.1 MB 9.2 MB/s eta 0:00:00
+Collecting filelock (from torch==2.0.1)
+  Downloading https://download.pytorch.org/whl/filelock-3.13.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting typing-extensions (from torch==2.0.1)
+  Downloading https://download.pytorch.org/whl/typing_extensions-4.12.2-py3-none-any.whl.metadata (3.0 kB)
+Collecting sympy (from torch==2.0.1)
+  Downloading https://download.pytorch.org/whl/sympy-1.13.1-py3-none-any.whl (6.2 MB)
+     ---------------------------------------- 6.2/6.2 MB 11.1 MB/s eta 0:00:00
+Collecting networkx (from torch==2.0.1)
+  Downloading https://download.pytorch.org/whl/networkx-3.3-py3-none-any.whl.metadata (5.1 kB)
+Collecting jinja2 (from torch==2.0.1)
+  Downloading https://download.pytorch.org/whl/Jinja2-3.1.4-py3-none-any.whl.metadata (2.6 kB)
+Requirement already satisfied: numpy in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torchvision==0.15.2) (1.22.0)
+Collecting requests (from torchvision==0.15.2)
+  Downloading https://download.pytorch.org/whl/requests-2.28.1-py3-none-any.whl (62 kB)
+Collecting pillow!=8.3.*,>=5.3.0 (from torchvision==0.15.2)
+  Downloading https://download.pytorch.org/whl/pillow-11.0.0-cp310-cp310-win_amd64.whl.metadata (9.3 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch==2.0.1)
+  Downloading https://download.pytorch.org/whl/MarkupSafe-2.1.5-cp310-cp310-win_amd64.whl (17 kB)
+Collecting charset-normalizer<3,>=2 (from requests->torchvision==0.15.2)
+  Downloading https://download.pytorch.org/whl/charset_normalizer-2.1.1-py3-none-any.whl (39 kB)
+Collecting idna<4,>=2.5 (from requests->torchvision==0.15.2)
+  Downloading https://download.pytorch.org/whl/idna-3.4-py3-none-any.whl (61 kB)
+Collecting urllib3<1.27,>=1.21.1 (from requests->torchvision==0.15.2)
+  Downloading https://download.pytorch.org/whl/urllib3-1.26.13-py2.py3-none-any.whl (140 kB)
+Collecting certifi>=2017.4.17 (from requests->torchvision==0.15.2)
+  Downloading https://download.pytorch.org/whl/certifi-2022.12.7-py3-none-any.whl (155 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy->torch==2.0.1)
+  Downloading https://download.pytorch.org/whl/mpmath-1.3.0-py3-none-any.whl (536 kB)
+     -------------------------------------- 536.2/536.2 kB 8.6 MB/s eta 0:00:00
+Downloading https://download.pytorch.org/whl/pillow-11.0.0-cp310-cp310-win_amd64.whl (2.6 MB)
+   ---------------------------------------- 2.6/2.6 MB 10.5 MB/s eta 0:00:00
+Downloading https://download.pytorch.org/whl/filelock-3.13.1-py3-none-any.whl (11 kB)
+Downloading https://download.pytorch.org/whl/Jinja2-3.1.4-py3-none-any.whl (133 kB)
+Downloading https://download.pytorch.org/whl/networkx-3.3-py3-none-any.whl (1.7 MB)
+   ---------------------------------------- 1.7/1.7 MB 8.4 MB/s eta 0:00:00
+Downloading https://download.pytorch.org/whl/typing_extensions-4.12.2-py3-none-any.whl (37 kB)
+Installing collected packages: mpmath, urllib3, typing-extensions, sympy, pillow, networkx, MarkupSafe, idna, filelock, charset-normalizer, certifi, requests, jinja2, torch, torchvision, torchaudio
+Successfully installed MarkupSafe-2.1.5 certifi-2022.12.7 charset-normalizer-2.1.1 filelock-3.13.1 idna-3.4 jinja2-3.1.4 mpmath-1.3.0 networkx-3.3 pillow-11.0.0 requests-2.28.1 sympy-1.13.1 torch-2.0.1+cpu torchaudio-2.0.2+cpu torchvision-0.15.2+cpu typing-extensions-4.12.2 urllib3-1.26.13
+[27-02-25 17:18:01,90] [COMMAND] Installation torch - Fin d'exécution (code: 0) 
+[27-02-25 17:18:01,94] [INFO] Installation des dependances TTS... 
+[27-02-25 17:18:01,96] [COMMAND] Installation librosa - Debut d'execution 
+Collecting librosa==0.10.0
+  Downloading librosa-0.10.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting audioread>=2.1.9 (from librosa==0.10.0)
+  Downloading audioread-3.0.1-py3-none-any.whl.metadata (8.4 kB)
+Requirement already satisfied: numpy>=1.20.3 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (1.22.0)
+Collecting scipy>=1.2.0 (from librosa==0.10.0)
+  Downloading scipy-1.15.2-cp310-cp310-win_amd64.whl.metadata (60 kB)
+Collecting scikit-learn>=0.20.0 (from librosa==0.10.0)
+  Downloading scikit_learn-1.6.1-cp310-cp310-win_amd64.whl.metadata (15 kB)
+Collecting joblib>=0.14 (from librosa==0.10.0)
+  Downloading joblib-1.4.2-py3-none-any.whl.metadata (5.4 kB)
+Collecting decorator>=4.3.0 (from librosa==0.10.0)
+  Downloading decorator-5.2.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting numba>=0.51.0 (from librosa==0.10.0)
+  Downloading numba-0.61.0-cp310-cp310-win_amd64.whl.metadata (2.8 kB)
+Collecting soundfile>=0.12.1 (from librosa==0.10.0)
+  Downloading soundfile-0.13.1-py2.py3-none-win_amd64.whl.metadata (16 kB)
+Collecting pooch>=1.0 (from librosa==0.10.0)
+  Downloading pooch-1.8.2-py3-none-any.whl.metadata (10 kB)
+Collecting soxr>=0.3.2 (from librosa==0.10.0)
+  Downloading soxr-0.5.0.post1-cp310-cp310-win_amd64.whl.metadata (5.6 kB)
+Requirement already satisfied: typing-extensions>=4.1.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (4.12.2)
+Collecting lazy-loader>=0.1 (from librosa==0.10.0)
+  Downloading lazy_loader-0.4-py3-none-any.whl.metadata (7.6 kB)
+Collecting msgpack>=1.0 (from librosa==0.10.0)
+  Downloading msgpack-1.1.0-cp310-cp310-win_amd64.whl.metadata (8.6 kB)
+Collecting packaging (from lazy-loader>=0.1->librosa==0.10.0)
+  Downloading packaging-24.2-py3-none-any.whl.metadata (3.2 kB)
+Collecting llvmlite<0.45,>=0.44.0dev0 (from numba>=0.51.0->librosa==0.10.0)
+  Downloading llvmlite-0.44.0-cp310-cp310-win_amd64.whl.metadata (5.0 kB)
+Collecting numpy>=1.20.3 (from librosa==0.10.0)
+  Downloading numpy-2.1.3-cp310-cp310-win_amd64.whl.metadata (60 kB)
+Collecting platformdirs>=2.5.0 (from pooch>=1.0->librosa==0.10.0)
+  Downloading platformdirs-4.3.6-py3-none-any.whl.metadata (11 kB)
+Requirement already satisfied: requests>=2.19.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pooch>=1.0->librosa==0.10.0) (2.28.1)
+Collecting threadpoolctl>=3.1.0 (from scikit-learn>=0.20.0->librosa==0.10.0)
+  Downloading threadpoolctl-3.5.0-py3-none-any.whl.metadata (13 kB)
+Collecting cffi>=1.0 (from soundfile>=0.12.1->librosa==0.10.0)
+  Downloading cffi-1.17.1-cp310-cp310-win_amd64.whl.metadata (1.6 kB)
+Collecting pycparser (from cffi>=1.0->soundfile>=0.12.1->librosa==0.10.0)
+  Downloading pycparser-2.22-py3-none-any.whl.metadata (943 bytes)
+Requirement already satisfied: charset-normalizer<3,>=2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0) (2.1.1)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0) (3.4)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0) (1.26.13)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0) (2022.12.7)
+Downloading librosa-0.10.0-py3-none-any.whl (252 kB)
+Downloading audioread-3.0.1-py3-none-any.whl (23 kB)
+Downloading decorator-5.2.1-py3-none-any.whl (9.2 kB)
+Downloading joblib-1.4.2-py3-none-any.whl (301 kB)
+Downloading lazy_loader-0.4-py3-none-any.whl (12 kB)
+Downloading msgpack-1.1.0-cp310-cp310-win_amd64.whl (74 kB)
+Downloading numba-0.61.0-cp310-cp310-win_amd64.whl (2.8 MB)
+   ---------------------------------------- 2.8/2.8 MB 10.3 MB/s eta 0:00:00
+Downloading numpy-2.1.3-cp310-cp310-win_amd64.whl (12.9 MB)
+   ---------------------------------------- 12.9/12.9 MB 11.2 MB/s eta 0:00:00
+Downloading pooch-1.8.2-py3-none-any.whl (64 kB)
+Downloading scikit_learn-1.6.1-cp310-cp310-win_amd64.whl (11.1 MB)
+   ---------------------------------------- 11.1/11.1 MB 10.9 MB/s eta 0:00:00
+Downloading scipy-1.15.2-cp310-cp310-win_amd64.whl (41.2 MB)
+   ---------------------------------------- 41.2/41.2 MB 11.1 MB/s eta 0:00:00
+Downloading soundfile-0.13.1-py2.py3-none-win_amd64.whl (1.0 MB)
+   ---------------------------------------- 1.0/1.0 MB 9.7 MB/s eta 0:00:00
+Downloading soxr-0.5.0.post1-cp310-cp310-win_amd64.whl (166 kB)
+Downloading cffi-1.17.1-cp310-cp310-win_amd64.whl (181 kB)
+Downloading llvmlite-0.44.0-cp310-cp310-win_amd64.whl (30.3 MB)
+   ---------------------------------------- 30.3/30.3 MB 10.9 MB/s eta 0:00:00
+Downloading packaging-24.2-py3-none-any.whl (65 kB)
+Downloading platformdirs-4.3.6-py3-none-any.whl (18 kB)
+Downloading threadpoolctl-3.5.0-py3-none-any.whl (18 kB)
+Downloading pycparser-2.22-py3-none-any.whl (117 kB)
+Installing collected packages: threadpoolctl, pycparser, platformdirs, packaging, numpy, msgpack, llvmlite, joblib, decorator, audioread, soxr, scipy, pooch, numba, lazy-loader, cffi, soundfile, scikit-learn, librosa
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.22.0
+    Uninstalling numpy-1.22.0:
+      Successfully uninstalled numpy-1.22.0
+Successfully installed audioread-3.0.1 cffi-1.17.1 decorator-5.2.1 joblib-1.4.2 lazy-loader-0.4 librosa-0.10.0 llvmlite-0.44.0 msgpack-1.1.0 numba-0.61.0 numpy-2.1.3 packaging-24.2 platformdirs-4.3.6 pooch-1.8.2 pycparser-2.22 scikit-learn-1.6.1 scipy-1.15.2 soundfile-0.13.1 soxr-0.5.0.post1 threadpoolctl-3.5.0
+[27-02-25 17:19:10,27] [COMMAND] Installation librosa - Fin d'exécution (code: 0) 
+[27-02-25 17:19:10,29] [COMMAND] Installation soundfile - Debut d'execution 
+Collecting soundfile==0.12.1
+  Downloading soundfile-0.12.1-py2.py3-none-win_amd64.whl.metadata (14 kB)
+Requirement already satisfied: cffi>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from soundfile==0.12.1) (1.17.1)
+Requirement already satisfied: pycparser in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from cffi>=1.0->soundfile==0.12.1) (2.22)
+Downloading soundfile-0.12.1-py2.py3-none-win_amd64.whl (1.0 MB)
+   ---------------------------------------- 1.0/1.0 MB 7.9 MB/s eta 0:00:00
+Installing collected packages: soundfile
+  Attempting uninstall: soundfile
+    Found existing installation: soundfile 0.13.1
+    Uninstalling soundfile-0.13.1:
+      Successfully uninstalled soundfile-0.13.1
+Successfully installed soundfile-0.12.1
+[27-02-25 17:19:12,51] [COMMAND] Installation soundfile - Fin d'exécution (code: 0) 
+[27-02-25 17:19:12,55] [COMMAND] Installation Unidecode - Debut d'execution 
+Collecting Unidecode==1.3.7
+  Downloading Unidecode-1.3.7-py3-none-any.whl.metadata (13 kB)
+Downloading Unidecode-1.3.7-py3-none-any.whl (235 kB)
+Installing collected packages: Unidecode
+Successfully installed Unidecode-1.3.7
+[27-02-25 17:19:17,34] [COMMAND] Installation Unidecode - Fin d'exécution (code: 0) 
+[27-02-25 17:19:17,35] [COMMAND] Installation tqdm - Debut d'execution 
+Collecting tqdm
+  Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+Collecting colorama (from tqdm)
+  Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
+Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Installing collected packages: colorama, tqdm
+Successfully installed colorama-0.4.6 tqdm-4.67.1
+[27-02-25 17:19:19,80] [COMMAND] Installation tqdm - Fin d'exécution (code: 0) 
+[27-02-25 17:19:19,80] [INFO] Vérification de rc.exe pour la compilation... 
+[27-02-25 17:19:19,92] [WARNING] rc.exe non trouvé, tentative d'ajout du chemin du SDK Windows au PATH... 
+[27-02-25 17:19:19,92] [INFO] Installation de TTS... 
+[27-02-25 17:19:19,94] [COMMAND] Désinstallation TTS - Debut d'execution 
+WARNING: Skipping TTS as it is not installed.
+[27-02-25 17:19:20,49] [COMMAND] Désinstallation TTS - Fin d'exécution (code: 0) 
+[27-02-25 17:19:20,52] [INFO] Installation des dépendances spécifiques pour TTS... 
+[27-02-25 17:19:20,53] [COMMAND] Installation packaging - Debut d'execution 
+Collecting packaging==23.1
+  Downloading packaging-23.1-py3-none-any.whl.metadata (3.1 kB)
+Downloading packaging-23.1-py3-none-any.whl (48 kB)
+Installing collected packages: packaging
+  Attempting uninstall: packaging
+    Found existing installation: packaging 24.2
+    Uninstalling packaging-24.2:
+      Successfully uninstalled packaging-24.2
+Successfully installed packaging-23.1
+[27-02-25 17:19:22,03] [COMMAND] Installation packaging - Fin d'exécution (code: 0) 
+[27-02-25 17:19:22,05] [COMMAND] Installation protobuf - Debut d'execution 
+Collecting protobuf==4.24.4
+  Downloading protobuf-4.24.4-cp310-abi3-win_amd64.whl.metadata (540 bytes)
+Downloading protobuf-4.24.4-cp310-abi3-win_amd64.whl (430 kB)
+Installing collected packages: protobuf
+Successfully installed protobuf-4.24.4
+[27-02-25 17:19:24,68] [COMMAND] Installation protobuf - Fin d'exécution (code: 0) 
+[27-02-25 17:19:24,70] [COMMAND] Installation pyyaml - Debut d'execution 
+Collecting pyyaml==6.0.1
+  Downloading PyYAML-6.0.1-cp310-cp310-win_amd64.whl.metadata (2.1 kB)
+Downloading PyYAML-6.0.1-cp310-cp310-win_amd64.whl (145 kB)
+Installing collected packages: pyyaml
+Successfully installed pyyaml-6.0.1
+[27-02-25 17:19:26,49] [COMMAND] Installation pyyaml - Fin d'exécution (code: 0) 
+[27-02-25 17:19:26,55] [COMMAND] Installation tensorboard - Debut d'execution 
+Collecting tensorboard==2.14.0
+  Downloading tensorboard-2.14.0-py3-none-any.whl.metadata (1.8 kB)
+Collecting absl-py>=0.4 (from tensorboard==2.14.0)
+  Downloading absl_py-2.1.0-py3-none-any.whl.metadata (2.3 kB)
+Collecting grpcio>=1.48.2 (from tensorboard==2.14.0)
+  Downloading grpcio-1.70.0-cp310-cp310-win_amd64.whl.metadata (4.0 kB)
+Collecting google-auth<3,>=1.6.3 (from tensorboard==2.14.0)
+  Downloading google_auth-2.38.0-py2.py3-none-any.whl.metadata (4.8 kB)
+Collecting google-auth-oauthlib<1.1,>=0.5 (from tensorboard==2.14.0)
+  Downloading google_auth_oauthlib-1.0.0-py2.py3-none-any.whl.metadata (2.7 kB)
+Collecting markdown>=2.6.8 (from tensorboard==2.14.0)
+  Downloading Markdown-3.7-py3-none-any.whl.metadata (7.0 kB)
+Requirement already satisfied: numpy>=1.12.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (2.1.3)
+Requirement already satisfied: protobuf>=3.19.6 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (4.24.4)
+Requirement already satisfied: requests<3,>=2.21.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (2.28.1)
+Requirement already satisfied: setuptools>=41.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (75.8.2)
+Collecting tensorboard-data-server<0.8.0,>=0.7.0 (from tensorboard==2.14.0)
+  Downloading tensorboard_data_server-0.7.2-py3-none-any.whl.metadata (1.1 kB)
+Collecting werkzeug>=1.0.1 (from tensorboard==2.14.0)
+  Downloading werkzeug-3.1.3-py3-none-any.whl.metadata (3.7 kB)
+Requirement already satisfied: wheel>=0.26 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (0.45.1)
+Collecting cachetools<6.0,>=2.0.0 (from google-auth<3,>=1.6.3->tensorboard==2.14.0)
+  Downloading cachetools-5.5.2-py3-none-any.whl.metadata (5.4 kB)
+Collecting pyasn1-modules>=0.2.1 (from google-auth<3,>=1.6.3->tensorboard==2.14.0)
+  Downloading pyasn1_modules-0.4.1-py3-none-any.whl.metadata (3.5 kB)
+Collecting rsa<5,>=3.1.4 (from google-auth<3,>=1.6.3->tensorboard==2.14.0)
+  Downloading rsa-4.9-py3-none-any.whl.metadata (4.2 kB)
+Collecting requests-oauthlib>=0.7.0 (from google-auth-oauthlib<1.1,>=0.5->tensorboard==2.14.0)
+  Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
+Requirement already satisfied: charset-normalizer<3,>=2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests<3,>=2.21.0->tensorboard==2.14.0) (2.1.1)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests<3,>=2.21.0->tensorboard==2.14.0) (3.4)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests<3,>=2.21.0->tensorboard==2.14.0) (1.26.13)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests<3,>=2.21.0->tensorboard==2.14.0) (2022.12.7)
+Requirement already satisfied: MarkupSafe>=2.1.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from werkzeug>=1.0.1->tensorboard==2.14.0) (2.1.5)
+Collecting pyasn1<0.7.0,>=0.4.6 (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard==2.14.0)
+  Downloading pyasn1-0.6.1-py3-none-any.whl.metadata (8.4 kB)
+Collecting oauthlib>=3.0.0 (from requests-oauthlib>=0.7.0->google-auth-oauthlib<1.1,>=0.5->tensorboard==2.14.0)
+  Downloading oauthlib-3.2.2-py3-none-any.whl.metadata (7.5 kB)
+Downloading tensorboard-2.14.0-py3-none-any.whl (5.5 MB)
+   ---------------------------------------- 5.5/5.5 MB 10.5 MB/s eta 0:00:00
+Downloading absl_py-2.1.0-py3-none-any.whl (133 kB)
+Downloading google_auth-2.38.0-py2.py3-none-any.whl (210 kB)
+Downloading google_auth_oauthlib-1.0.0-py2.py3-none-any.whl (18 kB)
+Downloading grpcio-1.70.0-cp310-cp310-win_amd64.whl (4.3 MB)
+   ---------------------------------------- 4.3/4.3 MB 10.8 MB/s eta 0:00:00
+Downloading Markdown-3.7-py3-none-any.whl (106 kB)
+Downloading tensorboard_data_server-0.7.2-py3-none-any.whl (2.4 kB)
+Downloading werkzeug-3.1.3-py3-none-any.whl (224 kB)
+Downloading cachetools-5.5.2-py3-none-any.whl (10 kB)
+Downloading pyasn1_modules-0.4.1-py3-none-any.whl (181 kB)
+Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+Downloading rsa-4.9-py3-none-any.whl (34 kB)
+Downloading oauthlib-3.2.2-py3-none-any.whl (151 kB)
+Downloading pyasn1-0.6.1-py3-none-any.whl (83 kB)
+Installing collected packages: werkzeug, tensorboard-data-server, pyasn1, oauthlib, markdown, grpcio, cachetools, absl-py, rsa, requests-oauthlib, pyasn1-modules, google-auth, google-auth-oauthlib, tensorboard
+Successfully installed absl-py-2.1.0 cachetools-5.5.2 google-auth-2.38.0 google-auth-oauthlib-1.0.0 grpcio-1.70.0 markdown-3.7 oauthlib-3.2.2 pyasn1-0.6.1 pyasn1-modules-0.4.1 requests-oauthlib-2.0.0 rsa-4.9 tensorboard-2.14.0 tensorboard-data-server-0.7.2 werkzeug-3.1.3
+[27-02-25 17:19:50,22] [COMMAND] Installation tensorboard - Fin d'exécution (code: 0) 
+[27-02-25 17:19:50,24] [COMMAND] Installation coqpit - Debut d'execution 
+Collecting coqpit==0.0.17
+  Downloading coqpit-0.0.17-py3-none-any.whl.metadata (11 kB)
+Downloading coqpit-0.0.17-py3-none-any.whl (13 kB)
+Installing collected packages: coqpit
+Successfully installed coqpit-0.0.17
+[27-02-25 17:19:51,76] [COMMAND] Installation coqpit - Fin d'exécution (code: 0) 
+[27-02-25 17:19:51,78] [COMMAND] Installation fsspec - Debut d'execution 
+Collecting fsspec==2023.9.2
+  Downloading fsspec-2023.9.2-py3-none-any.whl.metadata (6.7 kB)
+Downloading fsspec-2023.9.2-py3-none-any.whl (173 kB)
+Installing collected packages: fsspec
+Successfully installed fsspec-2023.9.2
+[27-02-25 17:19:54,19] [COMMAND] Installation fsspec - Fin d'exécution (code: 0) 
+[27-02-25 17:19:54,21] [COMMAND] Installation jieba - Debut d'execution 
+Collecting jieba==0.42.1
+  Downloading jieba-0.42.1.tar.gz (19.2 MB)
+     --------------------------------------- 19.2/19.2 MB 11.1 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Building wheels for collected packages: jieba
+  Building wheel for jieba (setup.py): started
+  Building wheel for jieba (setup.py): finished with status 'done'
+  Created wheel for jieba: filename=jieba-0.42.1-py3-none-any.whl size=19314526 sha256=9a2abbfb463f01f0341ab4c1660a8803e5dbb00252030aafd3bf3dbac4d52eb8
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-y2vk80lf\wheels\c9\69\31\d56d90b22a1777b0b231e234b00302a55be255930f8bd92dcd
+Successfully built jieba
+Installing collected packages: jieba
+Successfully installed jieba-0.42.1
+[27-02-25 17:20:03,07] [COMMAND] Installation jieba - Fin d'exécution (code: 0) 
+[27-02-25 17:20:03,08] [COMMAND] Installation matplotlib - Debut d'execution 
+Collecting matplotlib==3.7.3
+  Downloading matplotlib-3.7.3-cp310-cp310-win_amd64.whl.metadata (5.8 kB)
+Collecting contourpy>=1.0.1 (from matplotlib==3.7.3)
+  Downloading contourpy-1.3.1-cp310-cp310-win_amd64.whl.metadata (5.4 kB)
+Collecting cycler>=0.10 (from matplotlib==3.7.3)
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib==3.7.3)
+  Downloading fonttools-4.56.0-cp310-cp310-win_amd64.whl.metadata (103 kB)
+Collecting kiwisolver>=1.0.1 (from matplotlib==3.7.3)
+  Downloading kiwisolver-1.4.8-cp310-cp310-win_amd64.whl.metadata (6.3 kB)
+Collecting numpy<2,>=1.20 (from matplotlib==3.7.3)
+  Downloading numpy-1.26.4-cp310-cp310-win_amd64.whl.metadata (61 kB)
+Requirement already satisfied: packaging>=20.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.3) (23.1)
+Requirement already satisfied: pillow>=6.2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.3) (11.0.0)
+Collecting pyparsing>=2.3.1 (from matplotlib==3.7.3)
+  Downloading pyparsing-3.2.1-py3-none-any.whl.metadata (5.0 kB)
+Collecting python-dateutil>=2.7 (from matplotlib==3.7.3)
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib==3.7.3)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading matplotlib-3.7.3-cp310-cp310-win_amd64.whl (7.5 MB)
+   ---------------------------------------- 7.5/7.5 MB 10.5 MB/s eta 0:00:00
+Downloading contourpy-1.3.1-cp310-cp310-win_amd64.whl (218 kB)
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading fonttools-4.56.0-cp310-cp310-win_amd64.whl (2.2 MB)
+   ---------------------------------------- 2.2/2.2 MB 11.3 MB/s eta 0:00:00
+Downloading kiwisolver-1.4.8-cp310-cp310-win_amd64.whl (71 kB)
+Downloading numpy-1.26.4-cp310-cp310-win_amd64.whl (15.8 MB)
+   ---------------------------------------- 15.8/15.8 MB 10.1 MB/s eta 0:00:00
+Downloading pyparsing-3.2.1-py3-none-any.whl (107 kB)
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: six, pyparsing, numpy, kiwisolver, fonttools, cycler, python-dateutil, contourpy, matplotlib
+  Attempting uninstall: numpy
+    Found existing installation: numpy 2.1.3
+    Uninstalling numpy-2.1.3:
+      Successfully uninstalled numpy-2.1.3
+Successfully installed contourpy-1.3.1 cycler-0.12.1 fonttools-4.56.0 kiwisolver-1.4.8 matplotlib-3.7.3 numpy-1.26.4 pyparsing-3.2.1 python-dateutil-2.9.0.post0 six-1.17.0
+[27-02-25 17:20:35,85] [COMMAND] Installation matplotlib - Fin d'exécution (code: 0) 
+[27-02-25 17:20:35,87] [COMMAND] Installation scipy - Debut d'execution 
+Collecting scipy==1.10.1
+  Downloading scipy-1.10.1-cp310-cp310-win_amd64.whl.metadata (58 kB)
+Requirement already satisfied: numpy<1.27.0,>=1.19.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from scipy==1.10.1) (1.26.4)
+Downloading scipy-1.10.1-cp310-cp310-win_amd64.whl (42.5 MB)
+   ---------------------------------------- 42.5/42.5 MB 10.0 MB/s eta 0:00:00
+Installing collected packages: scipy
+  Attempting uninstall: scipy
+    Found existing installation: scipy 1.15.2
+    Uninstalling scipy-1.15.2:
+      Successfully uninstalled scipy-1.15.2
+Successfully installed scipy-1.10.1
+[27-02-25 17:20:56,84] [COMMAND] Installation scipy - Fin d'exécution (code: 0) 
+[27-02-25 17:20:56,84] [INFO] Tentative d'installation de TTS version 0.15.2... 
+[27-02-25 17:20:56,89] [COMMAND] Installation TTS 0.15.2 - Debut d'execution 
+Collecting TTS==0.15.2
+  Downloading TTS-0.15.2.tar.gz (1.5 MB)
+     ---------------------------------------- 1.5/1.5 MB 8.1 MB/s eta 0:00:00
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting numpy==1.22.0 (from TTS==0.15.2)
+  Downloading numpy-1.22.0-cp310-cp310-win_amd64.whl.metadata (2.1 kB)
+Collecting cython==0.29.30 (from TTS==0.15.2)
+  Downloading Cython-0.29.30-py2.py3-none-any.whl.metadata (2.8 kB)
+Requirement already satisfied: scipy>=1.4.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.15.2) (1.10.1)
+Requirement already satisfied: torch>=1.7 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.15.2) (2.0.1+cpu)
+Requirement already satisfied: torchaudio in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.15.2) (2.0.2+cpu)
+Requirement already satisfied: soundfile in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.15.2) (0.12.1)
+Requirement already satisfied: librosa==0.10.0.* in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.15.2) (0.10.0)
+Collecting numba==0.57.0 (from TTS==0.15.2)
+  Downloading numba-0.57.0-cp310-cp310-win_amd64.whl.metadata (2.8 kB)
+Collecting inflect==5.6.0 (from TTS==0.15.2)
+  Downloading inflect-5.6.0-py3-none-any.whl.metadata (21 kB)
+Requirement already satisfied: tqdm in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.15.2) (4.67.1)
+Collecting anyascii (from TTS==0.15.2)
+  Downloading anyascii-0.3.2-py3-none-any.whl.metadata (1.5 kB)
+Requirement already satisfied: pyyaml in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.15.2) (6.0.1)
+Requirement already satisfied: fsspec>=2021.04.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.15.2) (2023.9.2)
+Collecting aiohttp (from TTS==0.15.2)
+  Downloading aiohttp-3.11.13-cp310-cp310-win_amd64.whl.metadata (8.0 kB)
+Requirement already satisfied: packaging in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.15.2) (23.1)
+Collecting flask (from TTS==0.15.2)
+  Downloading flask-3.1.0-py3-none-any.whl.metadata (2.7 kB)
+Collecting pysbd (from TTS==0.15.2)
+  Downloading pysbd-0.3.4-py3-none-any.whl.metadata (6.1 kB)
+Collecting umap-learn==0.5.1 (from TTS==0.15.2)
+  Downloading umap-learn-0.5.1.tar.gz (80 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting pandas (from TTS==0.15.2)
+  Downloading pandas-2.2.3-cp310-cp310-win_amd64.whl.metadata (19 kB)
+Requirement already satisfied: matplotlib in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.15.2) (3.7.3)
+Collecting trainer (from TTS==0.15.2)
+  Downloading trainer-0.0.36-py3-none-any.whl.metadata (8.1 kB)
+Requirement already satisfied: coqpit>=0.0.16 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.15.2) (0.0.17)
+Requirement already satisfied: jieba in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.15.2) (0.42.1)
+Collecting pypinyin (from TTS==0.15.2)
+  Downloading pypinyin-0.53.0-py2.py3-none-any.whl.metadata (12 kB)
+Collecting mecab-python3==1.0.6 (from TTS==0.15.2)
+  Downloading mecab_python3-1.0.6-cp310-cp310-win_amd64.whl.metadata (6.3 kB)
+Collecting unidic-lite==1.0.8 (from TTS==0.15.2)
+  Downloading unidic-lite-1.0.8.tar.gz (47.4 MB)
+     --------------------------------------- 47.4/47.4 MB 11.3 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting gruut==2.2.3 (from gruut[de,es,fr]==2.2.3->TTS==0.15.2)
+  Downloading gruut-2.2.3.tar.gz (73 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting jamo (from TTS==0.15.2)
+  Downloading jamo-0.4.1-py3-none-any.whl.metadata (2.3 kB)
+Collecting nltk (from TTS==0.15.2)
+  Downloading nltk-3.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting g2pkk>=0.1.1 (from TTS==0.15.2)
+  Downloading g2pkk-0.1.2-py3-none-any.whl.metadata (2.0 kB)
+Collecting bangla==0.0.2 (from TTS==0.15.2)
+  Downloading bangla-0.0.2-py2.py3-none-any.whl.metadata (4.5 kB)
+Collecting bnnumerizer (from TTS==0.15.2)
+  Downloading bnnumerizer-0.0.2.tar.gz (4.7 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting bnunicodenormalizer==0.1.1 (from TTS==0.15.2)
+  Downloading bnunicodenormalizer-0.1.1.tar.gz (38 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting k_diffusion (from TTS==0.15.2)
+  Downloading k_diffusion-0.1.1.post1-py3-none-any.whl.metadata (3.9 kB)
+Collecting einops (from TTS==0.15.2)
+  Downloading einops-0.8.1-py3-none-any.whl.metadata (13 kB)
+Collecting transformers (from TTS==0.15.2)
+  Downloading transformers-4.49.0-py3-none-any.whl.metadata (44 kB)
+Collecting encodec (from TTS==0.15.2)
+  Downloading encodec-0.1.1.tar.gz (3.7 MB)
+     ---------------------------------------- 3.7/3.7 MB 9.6 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting Babel<3.0.0,>=2.8.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.15.2)
+  Downloading babel-2.17.0-py3-none-any.whl.metadata (2.0 kB)
+Collecting dateparser~=1.1.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.15.2)
+  Downloading dateparser-1.1.8-py2.py3-none-any.whl.metadata (27 kB)
+Collecting gruut-ipa<1.0,>=0.12.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.15.2)
+  Downloading gruut-ipa-0.13.0.tar.gz (101 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting gruut_lang_en~=2.0.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.15.2)
+  Downloading gruut_lang_en-2.0.1.tar.gz (15.3 MB)
+     --------------------------------------- 15.3/15.3 MB 10.4 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting jsonlines~=1.2.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.15.2)
+  Downloading jsonlines-1.2.0-py2.py3-none-any.whl.metadata (1.3 kB)
+Collecting networkx<3.0.0,>=2.5.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.15.2)
+  Downloading networkx-2.8.8-py3-none-any.whl.metadata (5.1 kB)
+Collecting num2words<1.0.0,>=0.5.10 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.15.2)
+  Downloading num2words-0.5.14-py3-none-any.whl.metadata (13 kB)
+Collecting python-crfsuite~=0.9.7 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.15.2)
+  Downloading python_crfsuite-0.9.11-cp310-cp310-win_amd64.whl.metadata (4.4 kB)
+Collecting gruut_lang_es~=2.0.0 (from gruut[de,es,fr]==2.2.3->TTS==0.15.2)
+  Downloading gruut_lang_es-2.0.1.tar.gz (31.4 MB)
+     --------------------------------------- 31.4/31.4 MB 11.1 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting gruut_lang_de~=2.0.0 (from gruut[de,es,fr]==2.2.3->TTS==0.15.2)
+  Downloading gruut_lang_de-2.0.1.tar.gz (18.1 MB)
+     --------------------------------------- 18.1/18.1 MB 10.7 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting gruut_lang_fr~=2.0.0 (from gruut[de,es,fr]==2.2.3->TTS==0.15.2)
+  Downloading gruut_lang_fr-2.0.2.tar.gz (10.9 MB)
+     --------------------------------------- 10.9/10.9 MB 10.8 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: audioread>=2.1.9 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0.*->TTS==0.15.2) (3.0.1)
+Requirement already satisfied: scikit-learn>=0.20.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0.*->TTS==0.15.2) (1.6.1)
+Requirement already satisfied: joblib>=0.14 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0.*->TTS==0.15.2) (1.4.2)
+Requirement already satisfied: decorator>=4.3.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0.*->TTS==0.15.2) (5.2.1)
+Requirement already satisfied: pooch>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0.*->TTS==0.15.2) (1.8.2)
+Requirement already satisfied: soxr>=0.3.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0.*->TTS==0.15.2) (0.5.0.post1)
+Requirement already satisfied: typing-extensions>=4.1.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0.*->TTS==0.15.2) (4.12.2)
+Requirement already satisfied: lazy-loader>=0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0.*->TTS==0.15.2) (0.4)
+Requirement already satisfied: msgpack>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0.*->TTS==0.15.2) (1.1.0)
+Collecting llvmlite<0.41,>=0.40.0dev0 (from numba==0.57.0->TTS==0.15.2)
+  Downloading llvmlite-0.40.1-cp310-cp310-win_amd64.whl.metadata (4.8 kB)
+Collecting pynndescent>=0.5 (from umap-learn==0.5.1->TTS==0.15.2)
+  Downloading pynndescent-0.5.13-py3-none-any.whl.metadata (6.8 kB)
+Requirement already satisfied: cffi>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from soundfile->TTS==0.15.2) (1.17.1)
+Requirement already satisfied: filelock in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torch>=1.7->TTS==0.15.2) (3.13.1)
+Requirement already satisfied: sympy in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torch>=1.7->TTS==0.15.2) (1.13.1)
+Requirement already satisfied: jinja2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torch>=1.7->TTS==0.15.2) (3.1.4)
+Collecting aiohappyeyeballs>=2.3.0 (from aiohttp->TTS==0.15.2)
+  Downloading aiohappyeyeballs-2.4.6-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.1.2 (from aiohttp->TTS==0.15.2)
+  Downloading aiosignal-1.3.2-py2.py3-none-any.whl.metadata (3.8 kB)
+Collecting async-timeout<6.0,>=4.0 (from aiohttp->TTS==0.15.2)
+  Downloading async_timeout-5.0.1-py3-none-any.whl.metadata (5.1 kB)
+Collecting attrs>=17.3.0 (from aiohttp->TTS==0.15.2)
+  Downloading attrs-25.1.0-py3-none-any.whl.metadata (10 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp->TTS==0.15.2)
+  Downloading frozenlist-1.5.0-cp310-cp310-win_amd64.whl.metadata (14 kB)
+Collecting multidict<7.0,>=4.5 (from aiohttp->TTS==0.15.2)
+  Downloading multidict-6.1.0-cp310-cp310-win_amd64.whl.metadata (5.1 kB)
+Collecting propcache>=0.2.0 (from aiohttp->TTS==0.15.2)
+  Downloading propcache-0.3.0-cp310-cp310-win_amd64.whl.metadata (10 kB)
+Collecting yarl<2.0,>=1.17.0 (from aiohttp->TTS==0.15.2)
+  Downloading yarl-1.18.3-cp310-cp310-win_amd64.whl.metadata (71 kB)
+Requirement already satisfied: Werkzeug>=3.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from flask->TTS==0.15.2) (3.1.3)
+Collecting itsdangerous>=2.2 (from flask->TTS==0.15.2)
+  Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+Collecting click>=8.1.3 (from flask->TTS==0.15.2)
+  Downloading click-8.1.8-py3-none-any.whl.metadata (2.3 kB)
+Collecting blinker>=1.9 (from flask->TTS==0.15.2)
+  Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+Collecting accelerate (from k_diffusion->TTS==0.15.2)
+  Downloading accelerate-1.4.0-py3-none-any.whl.metadata (19 kB)
+Collecting clean-fid (from k_diffusion->TTS==0.15.2)
+  Downloading clean_fid-0.1.35-py3-none-any.whl.metadata (36 kB)
+Collecting clip-anytorch (from k_diffusion->TTS==0.15.2)
+  Downloading clip_anytorch-2.6.0-py3-none-any.whl.metadata (8.4 kB)
+Collecting dctorch (from k_diffusion->TTS==0.15.2)
+  Downloading dctorch-0.1.2-py3-none-any.whl.metadata (607 bytes)
+Collecting jsonmerge (from k_diffusion->TTS==0.15.2)
+  Downloading jsonmerge-1.9.2-py3-none-any.whl.metadata (21 kB)
+Collecting kornia (from k_diffusion->TTS==0.15.2)
+  Downloading kornia-0.8.0-py2.py3-none-any.whl.metadata (17 kB)
+Requirement already satisfied: Pillow in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from k_diffusion->TTS==0.15.2) (11.0.0)
+Collecting safetensors (from k_diffusion->TTS==0.15.2)
+  Downloading safetensors-0.5.3-cp38-abi3-win_amd64.whl.metadata (3.9 kB)
+Collecting scikit-image (from k_diffusion->TTS==0.15.2)
+  Downloading scikit_image-0.25.2-cp310-cp310-win_amd64.whl.metadata (14 kB)
+Collecting torchdiffeq (from k_diffusion->TTS==0.15.2)
+  Downloading torchdiffeq-0.2.5-py3-none-any.whl.metadata (440 bytes)
+Collecting torchsde (from k_diffusion->TTS==0.15.2)
+  Downloading torchsde-0.2.6-py3-none-any.whl.metadata (5.3 kB)
+Requirement already satisfied: torchvision in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from k_diffusion->TTS==0.15.2) (0.15.2+cpu)
+Collecting wandb (from k_diffusion->TTS==0.15.2)
+  Downloading wandb-0.19.7-py3-none-win_amd64.whl.metadata (10 kB)
+Requirement already satisfied: contourpy>=1.0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib->TTS==0.15.2) (1.3.1)
+Requirement already satisfied: cycler>=0.10 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib->TTS==0.15.2) (0.12.1)
+Requirement already satisfied: fonttools>=4.22.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib->TTS==0.15.2) (4.56.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib->TTS==0.15.2) (1.4.8)
+Requirement already satisfied: pyparsing>=2.3.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib->TTS==0.15.2) (3.2.1)
+Requirement already satisfied: python-dateutil>=2.7 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib->TTS==0.15.2) (2.9.0.post0)
+Collecting regex>=2021.8.3 (from nltk->TTS==0.15.2)
+  Downloading regex-2024.11.6-cp310-cp310-win_amd64.whl.metadata (41 kB)
+INFO: pip is looking at multiple versions of pandas to determine which version is compatible with other requirements. This could take a while.
+Collecting pandas (from TTS==0.15.2)
+  Downloading pandas-2.2.2-cp310-cp310-win_amd64.whl.metadata (19 kB)
+  Downloading pandas-2.2.1-cp310-cp310-win_amd64.whl.metadata (19 kB)
+  Downloading pandas-2.2.0-cp310-cp310-win_amd64.whl.metadata (19 kB)
+  Downloading pandas-2.1.4-cp310-cp310-win_amd64.whl.metadata (18 kB)
+  Downloading pandas-2.1.3-cp310-cp310-win_amd64.whl.metadata (18 kB)
+  Downloading pandas-2.1.2-cp310-cp310-win_amd64.whl.metadata (18 kB)
+  Downloading pandas-2.1.1-cp310-cp310-win_amd64.whl.metadata (18 kB)
+INFO: pip is still looking at multiple versions of pandas to determine which version is compatible with other requirements. This could take a while.
+  Downloading pandas-2.1.0-cp310-cp310-win_amd64.whl.metadata (18 kB)
+  Downloading pandas-2.0.3-cp310-cp310-win_amd64.whl.metadata (18 kB)
+Collecting pytz>=2020.1 (from pandas->TTS==0.15.2)
+  Downloading pytz-2025.1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.1 (from pandas->TTS==0.15.2)
+  Downloading tzdata-2025.1-py2.py3-none-any.whl.metadata (1.4 kB)
+Requirement already satisfied: colorama in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tqdm->TTS==0.15.2) (0.4.6)
+Collecting psutil (from trainer->TTS==0.15.2)
+  Downloading psutil-7.0.0-cp37-abi3-win_amd64.whl.metadata (23 kB)
+Requirement already satisfied: tensorboard in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from trainer->TTS==0.15.2) (2.14.0)
+Collecting huggingface-hub<1.0,>=0.26.0 (from transformers->TTS==0.15.2)
+  Downloading huggingface_hub-0.29.1-py3-none-any.whl.metadata (13 kB)
+Requirement already satisfied: requests in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from transformers->TTS==0.15.2) (2.28.1)
+Collecting tokenizers<0.22,>=0.21 (from transformers->TTS==0.15.2)
+  Downloading tokenizers-0.21.0-cp39-abi3-win_amd64.whl.metadata (6.9 kB)
+Requirement already satisfied: pycparser in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from cffi>=1.0->soundfile->TTS==0.15.2) (2.22)
+INFO: pip is looking at multiple versions of contourpy to determine which version is compatible with other requirements. This could take a while.
+Collecting contourpy>=1.0.1 (from matplotlib->TTS==0.15.2)
+  Downloading contourpy-1.3.0-cp310-cp310-win_amd64.whl.metadata (5.4 kB)
+  Downloading contourpy-1.2.1-cp310-cp310-win_amd64.whl.metadata (5.8 kB)
+Collecting tzlocal (from dateparser~=1.1.0->gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.15.2)
+  Downloading tzlocal-5.3-py3-none-any.whl.metadata (7.6 kB)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from jinja2->torch>=1.7->TTS==0.15.2) (2.1.5)
+Requirement already satisfied: six in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from jsonlines~=1.2.0->gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.15.2) (1.17.0)
+Collecting docopt>=0.6.2 (from num2words<1.0.0,>=0.5.10->gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.15.2)
+  Downloading docopt-0.6.2.tar.gz (25 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: platformdirs>=2.5.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pooch>=1.0->librosa==0.10.0.*->TTS==0.15.2) (4.3.6)
+Requirement already satisfied: charset-normalizer<3,>=2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests->transformers->TTS==0.15.2) (2.1.1)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests->transformers->TTS==0.15.2) (3.4)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests->transformers->TTS==0.15.2) (1.26.13)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests->transformers->TTS==0.15.2) (2022.12.7)
+Requirement already satisfied: threadpoolctl>=3.1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from scikit-learn>=0.20.0->librosa==0.10.0.*->TTS==0.15.2) (3.5.0)
+Collecting ftfy (from clip-anytorch->k_diffusion->TTS==0.15.2)
+  Downloading ftfy-6.3.1-py3-none-any.whl.metadata (7.3 kB)
+INFO: pip is looking at multiple versions of dctorch to determine which version is compatible with other requirements. This could take a while.
+Collecting dctorch (from k_diffusion->TTS==0.15.2)
+  Downloading dctorch-0.1.1-py3-none-any.whl.metadata (607 bytes)
+  Downloading dctorch-0.1.0-py3-none-any.whl.metadata (558 bytes)
+Collecting clean-fid (from k_diffusion->TTS==0.15.2)
+  Downloading clean_fid-0.1.34-py3-none-any.whl.metadata (36 kB)
+Collecting requests (from transformers->TTS==0.15.2)
+  Downloading requests-2.25.1-py2.py3-none-any.whl.metadata (4.2 kB)
+Collecting chardet<5,>=3.0.2 (from requests->transformers->TTS==0.15.2)
+  Downloading chardet-4.0.0-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting idna>=2.0 (from yarl<2.0,>=1.17.0->aiohttp->TTS==0.15.2)
+  Downloading idna-2.10-py2.py3-none-any.whl.metadata (9.1 kB)
+Collecting clean-fid (from k_diffusion->TTS==0.15.2)
+  Downloading clean_fid-0.1.33-py3-none-any.whl.metadata (36 kB)
+INFO: pip is still looking at multiple versions of dctorch to determine which version is compatible with other requirements. This could take a while.
+  Downloading clean_fid-0.1.32-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.31-py3-none-any.whl.metadata (36 kB)
+INFO: This is taking longer than usual. You might need to provide the dependency resolver with stricter constraints to reduce runtime. See https://pip.pypa.io/warnings/backtracking for guidance. If you want to abort this run, press Ctrl + C.
+  Downloading clean_fid-0.1.30-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.29-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.28-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.26-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.25-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.24-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.23-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.22-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.21-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.19-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.18-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.17-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.16-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.15-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.14-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.13-py3-none-any.whl.metadata (27 kB)
+  Downloading clean_fid-0.1.12-py3-none-any.whl.metadata (22 kB)
+  Downloading clean_fid-0.1.11-py3-none-any.whl.metadata (22 kB)
+  Downloading clean_fid-0.1.10-py3-none-any.whl.metadata (10 kB)
+  Downloading clean_fid-0.1.9-py3-none-any.whl.metadata (9.5 kB)
+  Downloading clean_fid-0.1.8-py3-none-any.whl.metadata (9.5 kB)
+  Downloading clean_fid-0.1.6-py3-none-any.whl.metadata (8.5 kB)
+Collecting accelerate (from k_diffusion->TTS==0.15.2)
+  Downloading accelerate-1.3.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-1.2.1-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-1.2.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-1.1.1-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-1.1.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-1.0.1-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-1.0.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-0.34.2-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-0.34.1-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-0.34.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-0.33.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.32.1-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.32.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.31.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-0.30.1-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.30.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-0.29.3-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.29.2-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.29.1-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.29.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.28.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.27.2-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.27.1-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.27.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.26.1-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.26.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.25.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.24.1-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.24.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.23.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.22.0-py3-none-any.whl.metadata (17 kB)
+  Downloading accelerate-0.21.0-py3-none-any.whl.metadata (17 kB)
+  Downloading accelerate-0.20.3-py3-none-any.whl.metadata (17 kB)
+  Downloading accelerate-0.20.2-py3-none-any.whl.metadata (17 kB)
+  Downloading accelerate-0.20.1-py3-none-any.whl.metadata (17 kB)
+  Downloading accelerate-0.20.0-py3-none-any.whl.metadata (17 kB)
+  Downloading accelerate-0.19.0-py3-none-any.whl.metadata (16 kB)
+  Downloading accelerate-0.18.0-py3-none-any.whl.metadata (16 kB)
+  Downloading accelerate-0.17.1-py3-none-any.whl.metadata (16 kB)
+  Downloading accelerate-0.17.0-py3-none-any.whl.metadata (16 kB)
+  Downloading accelerate-0.16.0-py3-none-any.whl.metadata (15 kB)
+  Downloading accelerate-0.15.0-py3-none-any.whl.metadata (15 kB)
+  Downloading accelerate-0.14.0-py3-none-any.whl.metadata (15 kB)
+  Downloading accelerate-0.13.2-py3-none-any.whl.metadata (15 kB)
+  Downloading accelerate-0.13.1-py3-none-any.whl.metadata (15 kB)
+  Downloading accelerate-0.13.0-py3-none-any.whl.metadata (15 kB)
+  Downloading accelerate-0.12.0-py3-none-any.whl.metadata (15 kB)
+  Downloading accelerate-0.11.0-py3-none-any.whl.metadata (14 kB)
+  Downloading accelerate-0.10.0-py3-none-any.whl.metadata (14 kB)
+  Downloading accelerate-0.9.0-py3-none-any.whl.metadata (13 kB)
+  Downloading accelerate-0.8.0-py3-none-any.whl.metadata (13 kB)
+  Downloading accelerate-0.7.1-py3-none-any.whl.metadata (13 kB)
+  Downloading accelerate-0.7.0-py3-none-any.whl.metadata (13 kB)
+  Downloading accelerate-0.6.2-py3-none-any.whl.metadata (13 kB)
+  Downloading accelerate-0.6.1-py3-none-any.whl.metadata (13 kB)
+  Downloading accelerate-0.6.0-py3-none-any.whl.metadata (13 kB)
+  Downloading accelerate-0.5.1-py3-none-any.whl.metadata (11 kB)
+  Downloading accelerate-0.5.0-py3-none-any.whl.metadata (11 kB)
+  Downloading accelerate-0.4.0-py3-none-any.whl.metadata (11 kB)
+Collecting soxr>=0.3.2 (from librosa==0.10.0.*->TTS==0.15.2)
+  Downloading soxr-0.5.0.post1-cp310-cp310-win_amd64.whl.metadata (5.6 kB)
+  Downloading soxr-0.5.0-cp310-cp310-win_amd64.whl.metadata (5.6 kB)
+  Downloading soxr-0.4.0-cp310-cp310-win_amd64.whl.metadata (5.7 kB)
+  Downloading soxr-0.3.7-cp310-cp310-win_amd64.whl.metadata (5.7 kB)
+  Downloading soxr-0.3.6-cp310-cp310-win_amd64.whl.metadata (5.5 kB)
+  Downloading soxr-0.3.5-cp310-cp310-win_amd64.whl.metadata (5.5 kB)
+  Downloading soxr-0.3.4-cp310-cp310-win_amd64.whl.metadata (5.5 kB)
+  Downloading soxr-0.3.3-cp310-cp310-win_amd64.whl.metadata (5.0 kB)
+  Downloading soxr-0.3.2-cp310-cp310-win_amd64.whl.metadata (5.0 kB)
+Collecting scikit-learn>=0.20.0 (from librosa==0.10.0.*->TTS==0.15.2)
+  Downloading scikit_learn-1.6.1-cp310-cp310-win_amd64.whl.metadata (15 kB)
+  Downloading scikit_learn-1.6.0-cp310-cp310-win_amd64.whl.metadata (15 kB)
+  Downloading scikit_learn-1.5.2-cp310-cp310-win_amd64.whl.metadata (13 kB)
+  Downloading scikit_learn-1.5.1-cp310-cp310-win_amd64.whl.metadata (12 kB)
+  Downloading scikit_learn-1.5.0-cp310-cp310-win_amd64.whl.metadata (11 kB)
+  Downloading scikit_learn-1.4.2-cp310-cp310-win_amd64.whl.metadata (11 kB)
+  Downloading scikit_learn-1.4.1.post1-cp310-cp310-win_amd64.whl.metadata (11 kB)
+  Downloading scikit_learn-1.4.0-1-cp310-cp310-win_amd64.whl.metadata (11 kB)
+  Downloading scikit_learn-1.3.2-cp310-cp310-win_amd64.whl.metadata (11 kB)
+  Downloading scikit_learn-1.3.1-cp310-cp310-win_amd64.whl.metadata (11 kB)
+  Downloading scikit_learn-1.3.0-cp310-cp310-win_amd64.whl.metadata (11 kB)
+  Downloading scikit_learn-1.2.2-cp310-cp310-win_amd64.whl.metadata (11 kB)
+  Downloading scikit_learn-1.2.1-cp310-cp310-win_amd64.whl.metadata (11 kB)
+  Downloading scikit_learn-1.2.0-cp310-cp310-win_amd64.whl.metadata (11 kB)
+  Downloading scikit_learn-1.1.3-cp310-cp310-win_amd64.whl.metadata (10 kB)
+  Downloading scikit_learn-1.1.2-cp310-cp310-win_amd64.whl.metadata (10 kB)
+  Downloading scikit_learn-1.1.1-cp310-cp310-win_amd64.whl.metadata (10 kB)
+  Downloading scikit_learn-1.1.0-cp310-cp310-win_amd64.whl.metadata (10 kB)
+  Downloading scikit_learn-1.0.2-cp310-cp310-win_amd64.whl.metadata (10 kB)
+  Downloading scikit-learn-1.0.1.tar.gz (6.6 MB)
+     ---------------------------------------- 6.6/6.6 MB 11.0 MB/s eta 0:00:00
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'error'
+  error: subprocess-exited-with-error
+  
+  Preparing metadata (pyproject.toml) did not run successfully.
+  exit code: 1
+  
+  [23 lines of output]
+  Partial import of sklearn during the build process.
+  Traceback (most recent call last):
+    File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 389, in <module>
+      main()
+    File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 373, in main
+      json_out["return_val"] = hook(**hook_input["kwargs"])
+    File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 175, in prepare_metadata_for_build_wheel
+      return hook(metadata_directory, config_settings)
+    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-klufsrlm\overlay\Lib\site-packages\setuptools\build_meta.py", line 377, in prepare_metadata_for_build_wheel
+      self.run_setup()
+    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-klufsrlm\overlay\Lib\site-packages\setuptools\build_meta.py", line 522, in run_setup
+      super().run_setup(setup_script=setup_script)
+    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-klufsrlm\overlay\Lib\site-packages\setuptools\build_meta.py", line 320, in run_setup
+      exec(code, locals())
+    File "<string>", line 319, in <module>
+    File "<string>", line 311, in setup_package
+    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-klufsrlm\overlay\Lib\site-packages\numpy\distutils\core.py", line 24, in <module>
+      from numpy.distutils.command import config, config_compiler, \
+    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-klufsrlm\overlay\Lib\site-packages\numpy\distutils\command\config.py", line 19, in <module>
+      from numpy.distutils.mingw32ccompiler import generate_manifest
+    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-klufsrlm\overlay\Lib\site-packages\numpy\distutils\mingw32ccompiler.py", line 29, in <module>
+      from distutils.msvccompiler import get_build_version as get_build_msvc_version
+  ModuleNotFoundError: No module named 'distutils.msvccompiler'
+  [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: metadata-generation-failed
 
+Encountered error while generating package metadata.
 
-  .\setup_env_v22.bat
-===== DEBUT DU PROGRAMME D'INSTALLATION ===== 
-Programme d'installation de l'environnement Text-to-Audio
-Date et heure: 27-02-25 16:12:46,13
-============================================
-Verification de Python 3.10...
-Verification Python 3.10 via py launcher
-[COMMAND] VÃ©rification Python 3.10 via py launcher - DÃ©but d'exÃ©cution
-[COMMAND] VÃ©rification Python 3.10 via py launcher - Fin d'exÃ©cution (code: 0)
-Python 3.10 trouve via py launcher
-Verification de Visual Studio...
-VÃ©rification des redistribuables VC++...
-[DEBUG] vcruntime140.dll trouvÃ©, vÃ©rification de la version...
-[DEBUG] vcruntime140.dll est de version 14.30 ou supÃ©rieure
-^{ était inattendu.
-PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio>
+See above for output.
+
+note: This is an issue with the package mentioned above, not pip.
+hint: See above for details.
+[27-02-25 17:22:24,72] [COMMAND] Installation TTS 0.15.2 - Fin d'exécution (code: 1) 
+[27-02-25 17:22:24,81] [ERROR] Erreur lors de l'exécution de la commande: Installation TTS 0.15.2 (code: 1) 
+[27-02-25 17:22:24,91] [WARNING] Échec de l'installation de TTS 0.15.2, tentative avec la version 0.17.6... 
+[27-02-25 17:22:24,99] [COMMAND] Installation TTS 0.17.6 - Debut d'execution 
+Collecting TTS==0.17.6
+  Downloading TTS-0.17.6.tar.gz (1.6 MB)
+     ---------------------------------------- 1.6/1.6 MB 8.6 MB/s eta 0:00:00
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting numpy==1.22.0 (from TTS==0.17.6)
+  Downloading numpy-1.22.0-cp310-cp310-win_amd64.whl.metadata (2.1 kB)
+Collecting cython==0.29.30 (from TTS==0.17.6)
+  Downloading Cython-0.29.30-py2.py3-none-any.whl.metadata (2.8 kB)
+Collecting scipy>=1.11.2 (from TTS==0.17.6)
+  Downloading scipy-1.15.2-cp310-cp310-win_amd64.whl.metadata (60 kB)
+Requirement already satisfied: torch>=1.7 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.17.6) (2.0.1+cpu)
+Requirement already satisfied: torchaudio in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.17.6) (2.0.2+cpu)
+Requirement already satisfied: soundfile==0.12.* in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.17.6) (0.12.1)
+Requirement already satisfied: librosa==0.10.* in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.17.6) (0.10.0)
+Collecting scikit-learn==1.3.0 (from TTS==0.17.6)
+  Downloading scikit_learn-1.3.0-cp310-cp310-win_amd64.whl.metadata (11 kB)
+Collecting numba==0.57.0 (from TTS==0.17.6)
+  Downloading numba-0.57.0-cp310-cp310-win_amd64.whl.metadata (2.8 kB)
+Collecting inflect==5.6.* (from TTS==0.17.6)
+  Downloading inflect-5.6.2-py3-none-any.whl.metadata (21 kB)
+Collecting tqdm==4.64.* (from TTS==0.17.6)
+  Downloading tqdm-4.64.1-py2.py3-none-any.whl.metadata (57 kB)
+Collecting anyascii==0.3.* (from TTS==0.17.6)
+  Downloading anyascii-0.3.2-py3-none-any.whl.metadata (1.5 kB)
+Requirement already satisfied: pyyaml==6.* in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.17.6) (6.0.1)
+Collecting fsspec==2023.6.0 (from TTS==0.17.6)
+  Downloading fsspec-2023.6.0-py3-none-any.whl.metadata (6.7 kB)
+Collecting aiohttp==3.8.* (from TTS==0.17.6)
+  Downloading aiohttp-3.8.6-cp310-cp310-win_amd64.whl.metadata (7.9 kB)
+Requirement already satisfied: packaging==23.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.17.6) (23.1)
+Collecting flask==2.* (from TTS==0.17.6)
+  Downloading flask-2.3.3-py3-none-any.whl.metadata (3.6 kB)
+Collecting pysbd==0.3.4 (from TTS==0.17.6)
+  Downloading pysbd-0.3.4-py3-none-any.whl.metadata (6.1 kB)
+Collecting umap-learn==0.5.* (from TTS==0.17.6)
+  Downloading umap_learn-0.5.7-py3-none-any.whl.metadata (21 kB)
+Collecting pandas<2.0,>=1.4 (from TTS==0.17.6)
+  Downloading pandas-1.5.3-cp310-cp310-win_amd64.whl.metadata (12 kB)
+Requirement already satisfied: matplotlib==3.7.* in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.17.6) (3.7.3)
+Collecting trainer (from TTS==0.17.6)
+  Downloading trainer-0.0.36-py3-none-any.whl.metadata (8.1 kB)
+Requirement already satisfied: coqpit>=0.0.16 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.17.6) (0.0.17)
+Requirement already satisfied: jieba in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.17.6) (0.42.1)
+Collecting pypinyin (from TTS==0.17.6)
+  Downloading pypinyin-0.53.0-py2.py3-none-any.whl.metadata (12 kB)
+Collecting gruut==2.2.3 (from gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading gruut-2.2.3.tar.gz (73 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting jamo (from TTS==0.17.6)
+  Downloading jamo-0.4.1-py3-none-any.whl.metadata (2.3 kB)
+Collecting nltk (from TTS==0.17.6)
+  Downloading nltk-3.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting g2pkk>=0.1.1 (from TTS==0.17.6)
+  Downloading g2pkk-0.1.2-py3-none-any.whl.metadata (2.0 kB)
+Collecting bangla (from TTS==0.17.6)
+  Downloading bangla-0.0.2-py2.py3-none-any.whl.metadata (4.5 kB)
+Collecting bnnumerizer (from TTS==0.17.6)
+  Downloading bnnumerizer-0.0.2.tar.gz (4.7 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting bnunicodenormalizer (from TTS==0.17.6)
+  Downloading bnunicodenormalizer-0.1.7-py3-none-any.whl.metadata (22 kB)
+Collecting k_diffusion (from TTS==0.17.6)
+  Downloading k_diffusion-0.1.1.post1-py3-none-any.whl.metadata (3.9 kB)
+Collecting einops==0.6.* (from TTS==0.17.6)
+  Downloading einops-0.6.1-py3-none-any.whl.metadata (12 kB)
+Collecting transformers==4.33.* (from TTS==0.17.6)
+  Downloading transformers-4.33.3-py3-none-any.whl.metadata (119 kB)
+Collecting encodec==0.1.* (from TTS==0.17.6)
+  Downloading encodec-0.1.1.tar.gz (3.7 MB)
+     ---------------------------------------- 3.7/3.7 MB 10.6 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: unidecode==1.3.* in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.17.6) (1.3.7)
+Collecting attrs>=17.3.0 (from aiohttp==3.8.*->TTS==0.17.6)
+  Downloading attrs-25.1.0-py3-none-any.whl.metadata (10 kB)
+Requirement already satisfied: charset-normalizer<4.0,>=2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from aiohttp==3.8.*->TTS==0.17.6) (2.1.1)
+Collecting multidict<7.0,>=4.5 (from aiohttp==3.8.*->TTS==0.17.6)
+  Downloading multidict-6.1.0-cp310-cp310-win_amd64.whl.metadata (5.1 kB)
+Collecting async-timeout<5.0,>=4.0.0a3 (from aiohttp==3.8.*->TTS==0.17.6)
+  Downloading async_timeout-4.0.3-py3-none-any.whl.metadata (4.2 kB)
+Collecting yarl<2.0,>=1.0 (from aiohttp==3.8.*->TTS==0.17.6)
+  Downloading yarl-1.18.3-cp310-cp310-win_amd64.whl.metadata (71 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp==3.8.*->TTS==0.17.6)
+  Downloading frozenlist-1.5.0-cp310-cp310-win_amd64.whl.metadata (14 kB)
+Collecting aiosignal>=1.1.2 (from aiohttp==3.8.*->TTS==0.17.6)
+  Downloading aiosignal-1.3.2-py2.py3-none-any.whl.metadata (3.8 kB)
+Requirement already satisfied: Werkzeug>=2.3.7 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from flask==2.*->TTS==0.17.6) (3.1.3)
+Requirement already satisfied: Jinja2>=3.1.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from flask==2.*->TTS==0.17.6) (3.1.4)
+Collecting itsdangerous>=2.1.2 (from flask==2.*->TTS==0.17.6)
+  Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+Collecting click>=8.1.3 (from flask==2.*->TTS==0.17.6)
+  Downloading click-8.1.8-py3-none-any.whl.metadata (2.3 kB)
+Collecting blinker>=1.6.2 (from flask==2.*->TTS==0.17.6)
+  Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+Collecting Babel<3.0.0,>=2.8.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading babel-2.17.0-py3-none-any.whl.metadata (2.0 kB)
+Collecting dateparser~=1.1.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading dateparser-1.1.8-py2.py3-none-any.whl.metadata (27 kB)
+Collecting gruut-ipa<1.0,>=0.12.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading gruut-ipa-0.13.0.tar.gz (101 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting gruut_lang_en~=2.0.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading gruut_lang_en-2.0.1.tar.gz (15.3 MB)
+     --------------------------------------- 15.3/15.3 MB 10.7 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting jsonlines~=1.2.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading jsonlines-1.2.0-py2.py3-none-any.whl.metadata (1.3 kB)
+Collecting networkx<3.0.0,>=2.5.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading networkx-2.8.8-py3-none-any.whl.metadata (5.1 kB)
+Collecting num2words<1.0.0,>=0.5.10 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading num2words-0.5.14-py3-none-any.whl.metadata (13 kB)
+Collecting python-crfsuite~=0.9.7 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading python_crfsuite-0.9.11-cp310-cp310-win_amd64.whl.metadata (4.4 kB)
+Collecting gruut_lang_de~=2.0.0 (from gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading gruut_lang_de-2.0.1.tar.gz (18.1 MB)
+     --------------------------------------- 18.1/18.1 MB 11.0 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting gruut_lang_fr~=2.0.0 (from gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading gruut_lang_fr-2.0.2.tar.gz (10.9 MB)
+     --------------------------------------- 10.9/10.9 MB 10.7 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting gruut_lang_es~=2.0.0 (from gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading gruut_lang_es-2.0.1.tar.gz (31.4 MB)
+     --------------------------------------- 31.4/31.4 MB 10.9 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: audioread>=2.1.9 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.*->TTS==0.17.6) (3.0.1)
+Requirement already satisfied: joblib>=0.14 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.*->TTS==0.17.6) (1.4.2)
+Requirement already satisfied: decorator>=4.3.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.*->TTS==0.17.6) (5.2.1)
+Requirement already satisfied: pooch>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.*->TTS==0.17.6) (1.8.2)
+Requirement already satisfied: soxr>=0.3.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.*->TTS==0.17.6) (0.5.0.post1)
+Requirement already satisfied: typing-extensions>=4.1.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.*->TTS==0.17.6) (4.12.2)
+Requirement already satisfied: lazy-loader>=0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.*->TTS==0.17.6) (0.4)
+Requirement already satisfied: msgpack>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.*->TTS==0.17.6) (1.1.0)
+Requirement already satisfied: contourpy>=1.0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.*->TTS==0.17.6) (1.3.1)
+Requirement already satisfied: cycler>=0.10 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.*->TTS==0.17.6) (0.12.1)
+Requirement already satisfied: fonttools>=4.22.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.*->TTS==0.17.6) (4.56.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.*->TTS==0.17.6) (1.4.8)
+Requirement already satisfied: pillow>=6.2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.*->TTS==0.17.6) (11.0.0)
+Requirement already satisfied: pyparsing>=2.3.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.*->TTS==0.17.6) (3.2.1)
+Requirement already satisfied: python-dateutil>=2.7 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.*->TTS==0.17.6) (2.9.0.post0)
+Collecting llvmlite<0.41,>=0.40.0dev0 (from numba==0.57.0->TTS==0.17.6)
+  Downloading llvmlite-0.40.1-cp310-cp310-win_amd64.whl.metadata (4.8 kB)
+Requirement already satisfied: threadpoolctl>=2.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from scikit-learn==1.3.0->TTS==0.17.6) (3.5.0)
+Requirement already satisfied: cffi>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from soundfile==0.12.*->TTS==0.17.6) (1.17.1)
+Requirement already satisfied: colorama in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tqdm==4.64.*->TTS==0.17.6) (0.4.6)
+Requirement already satisfied: filelock in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from transformers==4.33.*->TTS==0.17.6) (3.13.1)
+Collecting huggingface-hub<1.0,>=0.15.1 (from transformers==4.33.*->TTS==0.17.6)
+  Downloading huggingface_hub-0.29.1-py3-none-any.whl.metadata (13 kB)
+Collecting regex!=2019.12.17 (from transformers==4.33.*->TTS==0.17.6)
+  Downloading regex-2024.11.6-cp310-cp310-win_amd64.whl.metadata (41 kB)
+Requirement already satisfied: requests in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from transformers==4.33.*->TTS==0.17.6) (2.28.1)
+Collecting tokenizers!=0.11.3,<0.14,>=0.11.1 (from transformers==4.33.*->TTS==0.17.6)
+  Downloading tokenizers-0.13.3-cp310-cp310-win_amd64.whl.metadata (6.9 kB)
+Collecting safetensors>=0.3.1 (from transformers==4.33.*->TTS==0.17.6)
+  Downloading safetensors-0.5.3-cp38-abi3-win_amd64.whl.metadata (3.9 kB)
+Collecting pynndescent>=0.5 (from umap-learn==0.5.*->TTS==0.17.6)
+  Downloading pynndescent-0.5.13-py3-none-any.whl.metadata (6.8 kB)
+Collecting pytz>=2020.1 (from pandas<2.0,>=1.4->TTS==0.17.6)
+  Downloading pytz-2025.1-py2.py3-none-any.whl.metadata (22 kB)
+INFO: pip is looking at multiple versions of scipy to determine which version is compatible with other requirements. This could take a while.
+Collecting scipy>=1.11.2 (from TTS==0.17.6)
+  Downloading scipy-1.15.1-cp310-cp310-win_amd64.whl.metadata (60 kB)
+  Downloading scipy-1.15.0-cp310-cp310-win_amd64.whl.metadata (60 kB)
+  Downloading scipy-1.14.1-cp310-cp310-win_amd64.whl.metadata (60 kB)
+  Downloading scipy-1.14.0-cp310-cp310-win_amd64.whl.metadata (60 kB)
+  Downloading scipy-1.13.1-cp310-cp310-win_amd64.whl.metadata (60 kB)
+  Downloading scipy-1.13.0-cp310-cp310-win_amd64.whl.metadata (60 kB)
+  Downloading scipy-1.12.0-cp310-cp310-win_amd64.whl.metadata (60 kB)
+INFO: pip is still looking at multiple versions of scipy to determine which version is compatible with other requirements. This could take a while.
+  Downloading scipy-1.11.4-cp310-cp310-win_amd64.whl.metadata (60 kB)
+Requirement already satisfied: sympy in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torch>=1.7->TTS==0.17.6) (1.13.1)
+Collecting accelerate (from k_diffusion->TTS==0.17.6)
+  Downloading accelerate-1.4.0-py3-none-any.whl.metadata (19 kB)
+Collecting clean-fid (from k_diffusion->TTS==0.17.6)
+  Downloading clean_fid-0.1.35-py3-none-any.whl.metadata (36 kB)
+Collecting clip-anytorch (from k_diffusion->TTS==0.17.6)
+  Downloading clip_anytorch-2.6.0-py3-none-any.whl.metadata (8.4 kB)
+Collecting dctorch (from k_diffusion->TTS==0.17.6)
+  Downloading dctorch-0.1.2-py3-none-any.whl.metadata (607 bytes)
+Collecting jsonmerge (from k_diffusion->TTS==0.17.6)
+  Downloading jsonmerge-1.9.2-py3-none-any.whl.metadata (21 kB)
+Collecting kornia (from k_diffusion->TTS==0.17.6)
+  Downloading kornia-0.8.0-py2.py3-none-any.whl.metadata (17 kB)
+Collecting scikit-image (from k_diffusion->TTS==0.17.6)
+  Downloading scikit_image-0.25.2-cp310-cp310-win_amd64.whl.metadata (14 kB)
+Collecting torchdiffeq (from k_diffusion->TTS==0.17.6)
+  Downloading torchdiffeq-0.2.5-py3-none-any.whl.metadata (440 bytes)
+Collecting torchsde (from k_diffusion->TTS==0.17.6)
+  Downloading torchsde-0.2.6-py3-none-any.whl.metadata (5.3 kB)
+Requirement already satisfied: torchvision in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from k_diffusion->TTS==0.17.6) (0.15.2+cpu)
+Collecting wandb (from k_diffusion->TTS==0.17.6)
+  Downloading wandb-0.19.7-py3-none-win_amd64.whl.metadata (10 kB)
+Collecting psutil (from trainer->TTS==0.17.6)
+  Downloading psutil-7.0.0-cp37-abi3-win_amd64.whl.metadata (23 kB)
+Requirement already satisfied: tensorboard in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from trainer->TTS==0.17.6) (2.14.0)
+Requirement already satisfied: pycparser in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from cffi>=1.0->soundfile==0.12.*->TTS==0.17.6) (2.22)
+INFO: pip is looking at multiple versions of contourpy to determine which version is compatible with other requirements. This could take a while.
+Collecting contourpy>=1.0.1 (from matplotlib==3.7.*->TTS==0.17.6)
+  Downloading contourpy-1.3.0-cp310-cp310-win_amd64.whl.metadata (5.4 kB)
+  Downloading contourpy-1.2.1-cp310-cp310-win_amd64.whl.metadata (5.8 kB)
+Collecting tzlocal (from dateparser~=1.1.0->gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading tzlocal-5.3-py3-none-any.whl.metadata (7.6 kB)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from Jinja2>=3.1.2->flask==2.*->TTS==0.17.6) (2.1.5)
+Requirement already satisfied: six in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from jsonlines~=1.2.0->gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.17.6) (1.17.0)
+Collecting docopt>=0.6.2 (from num2words<1.0.0,>=0.5.10->gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading docopt-0.6.2.tar.gz (25 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: platformdirs>=2.5.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pooch>=1.0->librosa==0.10.*->TTS==0.17.6) (4.3.6)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests->transformers==4.33.*->TTS==0.17.6) (3.4)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests->transformers==4.33.*->TTS==0.17.6) (1.26.13)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests->transformers==4.33.*->TTS==0.17.6) (2022.12.7)
+Collecting propcache>=0.2.0 (from yarl<2.0,>=1.0->aiohttp==3.8.*->TTS==0.17.6)
+  Downloading propcache-0.3.0-cp310-cp310-win_amd64.whl.metadata (10 kB)
+Collecting ftfy (from clip-anytorch->k_diffusion->TTS==0.17.6)
+  Downloading ftfy-6.3.1-py3-none-any.whl.metadata (7.3 kB)
+INFO: pip is looking at multiple versions of dctorch to determine which version is compatible with other requirements. This could take a while.
+Collecting dctorch (from k_diffusion->TTS==0.17.6)
+  Downloading dctorch-0.1.1-py3-none-any.whl.metadata (607 bytes)
+  Downloading dctorch-0.1.0-py3-none-any.whl.metadata (558 bytes)
+Collecting clean-fid (from k_diffusion->TTS==0.17.6)
+  Downloading clean_fid-0.1.34-py3-none-any.whl.metadata (36 kB)
+Collecting requests (from transformers==4.33.*->TTS==0.17.6)
+  Downloading requests-2.25.1-py2.py3-none-any.whl.metadata (4.2 kB)
+Collecting chardet<5,>=3.0.2 (from requests->transformers==4.33.*->TTS==0.17.6)
+  Downloading chardet-4.0.0-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting idna>=2.0 (from yarl<2.0,>=1.0->aiohttp==3.8.*->TTS==0.17.6)
+  Downloading idna-2.10-py2.py3-none-any.whl.metadata (9.1 kB)
+Collecting clean-fid (from k_diffusion->TTS==0.17.6)
+  Downloading clean_fid-0.1.33-py3-none-any.whl.metadata (36 kB)
+INFO: pip is still looking at multiple versions of dctorch to determine which version is compatible with other requirements. This could take a while.
+  Downloading clean_fid-0.1.32-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.31-py3-none-any.whl.metadata (36 kB)
+INFO: This is taking longer than usual. You might need to provide the dependency resolver with stricter constraints to reduce runtime. See https://pip.pypa.io/warnings/backtracking for guidance. If you want to abort this run, press Ctrl + C.
+  Downloading clean_fid-0.1.30-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.29-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.28-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.26-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.25-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.24-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.23-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.22-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.21-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.19-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.18-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.17-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.16-py3-none-any.whl.metadata (36 kB)
+  Downloading clean_fid-0.1.15-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.14-py3-none-any.whl.metadata (35 kB)
+  Downloading clean_fid-0.1.13-py3-none-any.whl.metadata (27 kB)
+  Downloading clean_fid-0.1.12-py3-none-any.whl.metadata (22 kB)
+  Downloading clean_fid-0.1.11-py3-none-any.whl.metadata (22 kB)
+  Downloading clean_fid-0.1.10-py3-none-any.whl.metadata (10 kB)
+  Downloading clean_fid-0.1.9-py3-none-any.whl.metadata (9.5 kB)
+  Downloading clean_fid-0.1.8-py3-none-any.whl.metadata (9.5 kB)
+  Downloading clean_fid-0.1.6-py3-none-any.whl.metadata (8.5 kB)
+Collecting accelerate (from k_diffusion->TTS==0.17.6)
+  Downloading accelerate-1.3.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-1.2.1-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-1.2.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-1.1.1-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-1.1.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-1.0.1-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-1.0.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-0.34.2-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-0.34.1-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-0.34.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-0.33.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.32.1-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.32.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.31.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-0.30.1-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.30.0-py3-none-any.whl.metadata (19 kB)
+  Downloading accelerate-0.29.3-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.29.2-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.29.1-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.29.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.28.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.27.2-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.27.1-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.27.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.26.1-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.26.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.25.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.24.1-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.24.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.23.0-py3-none-any.whl.metadata (18 kB)
+  Downloading accelerate-0.22.0-py3-none-any.whl.metadata (17 kB)
+  Downloading accelerate-0.21.0-py3-none-any.whl.metadata (17 kB)
+  Downloading accelerate-0.20.3-py3-none-any.whl.metadata (17 kB)
+  Downloading accelerate-0.20.2-py3-none-any.whl.metadata (17 kB)
+  Downloading accelerate-0.20.1-py3-none-any.whl.metadata (17 kB)
+  Downloading accelerate-0.20.0-py3-none-any.whl.metadata (17 kB)
+  Downloading accelerate-0.19.0-py3-none-any.whl.metadata (16 kB)
+  Downloading accelerate-0.18.0-py3-none-any.whl.metadata (16 kB)
+  Downloading accelerate-0.17.1-py3-none-any.whl.metadata (16 kB)
+  Downloading accelerate-0.17.0-py3-none-any.whl.metadata (16 kB)
+  Downloading accelerate-0.16.0-py3-none-any.whl.metadata (15 kB)
+  Downloading accelerate-0.15.0-py3-none-any.whl.metadata (15 kB)
+  Downloading accelerate-0.14.0-py3-none-any.whl.metadata (15 kB)
+  Downloading accelerate-0.13.2-py3-none-any.whl.metadata (15 kB)
+  Downloading accelerate-0.13.1-py3-none-any.whl.metadata (15 kB)
+  Downloading accelerate-0.13.0-py3-none-any.whl.metadata (15 kB)
+  Downloading accelerate-0.12.0-py3-none-any.whl.metadata (15 kB)
+  Downloading accelerate-0.11.0-py3-none-any.whl.metadata (14 kB)
+  Downloading accelerate-0.10.0-py3-none-any.whl.metadata (14 kB)
+  Downloading accelerate-0.9.0-py3-none-any.whl.metadata (13 kB)
+  Downloading accelerate-0.8.0-py3-none-any.whl.metadata (13 kB)
+  Downloading accelerate-0.7.1-py3-none-any.whl.metadata (13 kB)
+  Downloading accelerate-0.7.0-py3-none-any.whl.metadata (13 kB)
+  Downloading accelerate-0.6.2-py3-none-any.whl.metadata (13 kB)
+  Downloading accelerate-0.6.1-py3-none-any.whl.metadata (13 kB)
+  Downloading accelerate-0.6.0-py3-none-any.whl.metadata (13 kB)
+  Downloading accelerate-0.5.1-py3-none-any.whl.metadata (11 kB)
+  Downloading accelerate-0.5.0-py3-none-any.whl.metadata (11 kB)
+  Downloading accelerate-0.4.0-py3-none-any.whl.metadata (11 kB)
+Collecting soxr>=0.3.2 (from librosa==0.10.*->TTS==0.17.6)
+  Downloading soxr-0.5.0.post1-cp310-cp310-win_amd64.whl.metadata (5.6 kB)
+  Downloading soxr-0.5.0-cp310-cp310-win_amd64.whl.metadata (5.6 kB)
+  Downloading soxr-0.4.0-cp310-cp310-win_amd64.whl.metadata (5.7 kB)
+  Downloading soxr-0.3.7-cp310-cp310-win_amd64.whl.metadata (5.7 kB)
+  Downloading soxr-0.3.6-cp310-cp310-win_amd64.whl.metadata (5.5 kB)
+  Downloading soxr-0.3.5-cp310-cp310-win_amd64.whl.metadata (5.5 kB)
+  Downloading soxr-0.3.4-cp310-cp310-win_amd64.whl.metadata (5.5 kB)
+  Downloading soxr-0.3.3-cp310-cp310-win_amd64.whl.metadata (5.0 kB)
+  Downloading soxr-0.3.2-cp310-cp310-win_amd64.whl.metadata (5.0 kB)
+Collecting pynndescent>=0.5 (from umap-learn==0.5.*->TTS==0.17.6)
+  Downloading pynndescent-0.5.12-py3-none-any.whl.metadata (6.8 kB)
+Collecting contourpy>=1.0.1 (from matplotlib==3.7.*->TTS==0.17.6)
+  Downloading contourpy-1.2.0-cp310-cp310-win_amd64.whl.metadata (5.8 kB)
+  Downloading contourpy-1.1.1-cp310-cp310-win_amd64.whl.metadata (5.9 kB)
+INFO: pip is still looking at multiple versions of contourpy to determine which version is compatible with other requirements. This could take a while.
+  Downloading contourpy-1.1.0-cp310-cp310-win_amd64.whl.metadata (5.7 kB)
+  Downloading contourpy-1.0.7-cp310-cp310-win_amd64.whl.metadata (3.9 kB)
+  Downloading contourpy-1.0.6-cp310-cp310-win_amd64.whl.metadata (3.5 kB)
+INFO: This is taking longer than usual. You might need to provide the dependency resolver with stricter constraints to reduce runtime. See https://pip.pypa.io/warnings/backtracking for guidance. If you want to abort this run, press Ctrl + C.
+  Downloading contourpy-1.0.5-cp310-cp310-win_amd64.whl.metadata (3.3 kB)
+  Downloading contourpy-1.0.4-cp310-cp310-win_amd64.whl.metadata (3.2 kB)
+  Downloading contourpy-1.0.3-cp310-cp310-win_amd64.whl.metadata (3.0 kB)
+  Downloading contourpy-1.0.2-cp310-cp310-win_amd64.whl.metadata (2.2 kB)
+  Downloading contourpy-1.0.1-cp310-cp310-win_amd64.whl.metadata (2.2 kB)
+Collecting k_diffusion (from TTS==0.17.6)
+  Downloading k_diffusion-0.1.1-py3-none-any.whl.metadata (3.9 kB)
+  Downloading k_diffusion-0.1.0-py3-none-any.whl.metadata (3.9 kB)
+Collecting rotary-embedding-torch (from k_diffusion->TTS==0.17.6)
+  Downloading rotary_embedding_torch-0.8.6-py3-none-any.whl.metadata (675 bytes)
+Collecting k_diffusion (from TTS==0.17.6)
+  Downloading k_diffusion-0.0.16-py3-none-any.whl.metadata (3.7 kB)
+Collecting resize-right (from k_diffusion->TTS==0.17.6)
+  Downloading resize_right-0.0.2-py3-none-any.whl.metadata (551 bytes)
+Collecting jsonschema>2.4.0 (from jsonmerge->k_diffusion->TTS==0.17.6)
+  Downloading jsonschema-4.23.0-py3-none-any.whl.metadata (7.9 kB)
+Collecting kornia_rs>=0.1.0 (from kornia->k_diffusion->TTS==0.17.6)
+  Downloading kornia_rs-0.1.8-cp310-cp310-win_amd64.whl.metadata (11 kB)
+INFO: pip is looking at multiple versions of scikit-image to determine which version is compatible with other requirements. This could take a while.
+Collecting scikit-image (from k_diffusion->TTS==0.17.6)
+  Downloading scikit_image-0.25.1-cp310-cp310-win_amd64.whl.metadata (14 kB)
+  Downloading scikit_image-0.25.0-cp310-cp310-win_amd64.whl.metadata (14 kB)
+  Downloading scikit_image-0.24.0-cp310-cp310-win_amd64.whl.metadata (14 kB)
+  Downloading scikit_image-0.23.2-cp310-cp310-win_amd64.whl.metadata (14 kB)
+  Downloading scikit_image-0.23.1-cp310-cp310-win_amd64.whl.metadata (14 kB)
+  Downloading scikit_image-0.22.0-cp310-cp310-win_amd64.whl.metadata (13 kB)
+Collecting imageio>=2.27 (from scikit-image->k_diffusion->TTS==0.17.6)
+  Downloading imageio-2.37.0-py3-none-any.whl.metadata (5.2 kB)
+Collecting tifffile>=2022.8.12 (from scikit-image->k_diffusion->TTS==0.17.6)
+  Downloading tifffile-2025.2.18-py3-none-any.whl.metadata (31 kB)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from sympy->torch>=1.7->TTS==0.17.6) (1.3.0)
+Requirement already satisfied: absl-py>=0.4 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer->TTS==0.17.6) (2.1.0)
+Requirement already satisfied: grpcio>=1.48.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer->TTS==0.17.6) (1.70.0)
+Requirement already satisfied: google-auth<3,>=1.6.3 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer->TTS==0.17.6) (2.38.0)
+Requirement already satisfied: google-auth-oauthlib<1.1,>=0.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer->TTS==0.17.6) (1.0.0)
+Requirement already satisfied: markdown>=2.6.8 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer->TTS==0.17.6) (3.7)
+Requirement already satisfied: protobuf>=3.19.6 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer->TTS==0.17.6) (4.24.4)
+Requirement already satisfied: setuptools>=41.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer->TTS==0.17.6) (75.8.2)
+Requirement already satisfied: tensorboard-data-server<0.8.0,>=0.7.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer->TTS==0.17.6) (0.7.2)
+Requirement already satisfied: wheel>=0.26 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer->TTS==0.17.6) (0.45.1)
+Collecting trampoline>=0.1.2 (from torchsde->k_diffusion->TTS==0.17.6)
+  Downloading trampoline-0.1.2-py3-none-any.whl.metadata (10 kB)
+Collecting docker-pycreds>=0.4.0 (from wandb->k_diffusion->TTS==0.17.6)
+  Downloading docker_pycreds-0.4.0-py2.py3-none-any.whl.metadata (1.8 kB)
+Collecting gitpython!=3.1.29,>=1.0.0 (from wandb->k_diffusion->TTS==0.17.6)
+  Downloading GitPython-3.1.44-py3-none-any.whl.metadata (13 kB)
+Collecting pydantic<3,>=2.6 (from wandb->k_diffusion->TTS==0.17.6)
+  Downloading pydantic-2.10.6-py3-none-any.whl.metadata (30 kB)
+Collecting sentry-sdk>=2.0.0 (from wandb->k_diffusion->TTS==0.17.6)
+  Downloading sentry_sdk-2.22.0-py2.py3-none-any.whl.metadata (10 kB)
+Collecting setproctitle (from wandb->k_diffusion->TTS==0.17.6)
+  Downloading setproctitle-1.3.5-cp310-cp310-win_amd64.whl.metadata (10 kB)
+Collecting gitdb<5,>=4.0.1 (from gitpython!=3.1.29,>=1.0.0->wandb->k_diffusion->TTS==0.17.6)
+  Downloading gitdb-4.0.12-py3-none-any.whl.metadata (1.2 kB)
+Requirement already satisfied: cachetools<6.0,>=2.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from google-auth<3,>=1.6.3->tensorboard->trainer->TTS==0.17.6) (5.5.2)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from google-auth<3,>=1.6.3->tensorboard->trainer->TTS==0.17.6) (0.4.1)
+Requirement already satisfied: rsa<5,>=3.1.4 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from google-auth<3,>=1.6.3->tensorboard->trainer->TTS==0.17.6) (4.9)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from google-auth-oauthlib<1.1,>=0.5->tensorboard->trainer->TTS==0.17.6) (2.0.0)
+Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>2.4.0->jsonmerge->k_diffusion->TTS==0.17.6)
+  Downloading jsonschema_specifications-2024.10.1-py3-none-any.whl.metadata (3.0 kB)
+Collecting referencing>=0.28.4 (from jsonschema>2.4.0->jsonmerge->k_diffusion->TTS==0.17.6)
+  Downloading referencing-0.36.2-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py>=0.7.1 (from jsonschema>2.4.0->jsonmerge->k_diffusion->TTS==0.17.6)
+  Downloading rpds_py-0.23.1-cp310-cp310-win_amd64.whl.metadata (4.2 kB)
+Collecting annotated-types>=0.6.0 (from pydantic<3,>=2.6->wandb->k_diffusion->TTS==0.17.6)
+  Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.27.2 (from pydantic<3,>=2.6->wandb->k_diffusion->TTS==0.17.6)
+  Downloading pydantic_core-2.27.2-cp310-cp310-win_amd64.whl.metadata (6.7 kB)
+Collecting wcwidth (from ftfy->clip-anytorch->k_diffusion->TTS==0.17.6)
+  Downloading wcwidth-0.2.13-py2.py3-none-any.whl.metadata (14 kB)
+Collecting tzdata (from tzlocal->dateparser~=1.1.0->gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading tzdata-2025.1-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting smmap<6,>=3.0.1 (from gitdb<5,>=4.0.1->gitpython!=3.1.29,>=1.0.0->wandb->k_diffusion->TTS==0.17.6)
+  Downloading smmap-5.0.2-py3-none-any.whl.metadata (4.3 kB)
+Requirement already satisfied: pyasn1<0.7.0,>=0.4.6 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard->trainer->TTS==0.17.6) (0.6.1)
+Requirement already satisfied: oauthlib>=3.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<1.1,>=0.5->tensorboard->trainer->TTS==0.17.6) (3.2.2)
+Downloading aiohttp-3.8.6-cp310-cp310-win_amd64.whl (325 kB)
+Downloading anyascii-0.3.2-py3-none-any.whl (289 kB)
+Downloading Cython-0.29.30-py2.py3-none-any.whl (985 kB)
+   --------------------------------------- 985.1/985.1 kB 15.4 MB/s eta 0:00:00
+Downloading einops-0.6.1-py3-none-any.whl (42 kB)
+Downloading flask-2.3.3-py3-none-any.whl (96 kB)
+Downloading fsspec-2023.6.0-py3-none-any.whl (163 kB)
+Downloading inflect-5.6.2-py3-none-any.whl (33 kB)
+Downloading numba-0.57.0-cp310-cp310-win_amd64.whl (2.6 MB)
+   ---------------------------------------- 2.6/2.6 MB 11.3 MB/s eta 0:00:00
+Downloading numpy-1.22.0-cp310-cp310-win_amd64.whl (14.7 MB)
+   ---------------------------------------- 14.7/14.7 MB 10.2 MB/s eta 0:00:00
+Downloading pysbd-0.3.4-py3-none-any.whl (71 kB)
+Downloading scikit_learn-1.3.0-cp310-cp310-win_amd64.whl (9.2 MB)
+   ---------------------------------------- 9.2/9.2 MB 11.0 MB/s eta 0:00:00
+Downloading tqdm-4.64.1-py2.py3-none-any.whl (78 kB)
+Downloading transformers-4.33.3-py3-none-any.whl (7.6 MB)
+   ---------------------------------------- 7.6/7.6 MB 12.4 MB/s eta 0:00:00
+Downloading umap_learn-0.5.7-py3-none-any.whl (88 kB)
+Downloading g2pkk-0.1.2-py3-none-any.whl (25 kB)
+Downloading pandas-1.5.3-cp310-cp310-win_amd64.whl (10.4 MB)
+   ---------------------------------------- 10.4/10.4 MB 12.0 MB/s eta 0:00:00
+Downloading scipy-1.11.4-cp310-cp310-win_amd64.whl (44.1 MB)
+   ---------------------------------------- 44.1/44.1 MB 11.2 MB/s eta 0:00:00
+Downloading bangla-0.0.2-py2.py3-none-any.whl (6.2 kB)
+Downloading bnunicodenormalizer-0.1.7-py3-none-any.whl (23 kB)
+Downloading jamo-0.4.1-py3-none-any.whl (9.5 kB)
+Downloading contourpy-1.2.1-cp310-cp310-win_amd64.whl (187 kB)
+Downloading k_diffusion-0.0.16-py3-none-any.whl (25 kB)
+Downloading nltk-3.9.1-py3-none-any.whl (1.5 MB)
+   ---------------------------------------- 1.5/1.5 MB 11.4 MB/s eta 0:00:00
+Downloading pypinyin-0.53.0-py2.py3-none-any.whl (834 kB)
+   --------------------------------------- 834.7/834.7 kB 18.5 MB/s eta 0:00:00
+Downloading trainer-0.0.36-py3-none-any.whl (51 kB)
+Downloading aiosignal-1.3.2-py2.py3-none-any.whl (7.6 kB)
+Downloading async_timeout-4.0.3-py3-none-any.whl (5.7 kB)
+Downloading attrs-25.1.0-py3-none-any.whl (63 kB)
+Downloading babel-2.17.0-py3-none-any.whl (10.2 MB)
+   ---------------------------------------- 10.2/10.2 MB 10.8 MB/s eta 0:00:00
+Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+Downloading click-8.1.8-py3-none-any.whl (98 kB)
+Downloading dateparser-1.1.8-py2.py3-none-any.whl (293 kB)
+Downloading frozenlist-1.5.0-cp310-cp310-win_amd64.whl (51 kB)
+Downloading huggingface_hub-0.29.1-py3-none-any.whl (468 kB)
+Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Downloading jsonlines-1.2.0-py2.py3-none-any.whl (7.6 kB)
+Downloading llvmlite-0.40.1-cp310-cp310-win_amd64.whl (27.7 MB)
+   ---------------------------------------- 27.7/27.7 MB 10.9 MB/s eta 0:00:00
+Downloading multidict-6.1.0-cp310-cp310-win_amd64.whl (28 kB)
+Downloading networkx-2.8.8-py3-none-any.whl (2.0 MB)
+   ---------------------------------------- 2.0/2.0 MB 11.2 MB/s eta 0:00:00
+Downloading num2words-0.5.14-py3-none-any.whl (163 kB)
+Downloading pynndescent-0.5.13-py3-none-any.whl (56 kB)
+Downloading python_crfsuite-0.9.11-cp310-cp310-win_amd64.whl (301 kB)
+Downloading pytz-2025.1-py2.py3-none-any.whl (507 kB)
+Downloading regex-2024.11.6-cp310-cp310-win_amd64.whl (274 kB)
+Downloading safetensors-0.5.3-cp38-abi3-win_amd64.whl (308 kB)
+Downloading tokenizers-0.13.3-cp310-cp310-win_amd64.whl (3.5 MB)
+   ---------------------------------------- 3.5/3.5 MB 12.1 MB/s eta 0:00:00
+Downloading yarl-1.18.3-cp310-cp310-win_amd64.whl (90 kB)
+Downloading accelerate-1.4.0-py3-none-any.whl (342 kB)
+Downloading clean_fid-0.1.35-py3-none-any.whl (26 kB)
+Downloading clip_anytorch-2.6.0-py3-none-any.whl (1.4 MB)
+   ---------------------------------------- 1.4/1.4 MB 14.2 MB/s eta 0:00:00
+Downloading jsonmerge-1.9.2-py3-none-any.whl (19 kB)
+Downloading kornia-0.8.0-py2.py3-none-any.whl (1.1 MB)
+   ---------------------------------------- 1.1/1.1 MB 10.5 MB/s eta 0:00:00
+Downloading psutil-7.0.0-cp37-abi3-win_amd64.whl (244 kB)
+Downloading resize_right-0.0.2-py3-none-any.whl (8.9 kB)
+Downloading scikit_image-0.22.0-cp310-cp310-win_amd64.whl (24.5 MB)
+   ---------------------------------------- 24.5/24.5 MB 10.6 MB/s eta 0:00:00
+Downloading torchdiffeq-0.2.5-py3-none-any.whl (32 kB)
+Downloading torchsde-0.2.6-py3-none-any.whl (61 kB)
+Downloading wandb-0.19.7-py3-none-win_amd64.whl (20.3 MB)
+   ---------------------------------------- 20.3/20.3 MB 10.0 MB/s eta 0:00:00
+Downloading docker_pycreds-0.4.0-py2.py3-none-any.whl (9.0 kB)
+Downloading GitPython-3.1.44-py3-none-any.whl (207 kB)
+Downloading imageio-2.37.0-py3-none-any.whl (315 kB)
+Downloading jsonschema-4.23.0-py3-none-any.whl (88 kB)
+Downloading kornia_rs-0.1.8-cp310-cp310-win_amd64.whl (1.7 MB)
+   ---------------------------------------- 1.7/1.7 MB 11.5 MB/s eta 0:00:00
+Downloading propcache-0.3.0-cp310-cp310-win_amd64.whl (44 kB)
+Downloading pydantic-2.10.6-py3-none-any.whl (431 kB)
+Downloading pydantic_core-2.27.2-cp310-cp310-win_amd64.whl (2.0 MB)
+   ---------------------------------------- 2.0/2.0 MB 11.0 MB/s eta 0:00:00
+Downloading sentry_sdk-2.22.0-py2.py3-none-any.whl (325 kB)
+Downloading tifffile-2025.2.18-py3-none-any.whl (226 kB)
+Downloading trampoline-0.1.2-py3-none-any.whl (5.2 kB)
+Downloading ftfy-6.3.1-py3-none-any.whl (44 kB)
+Downloading setproctitle-1.3.5-cp310-cp310-win_amd64.whl (12 kB)
+Downloading tzlocal-5.3-py3-none-any.whl (17 kB)
+Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Downloading gitdb-4.0.12-py3-none-any.whl (62 kB)
+Downloading jsonschema_specifications-2024.10.1-py3-none-any.whl (18 kB)
+Downloading referencing-0.36.2-py3-none-any.whl (26 kB)
+Downloading rpds_py-0.23.1-cp310-cp310-win_amd64.whl (232 kB)
+Downloading tzdata-2025.1-py2.py3-none-any.whl (346 kB)
+Downloading wcwidth-0.2.13-py2.py3-none-any.whl (34 kB)
+Downloading smmap-5.0.2-py3-none-any.whl (24 kB)
+Building wheels for collected packages: TTS, encodec, gruut, bnnumerizer, gruut-ipa, gruut_lang_de, gruut_lang_en, gruut_lang_es, gruut_lang_fr, docopt
+  Building wheel for TTS (pyproject.toml): started
+  Building wheel for TTS (pyproject.toml): finished with status 'done'
+  Created wheel for TTS: filename=tts-0.17.6-cp310-cp310-win_amd64.whl size=853558 sha256=3f8b5beda456081cd44739e913b3801f2647912b9be4880cbc1f4b5a1d3dcad9
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-u2t99gkl\wheels\9f\21\a0\ef44d6dc7f3192e3349cd89d3840653a77cf1c4e199e1b6511
+  Building wheel for encodec (setup.py): started
+  Building wheel for encodec (setup.py): finished with status 'done'
+  Created wheel for encodec: filename=encodec-0.1.1-py3-none-any.whl size=45874 sha256=9f24cbb0f87e9339ade391afc2d42bc8bf1c45b7751271e5f0fb39c36e11da18
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-u2t99gkl\wheels\fc\36\cb\81af8b985a5f5e0815312d5e52b41263237af07b977e6bcbf3
+  Building wheel for gruut (setup.py): started
+  Building wheel for gruut (setup.py): finished with status 'done'
+  Created wheel for gruut: filename=gruut-2.2.3-py3-none-any.whl size=75909 sha256=3c99b6fb7dbb0c1cd0aed42e4ecc10e89fb356dbb4033f4d713c9c9f1df17410
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-u2t99gkl\wheels\fc\57\a8\f9de532daf5214f53644f20f3a9e6f69269453c87df9c0a817
+  Building wheel for bnnumerizer (setup.py): started
+  Building wheel for bnnumerizer (setup.py): finished with status 'done'
+  Created wheel for bnnumerizer: filename=bnnumerizer-0.0.2-py3-none-any.whl size=5321 sha256=2f0b87650a3fc50dce990c47fa4fb6cb1d95d7d8d2b647f1d1acd97416c7518e
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-u2t99gkl\wheels\59\6b\e8\223172e7d5c9f72df3ea1a0d9258f3a8ab5b28e827728edef5
+  Building wheel for gruut-ipa (setup.py): started
+  Building wheel for gruut-ipa (setup.py): finished with status 'done'
+  Created wheel for gruut-ipa: filename=gruut_ipa-0.13.0-py3-none-any.whl size=104961 sha256=eaa595124a286d096b911192d8460a9a105f8720f4de3fcd40634a669f8160e5
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-u2t99gkl\wheels\7b\18\49\e4f500ecdf0babe757953f844e4d7cd1ea81c5503c09bfe984
+  Building wheel for gruut_lang_de (setup.py): started
+  Building wheel for gruut_lang_de (setup.py): finished with status 'done'
+  Created wheel for gruut_lang_de: filename=gruut_lang_de-2.0.1-py3-none-any.whl size=18498366 sha256=d844c110332fa37d42fc272b48b919455ab807274aabbf14a53764778de521a7
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-u2t99gkl\wheels\83\80\5f\775b357ae61d7cb68793327c7470d848715cbc60bb373af8dd
+  Building wheel for gruut_lang_en (setup.py): started
+  Building wheel for gruut_lang_en (setup.py): finished with status 'done'
+  Created wheel for gruut_lang_en: filename=gruut_lang_en-2.0.1-py3-none-any.whl size=15326908 sha256=f07b8b850f058b4fc71e3814249183091b8b7b857ebed7c5a6368506d8bcdf42
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-u2t99gkl\wheels\64\8d\b7\d484d224facd899ed188e00374f25dd3f19d1a3f53da6517bd
+  Building wheel for gruut_lang_es (setup.py): started
+  Building wheel for gruut_lang_es (setup.py): finished with status 'done'
+  Created wheel for gruut_lang_es: filename=gruut_lang_es-2.0.1-py3-none-any.whl size=32173980 sha256=5bf6634a2e51c12e787264172940bbae7889eaca18d5c8a226132ba54a53ecab
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-u2t99gkl\wheels\ab\bd\96\5ddde14e8e6932a96f12c5ab5de62b619d39e2507d7daf5188
+  Building wheel for gruut_lang_fr (setup.py): started
+  Building wheel for gruut_lang_fr (setup.py): finished with status 'done'
+  Created wheel for gruut_lang_fr: filename=gruut_lang_fr-2.0.2-py3-none-any.whl size=10968816 sha256=c070585bf4d2a4e24d5d102ebdbf4047f455120e404f0afb98377549c6087eab
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-u2t99gkl\wheels\db\21\be\d0436e3f1cf9bf38b9bb9b4a476399c77a1ab19f7172b45e19
+  Building wheel for docopt (setup.py): started
+  Building wheel for docopt (setup.py): finished with status 'done'
+  Created wheel for docopt: filename=docopt-0.6.2-py2.py3-none-any.whl size=13822 sha256=72099f7f486a6d8470a633d03a63aba6bdcbc16e3d3b1687cb95c659c8f360d5
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-u2t99gkl\wheels\fc\ab\d4\5da2067ac95b36618c629a5f93f809425700506f72c9732fac
+Successfully built TTS encodec gruut bnnumerizer gruut-ipa gruut_lang_de gruut_lang_en gruut_lang_es gruut_lang_fr docopt
+Installing collected packages: wcwidth, trampoline, tokenizers, resize-right, pytz, jamo, gruut_lang_fr, gruut_lang_es, gruut_lang_en, gruut_lang_de, docopt, bnunicodenormalizer, bnnumerizer, bangla, tzdata, tqdm, smmap, setproctitle, sentry-sdk, safetensors, rpds-py, regex, python-crfsuite, pysbd, pypinyin, pydantic-core, psutil, propcache, numpy, num2words, networkx, multidict, llvmlite, kornia_rs, jsonlines, itsdangerous, inflect, gruut-ipa, ftfy, fsspec, frozenlist, einops, docker-pycreds, cython, click, blinker, Babel, attrs, async-timeout, anyascii, annotated-types, yarl, tzlocal, tifffile, scipy, referencing, pydantic, pandas, numba, nltk, imageio, huggingface-hub, gitdb, flask, contourpy, aiosignal, transformers, torchsde, torchdiffeq, scikit-learn, scikit-image, kornia, jsonschema-specifications, gitpython, g2pkk, dateparser, aiohttp, accelerate, wandb, pynndescent, jsonschema, gruut, encodec, clip-anytorch, clean-fid, umap-learn, trainer, jsonmerge, k_diffusion, TTS
+  Attempting uninstall: tqdm
+    Found existing installation: tqdm 4.67.1
+    Uninstalling tqdm-4.67.1:
+      Successfully uninstalled tqdm-4.67.1
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.26.4
+    Uninstalling numpy-1.26.4:
+      Successfully uninstalled numpy-1.26.4
+  Attempting uninstall: networkx
+    Found existing installation: networkx 3.3
+    Uninstalling networkx-3.3:
+      Successfully uninstalled networkx-3.3
+  Attempting uninstall: llvmlite
+    Found existing installation: llvmlite 0.44.0
+    Uninstalling llvmlite-0.44.0:
+      Successfully uninstalled llvmlite-0.44.0
+  Attempting uninstall: fsspec
+    Found existing installation: fsspec 2023.9.2
+    Uninstalling fsspec-2023.9.2:
+      Successfully uninstalled fsspec-2023.9.2
+  Attempting uninstall: cython
+    Found existing installation: Cython 3.0.12
+    Uninstalling Cython-3.0.12:
+      Successfully uninstalled Cython-3.0.12
+  Attempting uninstall: scipy
+    Found existing installation: scipy 1.10.1
+    Uninstalling scipy-1.10.1:
+      Successfully uninstalled scipy-1.10.1
+  Attempting uninstall: numba
+    Found existing installation: numba 0.61.0
+    Uninstalling numba-0.61.0:
+      Successfully uninstalled numba-0.61.0
+  Attempting uninstall: contourpy
+    Found existing installation: contourpy 1.3.1
+    Uninstalling contourpy-1.3.1:
+      Successfully uninstalled contourpy-1.3.1
+  Attempting uninstall: scikit-learn
+    Found existing installation: scikit-learn 1.6.1
+    Uninstalling scikit-learn-1.6.1:
+      Successfully uninstalled scikit-learn-1.6.1
+Successfully installed Babel-2.17.0 TTS-0.17.6 accelerate-1.4.0 aiohttp-3.8.6 aiosignal-1.3.2 annotated-types-0.7.0 anyascii-0.3.2 async-timeout-4.0.3 attrs-25.1.0 bangla-0.0.2 blinker-1.9.0 bnnumerizer-0.0.2 bnunicodenormalizer-0.1.7 clean-fid-0.1.35 click-8.1.8 clip-anytorch-2.6.0 contourpy-1.2.1 cython-0.29.30 dateparser-1.1.8 docker-pycreds-0.4.0 docopt-0.6.2 einops-0.6.1 encodec-0.1.1 flask-2.3.3 frozenlist-1.5.0 fsspec-2023.6.0 ftfy-6.3.1 g2pkk-0.1.2 gitdb-4.0.12 gitpython-3.1.44 gruut-2.2.3 gruut-ipa-0.13.0 gruut_lang_de-2.0.1 gruut_lang_en-2.0.1 gruut_lang_es-2.0.1 gruut_lang_fr-2.0.2 huggingface-hub-0.29.1 imageio-2.37.0 inflect-5.6.2 itsdangerous-2.2.0 jamo-0.4.1 jsonlines-1.2.0 jsonmerge-1.9.2 jsonschema-4.23.0 jsonschema-specifications-2024.10.1 k_diffusion-0.0.16 kornia-0.8.0 kornia_rs-0.1.8 llvmlite-0.40.1 multidict-6.1.0 networkx-2.8.8 nltk-3.9.1 num2words-0.5.14 numba-0.57.0 numpy-1.22.0 pandas-1.5.3 propcache-0.3.0 psutil-7.0.0 pydantic-2.10.6 pydantic-core-2.27.2 pynndescent-0.5.13 pypinyin-0.53.0 pysbd-0.3.4 python-crfsuite-0.9.11 pytz-2025.1 referencing-0.36.2 regex-2024.11.6 resize-right-0.0.2 rpds-py-0.23.1 safetensors-0.5.3 scikit-image-0.22.0 scikit-learn-1.3.0 scipy-1.11.4 sentry-sdk-2.22.0 setproctitle-1.3.5 smmap-5.0.2 tifffile-2025.2.18 tokenizers-0.13.3 torchdiffeq-0.2.5 torchsde-0.2.6 tqdm-4.64.1 trainer-0.0.36 trampoline-0.1.2 transformers-4.33.3 tzdata-2025.1 tzlocal-5.3 umap-learn-0.5.7 wandb-0.19.7 wcwidth-0.2.13 yarl-1.18.3
+[27-02-25 17:27:51,53] [COMMAND] Installation TTS 0.17.6 - Fin d'exécution (code: 0) 
+[27-02-25 17:27:51,54] [INFO] Installation de PyQt6... 
+[27-02-25 17:27:51,56] [COMMAND] Désinstallation PyQt6 - Debut d'execution 
+WARNING: Skipping PyQt6 as it is not installed.
+WARNING: Skipping PyQt6-Qt6 as it is not installed.
+WARNING: Skipping PyQt6-sip as it is not installed.
+[27-02-25 17:27:54,17] [COMMAND] Désinstallation PyQt6 - Fin d'exécution (code: 0) 
+[27-02-25 17:27:54,19] [COMMAND] Installation PyQt6 - Debut d'execution 
+Collecting PyQt6==6.5.2
+  Downloading PyQt6-6.5.2-cp37-abi3-win_amd64.whl.metadata (2.2 kB)
+Collecting PyQt6-Qt6==6.5.2
+  Downloading PyQt6_Qt6-6.5.2-py3-none-win_amd64.whl.metadata (551 bytes)
+Collecting PyQt6-sip==13.5.2
+  Downloading PyQt6_sip-13.5.2-cp310-cp310-win_amd64.whl.metadata (524 bytes)
+Downloading PyQt6-6.5.2-cp37-abi3-win_amd64.whl (6.5 MB)
+   ---------------------------------------- 6.5/6.5 MB 10.2 MB/s eta 0:00:00
+Downloading PyQt6_Qt6-6.5.2-py3-none-win_amd64.whl (59.3 MB)
+   ---------------------------------------- 59.3/59.3 MB 11.3 MB/s eta 0:00:00
+Downloading PyQt6_sip-13.5.2-cp310-cp310-win_amd64.whl (72 kB)
+Installing collected packages: PyQt6-Qt6, PyQt6-sip, PyQt6
+Successfully installed PyQt6-6.5.2 PyQt6-Qt6-6.5.2 PyQt6-sip-13.5.2
+[27-02-25 17:28:08,57] [COMMAND] Installation PyQt6 - Fin d'exécution (code: 0) 
+[27-02-25 17:28:08,60] [INFO] Vérification des installations... 
+[27-02-25 17:28:08,63] [INFO] Vérification de numpy... 
+[27-02-25 17:28:08,66] [COMMAND] numpy - Debut d'execution 
+[27-02-25 17:28:08,79] [COMMAND] numpy - Fin d'exécution (code: 1) 
+[27-02-25 17:28:08,80] [ERROR] Erreur lors de l'exécution de la commande: numpy (code: 1) 
+[27-02-25 17:28:08,83] [INFO] Vérification de torch... 
+[27-02-25 17:28:08,85] [COMMAND] torch - Debut d'execution 
+[27-02-25 17:28:08,95] [COMMAND] torch - Fin d'exécution (code: 1) 
+[27-02-25 17:28:08,96] [ERROR] Erreur lors de l'exécution de la commande: torch (code: 1) 
+[27-02-25 17:28:08,98] [INFO] Vérification de TTS... 
+[27-02-25 17:28:09,02] [COMMAND] sys - Debut d'execution 
+[27-02-25 17:28:09,14] [COMMAND] sys - Fin d'exécution (code: 1) 
+[27-02-25 17:28:09,14] [ERROR] Erreur lors de l'exécution de la commande: sys (code: 1) 
+[27-02-25 17:28:09,17] [INFO] Vérification de PyQt6... 
+[27-02-25 17:28:09,20] [COMMAND] PyQt6.QtWidgets - Debut d'execution 
+[27-02-25 17:28:09,42] [COMMAND] PyQt6.QtWidgets - Fin d'exécution (code: 1) 
+[27-02-25 17:28:09,46] [ERROR] Erreur lors de l'exécution de la commande: PyQt6.QtWidgets (code: 1) 
+[27-02-25 17:28:09,56] [INFO] Vérification des fonctionnalités TTS... 
+[27-02-25 17:28:09,72] [COMMAND] sys - Debut d'execution 
+[27-02-25 17:28:09,86] [COMMAND] sys - Fin d'exécution (code: 1) 
+[27-02-25 17:28:09,87] [ERROR] Erreur lors de l'exécution de la commande: sys (code: 1) 
+[27-02-25 17:28:09,89] [INFO] Installation terminee 
+[27-02-25 17:28:09,92] [INFO] Pour tester, executez: 
+[27-02-25 17:28:09,96] [INFO] call .\venv_py310\Scripts\activate.bat 
+[27-02-25 17:28:09,99] [INFO] python Simple_TTS_GUI.py 
+[27-02-25 17:28:10,01] [INFO] Fichier log disponible: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\setup_env_log.txt 

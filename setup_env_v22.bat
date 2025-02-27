@@ -94,21 +94,9 @@ REM Méthode 1: Vérification basée sur les fichiers DLL avec contrôle de vers
 if exist "C:\Windows\System32\vcruntime140.dll" (
     call :log DEBUG "vcruntime140.dll trouvé, vérification de la version..."
     
-    REM Création d'un script PowerShell temporaire pour vérifier la version du fichier
-    (
-        echo $file = Get-Item "C:\Windows\System32\vcruntime140.dll"
-        echo if ($file.VersionInfo.FileVersion -ge "14.30") { exit 0 } else { exit 1 }
-    ) > "%TEMP%\check_vc_version.ps1"
-    
-    REM Exécution du script PowerShell
-    powershell -ExecutionPolicy Bypass -File "%TEMP%\check_vc_version.ps1" >nul 2>&1
-    if %ERRORLEVEL% equ 0 (
-        set VC_REDIST_INSTALLED=1
-        call :log DEBUG "vcruntime140.dll est de version 14.30 ou supérieure"
-    ) else (
-        call :log DEBUG "vcruntime140.dll est présent mais d'une version antérieure"
-    )
-    del "%TEMP%\check_vc_version.ps1"
+    REM DISPLAY de la version du fichier
+    call :log DEBUG "Version du fichier vcruntime140.dll:"
+    powershell -Command "(Get-Item 'C:\Windows\System32\vcruntime140.dll').VersionInfo.FileVersion"
 )
 
 REM Méthode 2: Vérification de la présence d'autres DLL spécifiques à VC++ 2022
@@ -121,32 +109,32 @@ if %VC_REDIST_INSTALLED% equ 0 (
     )
 )
 
-REM Méthode 3: Test fonctionnel - création d'un petit programme de test
-if %VC_REDIST_INSTALLED% equ 0 (
-    call :log DEBUG "Création d'un programme de test pour vérifier les redistribuables VC++..."
+@REM REM Méthode 3: Test fonctionnel - création d'un petit programme de test
+@REM if %VC_REDIST_INSTALLED% equ 1 (
+@REM     call :log DEBUG "Création d'un programme de test pour vérifier les redistribuables VC++..."
     
-    REM Création d'un fichier source C++ temporaire
-    (
-        echo #include <iostream>
-        echo int main() { std::cout << "VC++ Test OK" << std::endl; return 0; }
-    ) > "%TEMP%\vc_test.cpp"
+@REM     REM Création d'un fichier source C++ temporaire
+@REM     (
+@REM         echo #include <iostream>
+@REM         echo int main() { std::cout << "VC++ Test OK" << std::endl; return 0; }
+@REM     ) > "%TEMP%\vc_test.cpp"
     
-    REM Tentative de compilation avec cl.exe si disponible
-    where cl.exe >nul 2>&1
-    if %ERRORLEVEL% equ 0 (
-        cl.exe /nologo /EHsc "%TEMP%\vc_test.cpp" /Fe:"%TEMP%\vc_test.exe" >nul 2>&1
-        if %ERRORLEVEL% equ 0 (
-            "%TEMP%\vc_test.exe" >nul 2>&1
-            if %ERRORLEVEL% equ 0 (
-                set VC_REDIST_INSTALLED=1
-                call :log DEBUG "Test de compilation et d'exécution réussi, VC++ installé"
-            )
-            del "%TEMP%\vc_test.exe" 2>nul
-        )
-        del "%TEMP%\vc_test.obj" 2>nul
-    )
-    del "%TEMP%\vc_test.cpp" 2>nul
-)
+@REM     REM Tentative de compilation avec cl.exe si disponible
+@REM     where cl.exe >nul 2>&1
+@REM     if %ERRORLEVEL% equ 0 (
+@REM         cl.exe /nologo /EHsc "%TEMP%\vc_test.cpp" /Fe:"%TEMP%\vc_test.exe" >nul 2>&1
+@REM         if %ERRORLEVEL% equ 0 (
+@REM             "%TEMP%\vc_test.exe" >nul 2>&1
+@REM             if %ERRORLEVEL% equ 0 (
+@REM                 set VC_REDIST_INSTALLED=1
+@REM                 call :log DEBUG "Test de compilation et d'exécution réussi, VC++ installé"
+@REM             )
+@REM             del "%TEMP%\vc_test.exe" 2>nul
+@REM         )
+@REM         del "%TEMP%\vc_test.obj" 2>nul
+@REM     )
+@REM     del "%TEMP%\vc_test.cpp" 2>nul
+@REM )
 
 REM Installation si nécessaire
 if %VC_REDIST_INSTALLED% equ 0 (
@@ -222,6 +210,7 @@ if exist "%VS_PATH%\VC\Auxiliary\Build\vcvars64.bat" (
 )
 
 REM S'assurer que Python est toujours accessible
+call :log INFO "Vérification de Python après configuration de l'environnement..."
 set "PATH=%PYTHON_PATH%;%PYTHON_PATH%\Scripts;%PATH%"
 if defined PYTHON_EXE_PATH set "PATH=%PYTHON_EXE_PATH%;%PATH%"
 
@@ -232,8 +221,10 @@ call :exec_and_log "%PYTHON_CMD% -m venv venv_py310" "Création environnement vi
 call .\venv_py310\Scripts\activate.bat
 call :log DEBUG "Environnement virtuel activé"
 
-REM Vérification de l'activation
-call :exec_and_log "python -c "import sys; print('Python:', sys.version); print('Prefix:', sys.prefix)"" "Vérification environnement Python"
+@REM REM Vérification de l'activation
+@REM call :log INFO "Vérification de l'environnement virtuel..."
+@REM @REM call :exec_and_log "python -c "import sys; print('Python:', sys.version); print('Prefix:', sys.prefix)"" "Vérification environnement Python"
+@REM call :exec_and_log 'python -c "print('Bonjour, monde !')' " "Vérification environnement Python"
 
 REM Installation des dépendances de base
 call :log INFO "Installation des dependances de base..."
@@ -409,7 +400,7 @@ if "%LOG_TYPE%"=="WARNING" (
     goto :eof
 )
 if "%LOG_TYPE%"=="INFO" (
-    echo !LOG_MESSAGE!
+    echo [INFO] !LOG_MESSAGE!
     goto :eof
 )
 if "%LOG_TYPE%"=="DEBUG" (
@@ -431,7 +422,7 @@ REM Fonction pour exécuter une commande et enregistrer sa sortie dans le fichie
 set "CMD=%~1"
 set "DESC=%~2"
 
-call :log COMMAND "%DESC% - Début d'exécution"
+call :log COMMAND "%DESC% - Debut d'execution"
 %CMD% >> "!LOG_FILE!" 2>&1
 set "ERROR_CODE=%ERRORLEVEL%"
 call :log COMMAND "%DESC% - Fin d'exécution (code: %ERROR_CODE%)"
