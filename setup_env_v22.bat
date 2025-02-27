@@ -357,20 +357,17 @@ call :exec_and_log "pip install PyQt6==6.5.2 PyQt6-Qt6==6.5.2 PyQt6-sip==13.5.2 
 REM Vérification finale des installations
 call :log INFO "Vérification des installations..."
 call :log INFO "Vérification de numpy..."
-call :exec_and_log "python -c "import numpy; print('numpy', numpy.__version__)"" "Vérification numpy"
-
+call :exec_and_log "python -c \"import numpy; print(numpy.__version__)\"" "Vérification installation numpy"
 call :log INFO "Vérification de torch..."
-call :exec_and_log "python -c "import torch; print('torch', torch.__version__)"" "Vérification torch"
-
+call :exec_and_log "python -c \"import torch; print(torch.__version__)\"" "Vérification installation PyTorch"
 call :log INFO "Vérification de TTS..."
-call :exec_and_log "python -c "import sys; sys.path.append('.'); import TTS; print('TTS OK')"" "Vérification TTS"
-
+call :exec_and_log "python -c \"import sys; sys.path.append('.'); import TTS; print('TTS OK')"" "Vérification TTS"
 call :log INFO "Vérification de PyQt6..."
-call :exec_and_log "python -c "from PyQt6.QtWidgets import QApplication; print('PyQt6 OK')"" "Vérification PyQt6"
+call :exec_and_log "python -c \"from PyQt6.QtWidgets import QApplication; print('PyQt6 OK')"" "Vérification PyQt6"
 
 REM Vérification des fonctionnalités TTS
 call :log INFO "Vérification des fonctionnalités TTS..."
-call :exec_and_log "python -c "import sys; sys.path.append('.'); from TTS.utils.synthesizer import Synthesizer; print('TTS Synthesizer OK')"" "Vérification TTS Synthesizer"
+call :exec_and_log "python -c \"import sys; sys.path.append('.'); from TTS.utils.synthesizer import Synthesizer; print('TTS Synthesizer OK')"" "Vérification TTS Synthesizer"
 
 call :log INFO "Installation terminee!"
 call :log INFO "Pour tester, executez:"
