@@ -1,68 +1,74 @@
-===== DEBUT INSTALLATION 27-02-25 14:20:55,64 ===== 
-[27-02-25 14:20:55,65] [INFO] [MODE SANS REGISTRE] Les modifications système seront désactivées 
-[27-02-25 14:20:55,66] [INFO] Mode debug activé - Fichier log: logs\setup_env_log.txt 
-[27-02-25 14:20:55,67] [DEBUG] PATH initial: c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;C:\Program Files\OpenLogic\jdk-17.0.13.11-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk-11\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Scripts;C:\ProgramData\Anaconda3\Scripts;C:\Users\JF30LB\OneDrive - NN\Programmes\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\;C:\Users\JF30LB\AppData\Local\Programs\Python\Launcher\;C:\Users\JF30LB\scoop\apps\nodejs-lts\current\bin;C:\Users\JF30LB\scoop\apps\nodejs-lts\current;C:\Users\JF30LB\scoop\shims;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files (x86)\Common Files\Pulse Secure\TNC Client Plugin\;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\Programs\Microsoft VS Code\bin;C:\ProgramData\Anaconda3;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\JetBrains\IntelliJ IDEA 2023.2.5\bin;C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_1.11.11421.0_x64__8wekyb3d8bbwe;C:\Users\JF30LB\AppData\Roaming\npm 
-[27-02-25 14:20:55,68] [DEBUG] Configuration des chemins sécurisés 
-[27-02-25 14:20:55,69] [DEBUG] PROGRAM_FILES: C:\Program Files 
-[27-02-25 14:20:55,70] [DEBUG] PROGRAM_FILES_X86: C:\Program Files (x86) 
-[27-02-25 14:20:55,71] [INFO] Vérifications préliminaires... 
-[27-02-25 14:20:55,79] [INFO] Vérification de Python... 
-[27-02-25 14:20:55,79] [INFO] Python trouvé dans  
-[27-02-25 14:20:55,83] [DEBUG] Exécution: "\python.exe" --version 
-[27-02-25 14:20:55,84] [COMMAND] Version Python - Début d'exécution 
+===== DEBUT INSTALLATION 27-02-25 14:43:27,92 ===== 
+[27-02-25 14:43:27,92] [INFO] [MODE SANS REGISTRE] Les modifications système seront désactivées 
+[27-02-25 14:43:27,94] [INFO] Mode debug activé - Fichier log: logs\setup_env_log.txt 
+[27-02-25 14:43:27,96] [DEBUG] PATH initial: c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;C:\Program Files\OpenLogic\jdk-17.0.13.11-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk-11\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Scripts;C:\ProgramData\Anaconda3\Scripts;C:\Users\JF30LB\OneDrive - NN\Programmes\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\;C:\Users\JF30LB\AppData\Local\Programs\Python\Launcher\;C:\Users\JF30LB\scoop\apps\nodejs-lts\current\bin;C:\Users\JF30LB\scoop\apps\nodejs-lts\current;C:\Users\JF30LB\scoop\shims;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files (x86)\Common Files\Pulse Secure\TNC Client Plugin\;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\Programs\Microsoft VS Code\bin;C:\ProgramData\Anaconda3;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\JetBrains\IntelliJ IDEA 2023.2.5\bin;C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_1.11.11421.0_x64__8wekyb3d8bbwe;C:\Users\JF30LB\AppData\Roaming\npm 
+[27-02-25 14:43:27,97] [DEBUG] Configuration des chemins sécurisés 
+[27-02-25 14:43:28,02] [DEBUG] PROGRAM_FILES: C:\Program Files 
+[27-02-25 14:43:28,06] [DEBUG] PROGRAM_FILES_X86: C:\Program Files (x86) 
+[27-02-25 14:43:28,11] [INFO] Vérifications préliminaires... 
+[27-02-25 14:43:28,18] [INFO] Vérification de Python... 
+[27-02-25 14:43:28,20] [INFO] Python trouvé dans C:\Program Files\Python310 
+[27-02-25 14:43:28,21] [DEBUG] Exécution: "\python.exe" --version 
+[27-02-25 14:43:28,25] [COMMAND] Version Python - Début d'exécution 
 '"\python.exe"' n�est pas reconnu en tant que commande interne
 ou externe, un programme ex�cutable ou un fichier de commandes.
-[27-02-25 14:20:55,92] [COMMAND] Version Python - Fin d'exécution (code: 9009) 
-[27-02-25 14:20:55,97] [INFO] Vérification de Visual Studio... 
-[27-02-25 14:20:56,02] [INFO] Visual Studio 2022 trouvé dans  
-[27-02-25 14:20:56,07] [DEBUG] Exécution: dir "C:\Program 
-[27-02-25 14:20:56,08] [COMMAND] Files\Microsoft - Début d'exécution 
-[27-02-25 14:20:56,09] [COMMAND] Files\Microsoft - Fin d'exécution (code: 1) 
-[27-02-25 14:20:56,12] [DEBUG] Chemin Visual Studio: C:\Program Files\Microsoft Visual Studio\2022\Community 
-[27-02-25 14:20:56,15] [INFO] Fichier vcvarsall.bat trouvé dans C:\Program Files\Microsoft Visual Studio\2022\Community 
-[27-02-25 14:20:56,17] [DEBUG] Exécution: dir "C:\Program 
-[27-02-25 14:20:56,21] [COMMAND] Files\Microsoft - Début d'exécution 
-[27-02-25 14:20:56,24] [COMMAND] Files\Microsoft - Fin d'exécution (code: 1) 
-[27-02-25 14:20:56,29] [INFO] Version MSVC trouvée: 14.43.34808 
-[27-02-25 14:20:56,31] [DEBUG] Chemin MSVC: C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808 
-[27-02-25 14:20:56,32] [INFO] Configuration des variables d'environnement Visual Studio... 
-[27-02-25 14:20:56,34] [DEBUG] Exécution: "C:\Program 
-[27-02-25 14:20:56,35] [COMMAND] Files\Microsoft - Début d'exécution 
-[27-02-25 14:20:56,36] [COMMAND] Files\Microsoft - Fin d'exécution (code: 123) 
-[27-02-25 14:20:56,38] [WARNING] Fichier vcvarsall.bat non trouvé. Les variables d'environnement Visual Studio ne seront pas configurées. 
-[27-02-25 14:20:56,40] [INFO] Vérification du SDK Windows 10 ignorée en mode sans registre 
-[27-02-25 14:20:56,42] [DEBUG] Configuration des chemins SDK Windows 
-[27-02-25 14:20:56,43] [DEBUG] WindowsSdkDir: C:\Program Files (x86)\Windows Kits\10 
-[27-02-25 14:20:56,45] [DEBUG] WindowsSdkVerBinPath: C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64 
-[27-02-25 14:20:56,49] [INFO] Vérification des redistribuables VC++... 
-[27-02-25 14:20:56,51] [INFO] Installation des redistribuables VC++... 
-[27-02-25 14:20:56,52] [DEBUG] Exécution: curl -L -o "C:\Users\JF30LB\AppData\Local\Temp\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe 
-[27-02-25 14:20:56,57] [COMMAND] Téléchargement VC++ Redist - Début d'exécution 
+[27-02-25 14:43:28,34] [COMMAND] Version Python - Fin d'exécution (code: 9009) 
+[27-02-25 14:43:28,41] [INFO] Vérification de Visual Studio... 
+[27-02-25 14:43:28,42] [INFO] Visual Studio 2022 trouvé dans C:\Program Files\Microsoft Visual Studio\2022\Community 
+[27-02-25 14:43:28,44] [DEBUG] Exécution: dir "C:\Program 
+[27-02-25 14:43:28,45] [COMMAND] Files\Microsoft - Début d'exécution 
+ Le volume dans le lecteur C s�appelle OS
+ Le num�ro de s�rie du volume est B4F8-1874
+
+ R�pertoire de C:\
+
+Fichier introuvable
+[27-02-25 14:43:28,56] [COMMAND] Files\Microsoft - Fin d'exécution (code: 1) 
+[27-02-25 14:43:28,62] [DEBUG] Chemin Visual Studio: C:\Program Files\Microsoft Visual Studio\2022\Community 
+Fichier vcvarsall.bat trouvé dans C:\Program Files\Microsoft Visual Studio\2022\Community
+Exécution: dir "C:\Program
+[27-02-25 14:43:28,75] [INFO] Version MSVC trouvée: 14.43.34808 
+[27-02-25 14:43:28,78] [DEBUG] Chemin MSVC: C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808 
+[27-02-25 14:43:28,79] [INFO] Configuration des variables d'environnement Visual Studio... 
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.13.2
+** Copyright (c) 2022 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+[27-02-25 14:43:30,41] [COMMAND] Configuration vcvarsall - Fin d'exécution (code: 0) 
+[27-02-25 14:43:30,49] [WARNING] Fichier vcvarsall.bat non trouvé. Les variables d'environnement Visual Studio ne seront pas configurées. 
+[27-02-25 14:43:30,53] [INFO] Vérification du SDK Windows 10 ignorée en mode sans registre 
+[27-02-25 14:43:30,58] [DEBUG] Configuration des chemins SDK Windows 
+[27-02-25 14:43:30,64] [DEBUG] WindowsSdkDir: C:\Program Files (x86)\Windows Kits\10 
+[27-02-25 14:43:30,69] [DEBUG] WindowsSdkVerBinPath: C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64 
+[27-02-25 14:43:30,74] [INFO] Vérification des redistribuables VC++... 
+[27-02-25 14:43:30,79] [INFO] Installation des redistribuables VC++... 
+[27-02-25 14:43:30,83] [DEBUG] Exécution: curl -L -o "C:\Users\JF30LB\AppData\Local\Temp\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe 
+[27-02-25 14:43:30,88] [COMMAND] Téléchargement VC++ Redist - Début d'exécution 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
- 10 24.4M   10 2543k    0     0  3016k      0  0:00:08 --:--:--  0:00:08 3016k 48 24.4M   48 11.8M    0     0  6606k      0  0:00:03  0:00:01  0:00:02 9632k 93 24.4M   93 22.7M    0     0  8192k      0  0:00:03  0:00:02  0:00:01 10.1M100 24.4M  100 24.4M    0     0  8346k      0  0:00:03  0:00:03 --:--:-- 10.1M
-[27-02-25 14:20:59,68] [COMMAND] Téléchargement VC++ Redist - Fin d'exécution (code: 0) 
-[27-02-25 14:20:59,74] [DEBUG] Exécution: "C:\Users\JF30LB\AppData\Local\Temp\vc_redist.x64.exe" /quiet /norestart 
-[27-02-25 14:20:59,75] [COMMAND] Installation VC++ Redist - Début d'exécution 
-[27-02-25 14:21:20,18] [COMMAND] Installation VC++ Redist - Fin d'exécution (code: 0) 
-[27-02-25 14:21:20,18] [INFO] Vérification des en-têtes système Windows... 
-[27-02-25 14:21:20,23] [INFO] Les en-têtes système sont déjà installés 
-[27-02-25 14:21:20,24] [INFO] SDK Windows 10 trouvé dans C:\Program Files (x86)\Windows Kits\10 
-[27-02-25 14:21:20,29] [DEBUG] Exécution: dir "C:\Program 
-[27-02-25 14:21:20,32] [COMMAND] Files - Début d'exécution 
-[27-02-25 14:21:20,34] [COMMAND] Files - Fin d'exécution (code: 1) 
-[27-02-25 14:21:20,39] [DEBUG] Configuration de l'environnement de développement 
-[27-02-25 14:21:20,40] [DEBUG] Recherche de la version MSVC 
-[27-02-25 14:21:20,43] [DEBUG] Version MSVC trouvée: 14.43.34808 
-[27-02-25 14:21:20,47] [DEBUG] Appel de vcvarsall.bat 
-[27-02-25 14:21:20,49] [DEBUG] Exécution de C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat 
-[27-02-25 14:21:20,50] [DEBUG] Exécution: call "C:\Program 
-[27-02-25 14:21:20,51] [COMMAND] Files\Microsoft - Début d'exécution 
-[27-02-25 14:21:20,53] [COMMAND] Files\Microsoft - Fin d'exécution (code: 1) 
-[27-02-25 14:21:20,54] [DEBUG] PATH après configuration: C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem 
-[27-02-25 14:21:20,56] [DEBUG] Exécution: --no-registry 
-[27-02-25 14:21:20,57] [COMMAND] --debug - Début d'exécution 
+  0 24.4M    0 51794    0     0  98789      0  0:04:19 --:--:--  0:04:19 98789 40 24.4M   40  9.8M    0     0  6616k      0  0:00:03  0:00:01  0:00:02  9.8M 83 24.4M   83 20.3M    0     0  8243k      0  0:00:03  0:00:02  0:00:01 10.1M100 24.4M  100 24.4M    0     0  8532k      0  0:00:02  0:00:02 --:--:-- 10.1M
+[27-02-25 14:43:33,94] [COMMAND] Téléchargement VC++ Redist - Fin d'exécution (code: 0) 
+[27-02-25 14:43:33,97] [DEBUG] Exécution: "C:\Users\JF30LB\AppData\Local\Temp\vc_redist.x64.exe" /quiet /norestart 
+[27-02-25 14:43:34,02] [COMMAND] Installation VC++ Redist - Début d'exécution 
+[27-02-25 14:43:57,44] [COMMAND] Installation VC++ Redist - Fin d'exécution (code: 0) 
+[27-02-25 14:43:57,44] [INFO] Vérification des en-têtes système Windows... 
+[27-02-25 14:43:57,47] [INFO] Les en-têtes système sont déjà installés 
+SDK Windows 10 trouvé dans C:\Program Files (x86)\Windows Kits\10
+[27-02-25 14:43:57,48] [COMMAND] Versions SDK disponibles - Fin d'exécution (code: 0
+[27-02-25 14:43:57,50] [WARNING] SDK Windows 10 non trouvé 
+[27-02-25 14:43:57,51] [DEBUG] Configuration de l'environnement de développement 
+[27-02-25 14:43:57,55] [DEBUG] Recherche de la version MSVC 
+[27-02-25 14:43:57,59] [DEBUG] Version MSVC trouvée: 14.43.34808 
+[27-02-25 14:43:57,66] [DEBUG] Appel de vcvarsall.bat 
+Exécution de C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat
+[27-02-25 14:43:57,67] [COMMAND] Configuration vcvars64 - Fin d'exécution (code: 0
+[27-02-25 14:43:58,82] [WARNING] [AVERTISSEMENT] Fichier vcvars64.bat non trouvé 
+[27-02-25 14:43:58,84] [DEBUG] Chemin recherché: C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat 
+[27-02-25 14:43:58,89] [DEBUG] PATH après configuration: C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files\Microsoft Visual Studio\2022\Community\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe 
+[27-02-25 14:43:58,91] [DEBUG] Exécution: --no-registry 
+[27-02-25 14:43:58,94] [COMMAND] --debug - Début d'exécution 
 '--no-registry' n�est pas reconnu en tant que commande interne
 ou externe, un programme ex�cutable ou un fichier de commandes.
-[27-02-25 14:21:20,62] [COMMAND] --debug - Fin d'exécution (code: 9009) 
+[27-02-25 14:43:59,01] [COMMAND] --debug - Fin d'exécution (code: 9009) 
