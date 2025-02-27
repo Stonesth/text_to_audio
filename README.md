@@ -5,14 +5,21 @@ Script de synthèse vocale utilisant différents modèles pour générer de l'au
 ## Installation
 
 ```bash
-# Créer et activer l'environnement virtuel
+# Windows - Installation automatique
+# Double-cliquez sur setup_env.bat
+# ou exécutez-le depuis PowerShell/CMD :
+.\setup_env.bat
+
+# MAC
 python3 -m venv venv_py311
 source venv_py311/bin/activate
-
-# Installer les dépendances
 pip install --upgrade pip
 pip install TTS
+pip install PyQt6  # Requis pour l'interface graphique
 ```
+
+# Windows
+.\venv_py311\Scripts\activate
 
 ## Commandes disponibles
 
