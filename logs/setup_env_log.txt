@@ -9488,7 +9488,7 @@ Building wheels for collected packages: TTS
       self._execute_child(args, executable, preexec_fn, close_fds,
     File "C:\Program Files\Python310\lib\subprocess.py", line 1440, in _execute_child
       hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
-  FileNotFoundError: [WinError 2] Le fichier sp�cifi� est introuvable
+  FileNotFoundError: [WinError 2] Le fichier sp�cifi� est introuvable
   
   The above exception was the direct cause of the following exception:
   
@@ -9620,3 +9620,55 @@ Successfully installed PyQt6-6.5.2 PyQt6-Qt6-6.5.2 PyQt6-sip-13.5.2
 [27-02-25 22:36:48,83] [INFO] call .\venv_py310\Scripts\activate.bat 
 [27-02-25 22:36:49,32] [INFO] python Simple_TTS_GUI.py 
 [27-02-25 22:36:49,84] [INFO] Fichier log disponible: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\setup_env_log.txt 
+
+
+
+
+last messages from terminal :
+[ERROR] Erreur lors de l'exÃ©cution de la commande: numpy (code: 1)
+[INFO] VÃ©rification de torch...
+[COMMAND] torch - Debut d'execution
+  File "<string>", line 1
+    "import
+    ^
+SyntaxError: unterminated string literal (detected at line 1)
+[COMMAND] torch - Fin d'exÃ©cution (code: 1)
+[ERROR] Erreur lors de l'exÃ©cution de la commande: torch (code: 1)
+[INFO] VÃ©rification de TTS...
+[COMMAND] sys - Debut d'execution
+  File "<string>", line 1
+    "import
+    ^
+SyntaxError: unterminated string literal (detected at line 1)
+[COMMAND] sys - Fin d'exÃ©cution (code: 1)
+[ERROR] Erreur lors de l'exÃ©cution de la commande: sys (code: 1)
+[INFO] VÃ©rification de PyQt6...
+[COMMAND] PyQt6.QtWidgets - Debut d'execution
+  File "<string>", line 1
+    "from
+    ^
+SyntaxError: unterminated string literal (detected at line 1)
+[COMMAND] PyQt6.QtWidgets - Fin d'exÃ©cution (code: 1)
+[ERROR] Erreur lors de l'exÃ©cution de la commande: PyQt6.QtWidgets (code: 1)
+[INFO] VÃ©rification des fonctionnalitÃ©s TTS...
+[COMMAND] sys - Debut d'execution
+  File "<string>", line 1
+    "import
+    ^
+SyntaxError: unterminated string literal (detected at line 1)
+[COMMAND] sys - Fin d'exÃ©cution (code: 1)
+[ERROR] Erreur lors de l'exÃ©cution de la commande: sys (code: 1)
+[INFO] Installation terminee
+[INFO] Pour tester, executez:
+[INFO] call .\venv_py310\Scripts\activate.bat
+[INFO] python Simple_TTS_GUI.py
+[INFO] Fichier log disponible: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\setup_env_log.txt
+Appuyez sur une touche pour continuer...
+(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> python Simple_TTS_GUI.py
+Traceback (most recent call last):
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.py", line 14, in <module>
+    from TTS.api import TTS
+ModuleNotFoundError: No module named 'TTS'
+(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> 
+
+
