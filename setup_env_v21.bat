@@ -1,5 +1,5 @@
 @echo off
-chcp 1252
+chcp 1252 > nul
 setlocal enabledelayedexpansion
 
 REM Configuration de la journalisation
@@ -11,34 +11,7 @@ set "DEBUG_MODE=0"
 REM Initialisation du fichier de log
 echo ===== DEBUT INSTALLATION %DATE% %TIME% ===== > "%LOG_FILE%"
 
-REM Fonction de journalisation
-:log
-if "%~1"=="" goto :eof
-set "LOG_TYPE=%~1"
-set "LOG_MESSAGE=%~2"
-set "LOG_LINE=[%DATE% %TIME%] [%LOG_TYPE%] %LOG_MESSAGE%"
-
-REM Écriture dans le fichier log
-echo %LOG_LINE% >> "%LOG_FILE%"
-
-REM Affichage selon le niveau de verbosité
-if "%LOG_TYPE%"=="ERROR" (
-    echo [31m%LOG_MESSAGE%[0m
-    goto :eof
-)
-if "%LOG_TYPE%"=="WARNING" (
-    echo [33m%LOG_MESSAGE%[0m
-    goto :eof
-)
-if "%LOG_TYPE%"=="INFO" (
-    echo %LOG_MESSAGE%
-    goto :eof
-)
-if "%LOG_TYPE%"=="DEBUG" (
-    if "%DEBUG_MODE%"=="1" echo [36m%LOG_MESSAGE%[0m
-    goto :eof
-)
-goto :eof
+REM ========== DÉBUT DU SCRIPT PRINCIPAL ==========
 
 REM Gestion des paramètres
 set "NO_REGISTRY=0"
@@ -86,28 +59,31 @@ if %errorLevel% == 0 (
 )
 
 REM Trouver Python 3.10
+call :log INFO "Recherche de Python 3.10..."
 set "PYTHON_PATH="
 set "PYTHON_CMD="
 
-REM Vérifier les emplacements possibles de Python 3.10
-for %%p in (
-    "C:\Python310"
-    "%LOCALAPPDATA%\Programs\Python\Python310"
-    "C:\Program Files\Python310"
-    "%USERPROFILE%\AppData\Local\Programs\Python\Python310"
-) do (
-    if exist "%%~p\python.exe" (
-        set "PYTHON_PATH=%%~p"
-        set "PYTHON_CMD=%%~p\python.exe"
-        goto found_python
-    )
+REM Vérifier dans Program Files
+if exist "%PROGRAM_FILES%\Python310\python.exe" (
+    set "PYTHON_PATH=%PROGRAM_FILES%\Python310"
+    set "PYTHON_CMD=%PYTHON_PATH%\python.exe"
+    goto found_python
+)
+
+REM Vérifier dans Program Files (x86)
+if exist "%PROGRAM_FILES_X86%\Python310\python.exe" (
+    set "PYTHON_PATH=%PROGRAM_FILES_X86%\Python310"
+    set "PYTHON_CMD=%PYTHON_PATH%\python.exe"
+    goto found_python
 )
 
 REM Vérifier avec py launcher
+call :log DEBUG "Vérification avec py launcher..."
 py -3.10 --version >nul 2>&1
 if not errorlevel 1 (
     for /f "delims=" %%i in ('py -3.10 -c "import sys; print(sys.prefix)"') do set "PYTHON_PATH=%%i"
     set "PYTHON_CMD=py -3.10"
+    call :log INFO "Python 3.10 trouvé via py launcher: %PYTHON_PATH%"
     goto found_python
 )
 
@@ -163,7 +139,7 @@ if not exist "%VS_PATH%\VC\Tools\MSVC" (
 
 REM Vérifications précise des composants requis
 if not defined NO_REGISTRY (
-    reg query "HKLM\SOFTWARE\Microsoft\Windows Kits\Installed Roots" /v KitsRoot10 >nul || (
+    reg query "HKLM\SOFTWARE\Microsoft\Windows Kits\Installed Roots" /v KitsRoot10 >nul 2>&1 || (
         call :log INFO Installation du SDK Windows 10...
         curl -L -o "%TEMP%\winsdksetup.exe" https://go.microsoft.com/fwlink/p/?LinkID=2033908
         "%TEMP%\winsdksetup.exe" /quiet /norestart
@@ -188,7 +164,7 @@ call :log DEBUG "WindowsSdkVerBinPath: %WindowsSdkVerBinPath%"
 REM Vérification des redistribuables Visual C++
 call :log INFO Vérification des redistribuables Visual C++...
 if not defined NO_REGISTRY (
-    reg query "HKLM\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" /v Version | find "v14" >nul || (
+    reg query "HKLM\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" /v Version >nul 2>&1 || (
         call :log INFO Installation des redistribuables VS 2015-2022...
         curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe
         "%TEMP%\vc_redist.x64.exe" /install /quiet /norestart
@@ -275,10 +251,8 @@ REM Installation des dépendances système
 curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe
 "%TEMP%\vc_redist.x64.exe" /quiet /norestart
 
-REM Installation spécifique de numpy compatible
-"%PYTHON_CMD%" -m pip install "numpy==1.23.5" --only-binary=:all: --no-cache-dir
-
 REM Installation des dépendances Python
+call :log INFO "Installation des dépendances Python..."
 "%PYTHON_CMD%" -m pip install --upgrade pip
 "%PYTHON_CMD%" -m pip install Cython
 "%PYTHON_CMD%" -m pip install torch==2.1.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
@@ -288,7 +262,7 @@ REM Installation des dépendances Python
 "%PYTHON_CMD%" -m pip install pyinstaller==6.3.0
 
 REM Création de l'environnement virtuel
-call :log INFO Creation de l'environnement virtuel...
+call :log INFO "Creation de l'environnement virtuel..."
 call :log DEBUG "Suppression de l'environnement virtuel existant si présent"
 if exist venv_py310 rmdir /s /q venv_py310
 call :log DEBUG "Création d'un nouvel environnement virtuel avec %PYTHON_CMD%"
@@ -304,7 +278,7 @@ if exist ".\venv_py310\Scripts\activate.bat" (
 )
 
 REM Installation des dépendances
-call :log INFO Installation des dependances de base...
+call :log INFO "Installation des dependances de base..."
 "%PYTHON_CMD%" -m pip install --upgrade pip setuptools wheel
 
 REM Installation des dépendances TTS
@@ -316,24 +290,24 @@ for %%p in (
     "Unidecode==1.3.7"
     "tqdm==4.65.0"
 ) do (
-    call :log INFO Installing %%p...
+    call :log INFO "Installing %%p..."
     "%PYTHON_CMD%" -m pip install %%p --only-binary :all:
 )
 
-call :log INFO Verification de l'installation...
+call :log INFO "Verification de l'installation..."
 "%PYTHON_CMD%" -c "import numpy; print('numpy', numpy.__version__)" 2>nul && ^
 "%PYTHON_CMD%" -c "import torch; print('torch', torch.__version__)" 2>nul && ^
 "%PYTHON_CMD%" -c "import TTS; print('TTS OK')" 2>nul && ^
 "%PYTHON_CMD%" -c "from PyQt6.QtWidgets import QApplication; print('PyQt6 OK')" 2>nul
 
 if errorlevel 1 (
-    call :log ERROR ATTENTION: Installation incomplete
-    call :log INFO Consultez TROUBLESHOOTING.md pour les solutions
+    call :log ERROR "ATTENTION: Installation incomplete"
+    call :log INFO "Consultez TROUBLESHOOTING.md pour les solutions"
 ) else (
-    call :log INFO Installation reussie!
-    call :log INFO Pour utiliser:
-    call :log INFO call .\venv_py310\Scripts\activate.bat
-    call :log INFO python Simple_TTS_GUI.py
+    call :log INFO "Installation reussie!"
+    call :log INFO "Pour utiliser:"
+    call :log INFO "call .\venv_py310\Scripts\activate.bat"
+    call :log INFO "python Simple_TTS_GUI.py"
 )
 
 REM Mise à jour finale du PATH
@@ -358,3 +332,31 @@ call :log INFO "Installation terminée"
 call :log INFO "Fichier log disponible: %LOG_FILE%"
 
 pause
+goto :EOF
+
+REM ========== FONCTIONS ==========
+:log
+set "LOG_TYPE=%~1"
+set "LOG_MESSAGE=%~2"
+set "LOG_LINE=[%DATE% %TIME%] [%LOG_TYPE%] %LOG_MESSAGE%"
+
+REM Écriture dans le fichier log
+echo %LOG_LINE% >> "%LOG_FILE%"
+
+REM Affichage selon le niveau de verbosité
+if "%LOG_TYPE%"=="ERROR" (
+    echo %LOG_MESSAGE%
+    goto :eof
+)
+if "%LOG_TYPE%"=="WARNING" (
+    echo %LOG_MESSAGE%
+    goto :eof
+)
+if "%LOG_TYPE%"=="INFO" (
+    echo %LOG_MESSAGE%
+    goto :eof
+)
+if "%LOG_TYPE%"=="DEBUG" (
+    if "%DEBUG_MODE%"=="1" echo %LOG_MESSAGE%
+)
+goto :eof
