@@ -9,7 +9,7 @@ set "LOG_LEVEL=DEBUG"
 set "DEBUG_MODE=0"
 
 REM Initialisation du fichier de log
-echo ===== DEBUT INSTALLATION %DATE% %TIME% ===== > "%LOG_FILE%"
+echo ===== DEBUT INSTALLATION %DATE% %TIME% ===== > "!LOG_FILE!"
 
 REM ========== DÉBUT DU SCRIPT PRINCIPAL ==========
 
@@ -31,7 +31,7 @@ if "%NO_REGISTRY%"=="1" (
 )
 
 if "%DEBUG_MODE%"=="1" (
-    call :log INFO "Mode debug activé - Fichier log: %LOG_FILE%"
+    call :log INFO "Mode debug activé - Fichier log: !LOG_FILE!"
 )
 
 REM Sauvegarder le chemin système original
@@ -44,8 +44,8 @@ set "PROGRAM_FILES=%ProgramFiles%"
 if not defined PROGRAM_FILES set "PROGRAM_FILES=C:\Program Files"
 set "PROGRAM_FILES_X86=%ProgramFiles(x86)%"
 if not defined PROGRAM_FILES_X86 set "PROGRAM_FILES_X86=C:\Program Files (x86)"
-call :log DEBUG "PROGRAM_FILES: %PROGRAM_FILES%"
-call :log DEBUG "PROGRAM_FILES_X86: %PROGRAM_FILES_X86%"
+call :log DEBUG "PROGRAM_FILES: !PROGRAM_FILES!"
+call :log DEBUG "PROGRAM_FILES_X86: !PROGRAM_FILES_X86!"
 
 REM Vérifications préliminaires
 call :log INFO "Vérifications préliminaires..."
@@ -63,8 +63,8 @@ set PYTHON_CMD=
 
 REM Vérifier dans Program Files
 if exist "%PROGRAM_FILES%\Python310\python.exe" (
-    set PYTHON_PATH=%PROGRAM_FILES%\Python310
-    set PYTHON_CMD=%PROGRAM_FILES%\Python310\python.exe
+    set "PYTHON_PATH=%PROGRAM_FILES%\Python310"
+    set "PYTHON_CMD=%PROGRAM_FILES%\Python310\python.exe"
     call :log DEBUG "Chemin Python trouvé: !PYTHON_PATH!"
     call :log DEBUG "Commande Python: !PYTHON_CMD!"
     goto :found_python
@@ -72,8 +72,8 @@ if exist "%PROGRAM_FILES%\Python310\python.exe" (
 
 REM Vérifier dans Program Files (x86)
 if exist "%PROGRAM_FILES_X86%\Python310\python.exe" (
-    set PYTHON_PATH=%PROGRAM_FILES_X86%\Python310
-    set PYTHON_CMD=%PROGRAM_FILES_X86%\Python310\python.exe
+    set "PYTHON_PATH=%PROGRAM_FILES_X86%\Python310"
+    set "PYTHON_CMD=%PROGRAM_FILES_X86%\Python310\python.exe"
     call :log DEBUG "Chemin Python trouvé: !PYTHON_PATH!"
     call :log DEBUG "Commande Python: !PYTHON_CMD!"
     goto :found_python
@@ -83,8 +83,8 @@ REM Vérifier avec py launcher
 call :log DEBUG "Vérification avec py launcher..."
 py -3.10 --version >nul 2>&1
 if not errorlevel 1 (
-    for /f "delims=" %%i in ('py -3.10 -c "import sys; print(sys.prefix)"') do set PYTHON_PATH=%%i
-    set PYTHON_CMD=py -3.10
+    for /f "delims=" %%i in ('py -3.10 -c "import sys; print(sys.prefix)"') do set "PYTHON_PATH=%%i"
+    set "PYTHON_CMD=py -3.10"
     call :log INFO "Python 3.10 trouvé via py launcher: !PYTHON_PATH!"
     goto :found_python
 )
@@ -94,8 +94,8 @@ curl -L -o "%TEMP%\python-3.10-installer.exe" https://www.python.org/ftp/python/
 if exist "%TEMP%\python-3.10-installer.exe" (
     call :log INFO "Installation silencieuse de Python 3.10..."
     start /wait "" "%TEMP%\python-3.10-installer.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_launcher=0 Include_test=0
-    set PYTHON_PATH=C:\Python310
-    set PYTHON_CMD=C:\Python310\python.exe
+    set "PYTHON_PATH=C:\Python310"
+    set "PYTHON_CMD=C:\Python310\python.exe"
     if exist "%PYTHON_CMD%" (
         call :log INFO "Vérification de la version installée..."
         "%PYTHON_CMD%" --version
@@ -247,32 +247,29 @@ curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64
 
 REM Installation des dépendances Python
 call :log INFO "Installation des dépendances Python..."
-"%PYTHON_CMD%" -m pip install --upgrade pip
-"%PYTHON_CMD%" -m pip install Cython
-"%PYTHON_CMD%" -m pip install torch==2.1.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-"%PYTHON_CMD%" -m pip install TTS --no-deps --no-cache-dir
-"%PYTHON_CMD%" -m pip install PyQt6==6.4.2
-"%PYTHON_CMD%" -m pip install pyinstaller==6.3.0
+"!PYTHON_CMD!" -m pip install --upgrade pip
+"!PYTHON_CMD!" -m pip install Cython
+"!PYTHON_CMD!" -m pip install torch==2.1.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+"!PYTHON_CMD!" -m pip install TTS --no-deps --no-cache-dir
+"!PYTHON_CMD!" -m pip install PyQt6==6.4.2
+"!PYTHON_CMD!" -m pip install pyinstaller==6.3.0
 
 REM Création de l'environnement virtuel
 call :log INFO "Création de l'environnement virtuel..."
 call :log DEBUG "Suppression de l'environnement virtuel existant si présent"
 if exist venv_py310 rmdir /s /q venv_py310
-call :log DEBUG "Création d'un nouvel environnement virtuel avec %PYTHON_CMD%"
-"%PYTHON_CMD%" -m venv venv_py310
+call :log DEBUG "Création d'un nouvel environnement virtuel avec !PYTHON_CMD!"
+"!PYTHON_CMD!" -m venv venv_py310
 call :log DEBUG "Vérification de l'existence du script d'activation"
-if exist ".\venv_py310\Scripts\activate.bat" (
-    call :log DEBUG "Activation de l'environnement virtuel"
-    call ".\venv_py310\Scripts\activate.bat"
-) else (
-    call :log ERROR "[ERREUR] Impossible d'activer l'environnement virtuel"
-    call :log DEBUG "Script d'activation non trouvé: .\venv_py310\Scripts\activate.bat"
+if not exist "venv_py310\Scripts\activate.bat" (
+    call :log ERROR "Échec de création de l'environnement virtuel"
+    pause
     exit /b 1
 )
 
 REM Installation des dépendances
 call :log INFO "Installation des dépendances de base..."
-"%PYTHON_CMD%" -m pip install --upgrade pip setuptools wheel
+"!PYTHON_CMD!" -m pip install --upgrade pip setuptools wheel
 
 REM Installation des dépendances TTS
 for %%p in (
@@ -284,14 +281,14 @@ for %%p in (
     "tqdm==4.65.0"
 ) do (
     call :log INFO "Installation de %%p..."
-    "%PYTHON_CMD%" -m pip install %%p --only-binary :all:
+    "!PYTHON_CMD!" -m pip install %%p --only-binary :all:
 )
 
 call :log INFO "Vérification de l'installation..."
-"%PYTHON_CMD%" -c "import numpy; print('numpy', numpy.__version__)" 2>nul && ^
-"%PYTHON_CMD%" -c "import torch; print('torch', torch.__version__)" 2>nul && ^
-"%PYTHON_CMD%" -c "import TTS; print('TTS OK')" 2>nul && ^
-"%PYTHON_CMD%" -c "from PyQt6.QtWidgets import QApplication; print('PyQt6 OK')" 2>nul
+"!PYTHON_CMD!" -c "import numpy; print('numpy', numpy.__version__)" 2>nul && ^
+"!PYTHON_CMD!" -c "import torch; print('torch', torch.__version__)" 2>nul && ^
+"!PYTHON_CMD!" -c "import TTS; print('TTS OK')" 2>nul && ^
+"!PYTHON_CMD!" -c "from PyQt6.QtWidgets import QApplication; print('PyQt6 OK')" 2>nul
 
 if errorlevel 1 (
     call :log ERROR "ATTENTION: Installation incomplète"
@@ -308,7 +305,7 @@ call :log DEBUG "Mise à jour finale du PATH"
 call :log DEBUG "PATH actuel: !PATH!"
 if not defined NO_REGISTRY (
     call :log DEBUG "Tentative de mise à jour du PATH système avec setx"
-    setx PATH "%PATH%" /M >nul 2>&1 || (
+    setx PATH "!PATH!" /M >nul 2>&1 || (
         call :log WARNING "[AVERTISSEMENT] Impossible de mettre à jour le PATH système"
         call :log INFO "Ajoutez manuellement ces chemins à votre PATH :"
         call :log INFO "!PYTHON_PATH!"
@@ -334,22 +331,25 @@ set "LOG_MESSAGE=%~2"
 set "LOG_LINE=[%DATE% %TIME%] [%LOG_TYPE%] %LOG_MESSAGE%"
 
 REM Écriture dans le fichier log
-echo !LOG_LINE! >> "%LOG_FILE%"
+echo !LOG_LINE! >> "!LOG_FILE!"
 
 REM Affichage selon le niveau de verbosité
 if "%LOG_TYPE%"=="ERROR" (
-    echo %LOG_MESSAGE%
+    echo !LOG_MESSAGE!
     goto :eof
 )
 if "%LOG_TYPE%"=="WARNING" (
-    echo %LOG_MESSAGE%
+    echo !LOG_MESSAGE!
     goto :eof
 )
 if "%LOG_TYPE%"=="INFO" (
-    echo %LOG_MESSAGE%
+    echo !LOG_MESSAGE!
     goto :eof
 )
 if "%LOG_TYPE%"=="DEBUG" (
-    if "%DEBUG_MODE%"=="1" echo %LOG_MESSAGE%
+    if "%LOG_LEVEL%"=="DEBUG" (
+        echo !LOG_MESSAGE!
+    )
+    goto :eof
 )
 goto :eof
