@@ -96,7 +96,7 @@ if exist "C:\Windows\System32\vcruntime140.dll" (
     
     REM Création d'un script PowerShell temporaire pour vérifier la version du fichier
     echo $file = Get-Item "C:\Windows\System32\vcruntime140.dll" > "%TEMP%\check_vc_version.ps1"
-    echo if ^($file.VersionInfo.FileVersion -ge "14.30"^) ^{ exit 0 ^} else ^{ exit 1 ^} >> "%TEMP%\check_vc_version.ps1"
+    echo if ($file.VersionInfo.FileVersion -ge "14.30") ^^^ { exit 0 ^^^} else ^^^ { exit 1 ^^^} >> "%TEMP%\check_vc_version.ps1"
     
     REM Exécution du script PowerShell
     powershell -ExecutionPolicy Bypass -File "%TEMP%\check_vc_version.ps1" >nul 2>&1
@@ -125,7 +125,7 @@ if %VC_REDIST_INSTALLED% equ 0 (
     
     REM Création d'un fichier source C++ temporaire
     echo #include ^<iostream^> > "%TEMP%\vc_test.cpp"
-    echo int main() ^^^{ std::cout ^<^< "VC++ Test OK" ^<^< std::endl; return 0; ^^^} >> "%TEMP%\vc_test.cpp"
+    echo int main() ^^^ { std::cout ^^^<^< "VC++ Test OK" ^^^<^< std::endl; return 0; ^^^} >> "%TEMP%\vc_test.cpp"
     
     REM Tentative de compilation avec cl.exe si disponible
     where cl.exe >nul 2>&1
