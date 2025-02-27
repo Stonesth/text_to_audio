@@ -36,6 +36,7 @@ if "%DEBUG_MODE%"=="1" (
 
 REM Sauvegarder le chemin système original
 set "ORIGINAL_PATH=%PATH%"
+call :log DEBUG "PATH initial: !PATH!"
 
 REM Configuration des chemins sécurisés
 call :log DEBUG "Configuration des chemins sécurisés"
@@ -64,8 +65,8 @@ REM Vérifier dans Program Files
 if exist "%PROGRAM_FILES%\Python310\python.exe" (
     set PYTHON_PATH=%PROGRAM_FILES%\Python310
     set PYTHON_CMD=%PROGRAM_FILES%\Python310\python.exe
-    call :log DEBUG "Chemin Python trouvé: %PYTHON_PATH%"
-    call :log DEBUG "Commande Python: %PYTHON_CMD%"
+    call :log DEBUG "Chemin Python trouvé: !PYTHON_PATH!"
+    call :log DEBUG "Commande Python: !PYTHON_CMD!"
     goto :found_python
 )
 
@@ -73,8 +74,8 @@ REM Vérifier dans Program Files (x86)
 if exist "%PROGRAM_FILES_X86%\Python310\python.exe" (
     set PYTHON_PATH=%PROGRAM_FILES_X86%\Python310
     set PYTHON_CMD=%PROGRAM_FILES_X86%\Python310\python.exe
-    call :log DEBUG "Chemin Python trouvé: %PYTHON_PATH%"
-    call :log DEBUG "Commande Python: %PYTHON_CMD%"
+    call :log DEBUG "Chemin Python trouvé: !PYTHON_PATH!"
+    call :log DEBUG "Commande Python: !PYTHON_CMD!"
     goto :found_python
 )
 
@@ -84,7 +85,7 @@ py -3.10 --version >nul 2>&1
 if not errorlevel 1 (
     for /f "delims=" %%i in ('py -3.10 -c "import sys; print(sys.prefix)"') do set PYTHON_PATH=%%i
     set PYTHON_CMD=py -3.10
-    call :log INFO "Python 3.10 trouvé via py launcher: %PYTHON_PATH%"
+    call :log INFO "Python 3.10 trouvé via py launcher: !PYTHON_PATH!"
     goto :found_python
 )
 
@@ -113,9 +114,10 @@ pause
 exit /b 1
 
 :found_python
-call :log INFO "Python 3.10 trouvé dans %PYTHON_PATH%"
-call :log DEBUG "Chemin Python: %PYTHON_PATH%"
-call :log DEBUG "Commande Python: %PYTHON_CMD%"
+call :log INFO "Python 3.10 trouvé dans !PYTHON_PATH!"
+call :log DEBUG "Chemin Python: !PYTHON_PATH!"
+call :log DEBUG "Commande Python: !PYTHON_CMD!"
+call :log DEBUG "PATH après détection de Python: !PATH!"
 
 REM Section Visual Studio modifiée
 set "VS_PATH=%PROGRAM_FILES%\Microsoft Visual Studio\2022\Community"
@@ -303,25 +305,25 @@ if errorlevel 1 (
 
 REM Mise à jour finale du PATH
 call :log DEBUG "Mise à jour finale du PATH"
-call :log DEBUG "PATH actuel: %PATH%"
+call :log DEBUG "PATH actuel: !PATH!"
 if not defined NO_REGISTRY (
     call :log DEBUG "Tentative de mise à jour du PATH système avec setx"
     setx PATH "%PATH%" /M >nul 2>&1 || (
         call :log WARNING "[AVERTISSEMENT] Impossible de mettre à jour le PATH système"
         call :log INFO "Ajoutez manuellement ces chemins à votre PATH :"
-        call :log INFO "%PYTHON_PATH%"
-        call :log INFO "%VS_PATH%\VC\Tools\MSVC\%MSVC_VERSION%\bin\Hostx64\x64"
+        call :log INFO "!PYTHON_PATH!"
+        call :log INFO "!VS_PATH!\VC\Tools\MSVC\!MSVC_VERSION!\bin\Hostx64\x64"
     )
 ) else (
     call :log INFO "Configuration manuelle requise :"
     call :log INFO "Ajoutez ces chemins à votre PATH :"
-    call :log INFO "%PYTHON_PATH%"
-    call :log INFO "%VS_PATH%\VC\Tools\MSVC\%MSVC_VERSION%\bin\Hostx64\x64"
+    call :log INFO "!PYTHON_PATH!"
+    call :log INFO "!VS_PATH!\VC\Tools\MSVC\!MSVC_VERSION!\bin\Hostx64\x64"
 )
 
 call :log INFO "Installation terminée"
-call :log INFO "Fichier log disponible: %LOG_FILE%"
-
+call :log INFO "Fichier log disponible: !LOG_FILE!"
+call :log DEBUG "PATH final: !PATH!"
 pause
 goto :EOF
 
@@ -332,7 +334,7 @@ set "LOG_MESSAGE=%~2"
 set "LOG_LINE=[%DATE% %TIME%] [%LOG_TYPE%] %LOG_MESSAGE%"
 
 REM Écriture dans le fichier log
-echo %LOG_LINE% >> "%LOG_FILE%"
+echo !LOG_LINE! >> "%LOG_FILE%"
 
 REM Affichage selon le niveau de verbosité
 if "%LOG_TYPE%"=="ERROR" (
