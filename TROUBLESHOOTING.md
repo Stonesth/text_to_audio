@@ -265,8 +265,9 @@ pip install TTS==0.17.6 --only-binary :all:
 ```batch
 REM Configuration des chemins d'inclusion
 set "VS_PATH=C:\Program Files\Microsoft Visual Studio\2022\Community"
-set "INCLUDE=%VS_PATH%\VC\Tools\MSVC\14.43.34808\include;%VS_PATH%\VC\Tools\MSVC\14.43.34808\ATLMFC\include;%VS_PATH%\VC\Auxiliary\VS\include;%INCLUDE%"
-set "LIB=%VS_PATH%\VC\Tools\MSVC\14.43.34808\lib\x64;%VS_PATH%\VC\Tools\MSVC\14.43.34808\ATLMFC\lib\x64;%LIB%"
+set "MSVC_PATH=%VS_PATH%\VC\Tools\MSVC\14.43.34808"
+set "SDK_PATH=C:\Program Files (x86)\Windows Kits\10"
+set "SDK_VER=10.0.22621.0"
 
 REM Installation de TTS avec numpy spécifique
 pip install numpy==1.22.0
@@ -360,17 +361,17 @@ pip install TTS --only-binary :all: --no-deps
 pip install -r requirements_minimal.txt
 ```
 
-3. Installation des dépendances dans l'ordre spécifique :
+3. Installation des dépendances dans l'ordre strict :
 ```batch
 REM Installation séquentielle
 pip install numpy==1.22.0 --only-binary :all:
-pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2
+pip install torch==2.0.1 --only-binary :all:
 pip install TTS==0.17.6 --no-deps
 ```
 
 **Important :**
 - Éviter les chemins d'inclusion dupliqués
-- Maintenir l'ordre correct des dépendances
+- Maintenir l'ordre correct des includes
 - S'assurer que numpy est installé avant TTS
 - Utiliser des versions binaires quand possible
 
@@ -510,3 +511,24 @@ if exist "%PYTHON_EXE%" (
 - Conflits de versions entre les dépendances, particulièrement avec numpy
 - La compilation de l'extension C de TTS échoue même avec l'environnement correctement configuré
 
+### Erreur : Modification du Registre désactivée
+**Solution :**
+1. Exécuter le script sans droits administrateur
+2. Utiliser cette commande alternative :
+```bash
+setup_env_v21.bat --no-registry
+```
+
+## Problèmes de registre Windows
+
+### Erreur : Accès registre bloqué
+**Solution :**
+- Exécutez le script avec l'option :
+  ```batch
+  setup_env_v21.bat --no-registry
+  ```
+- Configurez manuellement le PATH système avec :
+  ```
+  C:\Python310
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\<version>\bin\Hostx64\x64
+  ```

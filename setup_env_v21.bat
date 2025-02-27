@@ -1,7 +1,12 @@
-REM filepath: /c:/Users/JF30LB/Projects/python/Projects/text_to_audio/setup_env_v21.bat
 @echo off
 chcp 1252
 setlocal enabledelayedexpansion
+
+REM Gestion des paramètres
+if "%1" == "--no-registry" (
+    set NO_REGISTRY=1
+    echo [MODE SANS REGISTRE] Les modifications système seront désactivées
+)
 
 REM Sauvegarder le chemin système original
 set "ORIGINAL_PATH=%PATH%"
@@ -41,20 +46,47 @@ if not errorlevel 1 (
     goto found_python
 )
 
-echo Python 3.10 n'est pas trouve. Installation requise.
+echo Python 3.10 n'est pas trouvé. Tentative d'installation automatique...
+curl -L -o "%TEMP%\python-3.10-installer.exe" https://www.python.org/ftp/python/3.10.11/python-3.10.11-amd64.exe
+if exist "%TEMP%\python-3.10-installer.exe" (
+    echo Installation silencieuse de Python 3.10...
+    start /wait "" "%TEMP%\python-3.10-installer.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_launcher=0 Include_test=0
+    set "PYTHON_PATH=C:\Python310"
+    set "PYTHON_CMD=%PYTHON_PATH%\python.exe"
+    if exist "%PYTHON_CMD%" (
+        echo Vérification de la version installée...
+        "%PYTHON_CMD%" --version
+        if %errorlevel% equ 0 (
+            echo Python 3.10 installé avec succès
+            goto found_python
+        )
+    )
+    echo Échec de l'installation automatique
+    pause
+    exit /b 1
+)
+
+echo Python 3.10 n'est pas trouvé. Installation requise.
 pause
 exit /b 1
 
 :found_python
-echo Python 3.10 trouve dans %PYTHON_PATH%
+echo Python 3.10 trouvé dans %PYTHON_PATH%
 
-REM Configuration de Visual Studio
-echo Configuration de Visual Studio...
-set "VS_PATH=C:\Program Files\Microsoft Visual Studio\2022\Community"
+REM Configuration des chemins sécurisés
+set "PROGRAM_FILES=%ProgramFiles%"
+if not defined PROGRAM_FILES set "PROGRAM_FILES=C:\Program Files"
+
+REM Section Visual Studio modifiée
+set "VS_PATH=%PROGRAM_FILES%\Microsoft Visual Studio\2022\Community"
 if not exist "%VS_PATH%\VC\Tools\MSVC" (
-    echo Visual Studio 2022 Community est requis.
-    pause
-    exit /b 1
+    if not defined NO_REGISTRY (
+        echo Installation des outils de build...
+        curl -L -o "%TEMP%\vs_buildtools.exe" https://aka.ms/vs/17/release/vs_buildtools.exe
+        start /wait "" "%TEMP%\vs_buildtools.exe" --quiet --norestart --wait --add Microsoft.VisualStudio.Workload.VCTools
+    ) else (
+        echo Installez manuellement Visual Studio Build Tools 2022
+    )
 )
 
 REM Vérification précise des composants requis
@@ -180,6 +212,14 @@ if errorlevel 1 (
     echo Pour utiliser:
     echo call .\venv_py310\Scripts\activate.bat
     echo python Simple_TTS_GUI.py
+)
+
+REM Mise à jour finale du PATH
+if not defined NO_REGISTRY (
+    reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v Path /t REG_EXPAND_SZ /d "%PATH%" /f >nul
+) else (
+    echo Ajoutez manuellement à votre PATH :
+    echo %PATH%
 )
 
 pause
