@@ -1,59 +1,231 @@
-===== DEBUT INSTALLATION 27-02-25 13:33:24,95 ===== 
-[27-02-25 13:33:24,96] [INFO] [MODE SANS REGISTRE] Les modifications système seront désactivées 
-[27-02-25 13:33:24,97] [INFO] Mode debug activé - Fichier log: logs\setup_env_log.txt 
-[27-02-25 13:33:25,00] [DEBUG] PATH initial: c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;C:\Program Files\OpenLogic\jdk-17.0.13.11-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk-11\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Scripts;C:\ProgramData\Anaconda3\Scripts;C:\Users\JF30LB\OneDrive - NN\Programmes\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\;C:\Users\JF30LB\AppData\Local\Programs\Python\Launcher\;C:\Users\JF30LB\scoop\apps\nodejs-lts\current\bin;C:\Users\JF30LB\scoop\apps\nodejs-lts\current;C:\Users\JF30LB\scoop\shims;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files (x86)\Common Files\Pulse Secure\TNC Client Plugin\;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\Programs\Microsoft VS Code\bin;C:\ProgramData\Anaconda3;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\JetBrains\IntelliJ IDEA 2023.2.5\bin;C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_1.11.11421.0_x64__8wekyb3d8bbwe;C:\Users\JF30LB\AppData\Roaming\npm 
-[27-02-25 13:33:25,02] [DEBUG] Configuration des chemins sécurisés 
-[27-02-25 13:33:25,06] [DEBUG] PROGRAM_FILES: C:\Program Files 
-[27-02-25 13:33:25,09] [DEBUG] PROGRAM_FILES_X86: C:\Program Files (x86) 
-[27-02-25 13:33:25,14] [INFO] Vérifications préliminaires... 
-[27-02-25 13:33:25,20] [INFO] Recherche de Python 3.10... 
-[27-02-25 13:33:25,20] [DEBUG] Chemin Python trouvé: C:\Program Files\Python310 
-[27-02-25 13:33:25,21] [DEBUG] Commande Python: C:\Program Files\Python310\python.exe 
-[27-02-25 13:33:25,26] [INFO] Python 3.10 trouvé dans C:\Program Files\Python310 
-[27-02-25 13:33:25,30] [DEBUG] Chemin Python: C:\Program Files\Python310 
-[27-02-25 13:33:25,35] [DEBUG] Commande Python: C:\Program Files\Python310\python.exe 
-[27-02-25 13:33:25,41] [DEBUG] PATH après détection de Python: c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;C:\Program Files\OpenLogic\jdk-17.0.13.11-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk-11\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Scripts;C:\ProgramData\Anaconda3\Scripts;C:\Users\JF30LB\OneDrive - NN\Programmes\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\;C:\Users\JF30LB\AppData\Local\Programs\Python\Launcher\;C:\Users\JF30LB\scoop\apps\nodejs-lts\current\bin;C:\Users\JF30LB\scoop\apps\nodejs-lts\current;C:\Users\JF30LB\scoop\shims;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files (x86)\Common Files\Pulse Secure\TNC Client Plugin\;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\Programs\Microsoft VS Code\bin;C:\ProgramData\Anaconda3;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\JetBrains\IntelliJ IDEA 2023.2.5\bin;C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_1.11.11421.0_x64__8wekyb3d8bbwe;C:\Users\JF30LB\AppData\Roaming\npm 
-[27-02-25 13:33:25,46] [INFO] Vérification du SDK Windows 10 ignorée en mode sans registre 
-[27-02-25 13:33:25,52] [DEBUG] Configuration des chemins SDK Windows 
-[27-02-25 13:33:25,57] [DEBUG] WindowsSdkDir: C:\Program Files (x86)\Windows Kits\10 
-[27-02-25 13:33:25,59] [DEBUG] WindowsSdkVerBinPath: C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64 
-[27-02-25 13:33:25,64] [INFO] Vérification des redistribuables Visual C++... 
-[27-02-25 13:33:25,70] [INFO] Vérification des redistribuables Visual C++ ignorée en mode sans registre 
-[27-02-25 13:33:25,72] [INFO] Installation des redistribuables VS 2015-2022... 
-[27-02-25 13:33:50,00] [INFO] Vérification des en-têtes système Windows... 
-[27-02-25 13:33:50,01] [INFO] Les en-têtes système sont déjà installés 
-[27-02-25 13:33:50,11] [DEBUG] Configuration de l'environnement de développement 
-[27-02-25 13:33:50,24] [DEBUG] Recherche de la version MSVC 
-[27-02-25 13:33:50,29] [DEBUG] Version MSVC trouvée: 14.43.34808 
-[27-02-25 13:33:50,33] [DEBUG] Appel de vcvarsall.bat 
-[27-02-25 13:33:50,35] [DEBUG] Exécution de C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat 
-[27-02-25 13:34:26,49] [INFO] Installation des dépendances Python... 
-[27-02-25 13:36:00,63] [INFO] Création de l'environnement virtuel... 
-[27-02-25 13:36:00,63] [DEBUG] Suppression de l'environnement virtuel existant si présent 
-[27-02-25 13:36:00,65] [DEBUG] Création d'un nouvel environnement virtuel avec C:\Program Files\Python310\python.exe 
-[27-02-25 13:36:17,16] [DEBUG] Vérification de l'existence du script d'activation 
-[27-02-25 13:36:17,16] [INFO] Installation des dépendances de base... 
-[27-02-25 13:36:23,85] [INFO] Installation de "librosa 
-[27-02-25 13:37:22,30] [INFO] Installation de "soundfile 
-[27-02-25 13:37:23,91] [INFO] Installation de "scipy 
-[27-02-25 13:37:50,85] [INFO] Installation de "tensorboard 
-[27-02-25 13:38:12,26] [INFO] Installation de "Unidecode 
-[27-02-25 13:38:17,72] [INFO] Installation de "tqdm 
-[27-02-25 13:38:19,97] [INFO] Vérification de l'installation... 
-[27-02-25 13:38:21,11] [ERROR] ATTENTION: Installation incomplète 
-[27-02-25 13:38:21,11] [INFO] Consultez TROUBLESHOOTING.md pour les solutions 
-[27-02-25 13:38:21,13] [DEBUG] Mise à jour finale du PATH 
-[27-02-25 13:38:21,18] [DEBUG] PATH actuel: C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files\Microsoft Visual Studio\2022\Community\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe 
-[27-02-25 13:38:21,24] [INFO] Configuration manuelle requise : 
-[27-02-25 13:38:21,29] [INFO] Ajoutez ces chemins à votre PATH : 
-[27-02-25 13:38:21,33] [INFO] C:\Program Files\Python310 
-[27-02-25 13:38:21,38] [INFO] C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\Hostx64\x64 
-[27-02-25 13:38:21,43] [INFO] Installation terminée 
-[27-02-25 13:38:21,46] [INFO] Fichier log disponible: logs\setup_env_log.txt 
-[27-02-25 13:38:21,51] [DEBUG] PATH final: C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files\Microsoft Visual Studio\2022\Community\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe 
+===== DEBUT INSTALLATION 27-02-25 13:59:26,97 ===== 
+[27-02-25 13:59:26,97] [INFO] [MODE SANS REGISTRE] Les modifications système seront désactivées 
+[27-02-25 13:59:26,98] [INFO] Mode debug activé - Fichier log: logs\setup_env_log.txt 
+[27-02-25 13:59:26,99] [DEBUG] PATH initial: c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;C:\Program Files\OpenLogic\jdk-17.0.13.11-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk-11\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Scripts;C:\ProgramData\Anaconda3\Scripts;C:\Users\JF30LB\OneDrive - NN\Programmes\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\;C:\Users\JF30LB\AppData\Local\Programs\Python\Launcher\;C:\Users\JF30LB\scoop\apps\nodejs-lts\current\bin;C:\Users\JF30LB\scoop\apps\nodejs-lts\current;C:\Users\JF30LB\scoop\shims;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files (x86)\Common Files\Pulse Secure\TNC Client Plugin\;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\Programs\Microsoft VS Code\bin;C:\ProgramData\Anaconda3;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\JetBrains\IntelliJ IDEA 2023.2.5\bin;C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_1.11.11421.0_x64__8wekyb3d8bbwe;C:\Users\JF30LB\AppData\Roaming\npm 
+[27-02-25 13:59:27,00] [DEBUG] Configuration des chemins sécurisés 
+[27-02-25 13:59:27,01] [DEBUG] PROGRAM_FILES: C:\Program Files 
+[27-02-25 13:59:27,03] [DEBUG] PROGRAM_FILES_X86: C:\Program Files (x86) 
+[27-02-25 13:59:27,08] [INFO] Vérifications préliminaires... 
+[27-02-25 13:59:27,16] [INFO] Recherche de Python 3.10... 
+[27-02-25 13:59:27,17] [DEBUG] Chemin Python trouvé: C:\Program Files\Python310 
+[27-02-25 13:59:27,22] [DEBUG] Commande Python: C:\Program Files\Python310\python.exe 
+[27-02-25 13:59:27,26] [INFO] Python 3.10 trouvé dans C:\Program Files\Python310 
+[27-02-25 13:59:27,31] [DEBUG] Chemin Python: C:\Program Files\Python310 
+[27-02-25 13:59:27,35] [DEBUG] Commande Python: C:\Program Files\Python310\python.exe 
+[27-02-25 13:59:27,40] [DEBUG] PATH après détection de Python: c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;C:\Program Files\OpenLogic\jdk-17.0.13.11-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk-11\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Scripts;C:\ProgramData\Anaconda3\Scripts;C:\Users\JF30LB\OneDrive - NN\Programmes\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\;C:\Users\JF30LB\AppData\Local\Programs\Python\Launcher\;C:\Users\JF30LB\scoop\apps\nodejs-lts\current\bin;C:\Users\JF30LB\scoop\apps\nodejs-lts\current;C:\Users\JF30LB\scoop\shims;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files (x86)\Common Files\Pulse Secure\TNC Client Plugin\;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\Programs\Microsoft VS Code\bin;C:\ProgramData\Anaconda3;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\JetBrains\IntelliJ IDEA 2023.2.5\bin;C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_1.11.11421.0_x64__8wekyb3d8bbwe;C:\Users\JF30LB\AppData\Roaming\npm 
+[27-02-25 13:59:27,45] [INFO] Vérification du SDK Windows 10 ignorée en mode sans registre 
+[27-02-25 13:59:27,49] [DEBUG] Configuration des chemins SDK Windows 
+[27-02-25 13:59:27,56] [DEBUG] WindowsSdkDir: C:\Program Files (x86)\Windows Kits\10 
+[27-02-25 13:59:27,61] [DEBUG] WindowsSdkVerBinPath: C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64 
+[27-02-25 13:59:27,67] [INFO] Vérification des redistribuables Visual C++... 
+[27-02-25 13:59:27,72] [INFO] Vérification des redistribuables Visual C++ ignorée en mode sans registre 
+[27-02-25 13:59:27,78] [INFO] Installation des redistribuables VS 2015-2022... 
+[27-02-25 13:59:52,10] [INFO] Vérification des en-têtes système Windows... 
+[27-02-25 13:59:52,10] [INFO] Les en-têtes système sont déjà installés 
+[27-02-25 13:59:52,14] [DEBUG] Configuration de l'environnement de développement 
+[27-02-25 13:59:52,20] [DEBUG] Recherche de la version MSVC 
+[27-02-25 13:59:52,22] [DEBUG] Version MSVC trouvée: 14.43.34808 
+[27-02-25 13:59:52,32] [DEBUG] Appel de vcvarsall.bat 
+[27-02-25 13:59:52,33] [DEBUG] Exécution de C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat 
+[27-02-25 14:02:00,12] [INFO] Création de l'environnement virtuel... 
+[27-02-25 14:02:00,12] [DEBUG] Suppression de l'environnement virtuel existant si présent 
+[27-02-25 14:02:00,46] [DEBUG] Création d'un nouvel environnement virtuel avec C:\Program Files\Python310\python.exe 
+[27-02-25 14:02:16,32] [DEBUG] Vérification de l'existence du script d'activation 
+[27-02-25 14:02:16,32] [INFO] Activation de l'environnement virtuel... 
+[27-02-25 14:02:16,43] [DEBUG] Vérification de l'activation 
+Environnement virtuel actif: C:\Program Files\Python310
+[27-02-25 14:02:16,48] [INFO] Installation des dépendances de base... 
+[27-02-25 14:02:20,18] [INFO] Installation de "numpy 
+[27-02-25 14:02:35,74] [INFO] Installation de "torch 
+[27-02-25 14:02:36,71] [INFO] Installation de "--index-url"... 
+[27-02-25 14:02:37,24] [INFO] Installation de "https://download.pytorch.org/whl/cpu"... 
+[27-02-25 14:02:38,60] [INFO] Installation de "tqdm 
+[27-02-25 14:02:39,40] [INFO] Installation de TTS... 
+[27-02-25 14:04:50,95] [INFO] Installation de PyQt6... 
+[27-02-25 14:04:51,76] [INFO] Installation de pyinstaller... 
+[27-02-25 14:04:52,54] [INFO] Vérification de l'installation... 
+[27-02-25 14:04:53,83] [ERROR] ATTENTION: Installation incomplète 
+[27-02-25 14:04:53,83] [INFO] Consultez TROUBLESHOOTING.md pour les solutions 
+[27-02-25 14:04:53,88] [DEBUG] Mise à jour finale du PATH 
+[27-02-25 14:04:53,93] [DEBUG] PATH actuel: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Scripts;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files\Microsoft Visual Studio\2022\Community\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe 
+[27-02-25 14:04:53,97] [INFO] Configuration manuelle requise : 
+[27-02-25 14:04:54,01] [INFO] Ajoutez ces chemins à votre PATH : 
+[27-02-25 14:04:54,05] [INFO] C:\Program Files\Python310 
+[27-02-25 14:04:54,10] [INFO] C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\Hostx64\x64 
+[27-02-25 14:04:54,15] [INFO] Installation terminée 
+[27-02-25 14:04:54,17] [INFO] Fichier log disponible: logs\setup_env_log.txt 
+[27-02-25 14:04:54,21] [DEBUG] PATH final: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Scripts;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files\Microsoft Visual Studio\2022\Community\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe 
 
 
-Dans le terminal
+Une partie des logs du terminal : 
+   .\setup_env_v21.bat --no-registry --debug
+[MODE SANS REGISTRE] Les modifications systÃ¨me seront dÃ©sactivÃ©es
+Mode debug activÃ© - Fichier log: logs\setup_env_log.txt
+PATH initial: c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;C:\Program Files\OpenLogic\jdk-17.0.13.11-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk-11\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Scripts;C:\ProgramData\Anaconda3\Scripts;C:\Users\JF30LB\OneDrive - NN\Programmes\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\;C:\Users\JF30LB\AppData\Local\Programs\Python\Launcher\;C:\Users\JF30LB\scoop\apps\nodejs-lts\current\bin;C:\Users\JF30LB\scoop\apps\nodejs-lts\current;C:\Users\JF30LB\scoop\shims;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files (x86)\Common Files\Pulse Secure\TNC Client Plugin\;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\Programs\Microsoft VS Code\bin;C:\ProgramData\Anaconda3;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\JetBrains\IntelliJ IDEA 2023.2.5\bin;C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_1.11.11421.0_x64__8wekyb3d8bbwe;C:\Users\JF30LB\AppData\Roaming\npm 
+Configuration des chemins sÃ©curisÃ©s
+PROGRAM_FILES: C:\Program Files
+PROGRAM_FILES_X86: C:\Program Files (x86)
+VÃ©rifications prÃ©liminaires...
+Recherche de Python 3.10...
+Chemin Python trouvÃ©: C:\Program Files\Python310
+Commande Python: C:\Program Files\Python310\python.exe
+Python 3.10 trouvÃ© dans C:\Program Files\Python310
+Chemin Python: C:\Program Files\Python310
+Commande Python: C:\Program Files\Python310\python.exe
+PATH aprÃ¨s dÃ©tection de Python: c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;C:\Program Files\OpenLogic\jdk-17.0.13.11-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk-11\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Scripts;C:\ProgramData\Anaconda3\Scripts;C:\Users\JF30LB\OneDrive - NN\Programmes\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python311\;C:\Users\JF30LB\AppData\Local\Programs\Python\Launcher\;C:\Users\JF30LB\scoop\apps\nodejs-lts\current\bin;C:\Users\JF30LB\scoop\apps\nodejs-lts\current;C:\Users\JF30LB\scoop\shims;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64\;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86\;C:\Program Files (x86)\Common Files\Pulse Secure\TNC Client Plugin\;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\Programs\Microsoft VS Code\bin;C:\ProgramData\Anaconda3;C:\Users\JF30LB\AppData\Local\Microsoft\WindowsApps;C:\Users\JF30LB\AppData\Local\JetBrains\IntelliJ IDEA 2023.2.5\bin;C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_1.11.11421.0_x64__8wekyb3d8bbwe;C:\Users\JF30LB\AppData\Roaming\npm
+VÃ©rification du SDK Windows 10 ignorÃ©e en mode sans registre
+Configuration des chemins SDK Windows
+WindowsSdkDir: C:\Program Files (x86)\Windows Kits\10
+WindowsSdkVerBinPath: C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64
+VÃ©rification des redistribuables Visual C++...
+VÃ©rification des redistribuables Visual C++ ignorÃ©e en mode sans registre
+Installation des redistribuables VS 2015-2022...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 24.4M  100 24.4M    0     0  7485k      0  0:00:03  0:00:03 --:--:-- 9532k
+VÃ©rification des en-tÃªtes systÃ¨me Windows...
+Les en-tÃªtes systÃ¨me sont dÃ©jÃ  installÃ©s
+Configuration de l'environnement de dÃ©veloppement
+Recherche de la version MSVC
+Version MSVC trouvÃ©e: 14.43.34808
+Appel de vcvarsall.bat
+ExÃ©cution de C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.13.2
+** Copyright (c) 2022 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x64'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 24.4M  100 24.4M    0     0  8639k      0  0:00:02  0:00:02 --:--:--  9.9M
+CrÃ©ation de l'environnement virtuel...
+Suppression de l'environnement virtuel existant si prÃ©sent
+CrÃ©ation d'un nouvel environnement virtuel avec C:\Program Files\Python310\python.exe
+VÃ©rification de l'existence du script d'activation
+Activation de l'environnement virtuel...
+VÃ©rification de l'activation
+Installation des dÃ©pendances de base...
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pip in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (25.0.1)
+Requirement already satisfied: setuptools in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (75.8.2)
+Requirement already satisfied: wheel in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (0.45.1)
+Installation de "numpy
+Defaulting to user installation because normal site-packages is not writeable
+Collecting numpy==1.24.3
+  Downloading numpy-1.24.3-cp310-cp310-win_amd64.whl.metadata (5.6 kB)
+Downloading numpy-1.24.3-cp310-cp310-win_amd64.whl (14.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.8/14.8 MB 10.5 MB/s eta 0:00:00
+Installing collected packages: numpy
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.26.4
+    Uninstalling numpy-1.26.4:
+      Successfully uninstalled numpy-1.26.4
+  WARNING: The script f2py.exe is installed in 'C:\Users\JF30LB\AppData\Roaming\Python\Python310\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed numpy-1.24.3
+Installation de "torch
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: Could not find a version that satisfies the requirement torch==2.1.0+cpu (from versions: 1.11.0, 1.12.0, 1.12.1, 1.13.0, 1.13.1, 2.0.0, 2.0.1, 2.1.0, 2.1.1, 2.1.2, 2.2.0, 2.2.1, 2.2.2, 2.3.0, 2.3.1, 2.4.0, 2.4.1, 2.5.0, 2.5.1, 2.6.0)
+ERROR: No matching distribution found for torch==2.1.0+cpu
+Installation de "--index-url"...
+Defaulting to user installation because normal site-packages is not writeable
+ERROR: You must give at least one requirement to install (see "pip help install")
+Installation de "https://download.pytorch.org/whl/cpu"...
+Defaulting to user installation because normal site-packages is not writeable
+Collecting https://download.pytorch.org/whl/cpu
+  Downloading https://download.pytorch.org/whl/cpu (2.5 kB)
+  ERROR: Cannot unpack file C:\Users\JF30LB\AppData\Local\Temp\pip-unpack-gftvozba\cpu.html (downloaded from C:\Users\JF30LB\AppData\Local\Temp\pip-req-build-cknplf19, content-type: text/html); cannot detect archive format
+ERROR: Cannot determine archive format of C:\Users\JF30LB\AppData\Local\Temp\pip-req-build-cknplf19
+Installation de "tqdm
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: tqdm==4.65.0 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (4.65.0)
+Requirement already satisfied: colorama in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from tqdm==4.65.0) (0.4.6)
+Installation de TTS...
+Defaulting to user installation because normal site-packages is not writeable
+Collecting TTS
+  Downloading TTS-0.22.0.tar.gz (1.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 8.1 MB/s eta 0:00:00
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Preparing metadata (pyproject.toml) ... done
+Collecting numpy==1.22.0 (from TTS)
+  Downloading numpy-1.22.0-cp310-cp310-win_amd64.whl.metadata (2.1 kB)
+Requirement already satisfied: cython>=0.29.30 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from TTS) (3.0.12)
+Requirement already satisfied: scipy>=1.11.2 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from TTS) (1.11.4)
+Collecting torch>=2.1 (from TTS)
+  Downloading torch-2.6.0-cp310-cp310-win_amd64.whl.metadata (28 kB)
+Collecting torchaudio (from TTS)
+  Downloading torchaudio-2.6.0-cp310-cp310-win_amd64.whl.metadata (6.7 kB)
+Requirement already satisfied: soundfile>=0.12.0 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from TTS) (0.12.1)
+Requirement already satisfied: librosa>=0.10.0 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from TTS) (0.10.0)
+Requirement already satisfied: scikit-learn>=1.3.0 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from TTS) (1.6.1)
+Requirement already satisfied: numba>=0.57.0 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from TTS) (0.61.0)
+Collecting inflect>=5.6.0 (from TTS)
+  Downloading inflect-7.5.0-py3-none-any.whl.metadata (24 kB)
+Requirement already satisfied: tqdm>=4.64.1 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from TTS) (4.65.0)
+Collecting anyascii>=0.3.0 (from TTS)
+  Downloading anyascii-0.3.2-py3-none-any.whl.metadata (1.5 kB)
+Collecting pyyaml>=6.0 (from TTS)
+  Downloading PyYAML-6.0.2-cp310-cp310-win_amd64.whl.metadata (2.1 kB)
+Collecting fsspec>=2023.6.0 (from TTS)
+  Downloading fsspec-2025.2.0-py3-none-any.whl.metadata (11 kB)
+Collecting aiohttp>=3.8.1 (from TTS)
+  Downloading aiohttp-3.11.13-cp310-cp310-win_amd64.whl.metadata (8.0 kB)
+Requirement already satisfied: packaging>=23.1 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from TTS) (24.2)
+Collecting flask>=2.0.1 (from TTS)
+  Downloading flask-3.1.0-py3-none-any.whl.metadata (2.7 kB)
+Collecting pysbd>=0.3.4 (from TTS)
+  Downloading pysbd-0.3.4-py3-none-any.whl.metadata (6.1 kB)
+Collecting umap-learn>=0.5.1 (from TTS)
+  Downloading umap_learn-0.5.7-py3-none-any.whl.metadata (21 kB)
+Collecting pandas<2.0,>=1.4 (from TTS)
+  Downloading pandas-1.5.3-cp310-cp310-win_amd64.whl.metadata (12 kB)
+Collecting matplotlib>=3.7.0 (from TTS)
+  Downloading matplotlib-3.10.0-cp310-cp310-win_amd64.whl.metadata (11 kB)
+Collecting trainer>=0.0.32 (from TTS)
+  Downloading trainer-0.0.36-py3-none-any.whl.metadata (8.1 kB)
+Collecting coqpit>=0.0.16 (from TTS)
+  Downloading coqpit-0.0.17-py3-none-any.whl.metadata (11 kB)
+Collecting jieba (from TTS)
+  Downloading jieba-0.42.1.tar.gz (19.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.2/19.2 MB 10.8 MB/s eta 0:00:00
+  Preparing metadata (setup.py) ... done
+Collecting pypinyin (from TTS)
+  Downloading pypinyin-0.53.0-py2.py3-none-any.whl.metadata (12 kB)
+Collecting hangul_romanize (from TTS)
+  Downloading hangul_romanize-0.1.0-py3-none-any.whl.metadata (1.2 kB)
+Collecting gruut==2.2.3 (from gruut[de,es,fr]==2.2.3->TTS)
+  Downloading gruut-2.2.3.tar.gz (73 kB)
+
+La fin des logs du terminal :
+            # Package would be ignored #
+              ############################
+              Python recognizes 'TTS.vc.models' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this       
+              package, please make sure that 'TTS.vc.models' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'TTS.vc.models' to be distributed and are
+              already explicitly excluding 'TTS.vc.models' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
 
 
               [^1]: For Python, any directory (with suitable naming) can be imported,
@@ -64,7 +236,212 @@ Dans le terminal
 
       !!
         check.warn(importable)
-      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-_17g41vr\overlay\Lib\site-packages\setuptools\command\build_py.py:212: _Warning: Package 'TTS.vocoder.configs' is absent from the `packages` configuration.
+      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-s1kvmn1q\overlay\Lib\site-packages\setuptools\command\build_py.py:212: _Warning: Package 'TTS.vc.modules' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************       
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'TTS.vc.modules' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this       
+              package, please make sure that 'TTS.vc.modules' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'TTS.vc.modules' to be distributed and are
+              already explicitly excluding 'TTS.vc.modules' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************       
+
+      !!
+        check.warn(importable)
+      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-s1kvmn1q\overlay\Lib\site-packages\setuptools\command\build_py.py:212: _Warning: Package 'TTS.vc.modules.freevc' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************       
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'TTS.vc.modules.freevc' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this       
+              package, please make sure that 'TTS.vc.modules.freevc' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'TTS.vc.modules.freevc' to be distributed and are
+              already explicitly excluding 'TTS.vc.modules.freevc' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************       
+
+      !!
+        check.warn(importable)
+      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-s1kvmn1q\overlay\Lib\site-packages\setuptools\command\build_py.py:212: _Warning: Package 'TTS.vc.modules.freevc.speaker_encoder' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************       
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'TTS.vc.modules.freevc.speaker_encoder' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this       
+              package, please make sure that 'TTS.vc.modules.freevc.speaker_encoder' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'TTS.vc.modules.freevc.speaker_encoder' to be distributed and are
+              already explicitly excluding 'TTS.vc.modules.freevc.speaker_encoder' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************       
+
+      !!
+        check.warn(importable)
+      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-s1kvmn1q\overlay\Lib\site-packages\setuptools\command\build_py.py:212: _Warning: Package 'TTS.vc.modules.freevc.wavlm' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************       
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'TTS.vc.modules.freevc.wavlm' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this       
+              package, please make sure that 'TTS.vc.modules.freevc.wavlm' is explicitly added       
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'TTS.vc.modules.freevc.wavlm' to be distributed and are
+              already explicitly excluding 'TTS.vc.modules.freevc.wavlm' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************       
+
+      !!
+        check.warn(importable)
+      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-s1kvmn1q\overlay\Lib\site-packages\setuptools\command\build_py.py:212: _Warning: Package 'TTS.vocoder' is absent from the `packages` configuration.
+      !!
+
+              ********************************************************************************       
+              ############################
+              # Package would be ignored #
+              ############################
+              Python recognizes 'TTS.vocoder' as an importable package[^1],
+              but it is absent from setuptools' `packages` configuration.
+
+              This leads to an ambiguous overall configuration. If you want to distribute this       
+              package, please make sure that 'TTS.vocoder' is explicitly added
+              to the `packages` configuration field.
+
+              Alternatively, you can also rely on setuptools' discovery methods
+              (for example by using `find_namespace_packages(...)`/`find_namespace:`
+              instead of `find_packages(...)`/`find:`).
+
+              You can read more about "package discovery" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+
+              If you don't want 'TTS.vocoder' to be distributed and are
+              already explicitly excluding 'TTS.vocoder' via
+              `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+              you can try to use `exclude_package_data`, or `include-package-data=False` in
+              combination with a more fine grained `package-data` configuration.
+
+              You can read more about "package data files" on setuptools documentation page:
+
+              - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+
+
+              [^1]: For Python, any directory (with suitable naming) can be imported,
+                    even if it does not contain any `.py` files.
+                    On the other hand, currently there is no concept of package data
+                    directory, all directories are treated like packages.
+              ********************************************************************************       
+
+      !!
+        check.warn(importable)
+      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-s1kvmn1q\overlay\Lib\site-packages\setuptools\command\build_py.py:212: _Warning: Package 'TTS.vocoder.configs' is absent from the `packages` configuration.
       !!
 
               ********************************************************************************       
@@ -105,7 +482,7 @@ Dans le terminal
 
       !!
         check.warn(importable)
-      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-_17g41vr\overlay\Lib\site-packages\setuptools\command\build_py.py:212: _Warning: Package 'TTS.vocoder.datasets' is absent from the `packages` configuration.
+      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-s1kvmn1q\overlay\Lib\site-packages\setuptools\command\build_py.py:212: _Warning: Package 'TTS.vocoder.datasets' is absent from the `packages` configuration.
       !!
 
               ********************************************************************************       
@@ -146,7 +523,7 @@ Dans le terminal
 
       !!
         check.warn(importable)
-      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-_17g41vr\overlay\Lib\site-packages\setuptools\command\build_py.py:212: _Warning: Package 'TTS.vocoder.layers' is absent from the `packages` configuration.
+      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-s1kvmn1q\overlay\Lib\site-packages\setuptools\command\build_py.py:212: _Warning: Package 'TTS.vocoder.layers' is absent from the `packages` configuration.
       !!
 
               ********************************************************************************       
@@ -187,7 +564,7 @@ Dans le terminal
 
       !!
         check.warn(importable)
-      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-_17g41vr\overlay\Lib\site-packages\setuptools\command\build_py.py:212: _Warning: Package 'TTS.vocoder.models' is absent from the `packages` configuration.
+      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-s1kvmn1q\overlay\Lib\site-packages\setuptools\command\build_py.py:212: _Warning: Package 'TTS.vocoder.models' is absent from the `packages` configuration.
       !!
 
               ********************************************************************************       
@@ -228,7 +605,7 @@ Dans le terminal
 
       !!
         check.warn(importable)
-      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-_17g41vr\overlay\Lib\site-packages\setuptools\command\build_py.py:212: _Warning: Package 'TTS.vocoder.utils' is absent from the `packages` configuration.
+      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-s1kvmn1q\overlay\Lib\site-packages\setuptools\command\build_py.py:212: _Warning: Package 'TTS.vocoder.utils' is absent from the `packages` configuration.
       !!
 
               ********************************************************************************       
@@ -629,11 +1006,11 @@ Dans le terminal
       running build_ext
       building 'TTS.tts.utils.monotonic_align.core' extension
       creating build\temp.win-amd64-cpython-310\Release\TTS\tts\utils\monotonic_align
-      "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\HostX64\x64\cl.exe" /c /nologo /O2 /W3 /GL /DNDEBUG /MD -IC:\Users\JF30LB\AppData\Local\Temp\pip-build-env-_17g41vr\overlay\Lib\site-packages\numpy\_core\include "-IC:\Program Files\Python310\include" "-IC:\Program Files\Python310\Include" "-IC:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include" "-IC:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include" "-IC:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include" "-IC:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include" "-IC:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\ATLMFC\include" "-IC:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt" "-IC:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um" "-IC:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared" /TcTTS/tts/utils/monotonic_align/core.c /Fobuild\temp.win-amd64-cpython-310\Release\TTS\tts\utils\monotonic_align\core.obj
+      "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\HostX64\x64\cl.exe" /c /nologo /O2 /W3 /GL /DNDEBUG /MD -IC:\Users\JF30LB\AppData\Local\Temp\pip-build-env-s1kvmn1q\overlay\Lib\site-packages\numpy\_core\include "-IC:\Program Files\Python310\include" "-IC:\Program Files\Python310\Include" "-IC:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include" "-IC:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include" "-IC:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include" "-IC:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include" "-IC:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\ATLMFC\include" "-IC:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt" "-IC:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um" "-IC:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared" /TcTTS/tts/utils/monotonic_align/core.c /Fobuild\temp.win-amd64-cpython-310\Release\TTS\tts\utils\monotonic_align\core.obj
       core.c
-      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-_17g41vr\overlay\Lib\site-packages\numpy\_core\include\numpy\npy_1_7_deprecated_api.h(14) : Warning Msg: Using deprecated NumPy API, disable it with #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+      C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-s1kvmn1q\overlay\Lib\site-packages\numpy\_core\include\numpy\npy_1_7_deprecated_api.h(14) : Warning Msg: Using deprecated NumPy API, disable it with #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
       TTS/tts/utils/monotonic_align/core.c(2997): warning C4244: '=': conversion from 'Py_ssize_t' to 'int', possible loss of data
-      creating C:\Users\JF30LB\AppData\Local\Temp\pip-install-rn_4z3p3\tts_daff795d0f3f41eaa21a35bf88b31a1d\build\lib.win-amd64-cpython-310\TTS\tts\utils\monotonic_align
+      creating C:\Users\JF30LB\AppData\Local\Temp\pip-install-m1iinycp\tts_8d95790cd5d64471824456656d935dc6\build\lib.win-amd64-cpython-310\TTS\tts\utils\monotonic_align
       "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\HostX64\x64\link.exe" /nologo /INCREMENTAL:NO /LTCG /DLL /MANIFEST:EMBED,ID=2 /MANIFESTUAC:NO "/LIBPATH:C:\Program Files\Python310\libs" "/LIBPATH:C:\Program Files\Python310" "/LIBPATH:C:\Program Files\Python310\PCbuild\amd64" "/LIBPATH:C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\lib\x64" "/LIBPATH:C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\lib\x64" "/LIBPATH:C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\ATLMFC\lib\x64" "/LIBPATH:C:\Program Files (x86)\Windows Kits\10\Lib\10.0.19041.0\ucrt\x64" "/LIBPATH:C:\Program Files (x86)\Windows Kits\10\Lib\10.0.19041.0\um\x64" /EXPORT:PyInit_core build\temp.win-amd64-cpython-310\Release\TTS\tts\utils\monotonic_align\core.obj /OUT:build\lib.win-amd64-cpython-310\TTS\tts\utils\monotonic_align\core.cp310-win_amd64.pyd /IMPLIB:build\temp.win-amd64-cpython-310\Release\TTS\tts\utils\monotonic_align\core.cp310-win_amd64.lib
          Creating library build\temp.win-amd64-cpython-310\Release\TTS\tts\utils\monotonic_align\core.cp310-win_amd64.lib and object build\temp.win-amd64-cpython-310\Release\TTS\tts\utils\monotonic_align\core.cp310-win_amd64.exp
       Generating code
@@ -644,288 +1021,67 @@ Dans le terminal
 
   note: This error originates from a subprocess, and is likely not a problem with pip.
   ERROR: Failed building wheel for TTS
+  Building wheel for gruut (setup.py) ... done
+  Created wheel for gruut: filename=gruut-2.2.3-py3-none-any.whl size=75909 sha256=a615028e39f15e7a91d1d1bdc0bfaeeff97fa91578cf117c4dc50450312f0d41
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-2mug54mh\wheels\fc\57\a8\f9de532daf5214f53644f20f3a9e6f69269453c87df9c0a817
+  Building wheel for encodec (setup.py) ... done
+  Created wheel for encodec: filename=encodec-0.1.1-py3-none-any.whl size=45874 sha256=a725397117a6479f6b7415b0edcc77481a77ddf0dc813928b8b73db5d4461edb
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-2mug54mh\wheels\fc\36\cb\81af8b985a5f5e0815312d5e52b41263237af07b977e6bcbf3
+  Building wheel for bnnumerizer (setup.py) ... done
+  Created wheel for bnnumerizer: filename=bnnumerizer-0.0.2-py3-none-any.whl size=5321 sha256=0e19ec84cce86de67b57a826d5f4cde440951f8a4f5db980e3370c6777eebf9e
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-2mug54mh\wheels\59\6b\e8\223172e7d5c9f72df3ea1a0d9258f3a8ab5b28e827728edef5
+  Building wheel for jieba (setup.py) ... done
+  Created wheel for jieba: filename=jieba-0.42.1-py3-none-any.whl size=19314526 sha256=2e052b253692362be5b7c7c3e9aaf4824e8b4c45a62013efdea8fa63c22ab4c0
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-2mug54mh\wheels\c9\69\31\d56d90b22a1777b0b231e234b00302a55be255930f8bd92dcd
+  Building wheel for docopt (setup.py) ... done
+  Created wheel for docopt: filename=docopt-0.6.2-py2.py3-none-any.whl size=13822 sha256=c233d347146b56b7fd3f724c6558f03f9960b161a749f7c8f257f91e7a2cf9a4
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-2mug54mh\wheels\fc\ab\d4\5da2067ac95b36618c629a5f93f809425700506f72c9732fac
+  Building wheel for gruut-ipa (setup.py) ... done
+  Created wheel for gruut-ipa: filename=gruut_ipa-0.13.0-py3-none-any.whl size=104961 sha256=1fa33472c5098d57c63f83905931343f14b9b2fd12ae3347844973248f23ee21
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-2mug54mh\wheels\7b\18\49\e4f500ecdf0babe757953f844e4d7cd1ea81c5503c09bfe984
+  Building wheel for gruut_lang_de (setup.py) ... done
+  Created wheel for gruut_lang_de: filename=gruut_lang_de-2.0.1-py3-none-any.whl size=18498366 sha256=0285a9af0c2c991b07acd5c52cff322953fb1e005469954f2061c36da10fc5f0
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-2mug54mh\wheels\83\80\5f\775b357ae61d7cb68793327c7470d848715cbc60bb373af8dd
+  Building wheel for gruut_lang_en (setup.py) ... done
+  Created wheel for gruut_lang_en: filename=gruut_lang_en-2.0.1-py3-none-any.whl size=15326908 sha256=739fd71ff50b9b5ee8a5c3b27d221cb50aebaf29cfdaa9b87fad6d3165526ecf
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-2mug54mh\wheels\64\8d\b7\d484d224facd899ed188e00374f25dd3f19d1a3f53da6517bd
+  Building wheel for gruut_lang_es (setup.py) ... done
+  Created wheel for gruut_lang_es: filename=gruut_lang_es-2.0.1-py3-none-any.whl size=32173980 sha256=38d8e50f0c58143fa07fe68ce8896672b83cafc1bb3df14624556c80eb196af2
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-2mug54mh\wheels\ab\bd\96\5ddde14e8e6932a96f12c5ab5de62b619d39e2507d7daf5188
+  Building wheel for gruut_lang_fr (setup.py) ... done
+  Created wheel for gruut_lang_fr: filename=gruut_lang_fr-2.0.2-py3-none-any.whl size=10968816 sha256=17793aab03d5230093afb9904025264da93c6cf7dc106428c3c8514c3b9d27aa
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-2mug54mh\wheels\db\21\be\d0436e3f1cf9bf38b9bb9b4a476399c77a1ab19f7172b45e19
+Successfully built gruut encodec bnnumerizer jieba docopt gruut-ipa gruut_lang_de gruut_lang_en gruut_lang_es gruut_lang_fr
 Failed to build TTS
 ERROR: Failed to build installable wheels for some pyproject.toml based projects (TTS)
+Installation de PyQt6...
 Defaulting to user installation because normal site-packages is not writeable
-Collecting PyQt6==6.4.2
-  Using cached PyQt6-6.4.2-cp37-abi3-win_amd64.whl.metadata (2.2 kB)
-Collecting PyQt6-sip<14,>=13.4 (from PyQt6==6.4.2)
-  Using cached PyQt6_sip-13.10.0-cp310-cp310-win_amd64.whl.metadata (492 bytes)
-Collecting PyQt6-Qt6>=6.4.0 (from PyQt6==6.4.2)
-  Using cached PyQt6_Qt6-6.8.2-py3-none-win_amd64.whl.metadata (551 bytes)
-Using cached PyQt6-6.4.2-cp37-abi3-win_amd64.whl (6.4 MB)
-Using cached PyQt6_Qt6-6.8.2-py3-none-win_amd64.whl (71.9 MB)
-Using cached PyQt6_sip-13.10.0-cp310-cp310-win_amd64.whl (53 kB)
-Installing collected packages: PyQt6-Qt6, PyQt6-sip, PyQt6
-  WARNING: The scripts pylupdate6.exe and pyuic6.exe are installed in 'C:\Users\JF30LB\AppData\Roaming\Python\Python310\Scripts' which is not on PATH.
-  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-Successfully installed PyQt6-6.4.2 PyQt6-Qt6-6.8.2 PyQt6-sip-13.10.0
+Requirement already satisfied: PyQt6==6.4.2 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (6.4.2)
+Requirement already satisfied: PyQt6-sip<14,>=13.4 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from PyQt6==6.4.2) (13.10.0)
+Requirement already satisfied: PyQt6-Qt6>=6.4.0 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from PyQt6==6.4.2) (6.8.2)
+Installation de pyinstaller...
 Defaulting to user installation because normal site-packages is not writeable
-Collecting pyinstaller==6.3.0
-  Using cached pyinstaller-6.3.0-py3-none-win_amd64.whl.metadata (8.3 kB)
-Requirement already satisfied: setuptools>=42.0.0 in c:\program files\python310\lib\site-packages (from pyinstaller==6.3.0) (65.5.0)
-Collecting altgraph (from pyinstaller==6.3.0)
-  Using cached altgraph-0.17.4-py2.py3-none-any.whl.metadata (7.3 kB)
-Collecting pyinstaller-hooks-contrib>=2021.4 (from pyinstaller==6.3.0)
-  Using cached pyinstaller_hooks_contrib-2025.1-py3-none-any.whl.metadata (16 kB)
-Collecting packaging>=22.0 (from pyinstaller==6.3.0)
-  Using cached packaging-24.2-py3-none-any.whl.metadata (3.2 kB)
-Collecting pefile>=2022.5.30 (from pyinstaller==6.3.0)
-  Using cached pefile-2024.8.26-py3-none-any.whl.metadata (1.4 kB)
-Collecting pywin32-ctypes>=0.2.1 (from pyinstaller==6.3.0)
-  Using cached pywin32_ctypes-0.2.3-py3-none-any.whl.metadata (3.9 kB)
-Using cached pyinstaller-6.3.0-py3-none-win_amd64.whl (1.3 MB)
-Using cached packaging-24.2-py3-none-any.whl (65 kB)
-Using cached pefile-2024.8.26-py3-none-any.whl (74 kB)
-Using cached pyinstaller_hooks_contrib-2025.1-py3-none-any.whl (346 kB)
-Using cached pywin32_ctypes-0.2.3-py3-none-any.whl (30 kB)
-Using cached altgraph-0.17.4-py2.py3-none-any.whl (21 kB)
-Installing collected packages: altgraph, pywin32-ctypes, pefile, packaging, pyinstaller-hooks-contrib, pyinstaller
-  WARNING: The scripts pyi-archive_viewer.exe, pyi-bindepend.exe, pyi-grab_version.exe, pyi-makespec.exe, pyi-set_version.exe and pyinstaller.exe are installed in 'C:\Users\JF30LB\AppData\Roaming\Python\Python310\Scripts' which is not on PATH.
-  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-Successfully installed altgraph-0.17.4 packaging-24.2 pefile-2024.8.26 pyinstaller-6.3.0 pyinstaller-hooks-contrib-2025.1 pywin32-ctypes-0.2.3
-CrÃ©ation de l'environnement virtuel...
-Suppression de l'environnement virtuel existant si prÃ©sent
-CrÃ©ation d'un nouvel environnement virtuel avec C:\Program Files\Python310\python.exe
-VÃ©rification de l'existence du script d'activation
-Installation des dÃ©pendances de base...
-Defaulting to user installation because normal site-packages is not writeable
-Requirement already satisfied: pip in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (25.0.1)
-Requirement already satisfied: setuptools in c:\program files\python310\lib\site-packages (65.5.0)
-Collecting setuptools
-  Using cached setuptools-75.8.2-py3-none-any.whl.metadata (6.7 kB)
-Collecting wheel
-  Using cached wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
-Using cached setuptools-75.8.2-py3-none-any.whl (1.2 MB)
-Using cached wheel-0.45.1-py3-none-any.whl (72 kB)
-Installing collected packages: wheel, setuptools
-  WARNING: The script wheel.exe is installed in 'C:\Users\JF30LB\AppData\Roaming\Python\Python310\Scripts' which is not on PATH.
-  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-Successfully installed setuptools-75.8.2 wheel-0.45.1
-Installation de "librosa
-Defaulting to user installation because normal site-packages is not writeable
-Collecting librosa==0.10.0
-  Using cached librosa-0.10.0-py3-none-any.whl.metadata (8.3 kB)
-Collecting audioread>=2.1.9 (from librosa==0.10.0)
-  Using cached audioread-3.0.1-py3-none-any.whl.metadata (8.4 kB)
-Collecting numpy>=1.20.3 (from librosa==0.10.0)
-  Using cached numpy-2.2.3-cp310-cp310-win_amd64.whl.metadata (60 kB)
-Collecting scipy>=1.2.0 (from librosa==0.10.0)
-  Using cached scipy-1.15.2-cp310-cp310-win_amd64.whl.metadata (60 kB)
-Collecting scikit-learn>=0.20.0 (from librosa==0.10.0)
-  Using cached scikit_learn-1.6.1-cp310-cp310-win_amd64.whl.metadata (15 kB)
-Collecting joblib>=0.14 (from librosa==0.10.0)
-  Using cached joblib-1.4.2-py3-none-any.whl.metadata (5.4 kB)
-Collecting decorator>=4.3.0 (from librosa==0.10.0)
-  Using cached decorator-5.2.1-py3-none-any.whl.metadata (3.9 kB)
-Collecting numba>=0.51.0 (from librosa==0.10.0)
-  Using cached numba-0.61.0-cp310-cp310-win_amd64.whl.metadata (2.8 kB)
-Collecting soundfile>=0.12.1 (from librosa==0.10.0)
-  Using cached soundfile-0.13.1-py2.py3-none-win_amd64.whl.metadata (16 kB)
-Collecting pooch>=1.0 (from librosa==0.10.0)
-  Using cached pooch-1.8.2-py3-none-any.whl.metadata (10 kB)
-Collecting soxr>=0.3.2 (from librosa==0.10.0)
-  Using cached soxr-0.5.0.post1-cp310-cp310-win_amd64.whl.metadata (5.6 kB)
-Collecting typing-extensions>=4.1.1 (from librosa==0.10.0)
-  Using cached typing_extensions-4.12.2-py3-none-any.whl.metadata (3.0 kB)
-Collecting lazy-loader>=0.1 (from librosa==0.10.0)
-  Using cached lazy_loader-0.4-py3-none-any.whl.metadata (7.6 kB)
-Collecting msgpack>=1.0 (from librosa==0.10.0)
-  Using cached msgpack-1.1.0-cp310-cp310-win_amd64.whl.metadata (8.6 kB)
-Requirement already satisfied: packaging in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from lazy-loader>=0.1->librosa==0.10.0) (24.2)
-Collecting llvmlite<0.45,>=0.44.0dev0 (from numba>=0.51.0->librosa==0.10.0)
-  Using cached llvmlite-0.44.0-cp310-cp310-win_amd64.whl.metadata (5.0 kB)
-Collecting numpy>=1.20.3 (from librosa==0.10.0)
-  Using cached numpy-2.1.3-cp310-cp310-win_amd64.whl.metadata (60 kB)
-Collecting platformdirs>=2.5.0 (from pooch>=1.0->librosa==0.10.0)
-  Using cached platformdirs-4.3.6-py3-none-any.whl.metadata (11 kB)
-Collecting requests>=2.19.0 (from pooch>=1.0->librosa==0.10.0)
-  Using cached requests-2.32.3-py3-none-any.whl.metadata (4.6 kB)
-Collecting threadpoolctl>=3.1.0 (from scikit-learn>=0.20.0->librosa==0.10.0)
-  Using cached threadpoolctl-3.5.0-py3-none-any.whl.metadata (13 kB)
-Collecting cffi>=1.0 (from soundfile>=0.12.1->librosa==0.10.0)
-  Using cached cffi-1.17.1-cp310-cp310-win_amd64.whl.metadata (1.6 kB)
-Collecting pycparser (from cffi>=1.0->soundfile>=0.12.1->librosa==0.10.0)
-  Using cached pycparser-2.22-py3-none-any.whl.metadata (943 bytes)
-Collecting charset-normalizer<4,>=2 (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0)
-  Downloading charset_normalizer-3.4.1-cp310-cp310-win_amd64.whl.metadata (36 kB)
-Collecting idna<4,>=2.5 (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0)
-  Using cached idna-3.10-py3-none-any.whl.metadata (10 kB)
-Collecting urllib3<3,>=1.21.1 (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0)
-  Using cached urllib3-2.3.0-py3-none-any.whl.metadata (6.5 kB)
-Collecting certifi>=2017.4.17 (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0)
-  Using cached certifi-2025.1.31-py3-none-any.whl.metadata (2.5 kB)
-Using cached librosa-0.10.0-py3-none-any.whl (252 kB)
-Using cached audioread-3.0.1-py3-none-any.whl (23 kB)
-Using cached decorator-5.2.1-py3-none-any.whl (9.2 kB)
-Using cached joblib-1.4.2-py3-none-any.whl (301 kB)
-Using cached lazy_loader-0.4-py3-none-any.whl (12 kB)
-Using cached msgpack-1.1.0-cp310-cp310-win_amd64.whl (74 kB)
-Using cached numba-0.61.0-cp310-cp310-win_amd64.whl (2.8 MB)
-Using cached numpy-2.1.3-cp310-cp310-win_amd64.whl (12.9 MB)
-Using cached pooch-1.8.2-py3-none-any.whl (64 kB)
-Using cached scikit_learn-1.6.1-cp310-cp310-win_amd64.whl (11.1 MB)
-Using cached scipy-1.15.2-cp310-cp310-win_amd64.whl (41.2 MB)
-Using cached soundfile-0.13.1-py2.py3-none-win_amd64.whl (1.0 MB)
-Using cached soxr-0.5.0.post1-cp310-cp310-win_amd64.whl (166 kB)
-Using cached typing_extensions-4.12.2-py3-none-any.whl (37 kB)
-Using cached cffi-1.17.1-cp310-cp310-win_amd64.whl (181 kB)
-Using cached llvmlite-0.44.0-cp310-cp310-win_amd64.whl (30.3 MB)
-Using cached platformdirs-4.3.6-py3-none-any.whl (18 kB)
-Using cached requests-2.32.3-py3-none-any.whl (64 kB)
-Using cached threadpoolctl-3.5.0-py3-none-any.whl (18 kB)
-Using cached certifi-2025.1.31-py3-none-any.whl (166 kB)
-Downloading charset_normalizer-3.4.1-cp310-cp310-win_amd64.whl (102 kB)
-Using cached idna-3.10-py3-none-any.whl (70 kB)
-Using cached urllib3-2.3.0-py3-none-any.whl (128 kB)
-Using cached pycparser-2.22-py3-none-any.whl (117 kB)
-Installing collected packages: urllib3, typing-extensions, threadpoolctl, pycparser, platformdirs, numpy, msgpack, llvmlite, lazy-loader, joblib, idna, decorator, charset-normalizer, certifi, audioread, soxr, scipy, requests, numba, cffi, soundfile, scikit-learn, pooch, librosa
-  WARNING: The scripts f2py.exe and numpy-config.exe are installed in 'C:\Users\JF30LB\AppData\Roaming\Python\Python310\Scripts' which is not on PATH.
-  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-  WARNING: The script normalizer.exe is installed in 'C:\Users\JF30LB\AppData\Roaming\Python\Python310\Scripts' which is not on PATH.
-  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-Successfully installed audioread-3.0.1 certifi-2025.1.31 cffi-1.17.1 charset-normalizer-3.4.1 decorator-5.2.1 idna-3.10 joblib-1.4.2 lazy-loader-0.4 librosa-0.10.0 llvmlite-0.44.0 msgpack-1.1.0 numba-0.61.0 numpy-2.1.3 platformdirs-4.3.6 pooch-1.8.2 pycparser-2.22 requests-2.32.3 scikit-learn-1.6.1 scipy-1.15.2 soundfile-0.13.1 soxr-0.5.0.post1 threadpoolctl-3.5.0 typing-extensions-4.12.2 urllib3-2.3.0
-Installation de "soundfile
-Defaulting to user installation because normal site-packages is not writeable
-Collecting soundfile==0.12.1
-  Using cached soundfile-0.12.1-py2.py3-none-win_amd64.whl.metadata (14 kB)
-Requirement already satisfied: cffi>=1.0 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from soundfile==0.12.1) (1.17.1)
-Requirement already satisfied: pycparser in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from cffi>=1.0->soundfile==0.12.1) (2.22)
-Using cached soundfile-0.12.1-py2.py3-none-win_amd64.whl (1.0 MB)
-Installing collected packages: soundfile
-  Attempting uninstall: soundfile
-    Found existing installation: soundfile 0.13.1
-    Uninstalling soundfile-0.13.1:
-      Successfully uninstalled soundfile-0.13.1
-Successfully installed soundfile-0.12.1
-Installation de "scipy
-Defaulting to user installation because normal site-packages is not writeable
-Collecting scipy==1.11.4
-  Using cached scipy-1.11.4-cp310-cp310-win_amd64.whl.metadata (60 kB)
-Collecting numpy<1.28.0,>=1.21.6 (from scipy==1.11.4)
-  Downloading numpy-1.26.4-cp310-cp310-win_amd64.whl.metadata (61 kB)
-Using cached scipy-1.11.4-cp310-cp310-win_amd64.whl (44.1 MB)
-Downloading numpy-1.26.4-cp310-cp310-win_amd64.whl (15.8 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.8/15.8 MB 9.7 MB/s eta 0:00:00
-Installing collected packages: numpy, scipy
-  Attempting uninstall: numpy
-    Found existing installation: numpy 2.1.3
-    Uninstalling numpy-2.1.3:
-      Successfully uninstalled numpy-2.1.3
-  WARNING: The script f2py.exe is installed in 'C:\Users\JF30LB\AppData\Roaming\Python\Python310\Scripts' which is not on PATH.
-  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-  Attempting uninstall: scipy
-    Found existing installation: scipy 1.15.2
-    Uninstalling scipy-1.15.2:
-      Successfully uninstalled scipy-1.15.2
-Successfully installed numpy-1.26.4 scipy-1.11.4
-Installation de "tensorboard
-Defaulting to user installation because normal site-packages is not writeable
-Collecting tensorboard==2.14.1
-  Using cached tensorboard-2.14.1-py3-none-any.whl.metadata (1.7 kB)
-Collecting absl-py>=0.4 (from tensorboard==2.14.1)
-  Using cached absl_py-2.1.0-py3-none-any.whl.metadata (2.3 kB)
-Collecting grpcio>=1.48.2 (from tensorboard==2.14.1)
-  Using cached grpcio-1.70.0-cp310-cp310-win_amd64.whl.metadata (4.0 kB)
-Collecting google-auth<3,>=1.6.3 (from tensorboard==2.14.1)
-  Using cached google_auth-2.38.0-py2.py3-none-any.whl.metadata (4.8 kB)
-Collecting google-auth-oauthlib<1.1,>=0.5 (from tensorboard==2.14.1)
-  Using cached google_auth_oauthlib-1.0.0-py2.py3-none-any.whl.metadata (2.7 kB)
-Collecting markdown>=2.6.8 (from tensorboard==2.14.1)
-  Using cached Markdown-3.7-py3-none-any.whl.metadata (7.0 kB)
-Requirement already satisfied: numpy>=1.12.0 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from tensorboard==2.14.1) (1.26.4)
-Collecting protobuf>=3.19.6 (from tensorboard==2.14.1)
-  Using cached protobuf-5.29.3-cp310-abi3-win_amd64.whl.metadata (592 bytes)
-Requirement already satisfied: requests<3,>=2.21.0 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from tensorboard==2.14.1) (2.32.3)
-Requirement already satisfied: setuptools>=41.0.0 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from tensorboard==2.14.1) (75.8.2)
-Collecting six>1.9 (from tensorboard==2.14.1)
-  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
-Collecting tensorboard-data-server<0.8.0,>=0.7.0 (from tensorboard==2.14.1)
-  Using cached tensorboard_data_server-0.7.2-py3-none-any.whl.metadata (1.1 kB)
-Collecting werkzeug>=1.0.1 (from tensorboard==2.14.1)
-  Using cached werkzeug-3.1.3-py3-none-any.whl.metadata (3.7 kB)
-Collecting cachetools<6.0,>=2.0.0 (from google-auth<3,>=1.6.3->tensorboard==2.14.1)
-  Downloading cachetools-5.5.2-py3-none-any.whl.metadata (5.4 kB)
-Collecting pyasn1-modules>=0.2.1 (from google-auth<3,>=1.6.3->tensorboard==2.14.1)
-  Downloading pyasn1_modules-0.4.1-py3-none-any.whl.metadata (3.5 kB)
-Collecting rsa<5,>=3.1.4 (from google-auth<3,>=1.6.3->tensorboard==2.14.1)
-  Downloading rsa-4.9-py3-none-any.whl.metadata (4.2 kB)
-Collecting requests-oauthlib>=0.7.0 (from google-auth-oauthlib<1.1,>=0.5->tensorboard==2.14.1)
-  Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
-Requirement already satisfied: charset-normalizer<4,>=2 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from requests<3,>=2.21.0->tensorboard==2.14.1) (3.4.1)
-Requirement already satisfied: idna<4,>=2.5 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from requests<3,>=2.21.0->tensorboard==2.14.1) (3.10)
-Requirement already satisfied: urllib3<3,>=1.21.1 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from requests<3,>=2.21.0->tensorboard==2.14.1) (2.3.0)
-Requirement already satisfied: certifi>=2017.4.17 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from requests<3,>=2.21.0->tensorboard==2.14.1) (2025.1.31)
-Collecting MarkupSafe>=2.1.1 (from werkzeug>=1.0.1->tensorboard==2.14.1)
-  Downloading MarkupSafe-3.0.2-cp310-cp310-win_amd64.whl.metadata (4.1 kB)
-Collecting pyasn1<0.7.0,>=0.4.6 (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard==2.14.1)
-  Downloading pyasn1-0.6.1-py3-none-any.whl.metadata (8.4 kB)
-Collecting oauthlib>=3.0.0 (from requests-oauthlib>=0.7.0->google-auth-oauthlib<1.1,>=0.5->tensorboard==2.14.1)
-  Downloading oauthlib-3.2.2-py3-none-any.whl.metadata (7.5 kB)
-Downloading tensorboard-2.14.1-py3-none-any.whl (5.5 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 11.2 MB/s eta 0:00:00
-Using cached absl_py-2.1.0-py3-none-any.whl (133 kB)
-Downloading google_auth-2.38.0-py2.py3-none-any.whl (210 kB)
-Downloading google_auth_oauthlib-1.0.0-py2.py3-none-any.whl (18 kB)
-Using cached grpcio-1.70.0-cp310-cp310-win_amd64.whl (4.3 MB)
-Using cached Markdown-3.7-py3-none-any.whl (106 kB)
-Using cached protobuf-5.29.3-cp310-abi3-win_amd64.whl (434 kB)
-Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
-Using cached tensorboard_data_server-0.7.2-py3-none-any.whl (2.4 kB)
-Using cached werkzeug-3.1.3-py3-none-any.whl (224 kB)
-Downloading cachetools-5.5.2-py3-none-any.whl (10 kB)
-Downloading MarkupSafe-3.0.2-cp310-cp310-win_amd64.whl (15 kB)
-Downloading pyasn1_modules-0.4.1-py3-none-any.whl (181 kB)
-Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
-Downloading rsa-4.9-py3-none-any.whl (34 kB)
-Downloading oauthlib-3.2.2-py3-none-any.whl (151 kB)
-Downloading pyasn1-0.6.1-py3-none-any.whl (83 kB)
-Installing collected packages: tensorboard-data-server, six, pyasn1, protobuf, oauthlib, MarkupSafe, markdown, grpcio, cachetools, absl-py, werkzeug, rsa, requests-oauthlib, pyasn1-modules, google-auth, google-auth-oauthlib, tensorboard
-  WARNING: The script markdown_py.exe is installed in 'C:\Users\JF30LB\AppData\Roaming\Python\Python310\Scripts' which is not on PATH.
-  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-  WARNING: The scripts pyrsa-decrypt.exe, pyrsa-encrypt.exe, pyrsa-keygen.exe, pyrsa-priv2pub.exe, pyrsa-sign.exe and pyrsa-verify.exe are installed in 'C:\Users\JF30LB\AppData\Roaming\Python\Python310\Scripts' which is not on PATH.
-  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-  WARNING: The script google-oauthlib-tool.exe is installed in 'C:\Users\JF30LB\AppData\Roaming\Python\Python310\Scripts' which is not on PATH.
-  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-  WARNING: The script tensorboard.exe is installed in 'C:\Users\JF30LB\AppData\Roaming\Python\Python310\Scripts' which is not on PATH.
-  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-Successfully installed MarkupSafe-3.0.2 absl-py-2.1.0 cachetools-5.5.2 google-auth-2.38.0 google-auth-oauthlib-1.0.0 grpcio-1.70.0 markdown-3.7 oauthlib-3.2.2 protobuf-5.29.3 pyasn1-0.6.1 pyasn1-modules-0.4.1 requests-oauthlib-2.0.0 rsa-4.9 six-1.17.0 tensorboard-2.14.1 tensorboard-data-server-0.7.2 werkzeug-3.1.3
-Installation de "Unidecode
-Defaulting to user installation because normal site-packages is not writeable
-Collecting Unidecode==1.3.7
-  Using cached Unidecode-1.3.7-py3-none-any.whl.metadata (13 kB)
-Using cached Unidecode-1.3.7-py3-none-any.whl (235 kB)
-Installing collected packages: Unidecode
-  WARNING: The script unidecode.exe is installed in 'C:\Users\JF30LB\AppData\Roaming\Python\Python310\Scripts' which is not on PATH.
-  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-Successfully installed Unidecode-1.3.7
-Installation de "tqdm
-Defaulting to user installation because normal site-packages is not writeable
-Collecting tqdm==4.65.0
-  Downloading tqdm-4.65.0-py3-none-any.whl.metadata (56 kB)
-Collecting colorama (from tqdm==4.65.0)
-  Using cached colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
-Downloading tqdm-4.65.0-py3-none-any.whl (77 kB)
-Using cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)
-Installing collected packages: colorama, tqdm
-  WARNING: The script tqdm.exe is installed in 'C:\Users\JF30LB\AppData\Roaming\Python\Python310\Scripts' which is not on PATH.
-  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
-Successfully installed colorama-0.4.6 tqdm-4.65.0
+Requirement already satisfied: pyinstaller==6.3.0 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (6.3.0)
+Requirement already satisfied: setuptools>=42.0.0 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from pyinstaller==6.3.0) (75.8.2)
+Requirement already satisfied: altgraph in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from pyinstaller==6.3.0) (0.17.4)
+Requirement already satisfied: pyinstaller-hooks-contrib>=2021.4 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from pyinstaller==6.3.0) (2025.1)
+Requirement already satisfied: packaging>=22.0 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from pyinstaller==6.3.0) (24.2)
+Requirement already satisfied: pefile>=2022.5.30 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from pyinstaller==6.3.0) (2024.8.26)
+Requirement already satisfied: pywin32-ctypes>=0.2.1 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from pyinstaller==6.3.0) (0.2.3)
 VÃ©rification de l'installation...
-numpy 1.26.4
+numpy 1.24.3
 Traceback (most recent call last):
   File "<string>", line 1, in <module>
 ModuleNotFoundError: No module named 'torch'
 ATTENTION: Installation incomplÃ¨te
 Consultez TROUBLESHOOTING.md pour les solutions
 Mise Ã  jour finale du PATH
-PATH actuel: C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files\Microsoft Visual Studio\2022\Community\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe
+PATH actuel: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Scripts;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files\Microsoft Visual Studio\2022\Community\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe
 Configuration manuelle requise :
 Ajoutez ces chemins Ã  votre PATH :
 C:\Program Files\Python310
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\Hostx64\x64
 Installation terminÃ©e
 Fichier log disponible: logs\setup_env_log.txt
-PATH final: C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files\Microsoft Visual Studio\2022\Community\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe
+PATH final: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Scripts;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files\Microsoft Visual Studio\2022\Community\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\;C:\Program Files\Python310;C:\Program Files\Python310\Scripts;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe
 Appuyez sur une touche pour continuer...
-PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio>
