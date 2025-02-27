@@ -39,6 +39,7 @@ for /f "tokens=*" %%p in ('where py 2^>nul') do set "PYTHON_PATH=%%~dp0"
 for /f "tokens=*" %%p in ('where python 2^>nul') do set "PYTHON_EXE_PATH=%%~dp0"
 
 REM Vérifier si py launcher peut trouver Python 3.10
+call :log INFO "Verification Python 3.10 via py launcher"
 call :exec_and_log "py -3.10 --version" "Vérification Python 3.10 via py launcher"
 if not errorlevel 1 (
     call :log INFO "Python 3.10 trouve via py launcher"
@@ -90,7 +91,7 @@ if exist "C:\Windows\System32\vcruntime140.dll" (
     
     REM Création d'un script PowerShell temporaire pour vérifier la version du fichier
     echo $file = Get-Item "C:\Windows\System32\vcruntime140.dll" > "%TEMP%\check_vc_version.ps1"
-    echo if ($file.VersionInfo.FileVersion -ge "14.30") { exit 0 } else { exit 1 } >> "%TEMP%\check_vc_version.ps1"
+    echo if ^($file.VersionInfo.FileVersion -ge "14.30"^) ^{ exit 0 ^} else ^{ exit 1 ^} >> "%TEMP%\check_vc_version.ps1"
     
     REM Exécution du script PowerShell
     powershell -ExecutionPolicy Bypass -File "%TEMP%\check_vc_version.ps1" >nul 2>&1
@@ -281,7 +282,7 @@ if %ERRORLEVEL% equ 0 (
         set "RC_PATH=%%i"
         set RC_FOUND=1
         call :log DEBUG "rc.exe trouvé: !RC_PATH!"
-        set "PATH=!PATH!;%%~dpi"
+        set "PATH=%%~dpi;!PATH!"
     )
 )
 
