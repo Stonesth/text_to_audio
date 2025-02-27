@@ -236,7 +236,31 @@ call :exec_and_log "python -m pip install Cython --no-cache-dir" "Installation C
 REM Installation séquentielle des packages
 call :log INFO "Installation des packages principaux..."
 call :exec_and_log "pip install numpy==1.22.0 --only-binary :all: --no-cache-dir" "Installation numpy"
-call :exec_and_log "pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cpu --only-binary :all: --no-cache-dir" "Installation torch"
+
+REM Amélioration de l'installation de PyTorch avec gestion des timeout
+call :log INFO "Installation de PyTorch avec gestion des timeout..."
+set MAX_RETRY=3
+set RETRY_COUNT=0
+
+:retry_torch_install
+set /a RETRY_COUNT+=1
+call :log INFO "Tentative d'installation de PyTorch (%RETRY_COUNT%/%MAX_RETRY%)..."
+call :exec_and_log "pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cpu --only-binary :all: --no-cache-dir --timeout 300" "Installation torch"
+if !ERRORLEVEL! neq 0 (
+    if %RETRY_COUNT% lss %MAX_RETRY% (
+        call :log WARNING "Échec de l'installation de PyTorch, nouvelle tentative dans 5 secondes..."
+        timeout /t 5 /nobreak > nul
+        goto :retry_torch_install
+    ) else (
+        call :log WARNING "Échec de l'installation de PyTorch après %MAX_RETRY% tentatives, essai avec une méthode alternative..."
+        call :log INFO "Téléchargement direct des fichiers wheel de PyTorch..."
+        
+        REM Téléchargement direct des wheels PyTorch
+        call :exec_and_log "curl -L -o "%TEMP%\torch-2.0.1-cp310-cp310-win_amd64.whl" https://download.pytorch.org/whl/cpu/torch-2.0.1%%2Bcpu-cp310-cp310-win_amd64.whl" "Téléchargement wheel torch"
+        call :exec_and_log "pip install "%TEMP%\torch-2.0.1-cp310-cp310-win_amd64.whl" --no-cache-dir" "Installation wheel torch"
+        del "%TEMP%\torch-2.0.1-cp310-cp310-win_amd64.whl"
+    )
+)
 
 call :log INFO "Installation des dependances TTS..."
 call :exec_and_log "pip install librosa==0.10.0 --only-binary :all: --no-cache-dir" "Installation librosa"
@@ -244,20 +268,83 @@ call :exec_and_log "pip install soundfile==0.12.1 --only-binary :all: --no-cache
 call :exec_and_log "pip install Unidecode==1.3.7 --only-binary :all: --no-cache-dir" "Installation Unidecode"
 call :exec_and_log "pip install tqdm>=4.65.0 --only-binary :all: --no-cache-dir" "Installation tqdm"
 
+REM Vérification et configuration du SDK Windows pour rc.exe
+call :log INFO "Vérification de rc.exe pour la compilation..."
+set RC_FOUND=0
+where rc.exe >nul 2>&1
+if %ERRORLEVEL% equ 0 (
+    set RC_FOUND=1
+    call :log DEBUG "rc.exe trouvé dans le PATH"
+) else (
+    REM Recherche de rc.exe dans les emplacements standard du SDK Windows
+    for /f "delims=" %%i in ('dir /b /s "%SDK_PATH%\bin\*\x64\rc.exe" 2^>nul') do (
+        set "RC_PATH=%%i"
+        set RC_FOUND=1
+        call :log DEBUG "rc.exe trouvé: !RC_PATH!"
+        set "PATH=!PATH!;%%~dpi"
+    )
+)
+
+if %RC_FOUND% equ 0 (
+    call :log WARNING "rc.exe non trouvé, tentative d'ajout du chemin du SDK Windows au PATH..."
+    set "PATH=%PATH%;%SDK_PATH%\bin\%SDK_VER%\x64;%SDK_PATH%\bin\x64"
+)
+
 call :log INFO "Installation de TTS..."
 call :exec_and_log "pip uninstall TTS -y" "Désinstallation TTS"
 
+REM Installation des dépendances spécifiques pour TTS
+call :log INFO "Installation des dépendances spécifiques pour TTS..."
+call :exec_and_log "pip install packaging==23.1 --no-cache-dir" "Installation packaging"
+call :exec_and_log "pip install protobuf==4.24.4 --no-cache-dir" "Installation protobuf"
+call :exec_and_log "pip install pyyaml==6.0.1 --no-cache-dir" "Installation pyyaml"
+call :exec_and_log "pip install tensorboard==2.14.0 --no-cache-dir" "Installation tensorboard"
+call :exec_and_log "pip install coqpit==0.0.17 --no-cache-dir" "Installation coqpit"
+call :exec_and_log "pip install fsspec==2023.9.2 --no-cache-dir" "Installation fsspec"
+call :exec_and_log "pip install jieba==0.42.1 --no-cache-dir" "Installation jieba"
+call :exec_and_log "pip install matplotlib==3.7.3 --no-cache-dir" "Installation matplotlib"
+call :exec_and_log "pip install scipy==1.10.1 --no-cache-dir" "Installation scipy"
+
 REM Tentative d'installation de TTS avec différentes versions
 call :log INFO "Tentative d'installation de TTS version 0.15.2..."
-call :exec_and_log "pip install TTS==0.15.2 --only-binary :all: --no-deps --no-cache-dir" "Installation TTS 0.15.2"
+call :exec_and_log "pip install TTS==0.15.2 --no-cache-dir" "Installation TTS 0.15.2"
 if !ERRORLEVEL! neq 0 (
     call :log WARNING "Échec de l'installation de TTS 0.15.2, tentative avec la version 0.17.6..."
-    call :exec_and_log "pip install TTS==0.17.6 --only-binary :all: --no-deps --no-cache-dir" "Installation TTS 0.17.6"
+    call :exec_and_log "pip install TTS==0.17.6 --no-cache-dir" "Installation TTS 0.17.6"
     if !ERRORLEVEL! neq 0 (
-        call :log WARNING "Échec de l'installation de TTS 0.17.6, tentative avec la dernière version..."
-        call :exec_and_log "pip install TTS --no-deps --no-cache-dir" "Installation TTS dernière version"
+        call :log WARNING "Échec de l'installation de TTS 0.17.6, tentative avec la version 0.13.0 (plus stable)..."
+        call :exec_and_log "pip install TTS==0.13.0 --no-cache-dir" "Installation TTS 0.13.0"
         if !ERRORLEVEL! neq 0 (
-            call :log ERROR "Échec de l'installation de TTS. Veuillez consulter le fichier log pour plus de détails."
+            call :log WARNING "Échec de l'installation de TTS 0.13.0, tentative avec la dernière version..."
+            
+            REM Tentative d'installation avec les options de build spécifiques
+            call :log INFO "Installation de TTS avec options de build spécifiques..."
+            set "DISTUTILS_USE_SDK=1"
+            set "MSSdk=1"
+            set "CL=/MP"
+            
+            REM Définir explicitement le chemin vers rc.exe
+            call :log DEBUG "Configuration explicite de RC_PATH pour la compilation..."
+            for /f "delims=" %%i in ('dir /b /s "%SDK_PATH%\bin\*\x64\rc.exe" 2^>nul') do (
+                set "RC_PATH=%%i"
+                call :log DEBUG "Utilisation de rc.exe: !RC_PATH!"
+                set "PATH=%%~dpi;!PATH!"
+            )
+            
+            call :exec_and_log "pip install TTS --no-cache-dir" "Installation TTS dernière version"
+            if !ERRORLEVEL! neq 0 (
+                call :log ERROR "Échec de l'installation de TTS. Tentative d'installation à partir des sources..."
+                
+                REM Tentative d'installation à partir des sources
+                call :log INFO "Téléchargement et installation de TTS à partir des sources..."
+                call :exec_and_log "git clone https://github.com/coqui-ai/TTS.git %TEMP%\TTS" "Clone du dépôt TTS"
+                cd %TEMP%\TTS
+                call :exec_and_log "pip install -e . --no-deps" "Installation TTS depuis les sources"
+                cd %~dp0
+                if !ERRORLEVEL! neq 0 (
+                    call :log ERROR "Échec de l'installation de TTS depuis les sources. Veuillez consulter le fichier log pour plus de détails."
+                )
+            )
         )
     )
 )
@@ -275,10 +362,14 @@ call :log INFO "Vérification de torch..."
 call :exec_and_log "python -c "import torch; print('torch', torch.__version__)"" "Vérification torch"
 
 call :log INFO "Vérification de TTS..."
-call :exec_and_log "python -c "import TTS; print('TTS OK')"" "Vérification TTS"
+call :exec_and_log "python -c "import sys; sys.path.append('.'); import TTS; print('TTS OK')"" "Vérification TTS"
 
 call :log INFO "Vérification de PyQt6..."
 call :exec_and_log "python -c "from PyQt6.QtWidgets import QApplication; print('PyQt6 OK')"" "Vérification PyQt6"
+
+REM Vérification des fonctionnalités TTS
+call :log INFO "Vérification des fonctionnalités TTS..."
+call :exec_and_log "python -c "import sys; sys.path.append('.'); from TTS.utils.synthesizer import Synthesizer; print('TTS Synthesizer OK')"" "Vérification TTS Synthesizer"
 
 call :log INFO "Installation terminee!"
 call :log INFO "Pour tester, executez:"
