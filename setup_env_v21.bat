@@ -57,6 +57,18 @@ if not exist "%VS_PATH%\VC\Tools\MSVC" (
     exit /b 1
 )
 
+REM Vérification des redistribuables Visual C++
+echo Vérification des redistribuables Visual C++...
+reg query "HKLM\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" /v Version >nul 2>&1
+if %errorlevel% equ 0 (
+    echo Les redistribuables Visual C++ 2015-2022 sont déjà installés
+) else (
+    echo Installation des redistribuables Visual C++ 2015-2022...
+    curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe
+    "%TEMP%\vc_redist.x64.exe" /quiet /norestart
+    echo Installation terminée
+)
+
 REM Nettoyage et configuration de l'environnement
 set "INCLUDE="
 set "LIB="
