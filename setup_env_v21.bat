@@ -56,79 +56,123 @@ if %errorLevel% == 0 (
     exit /b 1
 )
 
-REM Trouver Python 3.10
-call :log INFO "Recherche de Python 3.10..."
-set PYTHON_PATH=
-set PYTHON_CMD=
+REM Vérification de Python
+call :log INFO "Vérification de Python..."
+set "PYTHON_FOUND=0"
 
-REM Vérifier dans Program Files
+REM Recherche dans le répertoire des programmes
 if exist "%PROGRAM_FILES%\Python310\python.exe" (
     set "PYTHON_PATH=%PROGRAM_FILES%\Python310"
-    set "PYTHON_CMD=%PROGRAM_FILES%\Python310\python.exe"
-    call :log DEBUG "Chemin Python trouvé: !PYTHON_PATH!"
-    call :log DEBUG "Commande Python: !PYTHON_CMD!"
-    goto :found_python
+    set "PYTHON_CMD=%PYTHON_PATH%\python.exe"
+    set "PYTHON_FOUND=1"
+    call :log INFO "Python trouvé dans %PYTHON_PATH%"
+    call :exec_and_log ""!PYTHON_CMD!" --version" "Version Python"
 )
 
-REM Vérifier dans Program Files (x86)
-if exist "%PROGRAM_FILES_X86%\Python310\python.exe" (
-    set "PYTHON_PATH=%PROGRAM_FILES_X86%\Python310"
-    set "PYTHON_CMD=%PROGRAM_FILES_X86%\Python310\python.exe"
-    call :log DEBUG "Chemin Python trouvé: !PYTHON_PATH!"
-    call :log DEBUG "Commande Python: !PYTHON_CMD!"
-    goto :found_python
+REM Recherche dans le répertoire des programmes (x86)
+if %PYTHON_FOUND% equ 0 (
+    if exist "%PROGRAM_FILES_X86%\Python310\python.exe" (
+        set "PYTHON_PATH=%PROGRAM_FILES_X86%\Python310"
+        set "PYTHON_CMD=%PYTHON_PATH%\python.exe"
+        set "PYTHON_FOUND=1"
+        call :log INFO "Python trouvé dans %PYTHON_PATH%"
+        call :exec_and_log ""!PYTHON_CMD!" --version" "Version Python"
+    )
 )
 
-REM Vérifier avec py launcher
-call :log DEBUG "Vérification avec py launcher..."
-py -3.10 --version >nul 2>&1
-if not errorlevel 1 (
-    for /f "delims=" %%i in ('py -3.10 -c "import sys; print(sys.prefix)"') do set "PYTHON_PATH=%%i"
-    set "PYTHON_CMD=py -3.10"
-    call :log INFO "Python 3.10 trouvé via py launcher: !PYTHON_PATH!"
-    goto :found_python
+REM Recherche dans le répertoire utilisateur
+if %PYTHON_FOUND% equ 0 (
+    if exist "%LOCALAPPDATA%\Programs\Python\Python310\python.exe" (
+        set "PYTHON_PATH=%LOCALAPPDATA%\Programs\Python\Python310"
+        set "PYTHON_CMD=%PYTHON_PATH%\python.exe"
+        set "PYTHON_FOUND=1"
+        call :log INFO "Python trouvé dans %PYTHON_PATH%"
+        call :exec_and_log ""!PYTHON_CMD!" --version" "Version Python"
+    )
 )
 
-call :log WARNING "Python 3.10 n'est pas trouvé. Tentative d'installation automatique..."
-curl -L -o "%TEMP%\python-3.10-installer.exe" https://www.python.org/ftp/python/3.10.11/python-3.10.11-amd64.exe
-if exist "%TEMP%\python-3.10-installer.exe" (
-    call :log INFO "Installation silencieuse de Python 3.10..."
-    start /wait "" "%TEMP%\python-3.10-installer.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_launcher=0 Include_test=0
-    set "PYTHON_PATH=C:\Python310"
-    set "PYTHON_CMD=C:\Python310\python.exe"
-    if exist "%PYTHON_CMD%" (
-        call :log INFO "Vérification de la version installée..."
-        "%PYTHON_CMD%" --version
-        if %errorlevel% equ 0 (
-            call :log INFO "Python 3.10 installé avec succès"
-            goto :found_python
+REM Recherche dans le PATH
+if %PYTHON_FOUND% equ 0 (
+    call :log INFO "Recherche de Python dans le PATH..."
+    where python >nul 2>&1
+    if %errorlevel% equ 0 (
+        for /f "tokens=*" %%i in ('where python') do (
+            set "PYTHON_CMD=%%i"
+            for %%j in ("!PYTHON_CMD!") do set "PYTHON_PATH=%%~dpj"
+            set "PYTHON_PATH=!PYTHON_PATH:~0,-1!"
+            set "PYTHON_FOUND=1"
+            call :log INFO "Python trouvé dans !PYTHON_PATH!"
+            call :exec_and_log ""!PYTHON_CMD!" --version" "Version Python"
+            goto :python_found
         )
     )
-    call :log ERROR "Échec de l'installation automatique"
+)
+
+:python_found
+if %PYTHON_FOUND% equ 0 (
+    call :log ERROR "Python 3.10 non trouvé. Veuillez l'installer depuis https://www.python.org/downloads/"
     pause
     exit /b 1
 )
 
-call :log ERROR "Python 3.10 n'est pas trouvé. Installation requise."
-pause
-exit /b 1
+REM Vérification de Visual Studio
+call :log INFO "Vérification de Visual Studio..."
+set "VS_FOUND=0"
 
-:found_python
-call :log INFO "Python 3.10 trouvé dans !PYTHON_PATH!"
-call :log DEBUG "Chemin Python: !PYTHON_PATH!"
-call :log DEBUG "Commande Python: !PYTHON_CMD!"
-call :log DEBUG "PATH après détection de Python: !PATH!"
+REM Recherche de Visual Studio 2022
+if exist "%PROGRAM_FILES%\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe" (
+    set "VS_PATH=%PROGRAM_FILES%\Microsoft Visual Studio\2022\Community"
+    set "VS_FOUND=1"
+    call :log INFO "Visual Studio 2022 trouvé dans %VS_PATH%"
+    call :exec_and_log "dir "!VS_PATH!\VC\Tools\MSVC" /b" "Versions MSVC disponibles"
+)
+
+REM Recherche de Visual Studio 2019
+if %VS_FOUND% equ 0 (
+    if exist "%PROGRAM_FILES%\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe" (
+        set "VS_PATH=%PROGRAM_FILES%\Microsoft Visual Studio\2019\Community"
+        set "VS_FOUND=1"
+        call :log INFO "Visual Studio 2019 trouvé dans %VS_PATH%"
+        call :exec_and_log "dir "!VS_PATH!\VC\Tools\MSVC" /b" "Versions MSVC disponibles"
+    )
+)
+
+if %VS_FOUND% equ 0 (
+    call :log WARNING "Visual Studio non trouvé. L'installation pourrait échouer."
+    call :log INFO "Installation de Visual Studio Build Tools..."
+    if not defined NO_REGISTRY (
+        call :exec_and_log "winget install Microsoft.VisualStudio.2022.BuildTools --silent --override "--wait --quiet --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended"" "Installation VS Build Tools"
+    ) else (
+        call :log INFO "Téléchargement manuel de Visual Studio Build Tools..."
+        call :exec_and_log "curl -L -o "%TEMP%\vs_buildtools.exe" https://aka.ms/vs/17/release/vs_buildtools.exe" "Téléchargement VS Build Tools"
+        call :exec_and_log ""%TEMP%\vs_buildtools.exe" --quiet --wait --norestart --nocache --installPath "%PROGRAM_FILES%\Microsoft Visual Studio\2022\BuildTools" --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended" "Installation VS Build Tools"
+    )
+)
 
 REM Section Visual Studio modifiée
-set "VS_PATH=%PROGRAM_FILES%\Microsoft Visual Studio\2022\Community"
-if not exist "%VS_PATH%\VC\Tools\MSVC" (
-    if not defined NO_REGISTRY (
-        call :log INFO "Installation des outils de build..."
-        curl -L -o "%TEMP%\vs_buildtools.exe" https://aka.ms/vs/17/release/vs_buildtools.exe
-        start /wait "" "%TEMP%\vs_buildtools.exe" --quiet --norestart --wait --add Microsoft.VisualStudio.Workload.VCTools
-    ) else (
-        call :log WARNING "Installez manuellement Visual Studio Build Tools 2022"
+call :log DEBUG "Chemin Visual Studio: !VS_PATH!"
+
+REM Configuration des chemins Visual Studio
+if exist "!VS_PATH!\VC\Auxiliary\Build\vcvarsall.bat" (
+    call :log INFO "Fichier vcvarsall.bat trouvé dans !VS_PATH!"
+    call :exec_and_log "dir "!VS_PATH!\VC\Tools\MSVC" /b" "Versions MSVC disponibles"
+    
+    REM Trouver la dernière version de MSVC
+    for /f "tokens=*" %%v in ('dir "!VS_PATH!\VC\Tools\MSVC" /b /ad /o-n') do (
+        set "MSVC_VERSION=%%v"
+        goto :found_msvc
     )
+    
+    :found_msvc
+    call :log INFO "Version MSVC trouvée: !MSVC_VERSION!"
+    set "MSVC_PATH=!VS_PATH!\VC\Tools\MSVC\!MSVC_VERSION!"
+    call :log DEBUG "Chemin MSVC: !MSVC_PATH!"
+    
+    REM Configuration des variables d'environnement Visual Studio
+    call :log INFO "Configuration des variables d'environnement Visual Studio..."
+    call :exec_and_log ""!VS_PATH!\VC\Auxiliary\Build\vcvarsall.bat" x64" "Configuration vcvarsall"
+) else (
+    call :log WARNING "Fichier vcvarsall.bat non trouvé. Les variables d'environnement Visual Studio ne seront pas configurées."
 )
 
 REM Vérifications précise des composants requis
@@ -156,18 +200,13 @@ call :log DEBUG "WindowsSdkDir: %WindowsSdkDir%"
 call :log DEBUG "WindowsSdkVerBinPath: %WindowsSdkVerBinPath%"
 
 REM Vérification des redistribuables Visual C++
-call :log INFO "Vérification des redistribuables Visual C++..."
-if not defined NO_REGISTRY (
-    reg query "HKLM\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" /v Version >nul 2>&1 || (
-        call :log INFO "Installation des redistribuables VS 2015-2022..."
-        curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe
-        "%TEMP%\vc_redist.x64.exe" /install /quiet /norestart
-    )
+call :log INFO "Vérification des redistribuables VC++..."
+if not exist "%PROGRAM_FILES_X86%\Microsoft Visual C++ Redistributable for Visual Studio 2022" (
+    call :log INFO "Installation des redistribuables VC++..."
+    call :exec_and_log "curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe" "Téléchargement VC++ Redist"
+    call :exec_and_log ""%TEMP%\vc_redist.x64.exe" /quiet /norestart" "Installation VC++ Redist"
 ) else (
-    call :log INFO "Vérification des redistribuables Visual C++ ignorée en mode sans registre"
-    call :log INFO "Installation des redistribuables VS 2015-2022..."
-    curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe
-    "%TEMP%\vc_redist.x64.exe" /install /quiet /norestart
+    call :log INFO "Les redistribuables VC++ sont déjà installés"
 )
 
 REM Vérification des en-têtes système Windows
@@ -175,11 +214,11 @@ call :log INFO "Vérification des en-têtes système Windows..."
 if not exist "%PROGRAM_FILES_X86%\Windows Kits\10\Include\10.0.19041.0\um\windows.h" (
     call :log INFO "Installation des en-têtes système manquants..."
     if not defined NO_REGISTRY (
-        winget install --id Microsoft.WindowsSDK --version 10.0.19041.0 --silent
+        call :exec_and_log "winget install --id Microsoft.WindowsSDK --version 10.0.19041.0 --silent" "Installation SDK Windows via winget"
     ) else (
         call :log INFO "Téléchargement manuel du SDK Windows..."
-        curl -L -o "%TEMP%\winsdksetup.exe" https://go.microsoft.com/fwlink/p/?LinkID=2033908
-        "%TEMP%\winsdksetup.exe" /quiet /norestart
+        call :exec_and_log "curl -L -o "%TEMP%\winsdksetup.exe" https://go.microsoft.com/fwlink/p/?LinkID=2033908" "Téléchargement SDK Windows"
+        call :exec_and_log ""%TEMP%\winsdksetup.exe" /quiet /norestart" "Installation SDK Windows"
     )
     if %errorlevel% neq 0 (
         call :log ERROR "Erreur lors de l'installation des en-têtes système"
@@ -189,6 +228,19 @@ if not exist "%PROGRAM_FILES_X86%\Windows Kits\10\Include\10.0.19041.0\um\window
 ) else (
     call :log INFO "Les en-têtes système sont déjà installés"
 )
+
+REM Détection du SDK Windows 10
+set "SDK_ROOT=%PROGRAM_FILES_X86%\Windows Kits\10"
+if exist "!SDK_ROOT!" (
+    call :log INFO "SDK Windows 10 trouvé dans !SDK_ROOT!"
+    call :exec_and_log "dir "!SDK_ROOT!\Include" /b" "Versions SDK disponibles"
+) else (
+    call :log WARNING "SDK Windows 10 non trouvé"
+)
+
+REM Installation des dépendances système
+REM curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe
+REM "%TEMP%\vc_redist.x64.exe" /quiet /norestart
 
 REM Nettoyage et configuration de l'environnement
 call :log DEBUG "Configuration de l'environnement de développement"
@@ -234,70 +286,81 @@ REM Appeler vcvarsall.bat et restaurer le chemin Python
 call :log DEBUG "Appel de vcvarsall.bat"
 if exist "%VS_PATH%\VC\Auxiliary\Build\vcvars64.bat" (
     call :log DEBUG "Exécution de %VS_PATH%\VC\Auxiliary\Build\vcvars64.bat"
-    call "%VS_PATH%\VC\Auxiliary\Build\vcvars64.bat"
+    call :exec_and_log "call "%VS_PATH%\VC\Auxiliary\Build\vcvars64.bat" && set" "Configuration vcvars64"
 ) else (
     call :log WARNING "[AVERTISSEMENT] Fichier vcvars64.bat non trouvé"
     call :log DEBUG "Chemin recherché: %VS_PATH%\VC\Auxiliary\Build\vcvars64.bat"
 )
 set "PATH=%PYTHON_PATH%;%PYTHON_PATH%\Scripts;%PATH%"
+call :log DEBUG "PATH après configuration: !PATH!"
 
 REM Installation des dépendances système
-curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe
-"%TEMP%\vc_redist.x64.exe" /quiet /norestart
+REM curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe
+REM "%TEMP%\vc_redist.x64.exe" /quiet /norestart
+
+REM Fonction pour exécuter une commande et enregistrer sa sortie dans le fichier de log
+:exec_and_log
+set "CMD_TO_RUN=%~1"
+set "LOG_PREFIX=%~2"
+call :log DEBUG "Exécution: !CMD_TO_RUN!"
+echo [%DATE% %TIME%] [COMMAND] !LOG_PREFIX! - Début d'exécution >> "!LOG_FILE!"
+%~1 >> "!LOG_FILE!" 2>&1
+set LAST_ERROR=%ERRORLEVEL%
+echo [%DATE% %TIME%] [COMMAND] !LOG_PREFIX! - Fin d'exécution (code: !LAST_ERROR!) >> "!LOG_FILE!"
+exit /b !LAST_ERROR!
 
 REM Création de l'environnement virtuel
 call :log INFO "Création de l'environnement virtuel..."
 call :log DEBUG "Suppression de l'environnement virtuel existant si présent"
 if exist venv_py310 rmdir /s /q venv_py310
 call :log DEBUG "Création d'un nouvel environnement virtuel avec !PYTHON_CMD!"
-"!PYTHON_CMD!" -m venv venv_py310
-call :log DEBUG "Vérification de l'existence du script d'activation"
-if not exist "venv_py310\Scripts\activate.bat" (
-    call :log ERROR "Échec de création de l'environnement virtuel"
-    pause
-    exit /b 1
-)
+call :exec_and_log ""!PYTHON_CMD!" -m venv venv_py310" "Création environnement virtuel"
 
 REM Activation de l'environnement virtuel
 call :log INFO "Activation de l'environnement virtuel..."
 call "venv_py310\Scripts\activate.bat"
 call :log DEBUG "Vérification de l'activation"
-"!PYTHON_CMD!" -c "import sys; print('Environnement virtuel actif:', sys.prefix)" >> "!LOG_FILE!" 2>&1
+call :exec_and_log ""!PYTHON_CMD!" -c "import sys; print('Environnement virtuel actif:', sys.prefix)"" "Vérification environnement"
 
 REM Installation des dépendances de base
 call :log INFO "Installation des dépendances de base..."
-"!PYTHON_CMD!" -m pip install --upgrade pip setuptools wheel
+call :exec_and_log ""!PYTHON_CMD!" -m pip install --upgrade pip setuptools wheel" "Installation pip/setuptools/wheel"
 
 REM Installation des dépendances TTS
-for %%p in (
-    "numpy==1.24.3"
-    "torch==2.1.0+cpu" "--index-url" "https://download.pytorch.org/whl/cpu"
-    "tqdm==4.65.0"
-) do (
-    call :log INFO "Installation de %%p..."
-    "!PYTHON_CMD!" -m pip install %%p --no-cache-dir
-)
+call :log INFO "Installation des dépendances principales..."
+call :exec_and_log ""!PYTHON_CMD!" -m pip install numpy==1.24.3 --no-cache-dir" "Installation numpy"
+call :exec_and_log ""!PYTHON_CMD!" -m pip install torch==2.1.0+cpu --index-url https://download.pytorch.org/whl/cpu --no-cache-dir" "Installation torch"
+call :exec_and_log ""!PYTHON_CMD!" -m pip install tqdm==4.65.0 --no-cache-dir" "Installation tqdm"
 
 REM Installation de TTS avec toutes les dépendances
 call :log INFO "Installation de TTS..."
-"!PYTHON_CMD!" -m pip install TTS --no-cache-dir
+call :exec_and_log ""!PYTHON_CMD!" -m pip install TTS --no-cache-dir" "Installation TTS"
 
 REM Installation de PyQt6
 call :log INFO "Installation de PyQt6..."
-"!PYTHON_CMD!" -m pip install PyQt6==6.4.2 --no-cache-dir
+call :exec_and_log ""!PYTHON_CMD!" -m pip install PyQt6==6.4.2 --no-cache-dir" "Installation PyQt6"
 
 REM Installation de pyinstaller
 call :log INFO "Installation de pyinstaller..."
-"!PYTHON_CMD!" -m pip install pyinstaller==6.3.0 --no-cache-dir
+call :exec_and_log ""!PYTHON_CMD!" -m pip install pyinstaller==6.3.0 --no-cache-dir" "Installation pyinstaller"
 
 REM Vérification de l'installation
 call :log INFO "Vérification de l'installation..."
-"!PYTHON_CMD!" -c "import numpy; print('numpy', numpy.__version__)" 2>nul && ^
-"!PYTHON_CMD!" -c "import torch; print('torch', torch.__version__)" 2>nul && ^
-"!PYTHON_CMD!" -c "import TTS; print('TTS OK')" 2>nul && ^
-"!PYTHON_CMD!" -c "from PyQt6.QtWidgets import QApplication; print('PyQt6 OK')" 2>nul
+set VERIFICATION_ERROR=0
 
-if errorlevel 1 (
+call :exec_and_log ""!PYTHON_CMD!" -c "import numpy; print('numpy', numpy.__version__)"" "Vérification numpy"
+if errorlevel 1 set VERIFICATION_ERROR=1
+
+call :exec_and_log ""!PYTHON_CMD!" -c "import torch; print('torch', torch.__version__)"" "Vérification torch"
+if errorlevel 1 set VERIFICATION_ERROR=1
+
+call :exec_and_log ""!PYTHON_CMD!" -c "import TTS; print('TTS OK')"" "Vérification TTS"
+if errorlevel 1 set VERIFICATION_ERROR=1
+
+call :exec_and_log ""!PYTHON_CMD!" -c "from PyQt6.QtWidgets import QApplication; print('PyQt6 OK')"" "Vérification PyQt6"
+if errorlevel 1 set VERIFICATION_ERROR=1
+
+if !VERIFICATION_ERROR! equ 1 (
     call :log ERROR "ATTENTION: Installation incomplète"
     call :log INFO "Consultez TROUBLESHOOTING.md pour les solutions"
 ) else (
