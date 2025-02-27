@@ -437,6 +437,71 @@ pip install TTS==0.17.6 --no-deps
 - Maintenir un ordre cohérent des includes
 - Préférer les versions binaires quand possible
 
+## 15. Erreur de chemin avec espaces dans Program Files
+**Erreur :**
+```
+'C:\Program' n'est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+```
+
+**Analyse :**
+Cette erreur se produit lorsque Windows tente d'exécuter des commandes avec des chemins contenant des espaces sans guillemets. Le chemin "C:\Program Files" est interprété comme deux parties distinctes : "C:\Program" et "Files".
+
+**Solutions :**
+1. Utiliser des guillemets pour les chemins avec espaces :
+```batch
+REM Au lieu de
+set PYTHON_CMD=C:\Program Files\Python310\python.exe
+
+REM Utiliser
+set "PYTHON_CMD=%ProgramFiles%\Python310\python.exe"
+set "PYTHON_PATH=%ProgramFiles%\Python310"
+```
+
+2. Utiliser des variables d'environnement Windows :
+```batch
+REM Configuration des chemins
+set "PROG_FILES=%ProgramFiles%"
+set "PYTHON_PATH=%PROG_FILES%\Python310"
+set "PYTHON_EXE=%PYTHON_PATH%\python.exe"
+
+REM Utilisation
+"%PYTHON_EXE%" -m pip install ...
+```
+
+3. Alternative avec chemins courts :
+```batch
+REM Obtenir le chemin court pour Program Files
+for %%i in ("%ProgramFiles%") do set "PROGFILES_SHORT=%%~si"
+set "PYTHON_PATH=%PROGFILES_SHORT%\Python310"
+```
+
+**Exemple de configuration complète :**
+```batch
+@echo off
+setlocal enabledelayedexpansion
+
+REM Configuration des chemins avec gestion des espaces
+set "PROG_FILES=%ProgramFiles%"
+set "PYTHON_PATH=%PROG_FILES%\Python310"
+set "PYTHON_EXE=%PYTHON_PATH%\python.exe"
+
+REM Vérification de Python
+if exist "%PYTHON_EXE%" (
+    REM Utilisation avec guillemets
+    "%PYTHON_EXE%" -m pip install ...
+) else (
+    echo Python non trouve dans "%PYTHON_PATH%"
+    exit /b 1
+)
+```
+
+**Important :**
+- Toujours utiliser des guillemets pour les chemins contenant des espaces
+- Préférer les variables d'environnement Windows (%ProgramFiles%, etc.)
+- Vérifier l'existence des chemins avant utilisation
+- Utiliser setlocal enabledelayedexpansion pour la manipulation des variables
+
 ## Problèmes connus restants
 - Problèmes de compilation avec les dépendances qui nécessitent une compilation (NumPy, TTS)
 - Nécessité d'avoir Visual Studio Community 2022 complet
