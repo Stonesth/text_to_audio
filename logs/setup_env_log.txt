@@ -1,14 +1,15 @@
-===== DEBUT INSTALLATION 27-02-25 13:02:15,15 ===== 
-[27-02-25 13:02:15,15] [INFO] [MODE SANS REGISTRE] Les modifications système seront désactivées 
-[27-02-25 13:02:15,15] [INFO] Mode debug activé - Fichier log: logs\setup_env_log.txt 
-[27-02-25 13:02:15,17] [INFO] Verifications 
-[27-02-25 13:02:15,22] [INFO] Recherche de Python 3.10... 
-[27-02-25 13:02:15,22] [INFO] Python 
-[27-02-25 13:02:15,23] [DEBUG] Chemin Python: C:\Program Files\Python310 
-[27-02-25 13:02:15,25] [DEBUG] Commande Python: \python.exe 
-[27-02-25 13:02:15,26] [DEBUG] Configuration des chemins sécurisés 
-[27-02-25 13:02:15,27] [DEBUG] PROGRAM_FILES: C:\Program Files 
-[27-02-25 13:02:15,28] [DEBUG] PROGRAM_FILES_X86: C:\Program Files (x86) 
-[27-02-25 13:02:15,28] [INFO] [INFO] 
-[27-02-25 13:02:15,30] [DEBUG] Configuration des chemins SDK Windows 
-[27-02-25 13:02:15,33] [DEBUG] WindowsSdkDir: C:\Program Files (x86)\Windows Kits\10 
+===== DEBUT INSTALLATION 27-02-25 13:10:23,53 ===== 
+[27-02-25 13:10:23,54] [INFO] [MODE SANS REGISTRE] Les modifications système seront désactivées 
+[27-02-25 13:10:23,54] [INFO] Mode debug activé - Fichier log: logs\setup_env_log.txt 
+[27-02-25 13:10:23,55] [INFO] Vérifications préliminaires... 
+[27-02-25 13:10:23,57] [INFO] Recherche de Python 3.10... 
+[27-02-25 13:10:23,58] [INFO] Python 3.10 trouvé dans C:\Program Files\Python310 
+[27-02-25 13:10:23,60] [DEBUG] Chemin Python: C:\Program Files\Python310 
+[27-02-25 13:10:23,62] [DEBUG] Commande Python: \python.exe 
+[27-02-25 13:10:23,64] [DEBUG] Configuration des chemins sécurisés 
+[27-02-25 13:10:23,66] [DEBUG] PROGRAM_FILES: C:\Program Files 
+[27-02-25 13:10:23,66] [DEBUG] PROGRAM_FILES_X86: C:\Program Files (x86) 
+[27-02-25 13:10:23,68] [INFO] Vérification du SDK Windows 10 ignorée en mode sans registre 
+[27-02-25 13:10:23,70] [DEBUG] Configuration des chemins SDK Windows 
+[27-02-25 13:10:23,72] [DEBUG] WindowsSdkDir: C:\Program Files (x86)\Windows Kits\10 
+\Windows était inattendu
