@@ -65,7 +65,7 @@ if exist "%PROGRAM_FILES%\Python310\python.exe" (
     set "PYTHON_PATH=%PROGRAM_FILES%\Python310"
     set "PYTHON_CMD=%PYTHON_PATH%\python.exe"
     set "PYTHON_FOUND=1"
-    call :log INFO "Python trouvé dans %PYTHON_PATH%"
+    call :log INFO "Python trouvé dans !PYTHON_PATH!"
     call :exec_and_log ""!PYTHON_CMD!" --version" "Version Python"
 )
 
@@ -75,7 +75,7 @@ if %PYTHON_FOUND% equ 0 (
         set "PYTHON_PATH=%PROGRAM_FILES_X86%\Python310"
         set "PYTHON_CMD=%PYTHON_PATH%\python.exe"
         set "PYTHON_FOUND=1"
-        call :log INFO "Python trouvé dans %PYTHON_PATH%"
+        call :log INFO "Python trouvé dans !PYTHON_PATH!"
         call :exec_and_log ""!PYTHON_CMD!" --version" "Version Python"
     )
 )
@@ -86,7 +86,7 @@ if %PYTHON_FOUND% equ 0 (
         set "PYTHON_PATH=%LOCALAPPDATA%\Programs\Python\Python310"
         set "PYTHON_CMD=%PYTHON_PATH%\python.exe"
         set "PYTHON_FOUND=1"
-        call :log INFO "Python trouvé dans %PYTHON_PATH%"
+        call :log INFO "Python trouvé dans !PYTHON_PATH!"
         call :exec_and_log ""!PYTHON_CMD!" --version" "Version Python"
     )
 )
@@ -123,7 +123,7 @@ REM Recherche de Visual Studio 2022
 if exist "%PROGRAM_FILES%\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe" (
     set "VS_PATH=%PROGRAM_FILES%\Microsoft Visual Studio\2022\Community"
     set "VS_FOUND=1"
-    call :log INFO "Visual Studio 2022 trouvé dans %VS_PATH%"
+    call :log INFO "Visual Studio 2022 trouvé dans !VS_PATH!"
     call :exec_and_log "dir "!VS_PATH!\VC\Tools\MSVC" /b" "Versions MSVC disponibles"
 )
 
@@ -132,7 +132,7 @@ if %VS_FOUND% equ 0 (
     if exist "%PROGRAM_FILES%\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe" (
         set "VS_PATH=%PROGRAM_FILES%\Microsoft Visual Studio\2019\Community"
         set "VS_FOUND=1"
-        call :log INFO "Visual Studio 2019 trouvé dans %VS_PATH%"
+        call :log INFO "Visual Studio 2019 trouvé dans !VS_PATH!"
         call :exec_and_log "dir "!VS_PATH!\VC\Tools\MSVC" /b" "Versions MSVC disponibles"
     )
 )
@@ -170,7 +170,9 @@ if exist "!VS_PATH!\VC\Auxiliary\Build\vcvarsall.bat" (
     
     REM Configuration des variables d'environnement Visual Studio
     call :log INFO "Configuration des variables d'environnement Visual Studio..."
-    call :exec_and_log ""!VS_PATH!\VC\Auxiliary\Build\vcvarsall.bat" x64" "Configuration vcvarsall"
+    call "!VS_PATH!\VC\Auxiliary\Build\vcvarsall.bat" x64 > "!LOG_FILE!.vs_vars" 2>&1
+    type "!LOG_FILE!.vs_vars" >> "!LOG_FILE!"
+    echo [%DATE% %TIME%] [COMMAND] Configuration vcvarsall - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
 ) else (
     call :log WARNING "Fichier vcvarsall.bat non trouvé. Les variables d'environnement Visual Studio ne seront pas configurées."
 )
@@ -233,7 +235,8 @@ REM Détection du SDK Windows 10
 set "SDK_ROOT=%PROGRAM_FILES_X86%\Windows Kits\10"
 if exist "!SDK_ROOT!" (
     call :log INFO "SDK Windows 10 trouvé dans !SDK_ROOT!"
-    call :exec_and_log "dir "!SDK_ROOT!\Include" /b" "Versions SDK disponibles"
+    dir "!SDK_ROOT!\Include" /b >> "!LOG_FILE!" 2>&1
+    echo [%DATE% %TIME%] [COMMAND] Versions SDK disponibles - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
 ) else (
     call :log WARNING "SDK Windows 10 non trouvé"
 )
@@ -284,14 +287,16 @@ set "CL=/MP"
 
 REM Appeler vcvarsall.bat et restaurer le chemin Python
 call :log DEBUG "Appel de vcvarsall.bat"
-if exist "%VS_PATH%\VC\Auxiliary\Build\vcvars64.bat" (
-    call :log DEBUG "Exécution de %VS_PATH%\VC\Auxiliary\Build\vcvars64.bat"
-    call :exec_and_log "call "%VS_PATH%\VC\Auxiliary\Build\vcvars64.bat" && set" "Configuration vcvars64"
+if exist "!VS_PATH!\VC\Auxiliary\Build\vcvars64.bat" (
+    call :log DEBUG "Exécution de !VS_PATH!\VC\Auxiliary\Build\vcvars64.bat"
+    call "!VS_PATH!\VC\Auxiliary\Build\vcvars64.bat" > "!LOG_FILE!.vs_vars64" 2>&1
+    type "!LOG_FILE!.vs_vars64" >> "!LOG_FILE!"
+    echo [%DATE% %TIME%] [COMMAND] Configuration vcvars64 - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
 ) else (
     call :log WARNING "[AVERTISSEMENT] Fichier vcvars64.bat non trouvé"
-    call :log DEBUG "Chemin recherché: %VS_PATH%\VC\Auxiliary\Build\vcvars64.bat"
+    call :log DEBUG "Chemin recherché: !VS_PATH!\VC\Auxiliary\Build\vcvars64.bat"
 )
-set "PATH=%PYTHON_PATH%;%PYTHON_PATH%\Scripts;%PATH%"
+set "PATH=!PYTHON_PATH!;!PYTHON_PATH!\Scripts;%PATH%"
 call :log DEBUG "PATH après configuration: !PATH!"
 
 REM Installation des dépendances système
@@ -304,7 +309,7 @@ set "CMD_TO_RUN=%~1"
 set "LOG_PREFIX=%~2"
 call :log DEBUG "Exécution: !CMD_TO_RUN!"
 echo [%DATE% %TIME%] [COMMAND] !LOG_PREFIX! - Début d'exécution >> "!LOG_FILE!"
-%~1 >> "!LOG_FILE!" 2>&1
+!CMD_TO_RUN! >> "!LOG_FILE!" 2>&1
 set LAST_ERROR=%ERRORLEVEL%
 echo [%DATE% %TIME%] [COMMAND] !LOG_PREFIX! - Fin d'exécution (code: !LAST_ERROR!) >> "!LOG_FILE!"
 exit /b !LAST_ERROR!
@@ -314,51 +319,70 @@ call :log INFO "Création de l'environnement virtuel..."
 call :log DEBUG "Suppression de l'environnement virtuel existant si présent"
 if exist venv_py310 rmdir /s /q venv_py310
 call :log DEBUG "Création d'un nouvel environnement virtuel avec !PYTHON_CMD!"
-call :exec_and_log ""!PYTHON_CMD!" -m venv venv_py310" "Création environnement virtuel"
+"!PYTHON_CMD!" -m venv venv_py310 >> "!LOG_FILE!" 2>&1
+echo [%DATE% %TIME%] [COMMAND] Création environnement virtuel - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
 
 REM Activation de l'environnement virtuel
 call :log INFO "Activation de l'environnement virtuel..."
 call "venv_py310\Scripts\activate.bat"
 call :log DEBUG "Vérification de l'activation"
-call :exec_and_log ""!PYTHON_CMD!" -c "import sys; print('Environnement virtuel actif:', sys.prefix)"" "Vérification environnement"
+"!PYTHON_CMD!" -c "import sys; print('Environnement virtuel actif:', sys.prefix)" >> "!LOG_FILE!" 2>&1
+echo [%DATE% %TIME%] [COMMAND] Vérification environnement - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
 
 REM Installation des dépendances de base
 call :log INFO "Installation des dépendances de base..."
-call :exec_and_log ""!PYTHON_CMD!" -m pip install --upgrade pip setuptools wheel" "Installation pip/setuptools/wheel"
+"!PYTHON_CMD!" -m pip install --upgrade pip setuptools wheel >> "!LOG_FILE!" 2>&1
+echo [%DATE% %TIME%] [COMMAND] Installation pip/setuptools/wheel - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
 
 REM Installation des dépendances TTS
 call :log INFO "Installation des dépendances principales..."
-call :exec_and_log ""!PYTHON_CMD!" -m pip install numpy==1.24.3 --no-cache-dir" "Installation numpy"
-call :exec_and_log ""!PYTHON_CMD!" -m pip install torch==2.1.0+cpu --index-url https://download.pytorch.org/whl/cpu --no-cache-dir" "Installation torch"
-call :exec_and_log ""!PYTHON_CMD!" -m pip install tqdm==4.65.0 --no-cache-dir" "Installation tqdm"
+"!PYTHON_CMD!" -m pip install numpy==1.24.3 --no-cache-dir >> "!LOG_FILE!" 2>&1
+echo [%DATE% %TIME%] [COMMAND] Installation numpy - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+
+"!PYTHON_CMD!" -m pip install torch==2.1.0+cpu --index-url https://download.pytorch.org/whl/cpu --no-cache-dir >> "!LOG_FILE!" 2>&1
+echo [%DATE% %TIME%] [COMMAND] Installation torch - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
+
+"!PYTHON_CMD!" -m pip install tqdm==4.65.0 --no-cache-dir >> "!LOG_FILE!" 2>&1
+echo [%DATE% %TIME%] [COMMAND] Installation tqdm - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
 
 REM Installation de TTS avec toutes les dépendances
 call :log INFO "Installation de TTS..."
-call :exec_and_log ""!PYTHON_CMD!" -m pip install TTS --no-cache-dir" "Installation TTS"
+"!PYTHON_CMD!" -m pip install TTS --no-cache-dir >> "!LOG_FILE!" 2>&1
+echo [%DATE% %TIME%] [COMMAND] Installation TTS - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
 
 REM Installation de PyQt6
 call :log INFO "Installation de PyQt6..."
-call :exec_and_log ""!PYTHON_CMD!" -m pip install PyQt6==6.4.2 --no-cache-dir" "Installation PyQt6"
+"!PYTHON_CMD!" -m pip install PyQt6==6.4.2 --no-cache-dir >> "!LOG_FILE!" 2>&1
+echo [%DATE% %TIME%] [COMMAND] Installation PyQt6 - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
 
 REM Installation de pyinstaller
 call :log INFO "Installation de pyinstaller..."
-call :exec_and_log ""!PYTHON_CMD!" -m pip install pyinstaller==6.3.0 --no-cache-dir" "Installation pyinstaller"
+"!PYTHON_CMD!" -m pip install pyinstaller==6.3.0 --no-cache-dir >> "!LOG_FILE!" 2>&1
+echo [%DATE% %TIME%] [COMMAND] Installation pyinstaller - Fin d'exécution (code: %ERRORLEVEL%) >> "!LOG_FILE!"
 
 REM Vérification de l'installation
 call :log INFO "Vérification de l'installation..."
 set VERIFICATION_ERROR=0
 
-call :exec_and_log ""!PYTHON_CMD!" -c "import numpy; print('numpy', numpy.__version__)"" "Vérification numpy"
-if errorlevel 1 set VERIFICATION_ERROR=1
+"!PYTHON_CMD!" -c "import numpy; print('numpy', numpy.__version__)" >> "!LOG_FILE!" 2>&1
+set NUMPY_ERROR=%ERRORLEVEL%
+echo [%DATE% %TIME%] [COMMAND] Vérification numpy - Fin d'exécution (code: !NUMPY_ERROR!) >> "!LOG_FILE!"
+if !NUMPY_ERROR! neq 0 set VERIFICATION_ERROR=1
 
-call :exec_and_log ""!PYTHON_CMD!" -c "import torch; print('torch', torch.__version__)"" "Vérification torch"
-if errorlevel 1 set VERIFICATION_ERROR=1
+"!PYTHON_CMD!" -c "import torch; print('torch', torch.__version__)" >> "!LOG_FILE!" 2>&1
+set TORCH_ERROR=%ERRORLEVEL%
+echo [%DATE% %TIME%] [COMMAND] Vérification torch - Fin d'exécution (code: !TORCH_ERROR!) >> "!LOG_FILE!"
+if !TORCH_ERROR! neq 0 set VERIFICATION_ERROR=1
 
-call :exec_and_log ""!PYTHON_CMD!" -c "import TTS; print('TTS OK')"" "Vérification TTS"
-if errorlevel 1 set VERIFICATION_ERROR=1
+"!PYTHON_CMD!" -c "import TTS; print('TTS OK')" >> "!LOG_FILE!" 2>&1
+set TTS_ERROR=%ERRORLEVEL%
+echo [%DATE% %TIME%] [COMMAND] Vérification TTS - Fin d'exécution (code: !TTS_ERROR!) >> "!LOG_FILE!"
+if !TTS_ERROR! neq 0 set VERIFICATION_ERROR=1
 
-call :exec_and_log ""!PYTHON_CMD!" -c "from PyQt6.QtWidgets import QApplication; print('PyQt6 OK')"" "Vérification PyQt6"
-if errorlevel 1 set VERIFICATION_ERROR=1
+"!PYTHON_CMD!" -c "from PyQt6.QtWidgets import QApplication; print('PyQt6 OK')" >> "!LOG_FILE!" 2>&1
+set PYQT_ERROR=%ERRORLEVEL%
+echo [%DATE% %TIME%] [COMMAND] Vérification PyQt6 - Fin d'exécution (code: !PYQT_ERROR!) >> "!LOG_FILE!"
+if !PYQT_ERROR! neq 0 set VERIFICATION_ERROR=1
 
 if !VERIFICATION_ERROR! equ 1 (
     call :log ERROR "ATTENTION: Installation incomplète"
