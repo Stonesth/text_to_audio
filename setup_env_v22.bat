@@ -2,6 +2,11 @@
 chcp 1252 > nul
 setlocal enabledelayedexpansion
 
+echo ===== DEBUT DU PROGRAMME D'INSTALLATION ===== 
+echo Programme d'installation de l'environnement Text-to-Audio
+echo Date et heure: %DATE% %TIME%
+echo ============================================
+
 REM Configuration de la journalisation
 if not exist "logs" mkdir logs
 set "LOG_FILE=%~dp0logs\setup_env_log.txt"
