@@ -1,20 +1,29 @@
-===== DEBUT INSTALLATION 27-02-25 15:46:01,98 ===== 
-[27-02-25 15:46:01,98] [INFO] Verification de Python 3.10... 
-[27-02-25 15:46:02,11] [COMMAND] Vérification Python 3.10 via py launcher - Début d'exécution 
+===== DEBUT INSTALLATION 27-02-25 16:12:46,14 ===== 
+[27-02-25 16:12:46,14] [INFO] Verification de Python 3.10... 
+[27-02-25 16:12:46,28] [INFO] Verification Python 3.10 via py launcher 
+[27-02-25 16:12:46,29] [COMMAND] Vérification Python 3.10 via py launcher - Début d'exécution 
 Python 3.10.9
-[27-02-25 15:46:02,14] [COMMAND] Vérification Python 3.10 via py launcher - Fin d'exécution (code: 0) 
-[27-02-25 15:46:02,16] [INFO] Python 3.10 trouve via py launcher 
-[27-02-25 15:46:02,17] [INFO] Verification de Visual Studio... 
-[27-02-25 15:46:02,17] [INFO] Vérification des redistribuables VC++... 
+[27-02-25 16:12:46,33] [COMMAND] Vérification Python 3.10 via py launcher - Fin d'exécution (code: 0) 
+[27-02-25 16:12:46,34] [INFO] Python 3.10 trouve via py launcher 
+[27-02-25 16:12:46,37] [INFO] Verification de Visual Studio... 
+[27-02-25 16:12:46,37] [INFO] Vérification des redistribuables VC++... 
+[27-02-25 16:12:46,38] [DEBUG] vcruntime140.dll trouvé, vérification de la version... 
+[27-02-25 16:12:47,33] [DEBUG] vcruntime140.dll est de version 14.30 ou supérieure 
 
 
-Le terminal :
-   .\setup_env_v22.bat                     
+  .\setup_env_v22.bat
+===== DEBUT DU PROGRAMME D'INSTALLATION ===== 
+Programme d'installation de l'environnement Text-to-Audio
+Date et heure: 27-02-25 16:12:46,13
+============================================
 Verification de Python 3.10...
+Verification Python 3.10 via py launcher
 [COMMAND] VÃ©rification Python 3.10 via py launcher - DÃ©but d'exÃ©cution
 [COMMAND] VÃ©rification Python 3.10 via py launcher - Fin d'exÃ©cution (code: 0)
 Python 3.10 trouve via py launcher
 Verification de Visual Studio...
 VÃ©rification des redistribuables VC++...
-{ était inattendu.
-PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> 
+[DEBUG] vcruntime140.dll trouvÃ©, vÃ©rification de la version...
+[DEBUG] vcruntime140.dll est de version 14.30 ou supÃ©rieure
+^{ était inattendu.
+PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio>
