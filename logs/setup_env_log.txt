@@ -1,2 +1,14 @@
-===== DEBUT INSTALLATION 27-02-25 12:55:52,91 ===== 
-[27-02-25 12:55:52,92] [--no-registry] --DEBUG 
+===== DEBUT INSTALLATION 27-02-25 13:02:15,15 ===== 
+[27-02-25 13:02:15,15] [INFO] [MODE SANS REGISTRE] Les modifications système seront désactivées 
+[27-02-25 13:02:15,15] [INFO] Mode debug activé - Fichier log: logs\setup_env_log.txt 
+[27-02-25 13:02:15,17] [INFO] Verifications 
+[27-02-25 13:02:15,22] [INFO] Recherche de Python 3.10... 
+[27-02-25 13:02:15,22] [INFO] Python 
+[27-02-25 13:02:15,23] [DEBUG] Chemin Python: C:\Program Files\Python310 
+[27-02-25 13:02:15,25] [DEBUG] Commande Python: \python.exe 
+[27-02-25 13:02:15,26] [DEBUG] Configuration des chemins sécurisés 
+[27-02-25 13:02:15,27] [DEBUG] PROGRAM_FILES: C:\Program Files 
+[27-02-25 13:02:15,28] [DEBUG] PROGRAM_FILES_X86: C:\Program Files (x86) 
+[27-02-25 13:02:15,28] [INFO] [INFO] 
+[27-02-25 13:02:15,30] [DEBUG] Configuration des chemins SDK Windows 
+[27-02-25 13:02:15,33] [DEBUG] WindowsSdkDir: C:\Program Files (x86)\Windows Kits\10 
