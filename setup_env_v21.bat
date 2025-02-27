@@ -15,7 +15,6 @@ REM ========== DÉBUT DU SCRIPT PRINCIPAL ==========
 
 REM Gestion des paramètres
 set "NO_REGISTRY=0"
-set "DEBUG_MODE=0"
 
 for %%a in (%*) do (
     if "%%a"=="--no-registry" (
@@ -24,11 +23,6 @@ for %%a in (%*) do (
     if "%%a"=="--debug" (
         set "DEBUG_MODE=1"
         set "LOG_LEVEL=DEBUG"
-    )
-    if "%%a"=="--log-file" (
-        if not "%%~b"=="" (
-            set "LOG_FILE=%%~b"
-        )
     )
 )
 
@@ -43,11 +37,14 @@ if "%DEBUG_MODE%"=="1" (
 REM Sauvegarder le chemin système original
 set "ORIGINAL_PATH=%PATH%"
 
-REM Configuration des variables de chemin sécurisées
+REM Configuration des chemins sécurisés
+call :log DEBUG "Configuration des chemins sécurisés"
 set "PROGRAM_FILES=%ProgramFiles%"
 if not defined PROGRAM_FILES set "PROGRAM_FILES=C:\Program Files"
 set "PROGRAM_FILES_X86=%ProgramFiles(x86)%"
 if not defined PROGRAM_FILES_X86 set "PROGRAM_FILES_X86=C:\Program Files (x86)"
+call :log DEBUG "PROGRAM_FILES: %PROGRAM_FILES%"
+call :log DEBUG "PROGRAM_FILES_X86: %PROGRAM_FILES_X86%"
 
 REM Vérifications préliminaires
 call :log INFO "Vérifications préliminaires..."
@@ -60,20 +57,24 @@ if %errorLevel% == 0 (
 
 REM Trouver Python 3.10
 call :log INFO "Recherche de Python 3.10..."
-set "PYTHON_PATH="
-set "PYTHON_CMD="
+set PYTHON_PATH=
+set PYTHON_CMD=
 
 REM Vérifier dans Program Files
 if exist "%PROGRAM_FILES%\Python310\python.exe" (
-    set "PYTHON_PATH=%PROGRAM_FILES%\Python310"
-    set "PYTHON_CMD=%PYTHON_PATH%\python.exe"
+    set PYTHON_PATH=%PROGRAM_FILES%\Python310
+    set PYTHON_CMD=%PROGRAM_FILES%\Python310\python.exe
+    call :log DEBUG "Chemin Python trouvé: %PYTHON_PATH%"
+    call :log DEBUG "Commande Python: %PYTHON_CMD%"
     goto :found_python
 )
 
 REM Vérifier dans Program Files (x86)
 if exist "%PROGRAM_FILES_X86%\Python310\python.exe" (
-    set "PYTHON_PATH=%PROGRAM_FILES_X86%\Python310"
-    set "PYTHON_CMD=%PYTHON_PATH%\python.exe"
+    set PYTHON_PATH=%PROGRAM_FILES_X86%\Python310
+    set PYTHON_CMD=%PROGRAM_FILES_X86%\Python310\python.exe
+    call :log DEBUG "Chemin Python trouvé: %PYTHON_PATH%"
+    call :log DEBUG "Commande Python: %PYTHON_CMD%"
     goto :found_python
 )
 
@@ -81,8 +82,8 @@ REM Vérifier avec py launcher
 call :log DEBUG "Vérification avec py launcher..."
 py -3.10 --version >nul 2>&1
 if not errorlevel 1 (
-    for /f "delims=" %%i in ('py -3.10 -c "import sys; print(sys.prefix)"') do set "PYTHON_PATH=%%i"
-    set "PYTHON_CMD=py -3.10"
+    for /f "delims=" %%i in ('py -3.10 -c "import sys; print(sys.prefix)"') do set PYTHON_PATH=%%i
+    set PYTHON_CMD=py -3.10
     call :log INFO "Python 3.10 trouvé via py launcher: %PYTHON_PATH%"
     goto :found_python
 )
@@ -92,8 +93,8 @@ curl -L -o "%TEMP%\python-3.10-installer.exe" https://www.python.org/ftp/python/
 if exist "%TEMP%\python-3.10-installer.exe" (
     call :log INFO "Installation silencieuse de Python 3.10..."
     start /wait "" "%TEMP%\python-3.10-installer.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_launcher=0 Include_test=0
-    set "PYTHON_PATH=C:\Python310"
-    set "PYTHON_CMD=%PYTHON_PATH%\python.exe"
+    set PYTHON_PATH=C:\Python310
+    set PYTHON_CMD=C:\Python310\python.exe
     if exist "%PYTHON_CMD%" (
         call :log INFO "Vérification de la version installée..."
         "%PYTHON_CMD%" --version
@@ -115,15 +116,6 @@ exit /b 1
 call :log INFO "Python 3.10 trouvé dans %PYTHON_PATH%"
 call :log DEBUG "Chemin Python: %PYTHON_PATH%"
 call :log DEBUG "Commande Python: %PYTHON_CMD%"
-
-REM Configuration des chemins sécurisés
-call :log DEBUG "Configuration des chemins sécurisés"
-set "PROGRAM_FILES=%ProgramFiles%"
-if not defined PROGRAM_FILES set "PROGRAM_FILES=C:\Program Files"
-set "PROGRAM_FILES_X86=%ProgramFiles(x86)%"
-if not defined PROGRAM_FILES_X86 set "PROGRAM_FILES_X86=C:\Program Files (x86)"
-call :log DEBUG "PROGRAM_FILES: %PROGRAM_FILES%"
-call :log DEBUG "PROGRAM_FILES_X86: %PROGRAM_FILES_X86%"
 
 REM Section Visual Studio modifiée
 set "VS_PATH=%PROGRAM_FILES%\Microsoft Visual Studio\2022\Community"
