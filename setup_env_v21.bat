@@ -93,6 +93,24 @@ REM Appeler vcvarsall.bat et restaurer le chemin Python
 call "%VS_PATH%\VC\Auxiliary\Build\vcvars64.bat"
 set "PATH=%PYTHON_PATH%;%PYTHON_PATH%\Scripts;%PATH%"
 
+REM Installation des dépendances système
+curl -L -o "%TEMP%\vc_redist.x64.exe" https://aka.ms/vs/17/release/vc_redist.x64.exe
+"%TEMP%\vc_redist.x64.exe" /quiet /norestart
+
+REM Configuration des variables d'environnement pour le SDK Windows
+set "WindowsSdkDir=C:\Program Files (x86)\Windows Kits\10"
+set "INCLUDE=%WindowsSdkDir%\Include\10.0.19041.0\ucrt;%WindowsSdkDir%\Include\10.0.19041.0\shared;%WindowsSdkDir%\Include\10.0.19041.0\um;%INCLUDE%"
+set "LIB=%WindowsSdkDir%\Lib\10.0.19041.0\ucrt\x64;%WindowsSdkDir%\Lib\10.0.19041.0\um\x64;%LIB%"
+
+REM Installation des dépendances Python
+%PYTHON_CMD% -m pip install --upgrade pip
+%PYTHON_CMD% -m pip install Cython
+%PYTHON_CMD% -m pip install numpy==1.26.0
+%PYTHON_CMD% -m pip install torch==2.1.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+%PYTHON_CMD% -m pip install TTS==0.22.0 --no-cache-dir
+%PYTHON_CMD% -m pip install PyQt6==6.4.2
+%PYTHON_CMD% -m pip install pyinstaller==6.3.0
+
 REM Création de l'environnement virtuel
 echo Creation de l'environnement virtuel...
 if exist venv_py310 rmdir /s /q venv_py310
@@ -102,13 +120,6 @@ call .\venv_py310\Scripts\activate.bat
 REM Installation des dépendances
 echo Installation des dependances de base...
 %PYTHON_CMD% -m pip install --upgrade pip setuptools wheel
-%PYTHON_CMD% -m pip install Cython --no-cache-dir
-
-echo Installation de numpy...
-%PYTHON_CMD% -m pip install numpy==1.22.0 --no-cache-dir --only-binary :all:
-
-echo Installation de PyTorch...
-%PYTHON_CMD% -m pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu117 --only-binary :all:
 
 REM Installation des dépendances TTS
 for %%p in (
@@ -123,22 +134,6 @@ for %%p in (
     %PYTHON_CMD% -m pip install %%p --only-binary :all:
 )
 
-echo Installation de TTS...
-%PYTHON_CMD% -m pip uninstall TTS -y
-%PYTHON_CMD% -m pip install TTS==0.17.6 --only-binary :all: --no-deps
-if errorlevel 1 (
-    echo Tentative alternative TTS...
-    %PYTHON_CMD% -m pip install TTS==0.17.6 --no-deps --no-cache-dir
-    if errorlevel 1 (
-        echo Installation version stable TTS...
-        %PYTHON_CMD% -m pip install TTS==0.15.2 --no-deps
-    )
-)
-
-echo Installation de PyQt6...
-%PYTHON_CMD% -m pip install PyQt6==6.5.2 PyQt6-Qt6==6.5.2 PyQt6-sip==13.5.2 --no-cache-dir
-
-echo.
 echo Verification de l'installation...
 %PYTHON_CMD% -c "import numpy; print('numpy', numpy.__version__)" 2>nul && ^
 %PYTHON_CMD% -c "import torch; print('torch', torch.__version__)" 2>nul && ^
