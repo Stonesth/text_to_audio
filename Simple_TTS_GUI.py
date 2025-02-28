@@ -16,7 +16,8 @@ from TTS.tts.configs.xtts_config import XttsConfig
 from datetime import datetime
 
 # Configuration pour PyTorch 2.6+
-torch.serialization.add_safe_globals([XttsConfig])
+if hasattr(torch.serialization, 'add_safe_globals'):
+    torch.serialization.add_safe_globals([XttsConfig])
 
 class TTSWorker(QThread):
     """Thread worker pour la génération TTS"""
