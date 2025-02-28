@@ -534,8 +534,52 @@ class MainWindow(QMainWindow):
         if file_path:
             self.ref_audio_path.setText(file_path)
 
+    def check_espeak_installed(self):
+        """Vérifie si espeak est installé sur le système."""
+        if sys.platform == 'win32':
+            # Vérifie dans Program Files et Program Files (x86)
+            program_files = [
+                os.environ.get('PROGRAMFILES', 'C:\\Program Files'),
+                os.environ.get('PROGRAMFILES(X86)', 'C:\\Program Files (x86)')
+            ]
+            for prog_dir in program_files:
+                espeak_path = os.path.join(prog_dir, 'eSpeak NG')
+                if os.path.exists(espeak_path):
+                    return True
+            return False
+        else:
+            # Pour Linux/Mac, vérifie si la commande existe
+            return os.system('which espeak >/dev/null 2>&1') == 0
+
     def generate_audio(self):
         """Génère l'audio à partir du texte."""
+        # Vérification pour Neural HMM qui nécessite espeak
+        if (self.lang_combo.currentIndex() == 0 and  # Anglais
+            self.model_combo.currentText() == "Neural HMM" and 
+            not self.check_espeak_installed()):
+            
+            msg = QMessageBox(self)
+            msg.setIcon(QMessageBox.Icon.Warning)
+            msg.setText("eSpeak requis")
+            msg.setInformativeText(
+                "Le modèle Neural HMM nécessite eSpeak NG pour fonctionner.\n\n"
+                "Voulez-vous installer eSpeak NG ou utiliser un autre modèle?"
+            )
+            # Utiliser le bouton par défaut Yes/No avec des textes personnalisés
+            msg.addButton("Télécharger eSpeak", QMessageBox.ButtonRole.YesRole)
+            msg.addButton("Changer de modèle", QMessageBox.ButtonRole.NoRole)
+            
+            result = msg.exec()
+            if result == 0:  # Premier bouton (Télécharger)
+                # Ouvrir la page de téléchargement d'eSpeak
+                import webbrowser
+                webbrowser.open('https://github.com/espeak-ng/espeak-ng/blob/master/docs/guide.md')
+                return
+            else:  # Second bouton (Changer de modèle)
+                # Changer pour un autre modèle (ex: Tacotron2)
+                self.model_combo.setCurrentIndex(0)
+                return
+
         # Validation du texte avant génération
         text = self.text_edit.toPlainText().strip()
         if not text:
@@ -544,34 +588,28 @@ class MainWindow(QMainWindow):
 
         # Vérification spéciale pour Speedy-Speech
         is_speedy = "speedy-speech" in str(self.model_combo.currentText()).lower()
-        if is_speedy and len(text) < 30:  # Augmentation du seuil minimum
+        if is_speedy and len(text) < 30:
             msg = QMessageBox(self)
             msg.setIcon(QMessageBox.Icon.Warning)
             msg.setText("Attention - Texte court pour Speedy-Speech")
             msg.setInformativeText(
                 "Pour de meilleurs résultats avec Speedy-Speech, le texte sera ajusté "
-                "avec des pauses et des silences. Cela peut affecter la qualité de la sortie. "
-                "\n\nVoulez-vous :\n"
-                "1) Continuer avec l'ajustement automatique\n"
-                "2) Utiliser un autre modèle (recommandé)\n"
-                "3) Ajouter plus de texte"
+                "avec des pauses et des silences. Cela peut affecter la qualité de la sortie."
             )
-            msg.setStandardButtons(
-                QMessageBox.StandardButton.Yes | 
-                QMessageBox.StandardButton.No |
-                QMessageBox.StandardButton.Cancel
-            )
-            msg.setButtonText(QMessageBox.StandardButton.Yes, "Continuer avec ajustement")
-            msg.setButtonText(QMessageBox.StandardButton.No, "Changer de modèle")
-            msg.setButtonText(QMessageBox.StandardButton.Cancel, "Annuler")
+            # Utiliser des boutons personnalisés
+            continuer = msg.addButton("Continuer avec ajustement", QMessageBox.ButtonRole.AcceptRole)
+            changer = msg.addButton("Changer de modèle", QMessageBox.ButtonRole.RejectRole)
+            annuler = msg.addButton("Annuler", QMessageBox.ButtonRole.NoRole)
             
-            response = msg.exec()
-            if response == QMessageBox.StandardButton.No:
-                # Changer automatiquement pour VITS ou Tacotron2
+            msg.exec()
+            clicked = msg.clickedButton()
+            
+            if clicked == changer:
+                # Changer automatiquement pour un autre modèle
                 if self.lang_combo.currentIndex() == 0:  # Anglais
                     self.model_combo.setCurrentIndex(0)  # Jenny/Tacotron2
                 return
-            elif response == QMessageBox.StandardButton.Cancel:
+            elif clicked == annuler:
                 return
 
         if not self.text_edit.toPlainText().strip():
