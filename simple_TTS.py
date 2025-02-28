@@ -256,6 +256,20 @@ def initialize_tts(args, device):
         print("Erreur : Modèle non reconnu")
         sys.exit(1)
 
+def validate_input_text(text: str, lang: int, model_idx: int) -> str:
+    """Valide et ajuste le texte d'entrée selon le modèle."""
+    
+    # Vérification spécifique pour Speedy-Speech
+    if (lang == 0 and model_idx == 2) or (lang == 2 and model_idx == 2):
+        # Si le texte est trop court, ajouter des espaces pour atteindre la longueur minimale
+        min_length = 10  # Longueur minimale requise pour Speedy-Speech
+        if len(text.strip()) < min_length:
+            print(f"Attention : Le texte est trop court pour Speedy-Speech. Ajout d'espaces...")
+            padded_text = text.strip() + " " * (min_length - len(text.strip()))
+            return padded_text
+    
+    return text
+
 def main():
     """Fonction principale du script."""
     args = get_parser().parse_args()
@@ -273,7 +287,10 @@ def main():
     if not text:
         print("Erreur: Aucun texte fourni. Utilisez --text ou --text-file")
         sys.exit(1)
-    
+        
+    # Validation et ajustement du texte selon le modèle
+    text = validate_input_text(text, args.lang, args.en_model)
+
     # Configuration du device (CPU/CUDA)
     device = "cuda" if args.use_cuda and torch.cuda.is_available() else "cpu"
     print(f"Utilisation du device : {device}")

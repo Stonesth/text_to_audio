@@ -4,16 +4,22 @@ Interface graphique pour Simple_TTS utilisant PyQt6
 
 import sys
 import os
+import warnings
+from pathlib import Path
+from datetime import datetime
+
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
                             QHBoxLayout, QLabel, QComboBox, QTextEdit, QPushButton,
                             QFileDialog, QCheckBox, QGraphicsOpacityEffect,
-                            QSizePolicy)
+                            QSizePolicy, QMessageBox)
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QPropertyAnimation, QEasingCurve, QPoint, QTimer
 from PyQt6.QtGui import QFont, QFontDatabase, QPixmap, QScreen, QColor
 import torch
 from TTS.api import TTS
 from TTS.tts.configs.xtts_config import XttsConfig
-from datetime import datetime
+
+# Filtrer les avertissements NumPy spécifiques
+warnings.filterwarnings('ignore', message='.*API version.*numpy.*')
 
 # Configuration pour PyTorch 2.6+
 if hasattr(torch.serialization, 'add_safe_globals'):
@@ -23,14 +29,40 @@ class TTSWorker(QThread):
     """Thread worker pour la génération TTS"""
     finished = pyqtSignal()
     error = pyqtSignal(str)
+    progress = pyqtSignal(str)
 
     def __init__(self, params):
         super().__init__()
         self.params = params
 
+    def validate_text_length(self):
+        """Valide la longueur du texte pour le modèle Speedy-Speech."""
+        if "speedy-speech" in str(self.params['model_name']).lower():
+            min_length = 30  # Augmentation significative de la longueur minimale
+            text = self.params['text'].strip()
+            if len(text) < min_length:
+                # Ajouter des silences et du padding intelligent
+                words = text.split()
+                padded_words = []
+                for word in words:
+                    # Ajouter des pauses entre les mots
+                    padded_words.extend([word, "...", "..."])
+                padded_text = " ".join(padded_words)
+                
+                # S'assurer que le texte est assez long
+                while len(padded_text) < min_length:
+                    padded_text += " ... "
+                
+                self.progress.emit(f"Attention: Texte ajusté pour Speedy-Speech avec pauses")
+                return padded_text
+        return self.params['text']
+
     def run(self):
         """Exécute la génération TTS dans un thread séparé."""
         try:
+            # Valider la longueur du texte
+            validated_text = self.validate_text_length()
+
             # Configuration du device
             device = "cuda" if torch.cuda.is_available() and self.params['use_cuda'] else "cpu"
             
@@ -71,7 +103,7 @@ class TTSWorker(QThread):
             
             # Génération audio
             tts.tts_to_file(
-                text=self.params['text'],
+                text=validated_text,
                 file_path=self.params['output_file'],
                 **kwargs
             )
@@ -504,6 +536,44 @@ class MainWindow(QMainWindow):
 
     def generate_audio(self):
         """Génère l'audio à partir du texte."""
+        # Validation du texte avant génération
+        text = self.text_edit.toPlainText().strip()
+        if not text:
+            QMessageBox.warning(self, "Erreur", "Veuillez entrer du texte à synthétiser")
+            return
+
+        # Vérification spéciale pour Speedy-Speech
+        is_speedy = "speedy-speech" in str(self.model_combo.currentText()).lower()
+        if is_speedy and len(text) < 30:  # Augmentation du seuil minimum
+            msg = QMessageBox(self)
+            msg.setIcon(QMessageBox.Icon.Warning)
+            msg.setText("Attention - Texte court pour Speedy-Speech")
+            msg.setInformativeText(
+                "Pour de meilleurs résultats avec Speedy-Speech, le texte sera ajusté "
+                "avec des pauses et des silences. Cela peut affecter la qualité de la sortie. "
+                "\n\nVoulez-vous :\n"
+                "1) Continuer avec l'ajustement automatique\n"
+                "2) Utiliser un autre modèle (recommandé)\n"
+                "3) Ajouter plus de texte"
+            )
+            msg.setStandardButtons(
+                QMessageBox.StandardButton.Yes | 
+                QMessageBox.StandardButton.No |
+                QMessageBox.StandardButton.Cancel
+            )
+            msg.setButtonText(QMessageBox.StandardButton.Yes, "Continuer avec ajustement")
+            msg.setButtonText(QMessageBox.StandardButton.No, "Changer de modèle")
+            msg.setButtonText(QMessageBox.StandardButton.Cancel, "Annuler")
+            
+            response = msg.exec()
+            if response == QMessageBox.StandardButton.No:
+                # Changer automatiquement pour VITS ou Tacotron2
+                if self.lang_combo.currentIndex() == 0:  # Anglais
+                    self.model_combo.setCurrentIndex(0)  # Jenny/Tacotron2
+                return
+            elif response == QMessageBox.StandardButton.Cancel:
+                return
+
         if not self.text_edit.toPlainText().strip():
             self.log_text.append("Erreur : Veuillez entrer du texte à convertir.")
             return
@@ -538,7 +608,8 @@ class MainWindow(QMainWindow):
             "en_model": self.model_combo.currentIndex(),
             "fr_model": self.model_combo.currentIndex(),
             "speaker": self.get_speaker(),
-            "use_cuda": self.cuda_check.isChecked()
+            "use_cuda": self.cuda_check.isChecked(),
+            "model_name": self.model_combo.currentText()
         }
         
         # Ajout des paramètres spécifiques selon le modèle
