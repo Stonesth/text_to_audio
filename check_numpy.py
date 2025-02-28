@@ -4,6 +4,7 @@ import platform
 import subprocess
 import os
 
+
 def check_numpy_version():
     print("=== Vérification de NumPy ===")
     print(f"Version de NumPy installée: {numpy.__version__}")
