@@ -221,10 +221,9 @@ call :exec_and_log "%PYTHON_CMD% -m venv venv_py310" "Création environnement vi
 call .\venv_py310\Scripts\activate.bat
 call :log DEBUG "Environnement virtuel activé"
 
-@REM REM Vérification de l'activation
-@REM call :log INFO "Vérification de l'environnement virtuel..."
-@REM @REM call :exec_and_log "python -c "import sys; print('Python:', sys.version); print('Prefix:', sys.prefix)"" "Vérification environnement Python"
-@REM call :exec_and_log 'python -c "print('Bonjour, monde !')' " "Vérification environnement Python"
+REM Vérification de l'activation
+call :log INFO "Vérification de l'environnement virtuel..."
+call :exec_and_log "python check_python.py" "Vérification environnement Python"
 
 REM Installation des dépendances de base
 call :log INFO "Installation des dependances de base..."
@@ -357,17 +356,17 @@ call :exec_and_log "pip install PyQt6==6.5.2 PyQt6-Qt6==6.5.2 PyQt6-sip==13.5.2 
 REM Vérification finale des installations
 call :log INFO "Vérification des installations..."
 call :log INFO "Vérification de numpy..."
-call :exec_and_log "python -c \"import numpy; print(numpy.__version__)\"" "Vérification installation numpy"
+call :exec_and_log "python check_numpy.py" "Vérification installation numpy"
 call :log INFO "Vérification de torch..."
-call :exec_and_log "python -c \"import torch; print(torch.__version__)\"" "Vérification installation PyTorch"
+call :exec_and_log "python check_torch.py" "Vérification installation PyTorch"
 call :log INFO "Vérification de TTS..."
-call :exec_and_log "python -c \"import sys; sys.path.append('.'); import TTS; print('TTS OK')"" "Vérification TTS"
+call :exec_and_log "python check_TTS.py" "Vérification TTS"
 call :log INFO "Vérification de PyQt6..."
-call :exec_and_log "python -c \"from PyQt6.QtWidgets import QApplication; print('PyQt6 OK')"" "Vérification PyQt6"
+call :exec_and_log "python check_PyQt6.py" "Vérification PyQt6"
 
 REM Vérification des fonctionnalités TTS
 call :log INFO "Vérification des fonctionnalités TTS..."
-call :exec_and_log "python -c \"import sys; sys.path.append('.'); from TTS.utils.synthesizer import Synthesizer; print('TTS Synthesizer OK')"" "Vérification TTS Synthesizer"
+call :exec_and_log "python check_TTS_Synthesizer.py" "Vérification TTS Synthesizer"
 
 call :log INFO "Installation terminee!"
 call :log INFO "Pour tester, executez:"

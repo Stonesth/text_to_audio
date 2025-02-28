@@ -581,3 +581,51 @@ type output.txt | more /c
   C:\Python310
   C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\<version>\bin\Hostx64\x64
   ```
+
+## 17. Fonctions de logging dans les scripts batch
+**Description :**
+```batch
+:exec_and_log
+set "CMD=%~1"
+set "DESC=%~2"
+```
+
+**Analyse :**
+Cette fonction est utilisée pour exécuter une commande et enregistrer son résultat dans un fichier de log. Elle prend deux paramètres :
+- `%~1` : La commande à exécuter
+- `%~2` : Une description de la commande pour le log
+
+**Exemple d'utilisation :**
+```batch
+REM Appel de la fonction
+call :exec_and_log "pip install numpy" "Installation de numpy"
+
+REM Ce qui équivaut à :
+echo [DATE TIME] Installation de numpy - Début d'exécution >> log.txt
+pip install numpy >> log.txt 2>&1
+echo [DATE TIME] Installation de numpy - Fin d'exécution (code: %ERRORLEVEL%) >> log.txt
+```
+
+**Avantages :**
+1. Traçabilité des commandes exécutées
+2. Capture des erreurs et des sorties
+3. Horodatage des opérations
+4. Description claire des actions
+
+**Utilisation typique :**
+```batch
+REM Installation avec log
+call :exec_and_log "python -m pip install numpy" "Installation numpy"
+if errorlevel 1 (
+    echo Erreur lors de l'installation de numpy
+    exit /b 1
+)
+
+REM Vérification avec log
+call :exec_and_log "python -c "import numpy"" "Vérification numpy"
+```
+
+**Important :**
+- Permet de déboguer les installations qui échouent
+- Garde une trace des opérations effectuées
+- Facilite le support et la maintenance
