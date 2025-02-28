@@ -227,15 +227,19 @@ call :exec_and_log "python check_python.py" "Vérification environnement Python"
 
 REM Installation des dépendances de base
 call :log INFO "Installation des dependances de base..."
-call :exec_and_log "python -m pip install --upgrade pip setuptools wheel --no-cache-dir" "Installation pip/setuptools/wheel"
+call :exec_and_log "pip install --upgrade pip setuptools wheel --no-cache-dir" "Installation pip/setuptools/wheel"
 
-REM Vérification des dépendances avant installation
-call :log INFO "Vérification des dépendances requises..."
-call :exec_and_log "python -m pip install Cython --no-cache-dir" "Installation Cython"
+REM Installation de NumPy (version compatible avec PyTorch)
+call :log INFO "Installation de NumPy (version compatible avec PyTorch)..."
+call :exec_and_log "pip install numpy==1.24.3 --only-binary :all: --no-cache-dir" "Installation numpy"
+if !ERRORLEVEL! neq 0 (
+    call :log ERROR "Échec de l'installation de NumPy"
+    goto :error
+)
 
 REM Installation séquentielle des packages
 call :log INFO "Installation des packages principaux..."
-call :exec_and_log "pip install numpy==1.22.0 --only-binary :all: --no-cache-dir" "Installation numpy"
+call :exec_and_log "pip install Cython --no-cache-dir" "Installation Cython"
 
 REM Amélioration de l'installation de PyTorch avec gestion des timeout
 call :log INFO "Installation de PyTorch avec gestion des timeout..."
