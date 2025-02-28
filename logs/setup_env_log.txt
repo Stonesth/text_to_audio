@@ -1,49 +1,49 @@
-===== DEBUT INSTALLATION 28-02-25  9:10:41,30 ===== 
-[28-02-25  9:10:41,30] [INFO] Verification de Python 3.10... 
-[28-02-25  9:10:41,45] [INFO] Verification Python 3.10 via py launcher 
-[28-02-25  9:10:41,47] [COMMAND] Vérification Python 3.10 via py launcher - Debut d'execution 
+===== DEBUT INSTALLATION 28-02-25 14:03:45,12 ===== 
+[28-02-25 14:03:45,14] [INFO] Verification de Python 3.10... 
+[28-02-25 14:03:45,27] [INFO] Verification Python 3.10 via py launcher 
+[28-02-25 14:03:45,27] [COMMAND] Vérification Python 3.10 via py launcher - Debut d'execution 
 Python 3.10.9
-[28-02-25  9:10:41,50] [COMMAND] Vérification Python 3.10 via py launcher - Fin d'exécution (code: 0) 
-[28-02-25  9:10:41,51] [INFO] Python 3.10 trouve via py launcher 
-[28-02-25  9:10:41,52] [INFO] Verification de Visual Studio... 
-[28-02-25  9:10:41,54] [INFO] Vérification des redistribuables VC++... 
-[28-02-25  9:10:41,56] [DEBUG] vcruntime140.dll trouvé, vérification de la version... 
-[28-02-25  9:10:41,57] [DEBUG] Version du fichier vcruntime140.dll: 
-[28-02-25  9:10:41,73] [DEBUG] msvcp140.dll et vcruntime140_1.dll trouvés, probablement VC++ 2022 installé 
-[28-02-25  9:10:41,75] [INFO] Redistribuables VC++ 2022 déjà installés. 
-[28-02-25  9:10:41,77] [INFO] Configuration des chemins... 
-[28-02-25  9:10:41,80] [DEBUG] Version MSVC détectée: 14.43.34808 
-[28-02-25  9:10:41,81] [INFO] Configuration des includes... 
-[28-02-25  9:10:41,82] [DEBUG] INCLUDE=C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\ATLMFC\include;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\winrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\cppwinrt 
-[28-02-25  9:10:41,82] [INFO] Configuration des bibliothèques... 
-[28-02-25  9:10:41,83] [DEBUG] LIB=C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\lib\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\ATLMFC\lib\x64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22621.0\ucrt\x64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22621.0\um\x64 
-[28-02-25  9:10:41,84] [INFO] Configuration du PATH... 
-[28-02-25  9:10:41,85] [INFO] Configuration de l'environnement de build... 
-[28-02-25  9:10:41,86] [DEBUG] Appel de vcvarsall.bat 
-[28-02-25  9:10:42,99] [DEBUG] vcvars64.bat exécuté avec succès 
-[28-02-25  9:10:43,00] [INFO] Vérification de Python après configuration de l'environnement... 
-[28-02-25  9:10:43,01] [INFO] Creation de l'environnement virtuel... 
-[28-02-25  9:10:43,03] [COMMAND] Création environnement virtuel - Debut d'execution 
-[28-02-25  9:10:53,25] [COMMAND] Création environnement virtuel - Fin d'exécution (code: 0) 
-[28-02-25  9:10:53,35] [DEBUG] Environnement virtuel activé 
-[28-02-25  9:10:53,36] [INFO] Vérification de l'environnement virtuel... 
-[28-02-25  9:10:53,37] [COMMAND] Vérification environnement Python - Debut d'execution 
+[28-02-25 14:03:45,34] [COMMAND] Vérification Python 3.10 via py launcher - Fin d'exécution (code: 0) 
+[28-02-25 14:03:45,36] [INFO] Python 3.10 trouve via py launcher 
+[28-02-25 14:03:45,38] [INFO] Verification de Visual Studio... 
+[28-02-25 14:03:45,39] [INFO] Vérification des redistribuables VC++... 
+[28-02-25 14:03:45,41] [DEBUG] vcruntime140.dll trouvé, vérification de la version... 
+[28-02-25 14:03:45,42] [DEBUG] Version du fichier vcruntime140.dll: 
+[28-02-25 14:03:46,36] [DEBUG] msvcp140.dll et vcruntime140_1.dll trouvés, probablement VC++ 2022 installé 
+[28-02-25 14:03:46,36] [INFO] Redistribuables VC++ 2022 déjà installés. 
+[28-02-25 14:03:46,39] [INFO] Configuration des chemins... 
+[28-02-25 14:03:46,43] [DEBUG] Version MSVC détectée: 14.43.34808 
+[28-02-25 14:03:46,43] [INFO] Configuration des includes... 
+[28-02-25 14:03:46,44] [DEBUG] INCLUDE=C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\ATLMFC\include;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\winrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\cppwinrt 
+[28-02-25 14:03:46,45] [INFO] Configuration des bibliothèques... 
+[28-02-25 14:03:46,46] [DEBUG] LIB=C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\lib\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\ATLMFC\lib\x64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22621.0\ucrt\x64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22621.0\um\x64 
+[28-02-25 14:03:46,46] [INFO] Configuration du PATH... 
+[28-02-25 14:03:46,47] [INFO] Configuration de l'environnement de build... 
+[28-02-25 14:03:46,47] [DEBUG] Appel de vcvarsall.bat 
+[28-02-25 14:03:48,09] [DEBUG] vcvars64.bat exécuté avec succès 
+[28-02-25 14:03:48,09] [INFO] Vérification de Python après configuration de l'environnement... 
+[28-02-25 14:03:48,12] [INFO] Creation de l'environnement virtuel... 
+[28-02-25 14:03:59,35] [COMMAND] Création environnement virtuel - Debut d'execution 
+[28-02-25 14:04:16,69] [COMMAND] Création environnement virtuel - Fin d'exécution (code: 0) 
+[28-02-25 14:04:16,79] [DEBUG] Environnement virtuel activé 
+[28-02-25 14:04:16,80] [INFO] Vérification de l'environnement virtuel... 
+[28-02-25 14:04:16,81] [COMMAND] Vérification environnement Python - Debut d'execution 
 Python: 3.10.9 (tags/v3.10.9:1dd9be6, Dec  6 2022, 20:01:21) [MSC v.1934 64 bit (AMD64)]
 Prefix: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
-[28-02-25  9:10:53,42] [COMMAND] Vérification environnement Python - Fin d'exécution (code: 0) 
-[28-02-25  9:10:53,42] [INFO] Installation des dependances de base... 
-[28-02-25  9:10:53,44] [COMMAND] Installation pip/setuptools/wheel - Debut d'execution 
+[28-02-25 14:04:16,89] [COMMAND] Vérification environnement Python - Fin d'exécution (code: 0) 
+[28-02-25 14:04:16,92] [INFO] Installation des dependances de base... 
+[28-02-25 14:04:16,93] [COMMAND] Installation pip/setuptools/wheel - Debut d'execution 
 Requirement already satisfied: pip in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (22.3.1)
 Collecting pip
   Downloading pip-25.0.1-py3-none-any.whl (1.8 MB)
-     ---------------------------------------- 1.8/1.8 MB 6.2 MB/s eta 0:00:00
+     ---------------------------------------- 1.8/1.8 MB 6.9 MB/s eta 0:00:00
 Requirement already satisfied: setuptools in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (65.5.0)
 Collecting setuptools
   Downloading setuptools-75.8.2-py3-none-any.whl (1.2 MB)
-     ---------------------------------------- 1.2/1.2 MB 11.2 MB/s eta 0:00:00
+     ---------------------------------------- 1.2/1.2 MB 8.6 MB/s eta 0:00:00
 Collecting wheel
   Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
-     ---------------------------------------- 72.5/72.5 kB ? eta 0:00:00
+     ---------------------------------------- 72.5/72.5 kB 3.9 MB/s eta 0:00:00
 Installing collected packages: wheel, setuptools, pip
   Attempting uninstall: setuptools
     Found existing installation: setuptools 65.5.0
@@ -54,45 +54,45 @@ Installing collected packages: wheel, setuptools, pip
     Uninstalling pip-22.3.1:
       Successfully uninstalled pip-22.3.1
 Successfully installed pip-25.0.1 setuptools-75.8.2 wheel-0.45.1
-[28-02-25  9:11:14,16] [COMMAND] Installation pip/setuptools/wheel - Fin d'exécution (code: 0) 
-[28-02-25  9:11:14,17] [INFO] Vérification des dépendances requises... 
-[28-02-25  9:11:14,20] [COMMAND] Installation Cython - Debut d'execution 
+[28-02-25 14:04:39,00] [COMMAND] Installation pip/setuptools/wheel - Fin d'exécution (code: 0) 
+[28-02-25 14:04:39,00] [INFO] Vérification des dépendances requises... 
+[28-02-25 14:04:39,03] [COMMAND] Installation Cython - Debut d'execution 
 Collecting Cython
   Downloading Cython-3.0.12-cp310-cp310-win_amd64.whl.metadata (3.6 kB)
 Downloading Cython-3.0.12-cp310-cp310-win_amd64.whl (2.8 MB)
-   ---------------------------------------- 2.8/2.8 MB 8.9 MB/s eta 0:00:00
+   ---------------------------------------- 2.8/2.8 MB 10.1 MB/s eta 0:00:00
 Installing collected packages: Cython
 Successfully installed Cython-3.0.12
-[28-02-25  9:11:20,77] [COMMAND] Installation Cython - Fin d'exécution (code: 0) 
-[28-02-25  9:11:20,79] [INFO] Installation des packages principaux... 
-[28-02-25  9:11:20,80] [COMMAND] Installation numpy - Debut d'execution 
+[28-02-25 14:04:46,14] [COMMAND] Installation Cython - Fin d'exécution (code: 0) 
+[28-02-25 14:04:46,17] [INFO] Installation des packages principaux... 
+[28-02-25 14:04:46,21] [COMMAND] Installation numpy - Debut d'execution 
 Collecting numpy==1.22.0
   Downloading numpy-1.22.0-cp310-cp310-win_amd64.whl.metadata (2.1 kB)
 Downloading numpy-1.22.0-cp310-cp310-win_amd64.whl (14.7 MB)
-   ---------------------------------------- 14.7/14.7 MB 7.7 MB/s eta 0:00:00
+   ---------------------------------------- 14.7/14.7 MB 10.1 MB/s eta 0:00:00
 Installing collected packages: numpy
 Successfully installed numpy-1.22.0
-[28-02-25  9:11:34,99] [COMMAND] Installation numpy - Fin d'exécution (code: 0) 
-[28-02-25  9:11:35,00] [INFO] Installation de PyTorch avec gestion des timeout... 
-[28-02-25  9:11:35,02] [INFO] Tentative d'installation de PyTorch (1/3)... 
-[28-02-25  9:11:35,07] [COMMAND] Installation torch - Debut d'execution 
+[28-02-25 14:05:04,27] [COMMAND] Installation numpy - Fin d'exécution (code: 0) 
+[28-02-25 14:05:04,29] [INFO] Installation de PyTorch avec gestion des timeout... 
+[28-02-25 14:05:04,30] [INFO] Tentative d'installation de PyTorch (1/3)... 
+[28-02-25 14:05:04,33] [COMMAND] Installation torch - Debut d'execution 
 Looking in indexes: https://download.pytorch.org/whl/cpu
 Collecting torch==2.0.1
   Downloading https://download.pytorch.org/whl/cpu/torch-2.0.1%2Bcpu-cp310-cp310-win_amd64.whl (174.0 MB)
-     ------------------------------------- 174.0/174.0 MB 11.1 MB/s eta 0:00:00
+     ------------------------------------- 174.0/174.0 MB 10.5 MB/s eta 0:00:00
 Collecting torchvision==0.15.2
   Downloading https://download.pytorch.org/whl/cpu/torchvision-0.15.2%2Bcpu-cp310-cp310-win_amd64.whl (1.2 MB)
-     ---------------------------------------- 1.2/1.2 MB 7.4 MB/s eta 0:00:00
+     ---------------------------------------- 1.2/1.2 MB 8.4 MB/s eta 0:00:00
 Collecting torchaudio==2.0.2
   Downloading https://download.pytorch.org/whl/cpu/torchaudio-2.0.2%2Bcpu-cp310-cp310-win_amd64.whl (2.1 MB)
-     ---------------------------------------- 2.1/2.1 MB 9.2 MB/s eta 0:00:00
+     ---------------------------------------- 2.1/2.1 MB 9.9 MB/s eta 0:00:00
 Collecting filelock (from torch==2.0.1)
   Downloading https://download.pytorch.org/whl/filelock-3.13.1-py3-none-any.whl.metadata (2.8 kB)
 Collecting typing-extensions (from torch==2.0.1)
   Downloading https://download.pytorch.org/whl/typing_extensions-4.12.2-py3-none-any.whl.metadata (3.0 kB)
 Collecting sympy (from torch==2.0.1)
   Downloading https://download.pytorch.org/whl/sympy-1.13.1-py3-none-any.whl (6.2 MB)
-     ---------------------------------------- 6.2/6.2 MB 9.5 MB/s eta 0:00:00
+     ---------------------------------------- 6.2/6.2 MB 10.0 MB/s eta 0:00:00
 Collecting networkx (from torch==2.0.1)
   Downloading https://download.pytorch.org/whl/networkx-3.3-py3-none-any.whl.metadata (5.1 kB)
 Collecting jinja2 (from torch==2.0.1)
@@ -114,19 +114,19 @@ Collecting certifi>=2017.4.17 (from requests->torchvision==0.15.2)
   Downloading https://download.pytorch.org/whl/certifi-2022.12.7-py3-none-any.whl (155 kB)
 Collecting mpmath<1.4,>=1.1.0 (from sympy->torch==2.0.1)
   Downloading https://download.pytorch.org/whl/mpmath-1.3.0-py3-none-any.whl (536 kB)
-     -------------------------------------- 536.2/536.2 kB 5.8 MB/s eta 0:00:00
+     -------------------------------------- 536.2/536.2 kB 8.8 MB/s eta 0:00:00
 Downloading https://download.pytorch.org/whl/pillow-11.0.0-cp310-cp310-win_amd64.whl (2.6 MB)
-   ---------------------------------------- 2.6/2.6 MB 10.6 MB/s eta 0:00:00
+   ---------------------------------------- 2.6/2.6 MB 10.5 MB/s eta 0:00:00
 Downloading https://download.pytorch.org/whl/filelock-3.13.1-py3-none-any.whl (11 kB)
 Downloading https://download.pytorch.org/whl/Jinja2-3.1.4-py3-none-any.whl (133 kB)
 Downloading https://download.pytorch.org/whl/networkx-3.3-py3-none-any.whl (1.7 MB)
-   ---------------------------------------- 1.7/1.7 MB 9.2 MB/s eta 0:00:00
+   ---------------------------------------- 1.7/1.7 MB 13.2 MB/s eta 0:00:00
 Downloading https://download.pytorch.org/whl/typing_extensions-4.12.2-py3-none-any.whl (37 kB)
 Installing collected packages: mpmath, urllib3, typing-extensions, sympy, pillow, networkx, MarkupSafe, idna, filelock, charset-normalizer, certifi, requests, jinja2, torch, torchvision, torchaudio
 Successfully installed MarkupSafe-2.1.5 certifi-2022.12.7 charset-normalizer-2.1.1 filelock-3.13.1 idna-3.4 jinja2-3.1.4 mpmath-1.3.0 networkx-3.3 pillow-11.0.0 requests-2.28.1 sympy-1.13.1 torch-2.0.1+cpu torchaudio-2.0.2+cpu torchvision-0.15.2+cpu typing-extensions-4.12.2 urllib3-1.26.13
-[28-02-25  9:13:33,94] [COMMAND] Installation torch - Fin d'exécution (code: 0) 
-[28-02-25  9:13:33,95] [INFO] Installation des dependances TTS... 
-[28-02-25  9:13:33,98] [COMMAND] Installation librosa - Debut d'execution 
+[28-02-25 14:07:22,24] [COMMAND] Installation torch - Fin d'exécution (code: 0) 
+[28-02-25 14:07:22,28] [INFO] Installation des dependances TTS... 
+[28-02-25 14:07:22,29] [COMMAND] Installation librosa - Debut d'execution 
 Collecting librosa==0.10.0
   Downloading librosa-0.10.0-py3-none-any.whl.metadata (8.3 kB)
 Collecting audioread>=2.1.9 (from librosa==0.10.0)
@@ -181,18 +181,18 @@ Downloading msgpack-1.1.0-cp310-cp310-win_amd64.whl (74 kB)
 Downloading numba-0.61.0-cp310-cp310-win_amd64.whl (2.8 MB)
    ---------------------------------------- 2.8/2.8 MB 11.0 MB/s eta 0:00:00
 Downloading numpy-2.1.3-cp310-cp310-win_amd64.whl (12.9 MB)
-   ---------------------------------------- 12.9/12.9 MB 11.4 MB/s eta 0:00:00
+   ---------------------------------------- 12.9/12.9 MB 10.9 MB/s eta 0:00:00
 Downloading pooch-1.8.2-py3-none-any.whl (64 kB)
 Downloading scikit_learn-1.6.1-cp310-cp310-win_amd64.whl (11.1 MB)
-   ---------------------------------------- 11.1/11.1 MB 11.2 MB/s eta 0:00:00
+   ---------------------------------------- 11.1/11.1 MB 10.2 MB/s eta 0:00:00
 Downloading scipy-1.15.2-cp310-cp310-win_amd64.whl (41.2 MB)
-   ---------------------------------------- 41.2/41.2 MB 11.0 MB/s eta 0:00:00
+   ---------------------------------------- 41.2/41.2 MB 10.9 MB/s eta 0:00:00
 Downloading soundfile-0.13.1-py2.py3-none-win_amd64.whl (1.0 MB)
-   ---------------------------------------- 1.0/1.0 MB 12.2 MB/s eta 0:00:00
+   ---------------------------------------- 1.0/1.0 MB 16.5 MB/s eta 0:00:00
 Downloading soxr-0.5.0.post1-cp310-cp310-win_amd64.whl (166 kB)
 Downloading cffi-1.17.1-cp310-cp310-win_amd64.whl (181 kB)
 Downloading llvmlite-0.44.0-cp310-cp310-win_amd64.whl (30.3 MB)
-   ---------------------------------------- 30.3/30.3 MB 11.4 MB/s eta 0:00:00
+   ---------------------------------------- 30.3/30.3 MB 11.2 MB/s eta 0:00:00
 Downloading packaging-24.2-py3-none-any.whl (65 kB)
 Downloading platformdirs-4.3.6-py3-none-any.whl (18 kB)
 Downloading threadpoolctl-3.5.0-py3-none-any.whl (18 kB)
@@ -203,29 +203,29 @@ Installing collected packages: threadpoolctl, pycparser, platformdirs, packaging
     Uninstalling numpy-1.22.0:
       Successfully uninstalled numpy-1.22.0
 Successfully installed audioread-3.0.1 cffi-1.17.1 decorator-5.2.1 joblib-1.4.2 lazy-loader-0.4 librosa-0.10.0 llvmlite-0.44.0 msgpack-1.1.0 numba-0.61.0 numpy-2.1.3 packaging-24.2 platformdirs-4.3.6 pooch-1.8.2 pycparser-2.22 scikit-learn-1.6.1 scipy-1.15.2 soundfile-0.13.1 soxr-0.5.0.post1 threadpoolctl-3.5.0
-[28-02-25  9:15:27,68] [COMMAND] Installation librosa - Fin d'exécution (code: 0) 
-[28-02-25  9:15:27,70] [COMMAND] Installation soundfile - Debut d'execution 
+[28-02-25 14:08:46,79] [COMMAND] Installation librosa - Fin d'exécution (code: 0) 
+[28-02-25 14:08:46,80] [COMMAND] Installation soundfile - Debut d'execution 
 Collecting soundfile==0.12.1
   Downloading soundfile-0.12.1-py2.py3-none-win_amd64.whl.metadata (14 kB)
 Requirement already satisfied: cffi>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from soundfile==0.12.1) (1.17.1)
 Requirement already satisfied: pycparser in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from cffi>=1.0->soundfile==0.12.1) (2.22)
 Downloading soundfile-0.12.1-py2.py3-none-win_amd64.whl (1.0 MB)
-   ---------------------------------------- 1.0/1.0 MB 7.9 MB/s eta 0:00:00
+   ---------------------------------------- 1.0/1.0 MB 9.6 MB/s eta 0:00:00
 Installing collected packages: soundfile
   Attempting uninstall: soundfile
     Found existing installation: soundfile 0.13.1
     Uninstalling soundfile-0.13.1:
       Successfully uninstalled soundfile-0.13.1
 Successfully installed soundfile-0.12.1
-[28-02-25  9:15:30,04] [COMMAND] Installation soundfile - Fin d'exécution (code: 0) 
-[28-02-25  9:15:30,05] [COMMAND] Installation Unidecode - Debut d'execution 
+[28-02-25 14:08:48,86] [COMMAND] Installation soundfile - Fin d'exécution (code: 0) 
+[28-02-25 14:08:48,87] [COMMAND] Installation Unidecode - Debut d'execution 
 Collecting Unidecode==1.3.7
   Downloading Unidecode-1.3.7-py3-none-any.whl.metadata (13 kB)
 Downloading Unidecode-1.3.7-py3-none-any.whl (235 kB)
 Installing collected packages: Unidecode
 Successfully installed Unidecode-1.3.7
-[28-02-25  9:15:35,62] [COMMAND] Installation Unidecode - Fin d'exécution (code: 0) 
-[28-02-25  9:15:35,63] [COMMAND] Installation tqdm - Debut d'execution 
+[28-02-25 14:08:54,74] [COMMAND] Installation Unidecode - Fin d'exécution (code: 0) 
+[28-02-25 14:08:54,76] [COMMAND] Installation tqdm - Debut d'execution 
 Collecting tqdm
   Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
 Collecting colorama (from tqdm)
@@ -234,15 +234,15 @@ Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
 Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
 Installing collected packages: colorama, tqdm
 Successfully installed colorama-0.4.6 tqdm-4.67.1
-[28-02-25  9:15:38,06] [COMMAND] Installation tqdm - Fin d'exécution (code: 0) 
-[28-02-25  9:15:38,08] [INFO] Vérification de rc.exe pour la compilation... 
-[28-02-25  9:15:38,17] [WARNING] rc.exe non trouvé, tentative d'ajout du chemin du SDK Windows au PATH... 
-[28-02-25  9:15:38,19] [INFO] Installation de TTS... 
-[28-02-25  9:15:38,19] [COMMAND] Désinstallation TTS - Debut d'execution 
+[28-02-25 14:08:57,39] [COMMAND] Installation tqdm - Fin d'exécution (code: 0) 
+[28-02-25 14:08:57,41] [INFO] Vérification de rc.exe pour la compilation... 
+[28-02-25 14:08:57,54] [WARNING] rc.exe non trouvé, tentative d'ajout du chemin du SDK Windows au PATH... 
+[28-02-25 14:08:57,54] [INFO] Installation de TTS... 
+[28-02-25 14:08:57,55] [COMMAND] Désinstallation TTS - Debut d'execution 
 WARNING: Skipping TTS as it is not installed.
-[28-02-25  9:15:38,97] [COMMAND] Désinstallation TTS - Fin d'exécution (code: 0) 
-[28-02-25  9:15:39,01] [INFO] Installation des dépendances spécifiques pour TTS... 
-[28-02-25  9:15:39,02] [COMMAND] Installation packaging - Debut d'execution 
+[28-02-25 14:08:58,13] [COMMAND] Désinstallation TTS - Fin d'exécution (code: 0) 
+[28-02-25 14:08:58,16] [INFO] Installation des dépendances spécifiques pour TTS... 
+[28-02-25 14:08:58,18] [COMMAND] Installation packaging - Debut d'execution 
 Collecting packaging==23.1
   Downloading packaging-23.1-py3-none-any.whl.metadata (3.1 kB)
 Downloading packaging-23.1-py3-none-any.whl (48 kB)
@@ -252,22 +252,22 @@ Installing collected packages: packaging
     Uninstalling packaging-24.2:
       Successfully uninstalled packaging-24.2
 Successfully installed packaging-23.1
-[28-02-25  9:15:40,87] [COMMAND] Installation packaging - Fin d'exécution (code: 0) 
-[28-02-25  9:15:40,88] [COMMAND] Installation protobuf - Debut d'execution 
+[28-02-25 14:08:59,91] [COMMAND] Installation packaging - Fin d'exécution (code: 0) 
+[28-02-25 14:08:59,91] [COMMAND] Installation protobuf - Debut d'execution 
 Collecting protobuf==4.24.4
   Downloading protobuf-4.24.4-cp310-abi3-win_amd64.whl.metadata (540 bytes)
 Downloading protobuf-4.24.4-cp310-abi3-win_amd64.whl (430 kB)
 Installing collected packages: protobuf
 Successfully installed protobuf-4.24.4
-[28-02-25  9:15:44,29] [COMMAND] Installation protobuf - Fin d'exécution (code: 0) 
-[28-02-25  9:15:44,31] [COMMAND] Installation pyyaml - Debut d'execution 
+[28-02-25 14:09:03,03] [COMMAND] Installation protobuf - Fin d'exécution (code: 0) 
+[28-02-25 14:09:03,05] [COMMAND] Installation pyyaml - Debut d'execution 
 Collecting pyyaml==6.0.1
   Downloading PyYAML-6.0.1-cp310-cp310-win_amd64.whl.metadata (2.1 kB)
 Downloading PyYAML-6.0.1-cp310-cp310-win_amd64.whl (145 kB)
 Installing collected packages: pyyaml
 Successfully installed pyyaml-6.0.1
-[28-02-25  9:15:46,37] [COMMAND] Installation pyyaml - Fin d'exécution (code: 0) 
-[28-02-25  9:15:46,38] [COMMAND] Installation tensorboard - Debut d'execution 
+[28-02-25 14:09:05,01] [COMMAND] Installation pyyaml - Fin d'exécution (code: 0) 
+[28-02-25 14:09:05,05] [COMMAND] Installation tensorboard - Debut d'execution 
 Collecting tensorboard==2.14.0
   Downloading tensorboard-2.14.0-py3-none-any.whl.metadata (1.8 kB)
 Collecting absl-py>=0.4 (from tensorboard==2.14.0)
@@ -307,12 +307,12 @@ Collecting pyasn1<0.7.0,>=0.4.6 (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6
 Collecting oauthlib>=3.0.0 (from requests-oauthlib>=0.7.0->google-auth-oauthlib<1.1,>=0.5->tensorboard==2.14.0)
   Downloading oauthlib-3.2.2-py3-none-any.whl.metadata (7.5 kB)
 Downloading tensorboard-2.14.0-py3-none-any.whl (5.5 MB)
-   ---------------------------------------- 5.5/5.5 MB 9.1 MB/s eta 0:00:00
+   ---------------------------------------- 5.5/5.5 MB 10.2 MB/s eta 0:00:00
 Downloading absl_py-2.1.0-py3-none-any.whl (133 kB)
 Downloading google_auth-2.38.0-py2.py3-none-any.whl (210 kB)
 Downloading google_auth_oauthlib-1.0.0-py2.py3-none-any.whl (18 kB)
 Downloading grpcio-1.70.0-cp310-cp310-win_amd64.whl (4.3 MB)
-   ---------------------------------------- 4.3/4.3 MB 10.8 MB/s eta 0:00:00
+   ---------------------------------------- 4.3/4.3 MB 10.0 MB/s eta 0:00:00
 Downloading Markdown-3.7-py3-none-any.whl (106 kB)
 Downloading tensorboard_data_server-0.7.2-py3-none-any.whl (2.4 kB)
 Downloading werkzeug-3.1.3-py3-none-any.whl (224 kB)
@@ -324,37 +324,37 @@ Downloading oauthlib-3.2.2-py3-none-any.whl (151 kB)
 Downloading pyasn1-0.6.1-py3-none-any.whl (83 kB)
 Installing collected packages: werkzeug, tensorboard-data-server, pyasn1, oauthlib, markdown, grpcio, cachetools, absl-py, rsa, requests-oauthlib, pyasn1-modules, google-auth, google-auth-oauthlib, tensorboard
 Successfully installed absl-py-2.1.0 cachetools-5.5.2 google-auth-2.38.0 google-auth-oauthlib-1.0.0 grpcio-1.70.0 markdown-3.7 oauthlib-3.2.2 pyasn1-0.6.1 pyasn1-modules-0.4.1 requests-oauthlib-2.0.0 rsa-4.9 tensorboard-2.14.0 tensorboard-data-server-0.7.2 werkzeug-3.1.3
-[28-02-25  9:16:10,29] [COMMAND] Installation tensorboard - Fin d'exécution (code: 0) 
-[28-02-25  9:16:10,30] [COMMAND] Installation coqpit - Debut d'execution 
+[28-02-25 14:09:30,35] [COMMAND] Installation tensorboard - Fin d'exécution (code: 0) 
+[28-02-25 14:09:30,38] [COMMAND] Installation coqpit - Debut d'execution 
 Collecting coqpit==0.0.17
   Downloading coqpit-0.0.17-py3-none-any.whl.metadata (11 kB)
 Downloading coqpit-0.0.17-py3-none-any.whl (13 kB)
 Installing collected packages: coqpit
 Successfully installed coqpit-0.0.17
-[28-02-25  9:16:11,82] [COMMAND] Installation coqpit - Fin d'exécution (code: 0) 
-[28-02-25  9:16:11,87] [COMMAND] Installation fsspec - Debut d'execution 
+[28-02-25 14:09:31,96] [COMMAND] Installation coqpit - Fin d'exécution (code: 0) 
+[28-02-25 14:09:31,97] [COMMAND] Installation fsspec - Debut d'execution 
 Collecting fsspec==2023.9.2
   Downloading fsspec-2023.9.2-py3-none-any.whl.metadata (6.7 kB)
 Downloading fsspec-2023.9.2-py3-none-any.whl (173 kB)
 Installing collected packages: fsspec
 Successfully installed fsspec-2023.9.2
-[28-02-25  9:16:14,34] [COMMAND] Installation fsspec - Fin d'exécution (code: 0) 
-[28-02-25  9:16:14,37] [COMMAND] Installation jieba - Debut d'execution 
+[28-02-25 14:09:34,78] [COMMAND] Installation fsspec - Fin d'exécution (code: 0) 
+[28-02-25 14:09:34,79] [COMMAND] Installation jieba - Debut d'execution 
 Collecting jieba==0.42.1
   Downloading jieba-0.42.1.tar.gz (19.2 MB)
-     --------------------------------------- 19.2/19.2 MB 10.8 MB/s eta 0:00:00
+     --------------------------------------- 19.2/19.2 MB 10.3 MB/s eta 0:00:00
   Preparing metadata (setup.py): started
   Preparing metadata (setup.py): finished with status 'done'
 Building wheels for collected packages: jieba
   Building wheel for jieba (setup.py): started
   Building wheel for jieba (setup.py): finished with status 'done'
-  Created wheel for jieba: filename=jieba-0.42.1-py3-none-any.whl size=19314526 sha256=f280c6572ec0380475e40221fc61bb91d32c02ef48becfa1eba4e525f0ef17e4
-  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-6phqdmy2\wheels\c9\69\31\d56d90b22a1777b0b231e234b00302a55be255930f8bd92dcd
+  Created wheel for jieba: filename=jieba-0.42.1-py3-none-any.whl size=19314526 sha256=0d237750434870c3cf3863dacb4613e4673d52b9a545488506b17f12afefdfab
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-zjsf87vx\wheels\c9\69\31\d56d90b22a1777b0b231e234b00302a55be255930f8bd92dcd
 Successfully built jieba
 Installing collected packages: jieba
 Successfully installed jieba-0.42.1
-[28-02-25  9:16:23,56] [COMMAND] Installation jieba - Fin d'exécution (code: 0) 
-[28-02-25  9:16:23,57] [COMMAND] Installation matplotlib - Debut d'execution 
+[28-02-25 14:09:45,36] [COMMAND] Installation jieba - Fin d'exécution (code: 0) 
+[28-02-25 14:09:45,37] [COMMAND] Installation matplotlib - Debut d'execution 
 Collecting matplotlib==3.7.3
   Downloading matplotlib-3.7.3-cp310-cp310-win_amd64.whl.metadata (5.8 kB)
 Collecting contourpy>=1.0.1 (from matplotlib==3.7.3)
@@ -376,14 +376,14 @@ Collecting python-dateutil>=2.7 (from matplotlib==3.7.3)
 Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib==3.7.3)
   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
 Downloading matplotlib-3.7.3-cp310-cp310-win_amd64.whl (7.5 MB)
-   ---------------------------------------- 7.5/7.5 MB 10.8 MB/s eta 0:00:00
+   ---------------------------------------- 7.5/7.5 MB 10.1 MB/s eta 0:00:00
 Downloading contourpy-1.3.1-cp310-cp310-win_amd64.whl (218 kB)
 Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
 Downloading fonttools-4.56.0-cp310-cp310-win_amd64.whl (2.2 MB)
-   ---------------------------------------- 2.2/2.2 MB 10.4 MB/s eta 0:00:00
+   ---------------------------------------- 2.2/2.2 MB 11.3 MB/s eta 0:00:00
 Downloading kiwisolver-1.4.8-cp310-cp310-win_amd64.whl (71 kB)
 Downloading numpy-1.26.4-cp310-cp310-win_amd64.whl (15.8 MB)
-   ---------------------------------------- 15.8/15.8 MB 11.6 MB/s eta 0:00:00
+   ---------------------------------------- 15.8/15.8 MB 11.2 MB/s eta 0:00:00
 Downloading pyparsing-3.2.1-py3-none-any.whl (107 kB)
 Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
 Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
@@ -393,22 +393,22 @@ Installing collected packages: six, pyparsing, numpy, kiwisolver, fonttools, cyc
     Uninstalling numpy-2.1.3:
       Successfully uninstalled numpy-2.1.3
 Successfully installed contourpy-1.3.1 cycler-0.12.1 fonttools-4.56.0 kiwisolver-1.4.8 matplotlib-3.7.3 numpy-1.26.4 pyparsing-3.2.1 python-dateutil-2.9.0.post0 six-1.17.0
-[28-02-25  9:16:54,57] [COMMAND] Installation matplotlib - Fin d'exécution (code: 0) 
-[28-02-25  9:16:54,60] [COMMAND] Installation scipy - Debut d'execution 
+[28-02-25 14:10:22,91] [COMMAND] Installation matplotlib - Fin d'exécution (code: 0) 
+[28-02-25 14:10:22,94] [COMMAND] Installation scipy - Debut d'execution 
 Collecting scipy==1.10.1
   Downloading scipy-1.10.1-cp310-cp310-win_amd64.whl.metadata (58 kB)
 Requirement already satisfied: numpy<1.27.0,>=1.19.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from scipy==1.10.1) (1.26.4)
 Downloading scipy-1.10.1-cp310-cp310-win_amd64.whl (42.5 MB)
-   ---------------------------------------- 42.5/42.5 MB 11.3 MB/s eta 0:00:00
+   ---------------------------------------- 42.5/42.5 MB 10.8 MB/s eta 0:00:00
 Installing collected packages: scipy
   Attempting uninstall: scipy
     Found existing installation: scipy 1.15.2
     Uninstalling scipy-1.15.2:
       Successfully uninstalled scipy-1.15.2
 Successfully installed scipy-1.10.1
-[28-02-25  9:17:15,97] [COMMAND] Installation scipy - Fin d'exécution (code: 0) 
-[28-02-25  9:17:16,00] [INFO] Tentative d'installation de TTS version 0.15.2... 
-[28-02-25  9:17:16,02] [COMMAND] Installation TTS 0.15.2 - Debut d'execution 
+[28-02-25 14:10:47,75] [COMMAND] Installation scipy - Fin d'exécution (code: 0) 
+[28-02-25 14:10:47,78] [INFO] Tentative d'installation de TTS version 0.15.2... 
+[28-02-25 14:10:47,81] [COMMAND] Installation TTS 0.15.2 - Debut d'execution 
 Collecting TTS==0.15.2
   Downloading TTS-0.15.2.tar.gz (1.5 MB)
      ---------------------------------------- 1.5/1.5 MB 9.0 MB/s eta 0:00:00
@@ -460,7 +460,7 @@ Collecting mecab-python3==1.0.6 (from TTS==0.15.2)
   Downloading mecab_python3-1.0.6-cp310-cp310-win_amd64.whl.metadata (6.3 kB)
 Collecting unidic-lite==1.0.8 (from TTS==0.15.2)
   Downloading unidic-lite-1.0.8.tar.gz (47.4 MB)
-     --------------------------------------- 47.4/47.4 MB 10.5 MB/s eta 0:00:00
+     --------------------------------------- 47.4/47.4 MB 11.0 MB/s eta 0:00:00
   Preparing metadata (setup.py): started
   Preparing metadata (setup.py): finished with status 'done'
 Collecting gruut==2.2.3 (from gruut[de,es,fr]==2.2.3->TTS==0.15.2)
@@ -491,7 +491,7 @@ Collecting transformers (from TTS==0.15.2)
   Downloading transformers-4.49.0-py3-none-any.whl.metadata (44 kB)
 Collecting encodec (from TTS==0.15.2)
   Downloading encodec-0.1.1.tar.gz (3.7 MB)
-     ---------------------------------------- 3.7/3.7 MB 10.1 MB/s eta 0:00:00
+     ---------------------------------------- 3.7/3.7 MB 11.7 MB/s eta 0:00:00
   Preparing metadata (setup.py): started
   Preparing metadata (setup.py): finished with status 'done'
 Collecting Babel<3.0.0,>=2.8.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.15.2)
@@ -504,7 +504,7 @@ Collecting gruut-ipa<1.0,>=0.12.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TT
   Preparing metadata (setup.py): finished with status 'done'
 Collecting gruut_lang_en~=2.0.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.15.2)
   Downloading gruut_lang_en-2.0.1.tar.gz (15.3 MB)
-     --------------------------------------- 15.3/15.3 MB 11.0 MB/s eta 0:00:00
+     --------------------------------------- 15.3/15.3 MB 10.3 MB/s eta 0:00:00
   Preparing metadata (setup.py): started
   Preparing metadata (setup.py): finished with status 'done'
 Collecting jsonlines~=1.2.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.15.2)
@@ -517,7 +517,7 @@ Collecting python-crfsuite~=0.9.7 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TT
   Downloading python_crfsuite-0.9.11-cp310-cp310-win_amd64.whl.metadata (4.4 kB)
 Collecting gruut_lang_fr~=2.0.0 (from gruut[de,es,fr]==2.2.3->TTS==0.15.2)
   Downloading gruut_lang_fr-2.0.2.tar.gz (10.9 MB)
-     --------------------------------------- 10.9/10.9 MB 11.0 MB/s eta 0:00:00
+     --------------------------------------- 10.9/10.9 MB 10.7 MB/s eta 0:00:00
   Preparing metadata (setup.py): started
   Preparing metadata (setup.py): finished with status 'done'
 Collecting gruut_lang_es~=2.0.0 (from gruut[de,es,fr]==2.2.3->TTS==0.15.2)
@@ -527,7 +527,7 @@ Collecting gruut_lang_es~=2.0.0 (from gruut[de,es,fr]==2.2.3->TTS==0.15.2)
   Preparing metadata (setup.py): finished with status 'done'
 Collecting gruut_lang_de~=2.0.0 (from gruut[de,es,fr]==2.2.3->TTS==0.15.2)
   Downloading gruut_lang_de-2.0.1.tar.gz (18.1 MB)
-     --------------------------------------- 18.1/18.1 MB 11.2 MB/s eta 0:00:00
+     --------------------------------------- 18.1/18.1 MB 10.7 MB/s eta 0:00:00
   Preparing metadata (setup.py): started
   Preparing metadata (setup.py): finished with status 'done'
 Requirement already satisfied: audioread>=2.1.9 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0.*->TTS==0.15.2) (3.0.1)
@@ -779,7 +779,7 @@ Collecting scikit-learn>=0.20.0 (from librosa==0.10.0.*->TTS==0.15.2)
   Downloading scikit_learn-1.1.0-cp310-cp310-win_amd64.whl.metadata (10 kB)
   Downloading scikit_learn-1.0.2-cp310-cp310-win_amd64.whl.metadata (10 kB)
   Downloading scikit-learn-1.0.1.tar.gz (6.6 MB)
-     ---------------------------------------- 6.6/6.6 MB 10.1 MB/s eta 0:00:00
+     ---------------------------------------- 6.6/6.6 MB 9.2 MB/s eta 0:00:00
   Installing build dependencies: started
   Installing build dependencies: finished with status 'done'
   Getting requirements to build wheel: started
@@ -800,19 +800,19 @@ Collecting scikit-learn>=0.20.0 (from librosa==0.10.0.*->TTS==0.15.2)
       json_out["return_val"] = hook(**hook_input["kwargs"])
     File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 175, in prepare_metadata_for_build_wheel
       return hook(metadata_directory, config_settings)
-    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-c11yopi3\overlay\Lib\site-packages\setuptools\build_meta.py", line 377, in prepare_metadata_for_build_wheel
+    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-3hg8tp7o\overlay\Lib\site-packages\setuptools\build_meta.py", line 377, in prepare_metadata_for_build_wheel
       self.run_setup()
-    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-c11yopi3\overlay\Lib\site-packages\setuptools\build_meta.py", line 522, in run_setup
+    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-3hg8tp7o\overlay\Lib\site-packages\setuptools\build_meta.py", line 522, in run_setup
       super().run_setup(setup_script=setup_script)
-    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-c11yopi3\overlay\Lib\site-packages\setuptools\build_meta.py", line 320, in run_setup
+    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-3hg8tp7o\overlay\Lib\site-packages\setuptools\build_meta.py", line 320, in run_setup
       exec(code, locals())
     File "<string>", line 319, in <module>
     File "<string>", line 311, in setup_package
-    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-c11yopi3\overlay\Lib\site-packages\numpy\distutils\core.py", line 24, in <module>
+    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-3hg8tp7o\overlay\Lib\site-packages\numpy\distutils\core.py", line 24, in <module>
       from numpy.distutils.command import config, config_compiler, \
-    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-c11yopi3\overlay\Lib\site-packages\numpy\distutils\command\config.py", line 19, in <module>
+    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-3hg8tp7o\overlay\Lib\site-packages\numpy\distutils\command\config.py", line 19, in <module>
       from numpy.distutils.mingw32ccompiler import generate_manifest
-    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-c11yopi3\overlay\Lib\site-packages\numpy\distutils\mingw32ccompiler.py", line 29, in <module>
+    File "C:\Users\JF30LB\AppData\Local\Temp\pip-build-env-3hg8tp7o\overlay\Lib\site-packages\numpy\distutils\mingw32ccompiler.py", line 29, in <module>
       from distutils.msvccompiler import get_build_version as get_build_msvc_version
   ModuleNotFoundError: No module named 'distutils.msvccompiler'
   [end of output]
@@ -826,13 +826,13 @@ See above for output.
 
 note: This is an issue with the package mentioned above, not pip.
 hint: See above for details.
-[28-02-25  9:18:47,79] [COMMAND] Installation TTS 0.15.2 - Fin d'exécution (code: 1) 
-[28-02-25  9:18:47,86] [ERROR] Erreur lors de l'exécution de la commande: Installation TTS 0.15.2 (code: 1) 
-[28-02-25  9:18:47,89] [WARNING] Échec de l'installation de TTS 0.15.2, tentative avec la version 0.17.6... 
-[28-02-25  9:18:47,91] [COMMAND] Installation TTS 0.17.6 - Debut d'execution 
+[28-02-25 14:12:43,47] [COMMAND] Installation TTS 0.15.2 - Fin d'exécution (code: 1) 
+[28-02-25 14:12:43,48] [ERROR] Erreur lors de l'exécution de la commande: Installation TTS 0.15.2 (code: 1) 
+[28-02-25 14:12:43,55] [WARNING] Échec de l'installation de TTS 0.15.2, tentative avec la version 0.17.6... 
+[28-02-25 14:12:43,61] [COMMAND] Installation TTS 0.17.6 - Debut d'execution 
 Collecting TTS==0.17.6
   Downloading TTS-0.17.6.tar.gz (1.6 MB)
-     ---------------------------------------- 1.6/1.6 MB 8.5 MB/s eta 0:00:00
+     ---------------------------------------- 1.6/1.6 MB 8.6 MB/s eta 0:00:00
   Installing build dependencies: started
   Installing build dependencies: finished with status 'done'
   Getting requirements to build wheel: started
@@ -906,7 +906,7 @@ Collecting transformers==4.33.* (from TTS==0.17.6)
   Downloading transformers-4.33.3-py3-none-any.whl.metadata (119 kB)
 Collecting encodec==0.1.* (from TTS==0.17.6)
   Downloading encodec-0.1.1.tar.gz (3.7 MB)
-     ---------------------------------------- 3.7/3.7 MB 10.1 MB/s eta 0:00:00
+     ---------------------------------------- 3.7/3.7 MB 10.6 MB/s eta 0:00:00
   Preparing metadata (setup.py): started
   Preparing metadata (setup.py): finished with status 'done'
 Requirement already satisfied: unidecode==1.3.* in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.17.6) (1.3.7)
@@ -941,7 +941,7 @@ Collecting gruut-ipa<1.0,>=0.12.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TT
   Preparing metadata (setup.py): finished with status 'done'
 Collecting gruut_lang_en~=2.0.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.17.6)
   Downloading gruut_lang_en-2.0.1.tar.gz (15.3 MB)
-     --------------------------------------- 15.3/15.3 MB 10.8 MB/s eta 0:00:00
+     --------------------------------------- 15.3/15.3 MB 10.0 MB/s eta 0:00:00
   Preparing metadata (setup.py): started
   Preparing metadata (setup.py): finished with status 'done'
 Collecting jsonlines~=1.2.0 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.17.6)
@@ -954,17 +954,17 @@ Collecting python-crfsuite~=0.9.7 (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TT
   Downloading python_crfsuite-0.9.11-cp310-cp310-win_amd64.whl.metadata (4.4 kB)
 Collecting gruut_lang_fr~=2.0.0 (from gruut[de,es,fr]==2.2.3->TTS==0.17.6)
   Downloading gruut_lang_fr-2.0.2.tar.gz (10.9 MB)
-     --------------------------------------- 10.9/10.9 MB 11.0 MB/s eta 0:00:00
-  Preparing metadata (setup.py): started
-  Preparing metadata (setup.py): finished with status 'done'
-Collecting gruut_lang_de~=2.0.0 (from gruut[de,es,fr]==2.2.3->TTS==0.17.6)
-  Downloading gruut_lang_de-2.0.1.tar.gz (18.1 MB)
-     --------------------------------------- 18.1/18.1 MB 10.9 MB/s eta 0:00:00
+     ---------------------------------------- 10.9/10.9 MB 9.6 MB/s eta 0:00:00
   Preparing metadata (setup.py): started
   Preparing metadata (setup.py): finished with status 'done'
 Collecting gruut_lang_es~=2.0.0 (from gruut[de,es,fr]==2.2.3->TTS==0.17.6)
   Downloading gruut_lang_es-2.0.1.tar.gz (31.4 MB)
-     --------------------------------------- 31.4/31.4 MB 11.1 MB/s eta 0:00:00
+     --------------------------------------- 31.4/31.4 MB 10.3 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting gruut_lang_de~=2.0.0 (from gruut[de,es,fr]==2.2.3->TTS==0.17.6)
+  Downloading gruut_lang_de-2.0.1.tar.gz (18.1 MB)
+     --------------------------------------- 18.1/18.1 MB 10.8 MB/s eta 0:00:00
   Preparing metadata (setup.py): started
   Preparing metadata (setup.py): finished with status 'done'
 Requirement already satisfied: audioread>=2.1.9 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.*->TTS==0.17.6) (3.0.1)
@@ -1257,36 +1257,36 @@ Requirement already satisfied: oauthlib>=3.0.0 in c:\users\jf30lb\projects\pytho
 Downloading aiohttp-3.8.6-cp310-cp310-win_amd64.whl (325 kB)
 Downloading anyascii-0.3.2-py3-none-any.whl (289 kB)
 Downloading Cython-0.29.30-py2.py3-none-any.whl (985 kB)
-   --------------------------------------- 985.1/985.1 kB 15.4 MB/s eta 0:00:00
+   --------------------------------------- 985.1/985.1 kB 11.5 MB/s eta 0:00:00
 Downloading einops-0.6.1-py3-none-any.whl (42 kB)
 Downloading flask-2.3.3-py3-none-any.whl (96 kB)
 Downloading fsspec-2023.6.0-py3-none-any.whl (163 kB)
 Downloading inflect-5.6.2-py3-none-any.whl (33 kB)
 Downloading numba-0.57.0-cp310-cp310-win_amd64.whl (2.6 MB)
-   ---------------------------------------- 2.6/2.6 MB 11.3 MB/s eta 0:00:00
+   ---------------------------------------- 2.6/2.6 MB 11.2 MB/s eta 0:00:00
 Downloading numpy-1.22.0-cp310-cp310-win_amd64.whl (14.7 MB)
-   ---------------------------------------- 14.7/14.7 MB 9.9 MB/s eta 0:00:00
+   ---------------------------------------- 14.7/14.7 MB 9.6 MB/s eta 0:00:00
 Downloading pysbd-0.3.4-py3-none-any.whl (71 kB)
 Downloading scikit_learn-1.3.0-cp310-cp310-win_amd64.whl (9.2 MB)
-   ---------------------------------------- 9.2/9.2 MB 10.6 MB/s eta 0:00:00
+   ---------------------------------------- 9.2/9.2 MB 9.7 MB/s eta 0:00:00
 Downloading tqdm-4.64.1-py2.py3-none-any.whl (78 kB)
 Downloading transformers-4.33.3-py3-none-any.whl (7.6 MB)
-   ---------------------------------------- 7.6/7.6 MB 9.8 MB/s eta 0:00:00
+   ---------------------------------------- 7.6/7.6 MB 11.0 MB/s eta 0:00:00
 Downloading umap_learn-0.5.7-py3-none-any.whl (88 kB)
 Downloading g2pkk-0.1.2-py3-none-any.whl (25 kB)
 Downloading pandas-1.5.3-cp310-cp310-win_amd64.whl (10.4 MB)
-   ---------------------------------------- 10.4/10.4 MB 11.0 MB/s eta 0:00:00
+   ---------------------------------------- 10.4/10.4 MB 11.1 MB/s eta 0:00:00
 Downloading scipy-1.11.4-cp310-cp310-win_amd64.whl (44.1 MB)
-   ---------------------------------------- 44.1/44.1 MB 10.4 MB/s eta 0:00:00
+   ---------------------------------------- 44.1/44.1 MB 11.0 MB/s eta 0:00:00
 Downloading bangla-0.0.2-py2.py3-none-any.whl (6.2 kB)
 Downloading bnunicodenormalizer-0.1.7-py3-none-any.whl (23 kB)
 Downloading jamo-0.4.1-py3-none-any.whl (9.5 kB)
 Downloading contourpy-1.2.1-cp310-cp310-win_amd64.whl (187 kB)
 Downloading k_diffusion-0.0.16-py3-none-any.whl (25 kB)
 Downloading nltk-3.9.1-py3-none-any.whl (1.5 MB)
-   ---------------------------------------- 1.5/1.5 MB 13.2 MB/s eta 0:00:00
+   ---------------------------------------- 1.5/1.5 MB 11.3 MB/s eta 0:00:00
 Downloading pypinyin-0.53.0-py2.py3-none-any.whl (834 kB)
-   --------------------------------------- 834.7/834.7 kB 18.5 MB/s eta 0:00:00
+   --------------------------------------- 834.7/834.7 kB 12.2 MB/s eta 0:00:00
 Downloading trainer-0.0.36-py3-none-any.whl (51 kB)
 Downloading aiosignal-1.3.2-py2.py3-none-any.whl (7.6 kB)
 Downloading async_timeout-4.0.3-py3-none-any.whl (5.7 kB)
@@ -1304,7 +1304,7 @@ Downloading llvmlite-0.40.1-cp310-cp310-win_amd64.whl (27.7 MB)
    ---------------------------------------- 27.7/27.7 MB 11.0 MB/s eta 0:00:00
 Downloading multidict-6.1.0-cp310-cp310-win_amd64.whl (28 kB)
 Downloading networkx-2.8.8-py3-none-any.whl (2.0 MB)
-   ---------------------------------------- 2.0/2.0 MB 12.6 MB/s eta 0:00:00
+   ---------------------------------------- 2.0/2.0 MB 10.3 MB/s eta 0:00:00
 Downloading num2words-0.5.14-py3-none-any.whl (163 kB)
 Downloading pynndescent-0.5.13-py3-none-any.whl (56 kB)
 Downloading python_crfsuite-0.9.11-cp310-cp310-win_amd64.whl (301 kB)
@@ -1317,28 +1317,28 @@ Downloading yarl-1.18.3-cp310-cp310-win_amd64.whl (90 kB)
 Downloading accelerate-1.4.0-py3-none-any.whl (342 kB)
 Downloading clean_fid-0.1.35-py3-none-any.whl (26 kB)
 Downloading clip_anytorch-2.6.0-py3-none-any.whl (1.4 MB)
-   ---------------------------------------- 1.4/1.4 MB 11.9 MB/s eta 0:00:00
+   ---------------------------------------- 1.4/1.4 MB 8.9 MB/s eta 0:00:00
 Downloading jsonmerge-1.9.2-py3-none-any.whl (19 kB)
 Downloading kornia-0.8.0-py2.py3-none-any.whl (1.1 MB)
-   ---------------------------------------- 1.1/1.1 MB 13.2 MB/s eta 0:00:00
+   ---------------------------------------- 1.1/1.1 MB 10.5 MB/s eta 0:00:00
 Downloading psutil-7.0.0-cp37-abi3-win_amd64.whl (244 kB)
 Downloading resize_right-0.0.2-py3-none-any.whl (8.9 kB)
 Downloading scikit_image-0.22.0-cp310-cp310-win_amd64.whl (24.5 MB)
-   ---------------------------------------- 24.5/24.5 MB 10.5 MB/s eta 0:00:00
+   ---------------------------------------- 24.5/24.5 MB 10.8 MB/s eta 0:00:00
 Downloading torchdiffeq-0.2.5-py3-none-any.whl (32 kB)
 Downloading torchsde-0.2.6-py3-none-any.whl (61 kB)
 Downloading wandb-0.19.7-py3-none-win_amd64.whl (20.3 MB)
-   ---------------------------------------- 20.3/20.3 MB 11.4 MB/s eta 0:00:00
+   ---------------------------------------- 20.3/20.3 MB 10.7 MB/s eta 0:00:00
 Downloading docker_pycreds-0.4.0-py2.py3-none-any.whl (9.0 kB)
 Downloading GitPython-3.1.44-py3-none-any.whl (207 kB)
 Downloading imageio-2.37.0-py3-none-any.whl (315 kB)
 Downloading jsonschema-4.23.0-py3-none-any.whl (88 kB)
 Downloading kornia_rs-0.1.8-cp310-cp310-win_amd64.whl (1.7 MB)
-   ---------------------------------------- 1.7/1.7 MB 11.5 MB/s eta 0:00:00
+   ---------------------------------------- 1.7/1.7 MB 10.2 MB/s eta 0:00:00
 Downloading propcache-0.3.0-cp310-cp310-win_amd64.whl (44 kB)
 Downloading pydantic-2.10.6-py3-none-any.whl (431 kB)
 Downloading pydantic_core-2.27.2-cp310-cp310-win_amd64.whl (2.0 MB)
-   ---------------------------------------- 2.0/2.0 MB 11.0 MB/s eta 0:00:00
+   ---------------------------------------- 2.0/2.0 MB 10.0 MB/s eta 0:00:00
 Downloading sentry_sdk-2.22.0-py2.py3-none-any.whl (325 kB)
 Downloading tifffile-2025.2.18-py3-none-any.whl (226 kB)
 Downloading trampoline-0.1.2-py3-none-any.whl (5.2 kB)
@@ -1356,44 +1356,44 @@ Downloading smmap-5.0.2-py3-none-any.whl (24 kB)
 Building wheels for collected packages: TTS, encodec, gruut, bnnumerizer, gruut-ipa, gruut_lang_de, gruut_lang_en, gruut_lang_es, gruut_lang_fr, docopt
   Building wheel for TTS (pyproject.toml): started
   Building wheel for TTS (pyproject.toml): finished with status 'done'
-  Created wheel for TTS: filename=tts-0.17.6-cp310-cp310-win_amd64.whl size=853557 sha256=dbf536314d8d6d332018c51f95415a3e08b7c50dc1209275b6dac7bc557b7672
-  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-sb4iroq3\wheels\9f\21\a0\ef44d6dc7f3192e3349cd89d3840653a77cf1c4e199e1b6511
+  Created wheel for TTS: filename=tts-0.17.6-cp310-cp310-win_amd64.whl size=853555 sha256=83857da66b81e26c3f3b72539c69740a02c11226f8810b51838165a037f57441
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-xn8zg2_y\wheels\9f\21\a0\ef44d6dc7f3192e3349cd89d3840653a77cf1c4e199e1b6511
   Building wheel for encodec (setup.py): started
   Building wheel for encodec (setup.py): finished with status 'done'
-  Created wheel for encodec: filename=encodec-0.1.1-py3-none-any.whl size=45874 sha256=b6df4251d171ff90653a6356a8a98ec1038e9833d69407cb5dec0b6ad1240e7e
-  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-sb4iroq3\wheels\fc\36\cb\81af8b985a5f5e0815312d5e52b41263237af07b977e6bcbf3
+  Created wheel for encodec: filename=encodec-0.1.1-py3-none-any.whl size=45874 sha256=4cac6c2a9f04a8b90232b76727304efbc7ee08077e1574fb69c02d40077cecc3
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-xn8zg2_y\wheels\fc\36\cb\81af8b985a5f5e0815312d5e52b41263237af07b977e6bcbf3
   Building wheel for gruut (setup.py): started
   Building wheel for gruut (setup.py): finished with status 'done'
-  Created wheel for gruut: filename=gruut-2.2.3-py3-none-any.whl size=75909 sha256=5aeef0e1f36fb3508034ad0d35fb25d85f896f8f174fcf8834a71670f5303dce
-  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-sb4iroq3\wheels\fc\57\a8\f9de532daf5214f53644f20f3a9e6f69269453c87df9c0a817
+  Created wheel for gruut: filename=gruut-2.2.3-py3-none-any.whl size=75909 sha256=85802b68d596ffe430ee56e97130af7d11712c8ad0e5590469c733caa6a1c598
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-xn8zg2_y\wheels\fc\57\a8\f9de532daf5214f53644f20f3a9e6f69269453c87df9c0a817
   Building wheel for bnnumerizer (setup.py): started
   Building wheel for bnnumerizer (setup.py): finished with status 'done'
-  Created wheel for bnnumerizer: filename=bnnumerizer-0.0.2-py3-none-any.whl size=5321 sha256=f84b46919617a8f9372928d1af59a6513f0551affc709ecb96f63ed88728dd2c
-  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-sb4iroq3\wheels\59\6b\e8\223172e7d5c9f72df3ea1a0d9258f3a8ab5b28e827728edef5
+  Created wheel for bnnumerizer: filename=bnnumerizer-0.0.2-py3-none-any.whl size=5321 sha256=aacfcf98689e2a9c8b86e81ea5a4121aa0808555d903cc93138fb703909da50a
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-xn8zg2_y\wheels\59\6b\e8\223172e7d5c9f72df3ea1a0d9258f3a8ab5b28e827728edef5
   Building wheel for gruut-ipa (setup.py): started
   Building wheel for gruut-ipa (setup.py): finished with status 'done'
-  Created wheel for gruut-ipa: filename=gruut_ipa-0.13.0-py3-none-any.whl size=104961 sha256=76078fef11d8fcdace2132e18fe0b18aed37223da62fb2602ac8d94dc775f0e6
-  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-sb4iroq3\wheels\7b\18\49\e4f500ecdf0babe757953f844e4d7cd1ea81c5503c09bfe984
+  Created wheel for gruut-ipa: filename=gruut_ipa-0.13.0-py3-none-any.whl size=104961 sha256=f5ead2b44054ee303a8e5599dfd6e0f03654827e57d7d75862fc9848e8e169b9
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-xn8zg2_y\wheels\7b\18\49\e4f500ecdf0babe757953f844e4d7cd1ea81c5503c09bfe984
   Building wheel for gruut_lang_de (setup.py): started
   Building wheel for gruut_lang_de (setup.py): finished with status 'done'
-  Created wheel for gruut_lang_de: filename=gruut_lang_de-2.0.1-py3-none-any.whl size=18498366 sha256=0b700be4c01db6b033d0a76f59941d688702646b5815a03097b43f3465551593
-  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-sb4iroq3\wheels\83\80\5f\775b357ae61d7cb68793327c7470d848715cbc60bb373af8dd
+  Created wheel for gruut_lang_de: filename=gruut_lang_de-2.0.1-py3-none-any.whl size=18498366 sha256=756b586f288a20157bbfb0efafb1bf0a9e4e3336a392426e6198c3c0ef63b156
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-xn8zg2_y\wheels\83\80\5f\775b357ae61d7cb68793327c7470d848715cbc60bb373af8dd
   Building wheel for gruut_lang_en (setup.py): started
   Building wheel for gruut_lang_en (setup.py): finished with status 'done'
-  Created wheel for gruut_lang_en: filename=gruut_lang_en-2.0.1-py3-none-any.whl size=15326908 sha256=7b50f52b9e396710e8e3fdcdf67e0131f8fc18ab4557b38a8234ea165125b94a
-  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-sb4iroq3\wheels\64\8d\b7\d484d224facd899ed188e00374f25dd3f19d1a3f53da6517bd
+  Created wheel for gruut_lang_en: filename=gruut_lang_en-2.0.1-py3-none-any.whl size=15326908 sha256=7f202460e47778da7c96eb0341a3b1b066de187aa7971513de03fc07b92b66fc
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-xn8zg2_y\wheels\64\8d\b7\d484d224facd899ed188e00374f25dd3f19d1a3f53da6517bd
   Building wheel for gruut_lang_es (setup.py): started
   Building wheel for gruut_lang_es (setup.py): finished with status 'done'
-  Created wheel for gruut_lang_es: filename=gruut_lang_es-2.0.1-py3-none-any.whl size=32173980 sha256=733c6200910a35f59e7248267337a52d2c099f66dc4e959785cba64b1944d790
-  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-sb4iroq3\wheels\ab\bd\96\5ddde14e8e6932a96f12c5ab5de62b619d39e2507d7daf5188
+  Created wheel for gruut_lang_es: filename=gruut_lang_es-2.0.1-py3-none-any.whl size=32173980 sha256=73dceed18d65d90f505960e57d245c6f8beaba80270fbb680937413539ee94f4
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-xn8zg2_y\wheels\ab\bd\96\5ddde14e8e6932a96f12c5ab5de62b619d39e2507d7daf5188
   Building wheel for gruut_lang_fr (setup.py): started
   Building wheel for gruut_lang_fr (setup.py): finished with status 'done'
-  Created wheel for gruut_lang_fr: filename=gruut_lang_fr-2.0.2-py3-none-any.whl size=10968816 sha256=7652eeaaefab8014ee018e5aeae813260edb33e44dfab1327048c1d55e1d7dd3
-  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-sb4iroq3\wheels\db\21\be\d0436e3f1cf9bf38b9bb9b4a476399c77a1ab19f7172b45e19
+  Created wheel for gruut_lang_fr: filename=gruut_lang_fr-2.0.2-py3-none-any.whl size=10968816 sha256=9e9c13b38fe7d2c6d70e54e691c050157063ac940874a23a6ea04e466bbd391b
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-xn8zg2_y\wheels\db\21\be\d0436e3f1cf9bf38b9bb9b4a476399c77a1ab19f7172b45e19
   Building wheel for docopt (setup.py): started
   Building wheel for docopt (setup.py): finished with status 'done'
-  Created wheel for docopt: filename=docopt-0.6.2-py2.py3-none-any.whl size=13822 sha256=fddcb586acf42bcd584f455e9fbaef39cc17a8624d9ec1e5c649bfb590d2d273
-  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-sb4iroq3\wheels\fc\ab\d4\5da2067ac95b36618c629a5f93f809425700506f72c9732fac
+  Created wheel for docopt: filename=docopt-0.6.2-py2.py3-none-any.whl size=13822 sha256=8ec3997ac4bb34922e3873ffda67d2f6f0e23b848d2488adcc80adaa74216420
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-xn8zg2_y\wheels\fc\ab\d4\5da2067ac95b36618c629a5f93f809425700506f72c9732fac
 Successfully built TTS encodec gruut bnnumerizer gruut-ipa gruut_lang_de gruut_lang_en gruut_lang_es gruut_lang_fr docopt
 Installing collected packages: wcwidth, trampoline, tokenizers, resize-right, pytz, jamo, gruut_lang_fr, gruut_lang_es, gruut_lang_en, gruut_lang_de, docopt, bnunicodenormalizer, bnnumerizer, bangla, tzdata, tqdm, smmap, setproctitle, sentry-sdk, safetensors, rpds-py, regex, python-crfsuite, pysbd, pypinyin, pydantic-core, psutil, propcache, numpy, num2words, networkx, multidict, llvmlite, kornia_rs, jsonlines, itsdangerous, inflect, gruut-ipa, ftfy, fsspec, frozenlist, einops, docker-pycreds, cython, click, blinker, Babel, attrs, async-timeout, anyascii, annotated-types, yarl, tzlocal, tifffile, scipy, referencing, pydantic, pandas, numba, nltk, imageio, huggingface-hub, gitdb, flask, contourpy, aiosignal, transformers, torchsde, torchdiffeq, scikit-learn, scikit-image, kornia, jsonschema-specifications, gitpython, g2pkk, dateparser, aiohttp, accelerate, wandb, pynndescent, jsonschema, gruut, encodec, clip-anytorch, clean-fid, umap-learn, trainer, jsonmerge, k_diffusion, TTS
   Attempting uninstall: tqdm
@@ -1437,14 +1437,14 @@ Installing collected packages: wcwidth, trampoline, tokenizers, resize-right, py
     Uninstalling scikit-learn-1.6.1:
       Successfully uninstalled scikit-learn-1.6.1
 Successfully installed Babel-2.17.0 TTS-0.17.6 accelerate-1.4.0 aiohttp-3.8.6 aiosignal-1.3.2 annotated-types-0.7.0 anyascii-0.3.2 async-timeout-4.0.3 attrs-25.1.0 bangla-0.0.2 blinker-1.9.0 bnnumerizer-0.0.2 bnunicodenormalizer-0.1.7 clean-fid-0.1.35 click-8.1.8 clip-anytorch-2.6.0 contourpy-1.2.1 cython-0.29.30 dateparser-1.1.8 docker-pycreds-0.4.0 docopt-0.6.2 einops-0.6.1 encodec-0.1.1 flask-2.3.3 frozenlist-1.5.0 fsspec-2023.6.0 ftfy-6.3.1 g2pkk-0.1.2 gitdb-4.0.12 gitpython-3.1.44 gruut-2.2.3 gruut-ipa-0.13.0 gruut_lang_de-2.0.1 gruut_lang_en-2.0.1 gruut_lang_es-2.0.1 gruut_lang_fr-2.0.2 huggingface-hub-0.29.1 imageio-2.37.0 inflect-5.6.2 itsdangerous-2.2.0 jamo-0.4.1 jsonlines-1.2.0 jsonmerge-1.9.2 jsonschema-4.23.0 jsonschema-specifications-2024.10.1 k_diffusion-0.0.16 kornia-0.8.0 kornia_rs-0.1.8 llvmlite-0.40.1 multidict-6.1.0 networkx-2.8.8 nltk-3.9.1 num2words-0.5.14 numba-0.57.0 numpy-1.22.0 pandas-1.5.3 propcache-0.3.0 psutil-7.0.0 pydantic-2.10.6 pydantic-core-2.27.2 pynndescent-0.5.13 pypinyin-0.53.0 pysbd-0.3.4 python-crfsuite-0.9.11 pytz-2025.1 referencing-0.36.2 regex-2024.11.6 resize-right-0.0.2 rpds-py-0.23.1 safetensors-0.5.3 scikit-image-0.22.0 scikit-learn-1.3.0 scipy-1.11.4 sentry-sdk-2.22.0 setproctitle-1.3.5 smmap-5.0.2 tifffile-2025.2.18 tokenizers-0.13.3 torchdiffeq-0.2.5 torchsde-0.2.6 tqdm-4.64.1 trainer-0.0.36 trampoline-0.1.2 transformers-4.33.3 tzdata-2025.1 tzlocal-5.3 umap-learn-0.5.7 wandb-0.19.7 wcwidth-0.2.13 yarl-1.18.3
-[28-02-25  9:24:24,57] [COMMAND] Installation TTS 0.17.6 - Fin d'exécution (code: 0) 
-[28-02-25  9:24:24,58] [INFO] Installation de PyQt6... 
-[28-02-25  9:24:24,60] [COMMAND] Désinstallation PyQt6 - Debut d'execution 
+[28-02-25 14:19:00,34] [COMMAND] Installation TTS 0.17.6 - Fin d'exécution (code: 0) 
+[28-02-25 14:19:00,37] [INFO] Installation de PyQt6... 
+[28-02-25 14:19:00,39] [COMMAND] Désinstallation PyQt6 - Debut d'execution 
 WARNING: Skipping PyQt6 as it is not installed.
 WARNING: Skipping PyQt6-Qt6 as it is not installed.
 WARNING: Skipping PyQt6-sip as it is not installed.
-[28-02-25  9:24:25,49] [COMMAND] Désinstallation PyQt6 - Fin d'exécution (code: 0) 
-[28-02-25  9:24:25,53] [COMMAND] Installation PyQt6 - Debut d'execution 
+[28-02-25 14:19:01,17] [COMMAND] Désinstallation PyQt6 - Fin d'exécution (code: 0) 
+[28-02-25 14:19:01,21] [COMMAND] Installation PyQt6 - Debut d'execution 
 Collecting PyQt6==6.5.2
   Downloading PyQt6-6.5.2-cp37-abi3-win_amd64.whl.metadata (2.2 kB)
 Collecting PyQt6-Qt6==6.5.2
@@ -1452,46 +1452,43 @@ Collecting PyQt6-Qt6==6.5.2
 Collecting PyQt6-sip==13.5.2
   Downloading PyQt6_sip-13.5.2-cp310-cp310-win_amd64.whl.metadata (524 bytes)
 Downloading PyQt6-6.5.2-cp37-abi3-win_amd64.whl (6.5 MB)
-   ---------------------------------------- 6.5/6.5 MB 10.5 MB/s eta 0:00:00
+   ---------------------------------------- 6.5/6.5 MB 9.3 MB/s eta 0:00:00
 Downloading PyQt6_Qt6-6.5.2-py3-none-win_amd64.whl (59.3 MB)
-   ---------------------------------------- 59.3/59.3 MB 9.6 MB/s eta 0:00:00
+   ---------------------------------------- 59.3/59.3 MB 10.9 MB/s eta 0:00:00
 Downloading PyQt6_sip-13.5.2-cp310-cp310-win_amd64.whl (72 kB)
 Installing collected packages: PyQt6-Qt6, PyQt6-sip, PyQt6
 Successfully installed PyQt6-6.5.2 PyQt6-Qt6-6.5.2 PyQt6-sip-13.5.2
-[28-02-25  9:24:39,73] [COMMAND] Installation PyQt6 - Fin d'exécution (code: 0) 
-[28-02-25  9:24:39,96] [INFO] Vérification des installations... 
-[28-02-25  9:24:39,97] [INFO] Vérification de numpy... 
-[28-02-25  9:24:40,14] [COMMAND] numpy - Debut d'execution 
-[28-02-25  9:24:40,24] [COMMAND] numpy - Fin d'exécution (code: 1) 
-[28-02-25  9:24:40,25] [ERROR] Erreur lors de l'exécution de la commande: numpy (code: 1) 
-[28-02-25  9:24:40,27] [INFO] Vérification de torch... 
-[28-02-25  9:24:40,30] [COMMAND] torch - Debut d'execution 
-[28-02-25  9:24:40,40] [COMMAND] torch - Fin d'exécution (code: 1) 
-[28-02-25  9:24:40,42] [ERROR] Erreur lors de l'exécution de la commande: torch (code: 1) 
-[28-02-25  9:24:40,44] [INFO] Vérification de TTS... 
-[28-02-25  9:24:40,47] [COMMAND] sys - Debut d'execution 
-[28-02-25  9:24:40,57] [COMMAND] sys - Fin d'exécution (code: 1) 
-[28-02-25  9:24:40,58] [ERROR] Erreur lors de l'exécution de la commande: sys (code: 1) 
-[28-02-25  9:24:40,59] [INFO] Vérification de PyQt6... 
-[28-02-25  9:24:40,62] [COMMAND] PyQt6.QtWidgets - Debut d'execution 
-[28-02-25  9:24:40,72] [COMMAND] PyQt6.QtWidgets - Fin d'exécution (code: 1) 
-[28-02-25  9:24:40,73] [ERROR] Erreur lors de l'exécution de la commande: PyQt6.QtWidgets (code: 1) 
-[28-02-25  9:24:40,75] [INFO] Vérification des fonctionnalités TTS... 
-[28-02-25  9:24:40,77] [COMMAND] sys - Debut d'execution 
-[28-02-25  9:24:40,86] [COMMAND] sys - Fin d'exécution (code: 1) 
-[28-02-25  9:24:40,88] [ERROR] Erreur lors de l'exécution de la commande: sys (code: 1) 
-[28-02-25  9:24:40,90] [INFO] Installation terminee 
-[28-02-25  9:24:40,94] [INFO] Pour tester, executez: 
-[28-02-25  9:24:40,95] [INFO] call .\venv_py310\Scripts\activate.bat 
-[28-02-25  9:24:40,98] [INFO] python Simple_TTS_GUI.py 
-[28-02-25  9:24:41,00] [INFO] Fichier log disponible: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\setup_env_log.txt 
-
-
-
-python Simple_TTS_GUI.py
+[28-02-25 14:19:14,12] [COMMAND] Installation PyQt6 - Fin d'exécution (code: 0) 
+[28-02-25 14:19:14,15] [INFO] Vérification des installations... 
+[28-02-25 14:19:14,18] [INFO] Vérification de numpy... 
+[28-02-25 14:19:14,20] [COMMAND] Vérification installation numpy - Debut d'execution 
+1.22.0
+[28-02-25 14:19:16,19] [COMMAND] Vérification installation numpy - Fin d'exécution (code: 0) 
+[28-02-25 14:19:16,22] [INFO] Vérification de torch... 
+[28-02-25 14:19:16,26] [COMMAND] Vérification installation PyTorch - Debut d'execution 
+2.0.1+cpu
+[28-02-25 14:19:21,30] [COMMAND] Vérification installation PyTorch - Fin d'exécution (code: 0) 
+[28-02-25 14:19:21,30] [INFO] Vérification de TTS... 
+[28-02-25 14:19:21,34] [COMMAND] Vérification TTS - Debut d'execution 
+TTS OK
+[28-02-25 14:19:21,47] [COMMAND] Vérification TTS - Fin d'exécution (code: 0) 
+[28-02-25 14:19:21,47] [INFO] Vérification de PyQt6... 
+[28-02-25 14:19:21,50] [COMMAND] Vérification PyQt6 - Debut d'execution 
+PyQt6 OK
+[28-02-25 14:19:21,87] [COMMAND] Vérification PyQt6 - Fin d'exécution (code: 0) 
+[28-02-25 14:19:21,89] [INFO] Vérification des fonctionnalités TTS... 
+[28-02-25 14:19:21,93] [COMMAND] Vérification TTS Synthesizer - Debut d'execution 
 C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\torchaudio\compliance\kaldi.py:22: UserWarning: Failed to initialize NumPy: module compiled against API version 0x10 but this version of numpy is 0xf . Check the section C-API incompatibility at the Troubleshooting ImportError section at https://numpy.org/devdocs/user/troubleshooting-importerror.html#c-api-incompatibility for indications on how to solve this problem . (Triggered internally at ..\torch\csrc\utils\tensor_numpy.cpp:84.)
   EPSILON = torch.tensor(torch.finfo(torch.float).eps)
-Traceback (most recent call last):
-  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.py", line 19, in <module>
-    torch.serialization.add_safe_globals([XttsConfig])
-AttributeError: module 'torch.serialization' has no attribute 'add_safe_globals'
+TTS Synthesizer OK
+[28-02-25 14:19:46,68] [COMMAND] Vérification TTS Synthesizer - Fin d'exécution (code: 0) 
+[28-02-25 14:19:46,71] [INFO] Installation terminee 
+[28-02-25 14:19:46,73] [INFO] Pour tester, executez: 
+[28-02-25 14:19:46,76] [INFO] call .\venv_py310\Scripts\activate.bat 
+[28-02-25 14:19:46,78] [INFO] python Simple_TTS_GUI.py 
+[28-02-25 14:19:46,82] [INFO] Fichier log disponible: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\setup_env_log.txt 
+
+
+
+Au démarage de l'application j'ai ceci :
+python Simple_TTS_GUI.py C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\torchaudio\compliance\kaldi.py:22: UserWarning: Failed to initialize NumPy: module compiled against API version 0x10 but this version of numpy is 0xf . Check the section C-API incompatibility at the Troubleshooting ImportError section at https://numpy.org/devdocs/user/troubleshooting-importerror.html#c-api-incompatibility for indications on how to solve this problem . (Triggered internally at ..\torch\csrc\utils\tensor_numpy.cpp:84.) EPSILON = torch.tensor(torch.finfo(torch.float).eps)

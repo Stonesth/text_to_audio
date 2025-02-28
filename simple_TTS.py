@@ -13,7 +13,7 @@ import inspect
 # Imports PyTorch
 import torch
 import torch.nn as nn
-from torch.serialization import add_safe_globals
+# from torch.serialization import add_safe_globals
 
 # Imports TTS
 from TTS.api import TTS
@@ -28,40 +28,44 @@ from TTS.config.shared_configs import BaseDatasetConfig
 import numpy as np
 from collections import defaultdict, OrderedDict
 
-# Configuration des globals sécurisés pour PyTorch 2.6
-SAFE_CLASSES = [
-    RAdam,
-    defaultdict,
-    OrderedDict,
-    np.ndarray,
-    torch.nn.Parameter,
-    torch._utils._rebuild_tensor_v2,
-    torch.Tensor,
-    dict,
-    list,
-    tuple,
-    int,
-    float,
-    str,
-    bool,
-    type(None),
-    BaseTTSConfig,
-    XttsConfig,
-    XttsAudioConfig,
-    XttsArgs,
-    Xtts,
-    np.core.multiarray.scalar,
-    np.ndarray,
-    np._globals._NoValue,
-    np.dtype,
-    np.ufunc,
-    np.generic,
-    BaseTTS,
-    nn.Module,
-    BaseDatasetConfig,
-]
+# # Configuration des globals sécurisés pour PyTorch 2.6
+# SAFE_CLASSES = [
+#     RAdam,
+#     defaultdict,
+#     OrderedDict,
+#     np.ndarray,
+#     torch.nn.Parameter,
+#     torch._utils._rebuild_tensor_v2,
+#     torch.Tensor,
+#     dict,
+#     list,
+#     tuple,
+#     int,
+#     float,
+#     str,
+#     bool,
+#     type(None),
+#     BaseTTSConfig,
+#     XttsConfig,
+#     XttsAudioConfig,
+#     XttsArgs,
+#     Xtts,
+#     np.core.multiarray.scalar,
+#     np.ndarray,
+#     np._globals._NoValue,
+#     np.dtype,
+#     np.ufunc,
+#     np.generic,
+#     BaseTTS,
+#     nn.Module,
+#     BaseDatasetConfig,
+# ]
+# add_safe_globals(SAFE_CLASSES)
 
-add_safe_globals(SAFE_CLASSES)
+# Configuration de base pour PyTorch
+torch._C._add_docstring = lambda obj, doc: None  # Fix pour éviter les erreurs de docstring
+torch.set_default_dtype(torch.float32)  # Assure la compatibilité des types
+
 
 def read_text_file(file_path: str) -> str | None:
     """
