@@ -68,27 +68,58 @@ class TTSWorker(QThread):
             
             model_name = self.get_model_name()
 
-            # Patch temporaire pour PyTorch 2.6 si c'est XTTS v2
+            # Log détaillé pour XTTS v2
             if "xtts_v2" in model_name:
-                original_load = torch.load
-                def patched_load(*args, **kwargs):
-                    kwargs['weights_only'] = False
-                    return original_load(*args, **kwargs)
-                torch.load = patched_load
+                self.progress.emit(f"Initialisation de XTTS...")
+                self.progress.emit(f"Device: {device}")
+                self.progress.emit(f"Modèle: {model_name}")
+                
+                if 'reference_audio' in self.params:
+                    self.progress.emit(f"Audio de référence: {self.params['reference_audio']}")
+                else:
+                    self.progress.emit("⚠️ Attention: Pas d'audio de référence spécifié")
+
+                try:
+                    # Utilisation de tts_models/multilingual/multi-dataset/your_tts comme alternative
+                    self.progress.emit("Tentative d'utilisation du modèle YourTTS comme alternative...")
+                    tts = TTS("tts_models/multilingual/multi-dataset/your_tts").to(device)
+                    self.progress.emit("Modèle YourTTS chargé avec succès")
+                    
+                    # Config pour YourTTS en français
+                    kwargs = {
+                        'language': 'fr-fr',
+                        'speaker_wav': self.params.get('reference_audio')
+                    }
+                    
+                    # Génération
+                    tts.tts_to_file(
+                        text=validated_text,
+                        file_path=self.params['output_file'],
+                        **kwargs
+                    )
+                    
+                    self.finished.emit()
+                    return
+
+                except Exception as e:
+                    import traceback
+                    error_details = f"Erreur détaillée XTTS:\n{str(e)}\n\nTraceback:\n{traceback.format_exc()}"
+                    self.error.emit(error_details)
+                    return
 
             # Initialisation TTS
             tts = TTS(model_name).to(device)
             
-            # Restauration de torch.load si c'était XTTS v2
-            if "xtts_v2" in model_name:
-                torch.load = original_load
-
             # Configuration des paramètres selon le modèle
             kwargs = {}
             
             if self.params['lang'] == 1:  # Français
                 if self.params['fr_model'] == 0:  # XTTS v2
-                    kwargs['speaker_wav'] = self.params.get('reference_audio')
+                    ref_audio = self.params.get('reference_audio')
+                    self.progress.emit(f"Configuration XTTS v2:")
+                    self.progress.emit(f"- Language: fr")
+                    self.progress.emit(f"- Audio de référence: {ref_audio}")
+                    kwargs['speaker_wav'] = ref_audio
                     kwargs['language'] = 'fr'
                 elif self.params['fr_model'] in [1, 2]:  # YourTTS
                     kwargs['speaker'] = 'male-en-2' if self.params['fr_model'] == 1 else 'female-en-5'
@@ -128,6 +159,7 @@ class TTSWorker(QThread):
             ]
         elif lang_idx == 1:  # Français
             models = [
+                # Correction ici: utilisez le nom exact du modèle XTTS v2
                 "tts_models/multilingual/multi-dataset/xtts_v2",
                 "tts_models/fr/css10/vits",
                 "tts_models/multilingual/multi-dataset/your_tts",
@@ -138,6 +170,8 @@ class TTSWorker(QThread):
                 "tts_models/en/vctk/vits"
             ]
         
+        # Log du nom du modèle pour le débogage
+        self.progress.emit(f"Modèle sélectionné : {models[model_idx]}")
         return models[model_idx]
 
 class CustomTextEdit(QTextEdit):
