@@ -1485,3 +1485,13 @@ Successfully installed PyQt6-6.5.2 PyQt6-Qt6-6.5.2 PyQt6-sip-13.5.2
 [28-02-25  9:24:40,95] [INFO] call .\venv_py310\Scripts\activate.bat 
 [28-02-25  9:24:40,98] [INFO] python Simple_TTS_GUI.py 
 [28-02-25  9:24:41,00] [INFO] Fichier log disponible: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\setup_env_log.txt 
+
+
+
+python Simple_TTS_GUI.py
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\torchaudio\compliance\kaldi.py:22: UserWarning: Failed to initialize NumPy: module compiled against API version 0x10 but this version of numpy is 0xf . Check the section C-API incompatibility at the Troubleshooting ImportError section at https://numpy.org/devdocs/user/troubleshooting-importerror.html#c-api-incompatibility for indications on how to solve this problem . (Triggered internally at ..\torch\csrc\utils\tensor_numpy.cpp:84.)
+  EPSILON = torch.tensor(torch.finfo(torch.float).eps)
+Traceback (most recent call last):
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.py", line 19, in <module>
+    torch.serialization.add_safe_globals([XttsConfig])
+AttributeError: module 'torch.serialization' has no attribute 'add_safe_globals'
