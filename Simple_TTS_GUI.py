@@ -193,6 +193,13 @@ class CustomTextEdit(QTextEdit):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        # Charger le PATH d'eSpeak au démarrage
+        espeak_path = "C:\\Program Files\\eSpeak NG"
+        if os.path.exists(espeak_path):
+            if espeak_path not in os.environ['PATH'].split(os.pathsep):
+                os.environ['PATH'] = espeak_path + os.pathsep + os.environ['PATH']
+                print(f"eSpeak ajouté au PATH: {espeak_path}")
+                
         self.setWindowTitle("Simple TTS GUI")
         self.setMinimumWidth(800)
         
@@ -569,50 +576,63 @@ class MainWindow(QMainWindow):
             self.ref_audio_path.setText(file_path)
 
     def check_espeak_installed(self):
-        """Vérifie si espeak est installé sur le système."""
-        if sys.platform == 'win32':
-            # Vérifie dans Program Files et Program Files (x86)
-            program_files = [
-                os.environ.get('PROGRAMFILES', 'C:\\Program Files'),
-                os.environ.get('PROGRAMFILES(X86)', 'C:\\Program Files (x86)')
-            ]
-            for prog_dir in program_files:
-                espeak_path = os.path.join(prog_dir, 'eSpeak NG')
-                if os.path.exists(espeak_path):
-                    return True
+        """Vérifie si espeak-ng est installé et configurable."""
+        try:
+            # Forcer la réinitialisation d'eSpeak avant chaque utilisation
+            from patch_tts_espeak import patch_tts_espeak
+            if not patch_tts_espeak():
+                self.log_text.append("Erreur : Impossible d'initialiser eSpeak")
+                return False
+                
+            # Vérification supplémentaire avec espeak-ng --version
+            import subprocess
+            result = subprocess.run(['espeak-ng', '--version'], 
+                                  capture_output=True, text=True)
+                                  
+            if result.returncode == 0:
+                self.log_text.append(f"eSpeak NG trouvé: {result.stdout.strip()}")
+                return True
+            else:
+                self.log_text.append(f"Échec vérification eSpeak: {result.stderr}")
+                return False
+                
+        except Exception as e:
+            self.log_text.append(f"Erreur eSpeak: {str(e)}")
             return False
-        else:
-            # Pour Linux/Mac, vérifie si la commande existe
-            return os.system('which espeak >/dev/null 2>&1') == 0
 
     def generate_audio(self):
         """Génère l'audio à partir du texte."""
-        # Vérification pour Neural HMM qui nécessite espeak
-        if (self.lang_combo.currentIndex() == 0 and  # Anglais
-            self.model_combo.currentText() == "Neural HMM" and 
-            not self.check_espeak_installed()):
-            
-            msg = QMessageBox(self)
-            msg.setIcon(QMessageBox.Icon.Warning)
-            msg.setText("eSpeak requis")
-            msg.setInformativeText(
-                "Le modèle Neural HMM nécessite eSpeak NG pour fonctionner.\n\n"
-                "Voulez-vous installer eSpeak NG ou utiliser un autre modèle?"
-            )
-            # Utiliser le bouton par défaut Yes/No avec des textes personnalisés
-            msg.addButton("Télécharger eSpeak", QMessageBox.ButtonRole.YesRole)
-            msg.addButton("Changer de modèle", QMessageBox.ButtonRole.NoRole)
-            
-            result = msg.exec()
-            if result == 0:  # Premier bouton (Télécharger)
-                # Ouvrir la page de téléchargement d'eSpeak
-                import webbrowser
-                webbrowser.open('https://github.com/espeak-ng/espeak-ng/blob/master/docs/guide.md')
-                return
-            else:  # Second bouton (Changer de modèle)
-                # Changer pour un autre modèle (ex: Tacotron2)
-                self.model_combo.setCurrentIndex(0)
-                return
+        # Vérification pour tout modèle qui nécessite espeak
+        needs_espeak = (
+            self.lang_combo.currentIndex() == 0 and self.model_combo.currentText() == "Neural HMM"
+        ) or (
+            self.lang_combo.currentIndex() == 2  # VCTK
+        )
+        
+        if needs_espeak:
+            # Vérifier et configurer eSpeak
+            if not self.check_espeak_installed():
+                msg = QMessageBox(self)
+                msg.setIcon(QMessageBox.Icon.Warning)
+                msg.setText("eSpeak requis")
+                msg.setInformativeText(
+                    "Ce modèle nécessite eSpeak NG pour fonctionner.\n\n"
+                    "1. Téléchargez et installez eSpeak NG\n"
+                    "2. Assurez-vous qu'il est bien installé dans Program Files\n"
+                    "3. Redémarrez l'application"
+                )
+                msg.addButton("Télécharger eSpeak", QMessageBox.ButtonRole.YesRole)
+                msg.addButton("Annuler", QMessageBox.ButtonRole.NoRole)
+                
+                result = msg.exec()
+                if result == 0:
+                    import webbrowser
+                    webbrowser.open('https://github.com/espeak-ng/espeak-ng/releases')
+                    return
+                else:
+                    return
+            else:
+                self.log_text.append("eSpeak correctement configuré")
 
         # Validation du texte avant génération
         text = self.text_edit.toPlainText().strip()
@@ -768,3 +788,4 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = MainWindow()
     sys.exit(app.exec())
+
