@@ -3,6 +3,7 @@
 from PyInstaller.utils.hooks import collect_submodules, collect_data_files, collect_dynamic_libs
 import os
 import sys
+import glob
 
 # Collecter tous les sous-modules de PyQt6 de manière plus complète
 hiddenimports = collect_submodules('PyQt6') + [
@@ -27,6 +28,12 @@ binaries = collect_dynamic_libs('PyQt6')
 # Chemins de base pour les packages
 base_path = 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages'
 
+# Rechercher tous les fichiers sip*.pyd dans PyQt6
+pyqt6_path = os.path.join(base_path, 'PyQt6')
+sip_files = []
+if os.path.exists(pyqt6_path):
+    sip_files = [(os.path.join(pyqt6_path, f), 'PyQt6') for f in os.listdir(pyqt6_path) if f.startswith('sip') and f.endswith('.pyd')]
+
 a = Analysis(
     ['Simple_TTS_GUI.py'],
     pathex=[],
@@ -43,8 +50,7 @@ a = Analysis(
         (os.path.join(base_path, 'PyQt6', 'lupdate', '**', '*'), 'PyQt6/lupdate'),
         # Ajouter explicitement le module sip avec le bon nom de fichier
         (os.path.join(base_path, 'PyQt6', 'sip.cp310-win_amd64.pyd'), 'PyQt6'),
-        (os.path.join(base_path, 'sip', '*.pyd'), 'sip'),
-    ] + pyqt6_datas,
+    ] + pyqt6_datas + sip_files,  # Ajouter les fichiers sip trouvés
     hiddenimports=hiddenimports,
     hookspath=['c:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio'],
     hooksconfig={},
