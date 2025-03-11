@@ -14,3 +14,15 @@ Traceback (most recent call last):
   File "Simple_TTS_GUI.py", line 11, in <module>
 ModuleNotFoundError: No module named 'PyQt6.sip'
 [PYI-38300:ERROR] Failed to execute script 'Simple_TTS_GUI' due to unhandled exception!
+
+
+j'ai l'erreur suivante :
+ 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio']
+2377 INFO: Appending 'binaries' from .spec
+2386 INFO: Appending 'datas' from .spec
+Unable to find 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\_sip.pyd' when adding binary and data files.
+
+Mais quand je regarde ici : 
+C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\'
+j'ai un fichier qui ressemble :
+sip.cp310-win_amd64.pyd
