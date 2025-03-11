@@ -49,3 +49,143 @@ pyinstaller --clean Simple_TTS_GUI.spec
 1649 INFO: Appending 'datas' from .spec
 Unable to find 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\sip\\*.pyd' when adding binary and data files.
 (venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> 
+
+
+Après les dernières modification, la création de l'exe c'est bien passé mais au run de l'exe j'ai eu une erreur :
+Simple_TTS_GUI.exe
+[PYI-5428:DEBUG] PyInstaller Bootloader 6.x
+[PYI-5428:DEBUG] LOADER: argv[0]: Simple_TTS_GUI.exe
+[PYI-5428:DEBUG] LOADER: executable file: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI.exe
+[PYI-5428:DEBUG] LOADER: trying to load executable-embedded archive...
+[PYI-5428:DEBUG] LOADER: attempting to open archive C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI.exe
+[PYI-5428:DEBUG] LOADER: cookie found at offset 0x16046F26
+[PYI-5428:DEBUG] LOADER: archive file: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI.exe
+[PYI-5428:DEBUG] LOADER: application has onefile semantics...
+[PYI-5428:DEBUG] LOADER: _PYI_ARCHIVE_FILE not defined...
+[PYI-5428:DEBUG] LOADER: process level = 0
+[PYI-5428:DEBUG] LOADER: this is parent process of onefile application.
+[PYI-5428:DEBUG] LOADER: initializing security descriptor for temporary directory...
+[PYI-5428:DEBUG] LOADER: initializing security descriptor from string: D:(A;;FA;;;S-1-12-1-3372074541-1255950760-650497703-3513431759)
+[PYI-5428:DEBUG] LOADER: creating temporary directory (runtime_tmpdir=(null))...
+[PYI-5428:DEBUG] LOADER: attempting to create temporary application directory under C:\Users\JF30LB\AppData\Local\Temp\
+[PYI-5428:DEBUG] LOADER: created temporary directory: C:\Users\JF30LB\AppData\Local\Temp\_MEI54282
+[PYI-5428:DEBUG] LOADER: application's top-level directory: C:\Users\JF30LB\AppData\Local\Temp\_MEI54282
+[PYI-5428:DEBUG] LOADER: calling SetDllDirectoryW: C:\Users\JF30LB\AppData\Local\Temp\_MEI54282
+[PYI-5428:DEBUG] LOADER: splash screen is unavailable.
+[PYI-5428:DEBUG] LOADER: extracting files to temporary directory...
+[PYI-5428:DEBUG] LOADER: setting _PYI_APPLICATION_HOME_DIR to C:\Users\JF30LB\AppData\Local\Temp\_MEI54282
+[PYI-5428:DEBUG] LOADER: starting the child process...
+[PYI-5428:DEBUG] LOADER: setting up child process...
+[PYI-5428:DEBUG] LOADER: child process started!
+[PYI-5428:DEBUG] LOADER: creating hidden window to capture system shutdown events...
+[PYI-31332:DEBUG] PyInstaller Bootloader 6.x
+[PYI-31332:DEBUG] LOADER: argv[0]: Simple_TTS_GUI.exe
+[PYI-31332:DEBUG] LOADER: executable file: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI.exe
+[PYI-31332:DEBUG] LOADER: trying to load executable-embedded archive...
+[PYI-31332:DEBUG] LOADER: attempting to open archive C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI.exe
+[PYI-31332:DEBUG] LOADER: cookie found at offset 0x16046F26
+[PYI-31332:DEBUG] LOADER: archive file: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI.[PYI-5428:DEBUG] LOADER: hidden window created!
+exe
+[PYI-5428:DEBUG] LOADER: entering the waiting loop...
+[PYI-31332:DEBUG] LOADER: application has onefile semantics...
+[PYI-31332:DEBUG] LOADER: _PYI_ARCHIVE_FILE already defined: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI.exe
+[PYI-31332:DEBUG] LOADER: using same archive file as parent environment!
+[PYI-31332:DEBUG] LOADER: process level = 1
+[PYI-31332:DEBUG] LOADER: this is child process of onefile application (main application process).
+[PYI-31332:DEBUG] LOADER: application's top-level directory: C:\Users\JF30LB\AppData\Local\Temp\_MEI54282
+[PYI-31332:DEBUG] LOADER: calling SetDllDirectoryW: C:\Users\JF30LB\AppData\Local\Temp\_MEI54282
+[PYI-31332:DEBUG] LOADER: splash screen is unavailable.
+[PYI-31332:DEBUG] LOADER: ucrtbase.dll found: C:\Users\JF30LB\AppData\Local\Temp\_MEI54282\ucrtbase.dll
+[PYI-31332:DEBUG] LOADER: loading Python shared library: C:\Users\JF30LB\AppData\Local\Temp\_MEI54282\python310.dll
+[PYI-31332:DEBUG] LOADER: loaded functions from Python shared library.
+[PYI-31332:DEBUG] LOADER: pre-initializing embedded python interpreter...
+[PYI-31332:DEBUG] LOADER: creating PyConfig structure...
+[PYI-31332:DEBUG] LOADER: initializing interpreter configuration...
+[PYI-31332:DEBUG] LOADER: setting program name...
+[PYI-31332:DEBUG] LOADER: setting python home path...
+[PYI-31332:DEBUG] LOADER: setting module search paths...
+[PYI-31332:DEBUG] LOADER: setting sys.argv...
+[PYI-31332:DEBUG] LOADER: applying run-time options...
+[PYI-31332:DEBUG] LOADER: starting embedded python interpreter...
+[PYI-31332:DEBUG] LOADER: setting sys._MEIPASS
+[PYI-31332:DEBUG] LOADER: importing modules from PKG/CArchive
+[PYI-31332:DEBUG] LOADER: extracted struct
+[PYI-31332:DEBUG] LOADER: running unmarshalled code object for module struct...
+[PYI-31332:DEBUG] LOADER: extracted pyimod01_archive
+[PYI-31332:DEBUG] LOADER: running unmarshalled code object for module pyimod01_archive...
+[PYI-31332:DEBUG] LOADER: extracted pyimod02_importers
+[PYI-31332:DEBUG] LOADER: running unmarshalled code object for module pyimod02_importers...
+[PYI-31332:DEBUG] LOADER: extracted pyimod03_ctypes
+[PYI-31332:DEBUG] LOADER: running unmarshalled code object for module pyimod03_ctypes...
+[PYI-31332:DEBUG] LOADER: extracted pyimod04_pywin32
+[PYI-31332:DEBUG] LOADER: running unmarshalled code object for module pyimod04_pywin32...
+[PYI-31332:DEBUG] LOADER: looking for PYZ archive TOC entry...
+[PYI-31332:DEBUG] LOADER: path to PYZ archive stored into sys._pyinstaller_pyz...
+[PYI-31332:DEBUG] LOADER: running pyiboot01_bootstrap.py
+[PYI-31332:DEBUG] LOADER: running pyi_rth_inspect.py
+[PYI-31332:DEBUG] LOADER: running pyi_rth_pkgutil.py
+[PYI-31332:DEBUG] LOADER: running pyi_rth_multiprocessing.py
+[PYI-31332:DEBUG] LOADER: running pyi_rth_pyqt6.py
+[PYI-31332:DEBUG] LOADER: running pyi_rth_pkgres.py
+[PYI-31332:DEBUG] LOADER: running pyi_rth_setuptools.py
+[PYI-31332:DEBUG] LOADER: running pyi_rth_mplconfig.py
+[PYI-31332:DEBUG] LOADER: running pyi_rth__tkinter.py
+[PYI-31332:DEBUG] LOADER: running pyi_rth_nltk.py
+[PYI-31332:DEBUG] LOADER: running Simple_TTS_GUI.py
+Traceback (most recent call last):
+  File "Simple_TTS_GUI.py", line 17, in <module>
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "torch\__init__.py", line 1187, in <module>
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "torch\functional.py", line 998, in <module>
+  File "torch\_jit_internal.py", line 876, in _overload
+  File "torch\_jit_internal.py", line 872, in _check_overload_body
+RuntimeError: Only `pass` statement or `...` can be the body of overload declaration:
+def hvp(func, inputs, v=None, create_graph=False, strict=False):
+    r"""Function that computes the dot product between the Hessian of a given scalar
+    function and a vector ``v`` at the point given by the inputs. <- Expecting `pass` or `...` here!
+
+Example usage of overload function:
+@torch.jit._overload
+def my_function(x: type0) -> type0: # decl 1
+    pass
+
+@torch.jit._overload
+def my_function(x: type1) -> type1: # decl 2
+    pass
+
+def my_function(x):                 # implementation
+    if isinstance(x, type0):
+        return x
+    elif isinstance(x, type1):
+        return x
+
+[PYI-31332:ERROR] Failed to execute script 'Simple_TTS_GUI' due to unhandled exception!
+[PYI-31332:DEBUG] LOADER: ERROR.
+[PYI-31332:DEBUG] LOADER: manually flushing stdout and stderr...
+[PYI-31332:DEBUG] LOADER: cleaning up Python interpreter...
+[PYI-31332:DEBUG] LOADER: unloading Python shared library...
+[PYI-31332:DEBUG] LOADER: end of process reached!
+[PYI-5428:DEBUG] LOADER: child process has finished - exiting the wait loop!
+[PYI-5428:DEBUG] LOADER: made it out of the waiting loop!
+[PYI-5428:DEBUG] LOADER: waiting 250 ms in case we receive WM_QUERYENDSESSION...
+[PYI-5428:DEBUG] LOADER: waited 56 ms / 250 ms...
+[PYI-5428:DEBUG] LOADER: waited 121 ms / 250 ms...
+[PYI-5428:DEBUG] LOADER: waited 184 ms / 250 ms...
+[PYI-5428:DEBUG] LOADER: waited 249 ms / 250 ms...
+[PYI-5428:DEBUG] LOADER: waited 310 ms / 250 ms...
+[PYI-5428:DEBUG] LOADER: done waiting for WM_QUERYENDSESSION - timed-out!
+[PYI-5428:DEBUG] LOADER: retrieving process exit code and performing cleanup...
+[PYI-5428:DEBUG] LOADER: child process exited (return code: 1)
+[PYI-5428:DEBUG] LOADER: performing cleanup...
+[PYI-5428:DEBUG] LOADER: removing temporary directory: C:\Users\JF30LB\AppData\Local\Temp\_MEI54282
+[PYI-5428:DEBUG] LOADER: temporary directory C:\Users\JF30LB\AppData\Local\Temp\_MEI54282 was successfully removed.
+[PYI-5428:DEBUG] LOADER: end of process reached!
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist>
