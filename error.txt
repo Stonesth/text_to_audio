@@ -304,3 +304,260 @@ NameError: name '_C' is not defined
 [PYI-19364:DEBUG] LOADER: end of process reached!
 
 C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist>
+
+
+
+J'ai tout de même des erreurs :
+build_windows.bat
+Compilation de Simple_TTS_GUI pour Windows
+Nettoyage des fichiers temporaires...
+Installation des d├⌐pendances...
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: pyinstaller in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (6.3.0)
+Requirement already satisfied: setuptools>=42.0.0 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from pyinstaller) (75.8.2)
+Requirement already satisfied: altgraph in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from pyinstaller) (0.17.4)
+Requirement already satisfied: pyinstaller-hooks-contrib>=2021.4 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from pyinstaller) (2025.1)
+Requirement already satisfied: packaging>=22.0 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from pyinstaller) (24.2)
+Requirement already satisfied: pefile>=2022.5.30 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from pyinstaller) (2024.8.26)
+Requirement already satisfied: pywin32-ctypes>=0.2.1 in c:\users\jf30lb\appdata\roaming\python\python310\site-packages (from pyinstaller) (0.2.3)
+Compilation de l'application...
+329 INFO: PyInstaller: 6.11.1, contrib hooks: 2024.11
+329 INFO: Python: 3.12.4
+376 INFO: Platform: Windows-11-10.0.22631-SP0
+392 INFO: Python environment: C:\Users\JF30LB\AppData\Local\Programs\Python\Python312
+455 WARNING: collect_data_files - skipping data collection for module 'PyQt6' as it is not a package.
+455 WARNING: collect_dynamic_libs - skipping library collection for module 'PyQt6' as it is not a package.
+455 INFO: Module search paths (PYTHONPATH):
+['C:\\Users\\JF30LB\\AppData\\Local\\Programs\\Python\\Python312\\Scripts\\pyinstaller.exe',
+ 'C:\\Users\\JF30LB\\AppData\\Local\\Programs\\Python\\Python312\\python312.zip',
+ 'C:\\Users\\JF30LB\\AppData\\Local\\Programs\\Python\\Python312\\DLLs',
+ 'C:\\Users\\JF30LB\\AppData\\Local\\Programs\\Python\\Python312\\Lib',
+ 'C:\\Users\\JF30LB\\AppData\\Local\\Programs\\Python\\Python312',
+ 'C:\\Users\\JF30LB\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages',
+ 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio']
+1150 INFO: Appending 'datas' from .spec
+1189 INFO: checking Analysis
+1190 INFO: Building Analysis because Analysis-00.toc is non existent
+1190 INFO: Running Analysis Analysis-00.toc
+1191 INFO: Target bytecode optimization level: 0
+1191 INFO: Initializing module dependency graph...
+1193 INFO: Initializing module graph hook caches...
+1261 INFO: Analyzing base_library.zip ...
+2459 INFO: Processing standard module hook 'hook-encodings.py' from 'C:\\Users\\JF30LB\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\PyInstaller\\hooks'
+5493 INFO: Processing standard module hook 'hook-pickle.py' from 'C:\\Users\\JF30LB\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\PyInstaller\\hooks'
+7740 INFO: Processing standard module hook 'hook-heapq.py' from 'C:\\Users\\JF30LB\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\PyInstaller\\hooks'
+10550 INFO: Caching module dependency graph...
+10612 INFO: Looking for Python shared library...
+10612 INFO: Using Python shared library: C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\python312.dll
+10612 INFO: Analyzing C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.py
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.py:14: SyntaxWarning: invalid escape sequence '\('
+  warnings.filterwarnings('ignore', message="sipPyTypeDict\(\) is deprecated")
+10769 INFO: Analyzing hidden import 'PyQt6.QtWidgets'
+10769 ERROR: Hidden import 'PyQt6.QtWidgets' not found
+10769 INFO: Analyzing hidden import 'PyQt6.QtCore'
+10769 ERROR: Hidden import 'PyQt6.QtCore' not found
+10769 INFO: Analyzing hidden import 'PyQt6.QtGui'
+10769 ERROR: Hidden import 'PyQt6.QtGui' not found
+10769 INFO: Analyzing hidden import 'PyQt6.uic'
+10769 ERROR: Hidden import 'PyQt6.uic' not found
+10769 INFO: Analyzing hidden import 'PyQt6.sip'
+10769 ERROR: Hidden import 'PyQt6.sip' not found
+10769 INFO: Analyzing hidden import 'sip'
+10769 ERROR: Hidden import 'sip' not found
+10769 INFO: Analyzing hidden import 'PyQt6.QtSvg'
+10769 ERROR: Hidden import 'PyQt6.QtSvg' not found
+10769 INFO: Analyzing hidden import 'PyQt6.QtPrintSupport'
+10769 ERROR: Hidden import 'PyQt6.QtPrintSupport' not found
+10769 INFO: Analyzing hidden import 'PyQt6.lupdate'
+10769 ERROR: Hidden import 'PyQt6.lupdate' not found
+10769 INFO: Analyzing hidden import 'PyQt6.designer_source'
+10769 ERROR: Hidden import 'PyQt6.designer_source' not found
+10769 INFO: Analyzing hidden import 'torch._C'
+10769 ERROR: Hidden import 'torch._C' not found
+10769 INFO: Analyzing hidden import 'torch.serialization'
+10769 ERROR: Hidden import 'torch.serialization' not found
+10769 INFO: Analyzing hidden import 'torch.nn'
+10769 ERROR: Hidden import 'torch.nn' not found
+10769 INFO: Analyzing hidden import 'torch.nn.functional'
+10769 ERROR: Hidden import 'torch.nn.functional' not found
+10769 INFO: Analyzing hidden import 'torch.optim'
+10769 ERROR: Hidden import 'torch.optim' not found
+10769 INFO: Analyzing hidden import 'torch.utils'
+10769 ERROR: Hidden import 'torch.utils' not found
+10769 INFO: Analyzing hidden import 'torch.utils.data'
+10769 ERROR: Hidden import 'torch.utils.data' not found
+10769 INFO: Analyzing hidden import 'torchaudio'
+10769 ERROR: Hidden import 'torchaudio' not found
+10769 INFO: Analyzing hidden import 'trainer'
+10769 ERROR: Hidden import 'trainer' not found
+10769 INFO: Processing module hooks (post-graph stage)...
+10785 INFO: Performing binary vs. data reclassification (523 entries)
+23798 INFO: Looking for ctypes DLLs
+23813 INFO: Analyzing run-time hooks ...
+23813 INFO: Including custom run-time hook 'c:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\torch_patch.py'
+23813 INFO: Including custom run-time hook 'c:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\tts_patch.py'
+23813 INFO: Including run-time hook 'pyi_rth_inspect.py' from 'C:\\Users\\JF30LB\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+23829 INFO: Looking for dynamic libraries
+23923 INFO: Extra DLL search directories (AddDllDirectory): []
+23923 INFO: Extra DLL search directories (PATH): []
+25680 WARNING: Library not found: could not resolve 'Qt63DAnimation.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\sceneparsers\\assimpsceneimport.dll'.
+25680 WARNING: Library not found: could not resolve 'Qt63DRender.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\sceneparsers\\assimpsceneimport.dll'.
+25680 WARNING: Library not found: could not resolve 'Qt63DExtras.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\sceneparsers\\assimpsceneimport.dll'.
+25680 WARNING: Library not found: could not resolve 'Qt63DCore.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\sceneparsers\\assimpsceneimport.dll'.
+25680 WARNING: Library not found: could not resolve 'Qt63DRender.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\geometryloaders\\defaultgeometryloader.dll'.
+25680 WARNING: Library not found: could not resolve 'Qt63DCore.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\geometryloaders\\defaultgeometryloader.dll'.
+25680 WARNING: Library not found: could not resolve 'Qt63DRender.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\geometryloaders\\gltfgeometryloader.dll'.
+25680 WARNING: Library not found: could not resolve 'Qt63DCore.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\geometryloaders\\gltfgeometryloader.dll'.
+25680 WARNING: Library not found: could not resolve 'Qt63DRender.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\sceneparsers\\gltfsceneexport.dll'.
+25680 WARNING: Library not found: could not resolve 'Qt63DExtras.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\sceneparsers\\gltfsceneexport.dll'.
+25680 WARNING: Library not found: could not resolve 'Qt63DCore.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\sceneparsers\\gltfsceneexport.dll'.
+25680 WARNING: Library not found: could not resolve 'Qt63DRender.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\sceneparsers\\gltfsceneimport.dll'.
+25680 WARNING: Library not found: could not resolve 'Qt63DExtras.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\sceneparsers\\gltfsceneimport.dll'.
+25680 WARNING: Library not found: could not resolve 'Qt63DCore.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\sceneparsers\\gltfsceneimport.dll'.
+25680 WARNING: Library not found: could not resolve 'Qt63DRender.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\renderers\\openglrenderer.dll'.
+25680 WARNING: Library not found: could not resolve 'Qt63DCore.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\renderers\\openglrenderer.dll'.
+25680 WARNING: Library not found: could not resolve 'LIBPQ.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\sqldrivers\\qsqlpsql.dll'.
+25695 WARNING: Library not found: could not resolve 'Qt6WebView.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\webview\\qtwebview_webengine.dll'.
+25695 WARNING: Library not found: could not resolve 'Qt6WebEngineQuick.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\webview\\qtwebview_webengine.dll'.
+25695 WARNING: Library not found: could not resolve 'Qt6WebViewQuick.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\webview\\qtwebview_webengine.dll'.
+25695 WARNING: Library not found: could not resolve 'Qt6WebEngineCore.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\webview\\qtwebview_webengine.dll'.
+25695 WARNING: Library not found: could not resolve 'Qt6QmlCompiler.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\qmllint\\quicklintplugin.dll'.
+25695 WARNING: Library not found: could not resolve 'Qt63DRender.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\renderers\\rhirenderer.dll'.
+25695 WARNING: Library not found: could not resolve 'Qt63DCore.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\Qt6\\plugins\\renderers\\rhirenderer.dll'.
+25726 INFO: Warnings written to C:\Users\JF30LB\Projects\python\Projects\text_to_audio\build\Simple_TTS_GUI\warn-Simple_TTS_GUI.txt
+25742 INFO: Graph cross-reference written to C:\Users\JF30LB\Projects\python\Projects\text_to_audio\build\Simple_TTS_GUI\xref-Simple_TTS_GUI.html
+25821 INFO: checking PYZ
+25821 INFO: Building PYZ because PYZ-00.toc is non existent
+25821 INFO: Building PYZ (ZlibArchive) C:\Users\JF30LB\Projects\python\Projects\text_to_audio\build\Simple_TTS_GUI\PYZ-00.pyz
+25993 INFO: Building PYZ (ZlibArchive) C:\Users\JF30LB\Projects\python\Projects\text_to_audio\build\Simple_TTS_GUI\PYZ-00.pyz completed successfully.
+26009 INFO: checking PKG
+26009 INFO: Building PKG because PKG-00.toc is non existent
+26009 INFO: Building PKG (CArchive) Simple_TTS_GUI.pkg
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.py:14: SyntaxWarning: invalid escape sequence '\('
+  warnings.filterwarnings('ignore', message="sipPyTypeDict\(\) is deprecated")
+44499 INFO: Building PKG (CArchive) Simple_TTS_GUI.pkg completed successfully.
+44499 INFO: Bootloader C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\site-packages\PyInstaller\bootloader\Windows-64bit-intel\run_d.exe
+44499 INFO: checking EXE
+44499 INFO: Building EXE because EXE-00.toc is non existent
+44499 INFO: Building EXE from EXE-00.toc
+44515 INFO: Copying bootloader EXE to C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI.exe
+44694 INFO: Copying icon to EXE
+44796 INFO: Copying 0 resources to EXE
+44796 INFO: Embedding manifest in EXE
+44910 INFO: Appending PKG archive to EXE
+45014 INFO: Fixing EXE headers
+59080 INFO: Building EXE from EXE-00.toc completed successfully.
+Compilation termin├⌐e avec succ├¿s
+L'ex├⌐cutable se trouve dans le dossier dist
+Copie des fichiers additionnels...
+C:style_nn.qss
+1 fichier(s) copié(s)
+C:README.md
+1 fichier(s) copié(s)
+C:LICENSE
+1 fichier(s) copié(s)
+Build termin├⌐
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>cd dist
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist>Simple_TTS_GUI.exe
+[PYI-6740:DEBUG] PyInstaller Bootloader 6.x
+[PYI-6740:DEBUG] LOADER: executable file: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI.exe
+[PYI-6740:DEBUG] LOADER: trying to load executable-embedded archive...
+[PYI-6740:DEBUG] LOADER: attempting to open archive C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI.exe
+[PYI-6740:DEBUG] LOADER: cookie found at offset 0x572E7A2
+[PYI-6740:DEBUG] LOADER: archive file: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI.exe
+[PYI-6740:DEBUG] LOADER: application has onefile semantics...
+[PYI-6740:DEBUG] LOADER: _PYI_ARCHIVE_FILE not defined...
+[PYI-6740:DEBUG] LOADER: process level = 0
+[PYI-6740:DEBUG] LOADER: this is parent process of onefile application.
+[PYI-6740:DEBUG] LOADER: initializing security descriptor for temporary directory...
+[PYI-6740:DEBUG] LOADER: initializing security descriptor from string: D:(A;;FA;;;S-1-12-1-3372074541-1255950760-650497703-3513431759)
+[PYI-6740:DEBUG] LOADER: creating temporary directory (runtime_tmpdir=(null))...
+[PYI-6740:DEBUG] LOADER: attempting to create temporary application directory under C:\Users\JF30LB\AppData\Local\Temp\
+[PYI-6740:DEBUG] LOADER: created temporary directory: C:\Users\JF30LB\AppData\Local\Temp\_MEI67402
+[PYI-6740:DEBUG] LOADER: application's top-level directory: C:\Users\JF30LB\AppData\Local\Temp\_MEI67402
+[PYI-6740:DEBUG] LOADER: calling SetDllDirectory: C:\Users\JF30LB\AppData\Local\Temp\_MEI67402
+[PYI-6740:DEBUG] LOADER: splash screen is unavailable.
+[PYI-6740:DEBUG] LOADER: extracting files to temporary directory...
+[PYI-6740:DEBUG] LOADER: setting _PYI_APPLICATION_HOME_DIR to C:\Users\JF30LB\AppData\Local\Temp\_MEI67402
+[PYI-6740:DEBUG] LOADER: starting the child process...
+[PYI-6740:DEBUG] LOADER: setting up child process...
+[PYI-6740:DEBUG] LOADER: child process started!
+[PYI-6740:DEBUG] LOADER: creating hidden window to capture system shutdown events...
+[PYI-36716:DEBUG] PyInstaller Bootloader 6.x
+[PYI-36716:DEBUG] LOADER: executable file: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI.exe
+[PYI-36716:DEBUG] LOADER: trying to load executable-embedded archive...
+[PYI-36716:DEBUG] LOADER: attempting to open archive C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI.exe
+[PYI-36716:DEBUG] LOADER: cookie found at offset 0x572E7A2
+[PYI-36716:DEBUG] LOADER: archive file: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI.exe
+[PYI-36716:DEBUG] LOADER: application has onefile semantics...
+[PYI-36716:DEBUG] LOADER: _PYI_ARCHIVE_FILE already defined: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI.exe
+[[PYI-36716:DEBUG] PLOADER: using same archive file as parent environment!
+YI-6740:DEBUG] LOADER: hidden window created!
+[PYI-36716:DEBUG] LOADER: process level = 1
+[PYI-6740:DEBUG] LOADER: entering the waiting loop...
+[PYI-36716:DEBUG] LOADER: this is child process of onefile application (main application process).
+[PYI-36716:DEBUG] LOADER: application's top-level directory: C:\Users\JF30LB\AppData\Local\Temp\_MEI67402
+[PYI-36716:DEBUG] LOADER: calling SetDllDirectory: C:\Users\JF30LB\AppData\Local\Temp\_MEI67402
+[PYI-36716:DEBUG] LOADER: splash screen is unavailable.
+[PYI-36716:DEBUG] LOADER: ucrtbase.dll found: C:\Users\JF30LB\AppData\Local\Temp\_MEI67402\ucrtbase.dll
+[PYI-36716:DEBUG] LOADER: loading Python shared library: C:\Users\JF30LB\AppData\Local\Temp\_MEI67402\python312.dll
+[PYI-36716:DEBUG] LOADER: loaded functions from Python shared library.
+[PYI-36716:DEBUG] LOADER: pre-initializing embedded python interpreter...
+[PYI-36716:DEBUG] LOADER: creating PyConfig structure...
+[PYI-36716:DEBUG] LOADER: initializing interpreter configuration...
+[PYI-36716:DEBUG] LOADER: setting program name...
+[PYI-36716:DEBUG] LOADER: setting python home path...
+[PYI-36716:DEBUG] LOADER: setting module search paths...
+[PYI-36716:DEBUG] LOADER: setting sys.argv...
+[PYI-36716:DEBUG] LOADER: applying run-time options...
+[PYI-36716:DEBUG] LOADER: starting embedded python interpreter...
+[PYI-36716:DEBUG] LOADER: setting sys._MEIPASS
+[PYI-36716:DEBUG] LOADER: importing modules from PKG/CArchive
+[PYI-36716:DEBUG] LOADER: extracted struct
+[PYI-36716:DEBUG] LOADER: running unmarshalled code object for module struct...
+[PYI-36716:DEBUG] LOADER: extracted pyimod01_archive
+[PYI-36716:DEBUG] LOADER: running unmarshalled code object for module pyimod01_archive...
+[PYI-36716:DEBUG] LOADER: extracted pyimod02_importers
+[PYI-36716:DEBUG] LOADER: running unmarshalled code object for module pyimod02_importers...
+[PYI-36716:DEBUG] LOADER: extracted pyimod03_ctypes
+[PYI-36716:DEBUG] LOADER: running unmarshalled code object for module pyimod03_ctypes...
+[PYI-36716:DEBUG] LOADER: extracted pyimod04_pywin32
+[PYI-36716:DEBUG] LOADER: running unmarshalled code object for module pyimod04_pywin32...
+[PYI-36716:DEBUG] LOADER: looking for PYZ archive TOC entry...
+[PYI-36716:DEBUG] LOADER: path to PYZ archive stored into sys._pyinstaller_pyz...
+[PYI-36716:DEBUG] LOADER: running pyiboot01_bootstrap.py
+[PYI-36716:DEBUG] LOADER: running torch_patch.py
+Impossible d'importer torch pour appliquer le patch JIT
+[PYI-36716:DEBUG] LOADER: running tts_patch.py
+Patch TTS appliquu00e9 avec succu00e8s
+[PYI-36716:DEBUG] LOADER: running pyi_rth_inspect.py
+[PYI-36716:DEBUG] LOADER: running Simple_TTS_GUI.py
+PyTorch non disponible, le patch ne sera pas appliquu00e9
+Traceback (most recent call last):
+  File "Simple_TTS_GUI.py", line 22, in <module>
+ModuleNotFoundError: No module named 'PyQt6.sip'
+[PYI-36716:ERROR] Failed to execute script 'Simple_TTS_GUI' due to unhandled exception!
+[PYI-36716:DEBUG] LOADER: ERROR.
+[PYI-36716:DEBUG] LOADER: manually flushing stdout and stderr...
+[PYI-36716:DEBUG] LOADER: cleaning up Python interpreter...
+[PYI-36716:DEBUG] LOADER: unloading Python shared library...
+[PYI-36716:DEBUG] LOADER: end of process reached!
+[PYI-6740:DEBUG] LOADER: child process has finished - exiting the wait loop!
+[PYI-6740:DEBUG] LOADER: made it out of the waiting loop!
+[PYI-6740:DEBUG] LOADER: waiting 250 ms in case we receive WM_QUERYENDSESSION...
+[PYI-6740:DEBUG] LOADER: waited 58 ms / 250 ms...
+[PYI-6740:DEBUG] LOADER: waited 119 ms / 250 ms...
+[PYI-6740:DEBUG] LOADER: waited 183 ms / 250 ms...
+[PYI-6740:DEBUG] LOADER: waited 247 ms / 250 ms...
+[PYI-6740:DEBUG] LOADER: waited 310 ms / 250 ms...
+[PYI-6740:DEBUG] LOADER: done waiting for WM_QUERYENDSESSION - timed-out!
+[PYI-6740:DEBUG] LOADER: retrieving process exit code and performing cleanup...
+[PYI-6740:DEBUG] LOADER: child process exited (return code: 1)
+[PYI-6740:DEBUG] LOADER: performing cleanup...
+[PYI-6740:DEBUG] LOADER: removing temporary directory: C:\Users\JF30LB\AppData\Local\Temp\_MEI67402
+[PYI-6740:DEBUG] LOADER: temporary directory C:\Users\JF30LB\AppData\Local\Temp\_MEI67402 was successfully removed.
+[PYI-6740:DEBUG] LOADER: end of process reached!
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist>
