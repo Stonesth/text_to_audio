@@ -15,12 +15,28 @@ rd /s /q dist 2>nul
 echo Installation des dépendances...
 pip install -U pip
 pip install pyinstaller
-pip install PyQt6
-pip install torch torchaudio
-pip install TTS
 
-:: Créer un fichier spec temporaire adapté à l'environnement actuel
-echo Création du fichier spec temporaire...
+:: Installation de PyQt6 et PyTorch avec des versions spécifiques
+echo Installation de PyQt6 et PyTorch...
+pip install PyQt6==6.4.2 PyQt6-sip==13.10.0
+pip install torch==2.0.1 torchaudio==2.0.1 --index-url https://download.pytorch.org/whl/cu118
+
+:: Installation de TTS avec l'option --no-deps pour éviter la compilation des dépendances
+echo Installation de TTS...
+pip install TTS==0.22.0 --no-deps
+
+:: Installation des dépendances essentielles de TTS sans compilation
+echo Installation des dépendances essentielles de TTS...
+pip install numpy==1.22.0 scipy==1.11.4 librosa==0.10.0 soundfile==0.12.1
+
+:: Créer les répertoires pour les fichiers VERSION si nécessaire
+echo Création des répertoires pour les fichiers VERSION...
+mkdir .\TTS 2>nul
+mkdir .\trainer 2>nul
+
+:: Créer les fichiers VERSION vides si nécessaire
+echo. > .\TTS\VERSION
+echo. > .\trainer\VERSION
 
 :: Compiler l'application
 echo Compilation de l'application...
@@ -28,8 +44,8 @@ pyinstaller --name="Simple_TTS_GUI" ^
             --onefile ^
             --debug ^
             --console ^
-            --add-data "venv_build\Lib\site-packages\TTS\VERSION;TTS" ^
-            --add-data "venv_build\Lib\site-packages\trainer\VERSION;trainer" ^
+            --add-data ".\TTS\VERSION;TTS" ^
+            --add-data ".\trainer\VERSION;trainer" ^
             --add-data "pytorch_2_6_patch.py;." ^
             --hidden-import PyQt6.QtWidgets ^
             --hidden-import PyQt6.QtCore ^
