@@ -8,6 +8,47 @@ import warnings
 from pathlib import Path
 from datetime import datetime
 
+# Désactivation des fonctionnalités JIT de PyTorch qui posent problème avec PyInstaller
+import builtins
+
+# Sauvegarder l'import original
+original_import = builtins.__import__
+
+# Créer un nouvel import qui intercepte les modules problématiques
+def custom_import(name, *args, **kwargs):
+    # Importer normalement
+    module = original_import(name, *args, **kwargs)
+    
+    # Si c'est torch, désactiver les fonctionnalités JIT
+    if name == 'torch':
+        # Désactiver le JIT si possible
+        if hasattr(module, '_jit_set_global_flags'):
+            module._jit_set_global_flags({"enabled": False})
+        
+        # Remplacer les fonctions JIT par des fonctions factices
+        if hasattr(module, 'jit'):
+            class DummyJit:
+                def __init__(self):
+                    pass
+                
+                def __getattr__(self, name):
+                    def dummy_func(*args, **kwargs):
+                        return None
+                    return dummy_func
+            
+            # Sauvegarder l'original au cas où
+            module._original_jit = module.jit
+            # Remplacer par notre version factice
+            module.jit = DummyJit()
+            
+            # Afficher un message de débogage
+            print("PyTorch JIT désactivé pour compatibilité avec PyInstaller")
+    
+    return module
+
+# Remplacer l'import par notre version
+builtins.__import__ = custom_import
+
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
                             QHBoxLayout, QLabel, QComboBox, QTextEdit, QPushButton,
                             QFileDialog, QCheckBox, QGraphicsOpacityEffect,
@@ -788,4 +829,3 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = MainWindow()
     sys.exit(app.exec())
-
