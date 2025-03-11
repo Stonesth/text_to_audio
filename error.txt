@@ -26,3 +26,26 @@ Mais quand je regarde ici :
 C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\PyQt6\\'
 j'ai un fichier qui ressemble :
 sip.cp310-win_amd64.pyd
+
+
+j'ai tout de même une erreur :
+pyinstaller --clean Simple_TTS_GUI.spec
+187 INFO: PyInstaller: 6.12.0, contrib hooks: 2025.1
+188 INFO: Python: 3.10.9
+195 INFO: Platform: Windows-10-10.0.22631-SP0
+196 INFO: Python environment: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
+198 INFO: Removing temporary files and cleaning cache in C:\Users\JF30LB\AppData\Local\pyinstaller
+1092 INFO: Module search paths (PYTHONPATH):
+['C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Scripts\\pyinstaller.exe',
+ 'C:\\Program Files\\Python310\\python310.zip',
+ 'C:\\Program Files\\Python310\\DLLs',
+ 'C:\\Program Files\\Python310\\lib',
+ 'C:\\Program Files\\Python310',
+ 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310',
+ 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages',
+ 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\setuptools\\_vendor',
+ 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio']
+1640 INFO: Appending 'binaries' from .spec
+1649 INFO: Appending 'datas' from .spec
+Unable to find 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\sip\\*.pyd' when adding binary and data files.
+(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> 
