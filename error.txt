@@ -1,0 +1,7 @@
+pyinstaller Simple_TTS_GUI.spec
+
+Simple_TTS_GUI.exe
+
+Traceback (most recent call last):
+  File "Simple_TTS_GUI.py", line 11, in <module>
+ModuleNotFoundError: No module named 'PyQt6.QtWidgets'
