@@ -41,8 +41,8 @@ a = Analysis(
         (os.path.join(base_path, 'PyQt6', '*.pyd'), 'PyQt6'),
         (os.path.join(base_path, 'PyQt6', 'uic', '**', '*'), 'PyQt6/uic'),
         (os.path.join(base_path, 'PyQt6', 'lupdate', '**', '*'), 'PyQt6/lupdate'),
-        # Ajouter explicitement le module sip
-        (os.path.join(base_path, 'PyQt6', '_sip.pyd'), 'PyQt6'),
+        # Ajouter explicitement le module sip avec le bon nom de fichier
+        (os.path.join(base_path, 'PyQt6', 'sip.cp310-win_amd64.pyd'), 'PyQt6'),
         (os.path.join(base_path, 'sip', '*.pyd'), 'sip'),
     ] + pyqt6_datas,
     hiddenimports=hiddenimports,
