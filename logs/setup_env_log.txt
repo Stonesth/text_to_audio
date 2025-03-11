@@ -1491,4 +1491,5 @@ TTS Synthesizer OK
 
 
 Au démarage de l'application j'ai ceci :
-python Simple_TTS_GUI.py C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\torchaudio\compliance\kaldi.py:22: UserWarning: Failed to initialize NumPy: module compiled against API version 0x10 but this version of numpy is 0xf . Check the section C-API incompatibility at the Troubleshooting ImportError section at https://numpy.org/devdocs/user/troubleshooting-importerror.html#c-api-incompatibility for indications on how to solve this problem . (Triggered internally at ..\torch\csrc\utils\tensor_numpy.cpp:84.) EPSILON = torch.tensor(torch.finfo(torch.float).eps)
+python Simple_TTS_GUI.py 
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\torchaudio\compliance\kaldi.py:22: UserWarning: Failed to initialize NumPy: module compiled against API version 0x10 but this version of numpy is 0xf . Check the section C-API incompatibility at the Troubleshooting ImportError section at https://numpy.org/devdocs/user/troubleshooting-importerror.html#c-api-incompatibility for indications on how to solve this problem . (Triggered internally at ..\torch\csrc\utils\tensor_numpy.cpp:84.) EPSILON = torch.tensor(torch.finfo(torch.float).eps)
