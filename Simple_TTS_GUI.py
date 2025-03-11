@@ -11,7 +11,7 @@ from datetime import datetime
 # Filtrer les avertissements de dépréciation
 warnings.filterwarnings('ignore', category=UserWarning)
 warnings.filterwarnings('ignore', category=FutureWarning)
-warnings.filterwarnings('ignore', message="sipPyTypeDict\(\) is deprecated")
+warnings.filterwarnings('ignore', message="sipPyTypeDict() is deprecated")
 
 # Appliquer le patch pour PyTorch 2.6+
 try:
