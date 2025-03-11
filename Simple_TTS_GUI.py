@@ -8,7 +8,16 @@ import warnings
 from pathlib import Path
 from datetime import datetime
 
+# Filtrer les avertissements de dépréciation
+warnings.filterwarnings('ignore', category=UserWarning)
+warnings.filterwarnings('ignore', category=FutureWarning)
+warnings.filterwarnings('ignore', message="sipPyTypeDict\(\) is deprecated")
 
+# Appliquer le patch pour PyTorch 2.6+
+try:
+    from pytorch_2_6_patch import *
+except ImportError:
+    print("Le patch PyTorch 2.6+ n'a pas pu être importé")
 
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
                             QHBoxLayout, QLabel, QComboBox, QTextEdit, QPushButton,

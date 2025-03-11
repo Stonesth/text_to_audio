@@ -11,9 +11,31 @@ class DummyModule:
             return None
         return dummy_func
 
+# Cru00e9er une classe factice pour torch._C
+class DummyVariableFunctionsClass:
+    def __getattr__(self, name):
+        def dummy_func(*args, **kwargs):
+            return None
+        return dummy_func
+
 # Remplacer torch.jit par notre module factice
 try:
     import torch
+    
+    # Patch pour _C manquant
+    if not hasattr(torch, '_C'):
+        print("Cru00e9ation d'un module _C factice pour torch")
+        torch._C = DummyModule()
+        
+        # Ajouter les attributs essentiels u00e0 _C
+        torch._C._VariableFunctions = DummyVariableFunctionsClass()
+        torch._C._nn = DummyModule()
+        torch._C._jit_internal = DummyModule()
+        torch._C.DisableTorchFunction = type('DisableTorchFunction', (), {'__enter__': lambda self: None, '__exit__': lambda self, *args: None})
+        torch._C.is_grad_enabled = lambda: False
+        torch._C.dispatch_autograd_not_implemented = lambda *args, **kwargs: None
+    
+    # Remplacer jit par notre module factice
     if hasattr(torch, 'jit'):
         # Sauvegarder certaines fonctions importantes si nu00e9cessaire
         torch._original_jit = torch.jit

@@ -36,8 +36,9 @@ if os.path.exists(pyqt6_path):
 
 # Modules PyTorch à exclure pour éviter les problèmes avec JIT
 excludes = [
-    'torch.jit',
-    'torch._jit_internal',
+    # Ne pas exclure ces modules car nous utilisons un patch pour les gérer
+    # 'torch.jit',
+    # 'torch._jit_internal',
     'torch.functional',
     'torch.autograd',
     'torch.cuda',
@@ -64,6 +65,22 @@ excludes = [
     'torch.nn.intrinsic.quantized',
 ]
 
+# Ajouter torch et torch._C aux imports cachés
+hiddenimports.extend([
+    'torch',
+    'torch._C',
+    'torch.serialization',
+    'torch.nn',
+    'torch.nn.functional',
+    'torch.optim',
+    'torch.utils',
+    'torch.utils.data',
+    'torchaudio',
+    'TTS',
+    'trainer',
+    'pytorch_2_6_patch',  # Ajouter notre patch pour PyTorch 2.6+
+])
+
 a = Analysis(
     ['Simple_TTS_GUI.py'],
     pathex=[],
@@ -80,11 +97,13 @@ a = Analysis(
         (os.path.join(base_path, 'PyQt6', 'lupdate', '**', '*'), 'PyQt6/lupdate'),
         # Ajouter explicitement le module sip avec le bon nom de fichier
         (os.path.join(base_path, 'PyQt6', 'sip.cp310-win_amd64.pyd'), 'PyQt6'),
+        # Ajouter notre patch pour PyTorch 2.6+
+        ('pytorch_2_6_patch.py', '.'),
     ] + pyqt6_datas + sip_files,  # Ajouter les fichiers sip trouvés
     hiddenimports=hiddenimports,
     hookspath=['c:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio'],
     hooksconfig={},
-    runtime_hooks=['c:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\torch_patch.py'],  # Ajouter notre patch PyTorch
+    runtime_hooks=['c:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\torch_patch.py', 'c:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\tts_patch.py'],  # Ajouter nos patches
     excludes=excludes,  # Exclure les modules PyTorch problématiques
     noarchive=False,
     optimize=0,

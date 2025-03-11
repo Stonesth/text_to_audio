@@ -1,43 +1,31 @@
 @echo off
-echo Création de l'environnement virtuel pour la compilation...
-python -m venv venv_build
-call venv_build\Scripts\activate.bat
+echo Compilation de Simple_TTS_GUI pour Windows
 
+:: Nettoyer les anciens fichiers de compilation
+echo Nettoyage des fichiers temporaires...
+rd /s /q build 2>nul
+rd /s /q dist 2>nul
+
+:: Installer les dépendances nécessaires pour PyInstaller
 echo Installation des dépendances...
-pip install -r requirements_build.txt
+pip install pyinstaller
 
-echo Nettoyage des anciens fichiers...
-rmdir /s /q dist build
-del /f /q *.spec
+:: Compiler l'application avec notre fichier spec
+echo Compilation de l'application...
+pyinstaller Simple_TTS_GUI.spec
 
-echo Compilation avec PyInstaller...
-pyinstaller --name="Simple_TTS" ^
-            --windowed ^
-            --onefile ^
-            --add-data "venv_build\Lib\site-packages\TTS\VERSION;TTS" ^
-            --add-data "venv_build\Lib\site-packages\TTS\config;TTS\config" ^
-            --add-data "venv_build\Lib\site-packages\TTS\utils;TTS\utils" ^
-            --hidden-import="scipy.special.cython_special" ^
-            --collect-all PyQt6 ^
-            --collect-all PyQt6.QtGui ^
-            Simple_TTS_GUI.py
+if %ERRORLEVEL% NEQ 0 (
+    echo Erreur lors de la compilation
+    exit /b %ERRORLEVEL%
+)
 
-echo Création du package de distribution...
-cd dist
-mkdir Simple_TTS
-copy Simple_TTS.exe Simple_TTS\
-copy ..\test_*.txt Simple_TTS\
-copy ..\README.txt Simple_TTS\
+echo Compilation terminée avec succès
+echo L'exécutable se trouve dans le dossier dist
 
-echo Création du fichier ZIP...
-powershell Compress-Archive -Path Simple_TTS -DestinationPath Simple_TTS_Windows.zip -Force
-rmdir /s /q Simple_TTS
+:: Copier les fichiers nécessaires dans le dossier dist
+echo Copie des fichiers additionnels...
+xcopy /y style_nn.qss dist\
+xcopy /y README.md dist\ 2>nul
+xcopy /y LICENSE dist\ 2>nul
 
-echo Nettoyage final...
-cd ..
-rmdir /s /q build
-del /f /q *.spec
-deactivate
-rmdir /s /q venv_build
-
-echo Compilation terminée ! Le fichier se trouve dans dist/Simple_TTS_Windows.zip
+echo Build terminé
