@@ -3763,3 +3763,37 @@ pyinstaller: error: argument -d/--debug: expected one argument
 Erreur lors de la compilation
 
 (venv_build) C:\Users\JF30LB\Projects\python\Projects\text_to_audio>
+
+
+build_windows.bat
+Compilation de Simple_TTS_GUI pour Windows
+Nettoyage des fichiers temporaires...
+Activation de l'environnement virtuel existant...
+Installation de PyInstaller...
+Requirement already satisfied: pyinstaller in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (6.12.0)
+Requirement already satisfied: setuptools>=42.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (75.8.2)
+Requirement already satisfied: altgraph in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (0.17.4)
+Requirement already satisfied: pyinstaller-hooks-contrib>=2025.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (2025.1)
+Requirement already satisfied: packaging>=22.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (23.1)
+Requirement already satisfied: pefile!=2024.8.26,>=2022.5.30 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (2023.2.7)
+Requirement already satisfied: pywin32-ctypes>=0.2.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (0.2.3)
+Compilation de l'application...
+usage: pyinstaller [-h] [-v] [-D] [-F] [--specpath DIR] [-n NAME] [--contents-directory CONTENTS_DIRECTORY]
+                   [--add-data SOURCE:DEST] [--add-binary SOURCE:DEST] [-p DIR] [--hidden-import MODULENAME]
+                   [--collect-submodules MODULENAME] [--collect-data MODULENAME] [--collect-binaries MODULENAME]
+                   [--collect-all MODULENAME] [--copy-metadata PACKAGENAME] [--recursive-copy-metadata PACKAGENAME]
+                   [--additional-hooks-dir HOOKSPATH] [--runtime-hook RUNTIME_HOOKS] [--exclude-module EXCLUDES]
+                   [--splash IMAGE_FILE] [-d {all,imports,bootloader,noarchive}] [--optimize LEVEL]
+                   [--python-option PYTHON_OPTION] [-s] [--noupx] [--upx-exclude FILE] [-c] [-w]
+                   [--hide-console {hide-early,hide-late,minimize-late,minimize-early}]
+                   [-i <FILE.ico or FILE.exe,ID or FILE.icns or Image or "NONE">] [--disable-windowed-traceback]
+                   [--version-file FILE] [--manifest <FILE or XML>] [-m <FILE or XML>] [-r RESOURCE] [--uac-admin]
+                   [--uac-uiaccess] [--argv-emulation] [--osx-bundle-identifier BUNDLE_IDENTIFIER]
+                   [--target-architecture ARCH] [--codesign-identity IDENTITY] [--osx-entitlements-file FILENAME]
+                   [--runtime-tmpdir PATH] [--bootloader-ignore-signals] [--distpath DIR] [--workpath WORKPATH] [-y]
+                   [--upx-dir UPX_DIR] [--clean] [--log-level LEVEL]
+                   scriptname [scriptname ...]
+pyinstaller: error: argument -d/--debug: expected one argument
+Erreur lors de la compilation
+
+(venv_py310) C:\Users\JF30LB\Projects\python\Projects\text_to_audio>
