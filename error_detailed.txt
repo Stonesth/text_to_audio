@@ -1,84 +1,34 @@
-import 'gruut.text_processor' # <_frozen_importlib_external.SourcelessFileLoader object at 0x000001995B2B66B0>
-Une erreur s'est produite: [Errno 2] No such file or directory: 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI210362\\gruut\\VERSION'
-Traceback (most recent call last):
-  File "debug_launcher.py", line 62, in <module>
+ File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI136282\TTS\tts\utils\text\phonemizers\ko_kr_phonemizer.py", line 3, in <module>
+    from TTS.tts.utils.text.korean.phonemizer import korean_text_to_phonemes
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "Simple_TTS_GUI.py", line 29, in <module>
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI136282\TTS\tts\utils\text\korean\phonemizer.py", line 1, in <module>
+    from jamo import hangul_to_jamo
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI210362\TTS\api.py", line 12, in <module>
-    from TTS.utils.synthesizer import Synthesizer
+  File "jamo\__init__.py", line 2, in <module>
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI210362\TTS\utils\synthesizer.py", line 11, in <module>
-    from TTS.tts.configs.vits_config import VitsConfig
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI210362\TTS\tts\configs\vits_config.py", line 5, in <module>
-    from TTS.tts.models.vits import VitsArgs, VitsAudioConfig
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI210362\TTS\tts\models\vits.py", line 33, in <module>
-    from TTS.tts.utils.text.characters import BaseCharacters, BaseVocabulary, _characters, _pad, _phonemes, _punctuations
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI210362\TTS\tts\utils\text\__init__.py", line 1, in <module>
-    from TTS.tts.utils.text.tokenizer import TTSTokenizer
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI210362\TTS\tts\utils\text\tokenizer.py", line 5, in <module>
-    from TTS.tts.utils.text.phonemizers import DEF_LANG_TO_PHONEMIZER, get_phonemizer_by_name
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI210362\TTS\tts\utils\text\phonemizers\__init__.py", line 5, in <module>
-    from TTS.tts.utils.text.phonemizers.gruut_wrapper import Gruut
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI210362\TTS\tts\utils\text\phonemizers\gruut_wrapper.py", line 4, in <module>
-    import gruut
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "gruut\__init__.py", line 20, in <module>
-  File "pathlib.py", line 1134, in read_text
-  File "pathlib.py", line 1119, in open
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI210362\\gruut\\VERSION'
+  File "jamo\jamo.py", line 24, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI136282\\jamo\\data\\U+11xx.json'
 
-# destroy gruut
-# destroy TTS.tts.utils.text.phonemizers.gruut_wrapper
+# destroy jamo.jamo
+# destroy jamo
+# destroy TTS.tts.utils.text.korean.phonemizer
+# destroy TTS.tts.utils.text.phonemizers.ko_kr_phonemizer
 # destroy TTS.tts.utils.text.phonemizers
 # destroy TTS.tts.utils.text.tokenizer
 # destroy TTS.tts.utils.text
