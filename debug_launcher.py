@@ -12,55 +12,57 @@ try:
     print("Application du patch pour torch.jit._builtins._register_builtin...")
     import torch
     
-    # Patch pour le problu00e8me de _register_builtin
+    # Patch pour le problème de _register_builtin
     if hasattr(torch, 'jit') and hasattr(torch.jit, '_builtins'):
         if not hasattr(torch.jit._builtins, '_register_builtin'):
-            # Cru00e9er une fonction factice qui ne fait rien
+            # Créer une fonction factice qui ne fait rien
             def dummy_register_builtin(op, qualified_op_name):
                 print(f"Appel de _register_builtin factice pour {qualified_op_name}")
                 return op  # Retourner l'opérateur pour éviter les erreurs
             
-            # Ajouter la fonction factice u00e0 torch.jit._builtins
+            # Ajouter la fonction factice à torch.jit._builtins
             torch.jit._builtins._register_builtin = dummy_register_builtin
-            print("Patch appliquu00e9 pour torch.jit._builtins._register_builtin")
+            print("Patch appliqué pour torch.jit._builtins._register_builtin")
     
     # Patch pour torch.ops.torchaudio
     if hasattr(torch, 'ops'):
         if not hasattr(torch.ops, 'torchaudio'):
-            # Cru00e9er un module factice pour torchaudio
+            # Créer un module factice pour torchaudio
             class DummyTorchaudioOps:
                 def __getattr__(self, name):
-                    print(f"Accu00e8s u00e0 torch.ops.torchaudio.{name} (factice)")
+                    print(f"Accès à torch.ops.torchaudio.{name} (factice)")
                     def dummy_op(*args, **kwargs):
                         return None
                     return dummy_op
             
-            # Ajouter le module factice u00e0 torch.ops
+            # Ajouter le module factice à torch.ops
             torch.ops.torchaudio = DummyTorchaudioOps()
-            print("Module factice cru00e9u00e9 pour torch.ops.torchaudio")
+            print("Module factice créé pour torch.ops.torchaudio")
         
         # Patch pour torch.ops.torchvision
         if not hasattr(torch.ops, 'torchvision'):
-            # Cru00e9er un module factice pour torchvision
+            # Créer un module factice pour torchvision
             class DummyTorchvisionOps:
                 def __getattr__(self, name):
-                    print(f"Accu00e8s u00e0 torch.ops.torchvision.{name} (factice)")
+                    print(f"Accès à torch.ops.torchvision.{name} (factice)")
                     def dummy_op(*args, **kwargs):
                         if name == '_cuda_version':
                             return 11700  # Version CUDA factice (11.7)
                         return None
                     return dummy_op
             
-            # Ajouter le module factice u00e0 torch.ops
+            # Ajouter le module factice à torch.ops
             torch.ops.torchvision = DummyTorchvisionOps()
-            print("Module factice cru00e9u00e9 pour torch.ops.torchvision")
+            print("Module factice créé pour torch.ops.torchvision")
     
-    # Patch pour k_diffusion
+    # Patch pour k_diffusion - utiliser le patch complet
     try:
-        import k_diffusion
-        print("k_diffusion importu00e9 avec succu00e8s")
+        # Importer le patch complet pour k_diffusion
+        import k_diffusion_patch
+        print("Patch complet pour k_diffusion appliqué")
     except ImportError:
-        # Cru00e9er un module factice pour k_diffusion si nu00e9cessaire
+        print("Le patch complet pour k_diffusion n'a pas pu être importé")
+        # Fallback - créer un module factice simple
         import types
         sys.modules['k_diffusion'] = types.ModuleType('k_diffusion')
         sys.modules['k_diffusion.sampling'] = types.ModuleType('k_diffusion.sampling')
@@ -71,28 +73,36 @@ try:
         
         sys.modules['k_diffusion.sampling'].sample_dpmpp_2m = dummy_sample
         sys.modules['k_diffusion.sampling'].sample_euler_ancestral = dummy_sample
-        print("Module factice cru00e9u00e9 pour k_diffusion")
+        print("Module factice simple créé pour k_diffusion")
+    
+    # Patch pour torchvision - utiliser le patch complet
+    try:
+        # Importer le patch complet pour torchvision
+        import torchvision_complete_patch
+        print("Patch complet pour torchvision appliqué")
+    except ImportError:
+        print("Le patch complet pour torchvision n'a pas pu être importé")
     
     # 2. Patch pour PyTorch 2.6+ et XTTS v2
     try:
         from pytorch_2_6_patch import *
-        print("Patch PyTorch 2.6+ appliquu00e9")
+        print("Patch PyTorch 2.6+ appliqué")
     except ImportError:
-        print("Le patch PyTorch 2.6+ n'a pas pu u00eatre importu00e9")
+        print("Le patch PyTorch 2.6+ n'a pas pu être importé")
     
     # 3. Importer torchaudio avec le patch
     try:
         import torchaudio
-        print("torchaudio importu00e9 avec succu00e8s")
+        print("torchaudio importé avec succès")
     except Exception as e:
         print(f"Erreur lors de l'import de torchaudio: {e}")
-        # Cru00e9er un module factice pour torchaudio si nu00e9cessaire
+        # Créer un module factice pour torchaudio si nécessaire
         import types
         sys.modules['torchaudio'] = types.ModuleType('torchaudio')
-        print("Module factice cru00e9u00e9 pour torchaudio")
+        print("Module factice créé pour torchaudio")
     
     # 4. Importer l'application principale
-    print("Du00e9marrage de l'application...")
+    print("Démarrage de l'application...")
     from Simple_TTS_GUI import *
     
     if __name__ == '__main__':
