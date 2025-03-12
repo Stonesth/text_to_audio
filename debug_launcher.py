@@ -18,7 +18,7 @@ try:
             # Cru00e9er une fonction factice qui ne fait rien
             def dummy_register_builtin(op, qualified_op_name):
                 print(f"Appel de _register_builtin factice pour {qualified_op_name}")
-                pass
+                return op  # Retourner l'opérateur pour éviter les erreurs
             
             # Ajouter la fonction factice u00e0 torch.jit._builtins
             torch.jit._builtins._register_builtin = dummy_register_builtin
@@ -38,6 +38,40 @@ try:
             # Ajouter le module factice u00e0 torch.ops
             torch.ops.torchaudio = DummyTorchaudioOps()
             print("Module factice cru00e9u00e9 pour torch.ops.torchaudio")
+        
+        # Patch pour torch.ops.torchvision
+        if not hasattr(torch.ops, 'torchvision'):
+            # Cru00e9er un module factice pour torchvision
+            class DummyTorchvisionOps:
+                def __getattr__(self, name):
+                    print(f"Accu00e8s u00e0 torch.ops.torchvision.{name} (factice)")
+                    def dummy_op(*args, **kwargs):
+                        if name == '_cuda_version':
+                            return 11700  # Version CUDA factice (11.7)
+                        return None
+                    return dummy_op
+            
+            # Ajouter le module factice u00e0 torch.ops
+            torch.ops.torchvision = DummyTorchvisionOps()
+            print("Module factice cru00e9u00e9 pour torch.ops.torchvision")
+    
+    # Patch pour k_diffusion
+    try:
+        import k_diffusion
+        print("k_diffusion importu00e9 avec succu00e8s")
+    except ImportError:
+        # Cru00e9er un module factice pour k_diffusion si nu00e9cessaire
+        import types
+        sys.modules['k_diffusion'] = types.ModuleType('k_diffusion')
+        sys.modules['k_diffusion.sampling'] = types.ModuleType('k_diffusion.sampling')
+        
+        # Ajouter les fonctions essentielles
+        def dummy_sample(*args, **kwargs):
+            return None
+        
+        sys.modules['k_diffusion.sampling'].sample_dpmpp_2m = dummy_sample
+        sys.modules['k_diffusion.sampling'].sample_euler_ancestral = dummy_sample
+        print("Module factice cru00e9u00e9 pour k_diffusion")
     
     # 2. Patch pour PyTorch 2.6+ et XTTS v2
     try:
@@ -67,7 +101,7 @@ try:
         sys.exit(app.exec())
         
 except Exception as e:
-    with open('error_detailed.log', 'w') as f:
+    with open('error_detailed.txt', 'w') as f:
         f.write(f"Exception: {str(e)}\n")
         f.write(traceback.format_exc())
     print(f"Une erreur s'est produite: {str(e)}")
