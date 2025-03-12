@@ -1,34 +1,81 @@
- File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI136282\TTS\tts\utils\text\phonemizers\ko_kr_phonemizer.py", line 3, in <module>
-    from TTS.tts.utils.text.korean.phonemizer import korean_text_to_phonemes
+Exception: torchaudio.__spec__ is None
+Traceback (most recent call last):
+  File "debug_launcher.py", line 62, in <module>
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI136282\TTS\tts\utils\text\korean\phonemizer.py", line 1, in <module>
-    from jamo import hangul_to_jamo
+  File "Simple_TTS_GUI.py", line 30, in <module>
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "jamo\__init__.py", line 2, in <module>
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI140722\TTS\tts\configs\xtts_config.py", line 5, in <module>
+    from TTS.tts.models.xtts import XttsArgs, XttsAudioConfig
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "jamo\jamo.py", line 24, in <module>
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI136282\\jamo\\data\\U+11xx.json'
-
-# destroy jamo.jamo
-# destroy jamo
-# destroy TTS.tts.utils.text.korean.phonemizer
-# destroy TTS.tts.utils.text.phonemizers.ko_kr_phonemizer
-# destroy TTS.tts.utils.text.phonemizers
-# destroy TTS.tts.utils.text.tokenizer
-# destroy TTS.tts.utils.text
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI140722\TTS\tts\models\xtts.py", line 11, in <module>
+    from TTS.tts.layers.tortoise.diffusion_decoder import DiffusionTts
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI140722\TTS\tts\layers\tortoise\diffusion_decoder.py", line 10, in <module>
+    from TTS.tts.layers.tortoise.arch_utils import AttentionBlock, normalization
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI140722\TTS\tts\layers\tortoise\arch_utils.py", line 10, in <module>
+    from transformers import LogitsWarper
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI140722\transformers\__init__.py", line 26, in <module>
+    from . import dependency_versions_check
+  File "<frozen importlib._bootstrap>", line 1078, in _handle_fromlist
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI140722\transformers\dependency_versions_check.py", line 16, in <module>
+    from .utils.versions import require_version, require_version_core
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI140722\transformers\utils\__init__.py", line 31, in <module>
+    from .generic import (
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI140722\transformers\utils\generic.py", line 29, in <module>
+    from .import_utils import is_flax_available, is_tf_available, is_torch_available, is_torch_fx_proxy
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI140722\transformers\utils\import_utils.py", line 132, in <module>
+    _torchaudio_available = _is_package_available("torchaudio")
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI140722\transformers\utils\import_utils.py", line 43, in _is_package_available
+    package_exists = importlib.util.find_spec(pkg_name) is not None
+  File "importlib\util.py", line 114, in find_spec
+ValueError: torchaudio.__spec__ is None
