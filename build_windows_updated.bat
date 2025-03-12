@@ -49,9 +49,16 @@ pyinstaller --name="Simple_TTS_GUI" ^
             --hidden-import torch.serialization ^
             --hidden-import torch.nn ^
             --hidden-import torch.nn.functional ^
+            --hidden-import torch.jit ^
+            --hidden-import torch.jit._builtins ^
+            --hidden-import torch.ops ^
             --hidden-import torchaudio ^
             --hidden-import torchaudio.functional ^
             --hidden-import torchaudio.functional.filtering ^
+            --hidden-import torchvision ^
+            --hidden-import torchvision.extension ^
+            --hidden-import k_diffusion ^
+            --hidden-import k_diffusion.sampling ^
             --hidden-import transformers ^
             --hidden-import transformers.utils ^
             --hidden-import transformers.utils.generic ^
@@ -67,16 +74,20 @@ pyinstaller --name="Simple_TTS_GUI" ^
             --hidden-import TTS.tts.utils.text.korean.phonemizer ^
             --hidden-import TTS.tts.layers.tortoise.diffusion_decoder ^
             --hidden-import TTS.tts.layers.tortoise.arch_utils ^
+            --hidden-import TTS.tts.layers.xtts.diffusion ^
             --hidden-import trainer ^
             --collect-all PyQt6 ^
             --collect-all TTS ^
             --collect-all torch ^
+            --collect-all torchvision ^
             --collect-all numpy ^
             --collect-all librosa ^
             --collect-all torchaudio ^
             --collect-all gruut ^
             --collect-all jamo ^
             --collect-all transformers ^
+            --collect-all k_diffusion ^
+            --runtime-hook torch_jit_patch.py ^
             --runtime-hook torch_patch.py ^
             --runtime-hook tts_patch.py ^
             --runtime-hook pyqt_patch.py ^
@@ -85,6 +96,7 @@ pyinstaller --name="Simple_TTS_GUI" ^
             --runtime-hook gruut_patch.py ^
             --runtime-hook jamo_patch.py ^
             --runtime-hook transformers_patch.py ^
+            --runtime-hook torchvision_patch.py ^
             debug_launcher.py
 
 if %ERRORLEVEL% NEQ 0 (
