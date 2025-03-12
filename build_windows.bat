@@ -14,6 +14,24 @@ call venv_py310\Scripts\activate.bat
 echo Installation de PyInstaller...
 pip install pyinstaller
 
+:: Créer un fichier de debug pour capturer les erreurs
+echo import sys > debug_launcher.py
+echo import traceback >> debug_launcher.py
+echo. >> debug_launcher.py
+echo try: >> debug_launcher.py
+echo     from Simple_TTS_GUI import * >> debug_launcher.py
+echo     if __name__ == '__main__': >> debug_launcher.py
+echo         app = QApplication(sys.argv) >> debug_launcher.py
+echo         window = MainWindow() >> debug_launcher.py
+echo         sys.exit(app.exec()) >> debug_launcher.py
+echo except Exception as e: >> debug_launcher.py
+echo     with open('error_detailed.log', 'w') as f: >> debug_launcher.py
+echo         f.write(f"Exception: {str(e)}\n") >> debug_launcher.py
+echo         f.write(traceback.format_exc()) >> debug_launcher.py
+echo     print(f"Une erreur s'est produite: {str(e)}") >> debug_launcher.py
+echo     print(traceback.format_exc()) >> debug_launcher.py
+echo     sys.exit(1) >> debug_launcher.py
+
 :: Compiler l'application en utilisant les chemins de l'environnement virtuel existant
 echo Compilation de l'application...
 pyinstaller --name="Simple_TTS_GUI" ^
@@ -23,6 +41,7 @@ pyinstaller --name="Simple_TTS_GUI" ^
             --add-data "venv_py310\Lib\site-packages\TTS\VERSION;TTS" ^
             --add-data "venv_py310\Lib\site-packages\trainer\VERSION;trainer" ^
             --add-data "pytorch_2_6_patch.py;." ^
+            --add-data "style_nn.qss;." ^
             --hidden-import PyQt6.QtWidgets ^
             --hidden-import PyQt6.QtCore ^
             --hidden-import PyQt6.QtGui ^
@@ -36,12 +55,18 @@ pyinstaller --name="Simple_TTS_GUI" ^
             --hidden-import torch.nn.functional ^
             --hidden-import torchaudio ^
             --hidden-import TTS ^
+            --hidden-import TTS.api ^
+            --hidden-import TTS.tts.configs.xtts_config ^
             --hidden-import trainer ^
             --collect-all PyQt6 ^
+            --collect-all TTS ^
+            --collect-all torch ^
+            --collect-all numpy ^
+            --collect-all librosa ^
             --runtime-hook torch_patch.py ^
             --runtime-hook tts_patch.py ^
             --runtime-hook pyqt_patch.py ^
-            Simple_TTS_GUI.py
+            debug_launcher.py
 
 if %ERRORLEVEL% NEQ 0 (
     echo Erreur lors de la compilation
