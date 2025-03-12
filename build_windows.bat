@@ -18,7 +18,7 @@ pip install pyinstaller
 echo Compilation de l'application...
 pyinstaller --name="Simple_TTS_GUI" ^
             --onefile ^
-            --debug ^
+            --debug=all ^
             --console ^
             --add-data "venv_py310\Lib\site-packages\TTS\VERSION;TTS" ^
             --add-data "venv_py310\Lib\site-packages\trainer\VERSION;trainer" ^
