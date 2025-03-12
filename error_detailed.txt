@@ -1,43 +1,141 @@
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>build_windows_updated.bat
-Compilation de Simple_TTS_GUI pour Windows
-Nettoyage des fichiers temporaires...
-Activation de l'environnement virtuel existant...
-Installation de PyInstaller...
-Requirement already satisfied: pyinstaller in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (6.12.0)
-Requirement already satisfied: setuptools>=42.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (75.8.2)
-Requirement already satisfied: altgraph in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (0.17.4)
-Requirement already satisfied: pyinstaller-hooks-contrib>=2025.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (2025.1)
-Requirement already satisfied: packaging>=22.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (23.1)
-Requirement already satisfied: pefile!=2024.8.26,>=2022.5.30 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (2023.2.7)
-Requirement already satisfied: pywin32-ctypes>=0.2.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (0.2.3)
-Pru00e9paration des fichiers de patch...
-Compilation de l'application...
-319 INFO: PyInstaller: 6.12.0, contrib hooks: 2025.1
-319 INFO: Python: 3.10.9
-335 INFO: Platform: Windows-10-10.0.22631-SP0
-335 INFO: Python environment: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
-335 INFO: wrote C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.spec
-2069 WARNING: Failed to collect submodules for 'torch.testing._internal.opinfo' because importing 'torch.testing._internal.opinfo' raised: ModuleNotFoundError: No module named 'expecttest'
-3214 WARNING: NOTE: Redirects are currently not supported in Windows or MacOs.
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\utils\hooks\__init__.py:666: UserWarning: The numpy.array_api submodule is still experimental. See NEP 47.
-  __import__(name)
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\torchaudio\compliance\kaldi.py:22: UserWarning: Failed to initialize NumPy: module compiled against API version 0x10 but this version of numpy is 0xf . Check the section C-API incompatibility at the Troubleshooting ImportError section at https://numpy.org/devdocs/user/troubleshooting-importerror.html#c-api-incompatibility for indications on how to solve this problem . (Triggered internally at ..\torch\csrc\utils\tensor_numpy.cpp:84.)
-  EPSILON = torch.tensor(torch.finfo(torch.float).eps)
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\transformers\trainer_pt_utils.py:211: UserWarning: Failed to initialize NumPy: module compiled against API version 0x10 but this version of numpy is 0xf . Check the section C-API incompatibility at the Troubleshooting ImportError section at https://numpy.org/devdocs/user/troubleshooting-importerror.html#c-api-incompatibility for indications on how to solve this problem . (Triggered internally at ..\torch\csrc\utils\tensor_numpy.cpp:84.)
-  device: Optional[torch.device] = torch.device("cuda"),
-26887 INFO: Module search paths (PYTHONPATH):
-['C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Scripts\\pyinstaller.exe',
- 'C:\\Program Files\\Python310\\python310.zip',
- 'C:\\Program Files\\Python310\\DLLs',
- 'C:\\Program Files\\Python310\\lib',
- 'C:\\Program Files\\Python310',
- 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310',
- 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages',
- 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\setuptools\\_vendor',
- 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio']
-27343 INFO: Appending 'binaries' from .spec
-27367 INFO: Appending 'datas' from .spec
-Unable to find 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Lib\\site-packages\\transformers\\VERSION' when adding binary and data files.
-Erreur lors de la compilation
-
-(venv_py310) C:\Users\JF30LB\Projects\python\Projects\text_to_audi
+Exception: 'function' object has no attribute '_register_builtin'
+Traceback (most recent call last):
+  File "debug_launcher.py", line 62, in <module>
+  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "Simple_TTS_GUI.py", line 30, in <module>
+  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI56922\TTS\tts\configs\xtts_config.py", line 5, in <module>
+    from TTS.tts.models.xtts import XttsArgs, XttsAudioConfig
+  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI56922\TTS\tts\models\xtts.py", line 12, in <module>
+    from TTS.tts.layers.xtts.diffusion import SpacedDiffusion, get_named_beta_schedule, space_timesteps
+  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI56922\TTS\tts\layers\xtts\diffusion.py", line 7, in <module>
+    from k_diffusion.sampling import sample_dpmpp_2m, sample_euler_ancestral
+  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "k_diffusion\__init__.py", line 1, in <module>
+  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "<frozen importlib._bootstrap>", line 1078, in _handle_fromlist
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "k_diffusion\config.py", line 8, in <module>
+  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "<frozen importlib._bootstrap>", line 1078, in _handle_fromlist
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "k_diffusion\layers.py", line 8, in <module>
+  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "<frozen importlib._bootstrap>", line 1078, in _handle_fromlist
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "k_diffusion\sampling.py", line 10, in <module>
+  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "<frozen importlib._bootstrap>", line 1078, in _handle_fromlist
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "k_diffusion\utils.py", line 13, in <module>
+  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI56922\torchvision\__init__.py", line 6, in <module>
+    from torchvision import datasets, io, models, ops, transforms, utils
+  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "<frozen importlib._bootstrap>", line 1078, in _handle_fromlist
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI56922\torchvision\datasets\__init__.py", line 1, in <module>
+    from ._optical_flow import FlyingChairs, FlyingThings3D, HD1K, KittiFlow, Sintel
+  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI56922\torchvision\datasets\_optical_flow.py", line 12, in <module>
+    from ..io.image import _read_png_16
+  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI56922\torchvision\io\__init__.py", line 8, in <module>
+    from ._load_gpu_decoder import _HAS_GPU_VIDEO_DECODER
+  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI56922\torchvision\io\_load_gpu_decoder.py", line 1, in <module>
+    from ..extension import _load_library
+  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI56922\torchvision\extension.py", line 107, in <module>
+    _check_cuda_version()
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI56922\torchvision\extension.py", line 67, in _check_cuda_version
+    _version = torch.ops.torchvision._cuda_version()
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI56922\torch\_ops.py", line 575, in __getattr__
+    torch.jit._builtins._register_builtin(op, qualified_op_name)
+AttributeError: 'function' object has no attribute '_register_builtin'
