@@ -1,9 +1,9 @@
-# Patch pour PyTorch lors de l'exu00e9cution avec PyInstaller
+# Patch pour PyTorch lors de l'exécution avec PyInstaller
 
-# Remplacer les fonctions problu00e9matiques de torch.jit
+# Remplacer les fonctions problématiques de torch.jit
 import sys
 
-# Cru00e9er un module factice pour torch.jit
+# Créer un module factice pour torch.jit
 class DummyModule:
     def __getattr__(self, name):
         # Retourner une fonction factice qui ne fait rien
@@ -11,7 +11,7 @@ class DummyModule:
             return None
         return dummy_func
 
-# Cru00e9er une classe factice pour torch._C
+# Créer une classe factice pour torch._C
 class DummyVariableFunctionsClass:
     def __getattr__(self, name):
         def dummy_func(*args, **kwargs):
@@ -24,10 +24,10 @@ try:
     
     # Patch pour _C manquant
     if not hasattr(torch, '_C'):
-        print("Cru00e9ation d'un module _C factice pour torch")
+        print("Création d'un module _C factice pour torch")
         torch._C = DummyModule()
         
-        # Ajouter les attributs essentiels u00e0 _C
+        # Ajouter les attributs essentiels à _C
         torch._C._VariableFunctions = DummyVariableFunctionsClass()
         torch._C._nn = DummyModule()
         torch._C._jit_internal = DummyModule()
@@ -35,19 +35,30 @@ try:
         torch._C.is_grad_enabled = lambda: False
         torch._C.dispatch_autograd_not_implemented = lambda *args, **kwargs: None
     
-    # Remplacer jit par notre module factice
+    # Patch pour le problème de _register_builtin
+    if hasattr(torch, 'jit') and hasattr(torch.jit, '_builtins'):
+        if not hasattr(torch.jit._builtins, '_register_builtin'):
+            # Créer une fonction factice qui ne fait rien
+            def dummy_register_builtin(op, qualified_op_name):
+                pass
+            
+            # Ajouter la fonction factice à torch.jit._builtins
+            torch.jit._builtins._register_builtin = dummy_register_builtin
+            print("Patch appliqué pour torch.jit._builtins._register_builtin")
+    
+    # Remplacer jit par notre module factice si nécessaire
     if hasattr(torch, 'jit'):
-        # Sauvegarder certaines fonctions importantes si nu00e9cessaire
+        # Sauvegarder certaines fonctions importantes si nécessaire
         torch._original_jit = torch.jit
         # Remplacer par notre module factice
         torch.jit = DummyModule()
         
-    # Remplacer _jit_internal si nu00e9cessaire
+    # Remplacer _jit_internal si nécessaire
     if hasattr(torch, '_jit_internal'):
         torch._original_jit_internal = torch._jit_internal
         torch._jit_internal = DummyModule()
         
-    # Du00e9sactiver les fonctionnalitu00e9s JIT
+    # Désactiver les fonctionnalités JIT
     if hasattr(torch, '_C'):
         if hasattr(torch._C, '_jit_set_profiling_mode'):
             torch._C._jit_set_profiling_mode(False)
@@ -62,7 +73,7 @@ try:
         if hasattr(torch._C, '_jit_set_nvfuser_enabled'):
             torch._C._jit_set_nvfuser_enabled(False)
             
-    print("PyTorch JIT a u00e9tu00e9 du00e9sactivu00e9 pour la compatibilitu00e9 avec PyInstaller")
+    print("PyTorch JIT a été désactivé pour la compatibilité avec PyInstaller")
     
 except ImportError:
     print("Impossible d'importer torch pour appliquer le patch JIT")
