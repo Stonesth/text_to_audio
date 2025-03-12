@@ -17,6 +17,13 @@ pip install pyinstaller
 :: Cru00e9er les fichiers de patch
 echo Pru00e9paration des fichiers de patch...
 
+:: Cru00e9er le fichier VERSION pour transformers s'il n'existe pas
+if not exist "venv_py310\Lib\site-packages\transformers\VERSION" (
+    echo Cru00e9ation du fichier VERSION pour transformers...
+    if not exist "venv_py310\Lib\site-packages\transformers" mkdir "venv_py310\Lib\site-packages\transformers"
+    echo 4.30.0 > "venv_py310\Lib\site-packages\transformers\VERSION"
+)
+
 :: Compiler l'application en utilisant les chemins de l'environnement virtuel existant
 echo Compilation de l'application...
 pyinstaller --name="Simple_TTS_GUI" ^
@@ -77,6 +84,7 @@ pyinstaller --name="Simple_TTS_GUI" ^
             --runtime-hook torchaudio_spec_patch.py ^
             --runtime-hook gruut_patch.py ^
             --runtime-hook jamo_patch.py ^
+            --runtime-hook transformers_patch.py ^
             debug_launcher.py
 
 if %ERRORLEVEL% NEQ 0 (
