@@ -1,0 +1,156 @@
+import 'numba' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3EDCB520>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: called with fullname='librosa.core.convert', target='librosa.core.convert'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: 'librosa.core.convert' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\core').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: fallback finder returned spec: ModuleSpec(name='librosa.core.convert', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F642C20>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\core\\convert.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\core\\convert.pyc'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: called with fullname='librosa.core.notation', target='librosa.core.notation'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: 'librosa.core.notation' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\core').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: fallback finder returned spec: ModuleSpec(name='librosa.core.notation', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F664D60>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\core\\notation.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\core\\notation.pyc'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: called with fullname='librosa.core.intervals', target='librosa.core.intervals'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: 'librosa.core.intervals' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\core').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: fallback finder returned spec: ModuleSpec(name='librosa.core.intervals', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F665660>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\core\\intervals.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\core\\intervals.pyc'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042): find_spec: called with fullname='msgpack', target='msgpack'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042): find_spec: 'msgpack' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042): find_spec: fallback finder returned spec: ModuleSpec(name='msgpack', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F665C30>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\msgpack\\__init__.pyc', submodule_search_locations=['C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\msgpack']).
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\msgpack\\__init__.pyc'
+PyInstaller: running path finder hook for path: 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\msgpack'
+PyInstaller: hook succeeded
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\msgpack): find_spec: called with fullname='msgpack.exceptions', target='msgpack.exceptions'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\msgpack): find_spec: 'msgpack.exceptions' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\msgpack): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\msgpack').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\msgpack): find_spec: fallback finder returned spec: ModuleSpec(name='msgpack.exceptions', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F665F90>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\msgpack\\exceptions.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\msgpack\\exceptions.pyc'
+import 'msgpack.exceptions' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F665F90>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\msgpack): find_spec: called with fullname='msgpack.ext', target='msgpack.ext'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\msgpack): find_spec: 'msgpack.ext' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\msgpack): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\msgpack').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\msgpack): find_spec: fallback finder returned spec: ModuleSpec(name='msgpack.ext', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F666170>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\msgpack\\ext.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\msgpack\\ext.pyc'
+import 'msgpack.ext' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F666170>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\msgpack): find_spec: called with fullname='msgpack._cmsgpack', target='msgpack._cmsgpack'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\msgpack): find_spec: 'msgpack._cmsgpack' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\msgpack): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\msgpack').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\msgpack): find_spec: fallback finder returned spec: ModuleSpec(name='msgpack._cmsgpack', loader=<_frozen_importlib_external.ExtensionFileLoader object at 0x0000019D3F666A40>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\msgpack\\_cmsgpack.cp310-win_amd64.pyd').
+# extension module 'msgpack._cmsgpack' loaded from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\msgpack\\_cmsgpack.cp310-win_amd64.pyd'
+# extension module 'msgpack._cmsgpack' executed from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\msgpack\\_cmsgpack.cp310-win_amd64.pyd'
+import 'msgpack._cmsgpack' # <_frozen_importlib_external.ExtensionFileLoader object at 0x0000019D3F666A40>
+import 'msgpack' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F665C30>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy): find_spec: called with fullname='numpy.typing', target='numpy.typing'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy): find_spec: 'numpy.typing' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy): find_spec: fallback finder returned spec: ModuleSpec(name='numpy.typing', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F667220>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\__init__.pyc', submodule_search_locations=['C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing']).
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\__init__.pyc'
+PyInstaller: running path finder hook for path: 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing'
+PyInstaller: hook succeeded
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: called with fullname='numpy.typing._nested_sequence', target='numpy.typing._nested_sequence'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: 'numpy.typing._nested_sequence' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: fallback finder returned spec: ModuleSpec(name='numpy.typing._nested_sequence', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F667850>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_nested_sequence.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_nested_sequence.pyc'
+import 'numpy.typing._nested_sequence' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F667850>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: called with fullname='numpy.typing._nbit', target='numpy.typing._nbit'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: 'numpy.typing._nbit' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: fallback finder returned spec: ModuleSpec(name='numpy.typing._nbit', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F667CD0>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_nbit.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_nbit.pyc'
+import 'numpy.typing._nbit' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F667CD0>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: called with fullname='numpy.typing._char_codes', target='numpy.typing._char_codes'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: 'numpy.typing._char_codes' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: fallback finder returned spec: ModuleSpec(name='numpy.typing._char_codes', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F667D60>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_char_codes.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_char_codes.pyc'
+import 'numpy.typing._char_codes' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F667D60>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: called with fullname='numpy.typing._scalars', target='numpy.typing._scalars'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: 'numpy.typing._scalars' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: fallback finder returned spec: ModuleSpec(name='numpy.typing._scalars', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F698580>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_scalars.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_scalars.pyc'
+import 'numpy.typing._scalars' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F698580>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: called with fullname='numpy.typing._shape', target='numpy.typing._shape'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: 'numpy.typing._shape' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: fallback finder returned spec: ModuleSpec(name='numpy.typing._shape', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6987F0>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_shape.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_shape.pyc'
+import 'numpy.typing._shape' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6987F0>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: called with fullname='numpy.typing._dtype_like', target='numpy.typing._dtype_like'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: 'numpy.typing._dtype_like' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: fallback finder returned spec: ModuleSpec(name='numpy.typing._dtype_like', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F698940>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_dtype_like.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_dtype_like.pyc'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: called with fullname='numpy.typing._generic_alias', target='numpy.typing._generic_alias'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: 'numpy.typing._generic_alias' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: fallback finder returned spec: ModuleSpec(name='numpy.typing._generic_alias', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F698BE0>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_generic_alias.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_generic_alias.pyc'
+import 'numpy.typing._generic_alias' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F698BE0>
+import 'numpy.typing._dtype_like' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F698940>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: called with fullname='numpy.typing._array_like', target='numpy.typing._array_like'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: 'numpy.typing._array_like' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: fallback finder returned spec: ModuleSpec(name='numpy.typing._array_like', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F69AC80>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_array_like.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_array_like.pyc'
+import 'numpy.typing._array_like' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F69AC80>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: called with fullname='numpy.typing._add_docstring', target='numpy.typing._add_docstring'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: 'numpy.typing._add_docstring' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\numpy\typing): find_spec: fallback finder returned spec: ModuleSpec(name='numpy.typing._add_docstring', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6ADA20>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_add_docstring.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\numpy\\typing\\_add_docstring.pyc'
+import 'numpy.typing._add_docstring' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6ADA20>
+import 'numpy.typing' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F667220>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa): find_spec: called with fullname='librosa._cache', target='librosa._cache'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa): find_spec: 'librosa._cache' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa): find_spec: fallback finder returned spec: ModuleSpec(name='librosa._cache', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6ADAB0>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\_cache.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\_cache.pyc'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042): find_spec: called with fullname='decorator', target='decorator'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042): find_spec: 'decorator' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042): find_spec: fallback finder returned spec: ModuleSpec(name='decorator', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6AD9F0>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\decorator.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\decorator.pyc'
+import 'decorator' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6AD9F0>
+import 'librosa._cache' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6ADAB0>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa): find_spec: called with fullname='librosa._typing', target='librosa._typing'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa): find_spec: 'librosa._typing' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa): find_spec: fallback finder returned spec: ModuleSpec(name='librosa._typing', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6AE3E0>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\_typing.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\_typing.pyc'
+import 'librosa._typing' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6AE3E0>
+import 'librosa.core.intervals' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F665660>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa): find_spec: called with fullname='librosa.util', target='librosa.util'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa): find_spec: 'librosa.util' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa): find_spec: fallback finder returned spec: ModuleSpec(name='librosa.util', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6AEE60>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\util\\__init__.pyc', submodule_search_locations=['C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\util']).
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\util\\__init__.pyc'
+import 'librosa.util' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6AEE60>
+PyInstaller: running path finder hook for path: 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\util'
+PyInstaller: hook succeeded
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\util): find_spec: called with fullname='librosa.util.exceptions', target='librosa.util.exceptions'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\util): find_spec: 'librosa.util.exceptions' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\util): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\util').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\util): find_spec: fallback finder returned spec: ModuleSpec(name='librosa.util.exceptions', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6AFDC0>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\util\\exceptions.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\util\\exceptions.pyc'
+import 'librosa.util.exceptions' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6AFDC0>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\util): find_spec: called with fullname='librosa.util.decorators', target='librosa.util.decorators'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\util): find_spec: 'librosa.util.decorators' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\util): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\util').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\util): find_spec: fallback finder returned spec: ModuleSpec(name='librosa.util.decorators', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6AFCD0>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\util\\decorators.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\util\\decorators.pyc'
+import 'librosa.util.decorators' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F6AFCD0>
+import 'librosa.core.notation' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F664D60>
+import 'librosa.core.convert' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F642C20>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: called with fullname='librosa.core.fft', target='librosa.core.fft'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: 'librosa.core.fft' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\core').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: fallback finder returned spec: ModuleSpec(name='librosa.core.fft', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F642EF0>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\core\\fft.pyc').
+# code object from 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\core\\fft.pyc'
+import 'librosa.core.fft' # <_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F642EF0>
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: called with fullname='librosa.core.audio', target='librosa.core.audio'
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: 'librosa.core.audio' not found in PYZ...
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: attempting resolve using fallback finder FileFinder('C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\core').
+PyiFrozenFinder(C:\Users\JF30LB\AppData\Local\Temp\_MEI165042\librosa\core): find_spec: fallback finder returned spec: ModuleSpec(name='librosa.core.audio', loader=<_frozen_importlib_external.SourcelessFileLoader object at 0x0000019D3F664B50>, origin='C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI165042\\librosa\\core\\audio.pyc').
