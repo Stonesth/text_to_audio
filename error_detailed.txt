@@ -1,6 +1,6 @@
 Exception: 'function' object has no attribute '_register_builtin'
 Traceback (most recent call last):
-  File "debug_launcher.py", line 5, in <module>
+  File "launcher_with_patches.py", line 28, in <module>
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
@@ -12,35 +12,35 @@ Traceback (most recent call last):
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI321082\TTS\api.py", line 12, in <module>
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI332802\TTS\api.py", line 12, in <module>
     from TTS.utils.synthesizer import Synthesizer
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI321082\TTS\utils\synthesizer.py", line 11, in <module>
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI332802\TTS\utils\synthesizer.py", line 11, in <module>
     from TTS.tts.configs.vits_config import VitsConfig
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI321082\TTS\tts\configs\vits_config.py", line 5, in <module>
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI332802\TTS\tts\configs\vits_config.py", line 5, in <module>
     from TTS.tts.models.vits import VitsArgs, VitsAudioConfig
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI321082\TTS\tts\models\vits.py", line 10, in <module>
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI332802\TTS\tts\models\vits.py", line 10, in <module>
     import torchaudio
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI321082\torchaudio\__init__.py", line 1, in <module>
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI332802\torchaudio\__init__.py", line 1, in <module>
     from torchaudio import (  # noqa: F401
   File "<frozen importlib._bootstrap>", line 1078, in _handle_fromlist
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
@@ -49,15 +49,15 @@ Traceback (most recent call last):
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI321082\torchaudio\functional\__init__.py", line 1, in <module>
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI332802\torchaudio\functional\__init__.py", line 1, in <module>
     from .filtering import (
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI321082\torchaudio\functional\filtering.py", line 935, in <module>
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI332802\torchaudio\functional\filtering.py", line 935, in <module>
     _lfilter_core_cpu_loop = torch.ops.torchaudio._lfilter_core_loop
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI321082\torch\_ops.py", line 575, in __getattr__
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI332802\torch\_ops.py", line 575, in __getattr__
     torch.jit._builtins._register_builtin(op, qualified_op_name)
 AttributeError: 'function' object has no attribute '_register_builtin'
