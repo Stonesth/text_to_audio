@@ -10,36 +10,12 @@ rd /s /q dist 2>nul
 echo Activation de l'environnement virtuel existant...
 call venv_py310\Scripts\activate.bat
 
-:: Installer PyInstaller dans l'environnement existant si nécessaire
+:: Installer PyInstaller dans l'environnement existant si nu00e9cessaire
 echo Installation de PyInstaller...
 pip install pyinstaller
 
-:: Créer un fichier de debug pour capturer les erreurs
-echo import sys > debug_launcher.py
-echo import traceback >> debug_launcher.py
-echo. >> debug_launcher.py
-echo try: >> debug_launcher.py
-echo     # Patch pour torch avant d'importer Simple_TTS_GUI >> debug_launcher.py
-echo     import torch >> debug_launcher.py
-echo     if hasattr(torch, 'jit') and hasattr(torch.jit, '_builtins'): >> debug_launcher.py
-echo         if not hasattr(torch.jit._builtins, '_register_builtin'): >> debug_launcher.py
-echo             def dummy_register_builtin(op, qualified_op_name): >> debug_launcher.py
-echo                 pass >> debug_launcher.py
-echo             torch.jit._builtins._register_builtin = dummy_register_builtin >> debug_launcher.py
-echo             print("Patch appliqué pour torch.jit._builtins._register_builtin") >> debug_launcher.py
-echo. >> debug_launcher.py
-echo     from Simple_TTS_GUI import * >> debug_launcher.py
-echo     if __name__ == '__main__': >> debug_launcher.py
-echo         app = QApplication(sys.argv) >> debug_launcher.py
-echo         window = MainWindow() >> debug_launcher.py
-echo         sys.exit(app.exec()) >> debug_launcher.py
-echo except Exception as e: >> debug_launcher.py
-echo     with open('error_detailed.log', 'w') as f: >> debug_launcher.py
-echo         f.write(f"Exception: {str(e)}\n") >> debug_launcher.py
-echo         f.write(traceback.format_exc()) >> debug_launcher.py
-echo     print(f"Une erreur s'est produite: {str(e)}") >> debug_launcher.py
-echo     print(traceback.format_exc()) >> debug_launcher.py
-echo     sys.exit(1) >> debug_launcher.py
+:: Cru00e9er les fichiers de patch
+echo Pru00e9paration des fichiers de patch...
 
 :: Compiler l'application en utilisant les chemins de l'environnement virtuel existant
 echo Compilation de l'application...
@@ -50,6 +26,7 @@ pyinstaller --name="Simple_TTS_GUI" ^
             --add-data "venv_py310\Lib\site-packages\TTS\VERSION;TTS" ^
             --add-data "venv_py310\Lib\site-packages\trainer\VERSION;trainer" ^
             --add-data "pytorch_2_6_patch.py;." ^
+            --add-data "torchaudio_patch.py;." ^
             --add-data "style_nn.qss;." ^
             --hidden-import PyQt6.QtWidgets ^
             --hidden-import PyQt6.QtCore ^
@@ -63,18 +40,23 @@ pyinstaller --name="Simple_TTS_GUI" ^
             --hidden-import torch.nn ^
             --hidden-import torch.nn.functional ^
             --hidden-import torchaudio ^
+            --hidden-import torchaudio.functional ^
+            --hidden-import torchaudio.functional.filtering ^
             --hidden-import TTS ^
             --hidden-import TTS.api ^
             --hidden-import TTS.tts.configs.xtts_config ^
+            --hidden-import TTS.tts.models.xtts ^
             --hidden-import trainer ^
             --collect-all PyQt6 ^
             --collect-all TTS ^
             --collect-all torch ^
             --collect-all numpy ^
             --collect-all librosa ^
+            --collect-all torchaudio ^
             --runtime-hook torch_patch.py ^
             --runtime-hook tts_patch.py ^
             --runtime-hook pyqt_patch.py ^
+            --runtime-hook torchaudio_patch.py ^
             debug_launcher.py
 
 if %ERRORLEVEL% NEQ 0 (
@@ -82,16 +64,16 @@ if %ERRORLEVEL% NEQ 0 (
     exit /b %ERRORLEVEL%
 )
 
-echo Compilation terminée avec succès
-echo L'exécutable se trouve dans le dossier dist
+echo Compilation terminu00e9e avec succu00e8s
+echo L'exu00e9cutable se trouve dans le dossier dist
 
-:: Copier les fichiers nécessaires dans le dossier dist
+:: Copier les fichiers nu00e9cessaires dans le dossier dist
 echo Copie des fichiers additionnels...
 xcopy /y style_nn.qss dist\
 xcopy /y README.md dist\ 2>nul
 xcopy /y LICENSE dist\ 2>nul
 
-:: Désactiver l'environnement virtuel
+:: Du00e9sactiver l'environnement virtuel
 deactivate
 
-echo Build terminé
+echo Build terminu00e9
