@@ -26,6 +26,7 @@ pyinstaller --name="Simple_TTS_GUI" ^
             --add-data "venv_py310\Lib\site-packages\TTS\VERSION;TTS" ^
             --add-data "venv_py310\Lib\site-packages\trainer\VERSION;trainer" ^
             --add-data "venv_py310\Lib\site-packages\gruut\VERSION;gruut" ^
+            --add-data "venv_py310\Lib\site-packages\jamo\data\*.json;jamo\data" ^
             --add-data "pytorch_2_6_patch.py;." ^
             --add-data "torchaudio_patch.py;." ^
             --add-data "style_nn.qss;." ^
@@ -44,11 +45,14 @@ pyinstaller --name="Simple_TTS_GUI" ^
             --hidden-import torchaudio.functional ^
             --hidden-import torchaudio.functional.filtering ^
             --hidden-import gruut ^
+            --hidden-import jamo ^
             --hidden-import TTS ^
             --hidden-import TTS.api ^
             --hidden-import TTS.tts.configs.xtts_config ^
             --hidden-import TTS.tts.models.xtts ^
             --hidden-import TTS.tts.utils.text.phonemizers.gruut_wrapper ^
+            --hidden-import TTS.tts.utils.text.phonemizers.ko_kr_phonemizer ^
+            --hidden-import TTS.tts.utils.text.korean.phonemizer ^
             --hidden-import trainer ^
             --collect-all PyQt6 ^
             --collect-all TTS ^
@@ -57,11 +61,13 @@ pyinstaller --name="Simple_TTS_GUI" ^
             --collect-all librosa ^
             --collect-all torchaudio ^
             --collect-all gruut ^
+            --collect-all jamo ^
             --runtime-hook torch_patch.py ^
             --runtime-hook tts_patch.py ^
             --runtime-hook pyqt_patch.py ^
             --runtime-hook torchaudio_patch.py ^
             --runtime-hook gruut_patch.py ^
+            --runtime-hook jamo_patch.py ^
             debug_launcher.py
 
 if %ERRORLEVEL% NEQ 0 (
