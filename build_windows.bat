@@ -1,51 +1,27 @@
 @echo off
 echo Compilation de Simple_TTS_GUI pour Windows
 
-:: Créer et activer un environnement virtuel
-echo Création de l'environnement virtuel...
-python -m venv venv_build
-call venv_build\Scripts\activate.bat
-
 :: Nettoyer les anciens fichiers de compilation
 echo Nettoyage des fichiers temporaires...
 rd /s /q build 2>nul
 rd /s /q dist 2>nul
 
-:: Installer les dépendances nécessaires
-echo Installation des dépendances...
-pip install -U pip
+:: Utiliser l'environnement virtuel existant
+echo Activation de l'environnement virtuel existant...
+call venv_py310\Scripts\activate.bat
+
+:: Installer PyInstaller dans l'environnement existant si nécessaire
+echo Installation de PyInstaller...
 pip install pyinstaller
 
-:: Installation de PyQt6 et PyTorch avec des versions spécifiques
-echo Installation de PyQt6 et PyTorch...
-pip install PyQt6==6.4.2 PyQt6-sip==13.10.0
-pip install torch==2.0.1 torchaudio==2.0.1 --index-url https://download.pytorch.org/whl/cu118
-
-:: Installation de TTS avec l'option --no-deps pour éviter la compilation des dépendances
-echo Installation de TTS...
-pip install TTS==0.22.0 --no-deps
-
-:: Installation des dépendances essentielles de TTS sans compilation
-echo Installation des dépendances essentielles de TTS...
-pip install numpy==1.22.0 scipy==1.11.4 librosa==0.10.0 soundfile==0.12.1
-
-:: Créer les répertoires pour les fichiers VERSION si nécessaire
-echo Création des répertoires pour les fichiers VERSION...
-mkdir .\TTS 2>nul
-mkdir .\trainer 2>nul
-
-:: Créer les fichiers VERSION vides si nécessaire
-echo. > .\TTS\VERSION
-echo. > .\trainer\VERSION
-
-:: Compiler l'application
+:: Compiler l'application en utilisant les chemins de l'environnement virtuel existant
 echo Compilation de l'application...
 pyinstaller --name="Simple_TTS_GUI" ^
             --onefile ^
             --debug ^
             --console ^
-            --add-data ".\TTS\VERSION;TTS" ^
-            --add-data ".\trainer\VERSION;trainer" ^
+            --add-data "venv_py310\Lib\site-packages\TTS\VERSION;TTS" ^
+            --add-data "venv_py310\Lib\site-packages\trainer\VERSION;trainer" ^
             --add-data "pytorch_2_6_patch.py;." ^
             --hidden-import PyQt6.QtWidgets ^
             --hidden-import PyQt6.QtCore ^
