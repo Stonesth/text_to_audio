@@ -10,15 +10,24 @@ rd /s /q dist 2>nul
 echo Activation de l'environnement virtuel existant...
 call venv_py310\Scripts\activate.bat
 
-:: Installer PyInstaller dans l'environnement existant si nécessaire
+:: Installer PyInstaller dans l'environnement existant si nu00e9cessaire
 echo Installation de PyInstaller...
 pip install pyinstaller
 
-:: Créer un fichier de debug pour capturer les erreurs
+:: Cru00e9er un fichier de debug pour capturer les erreurs
 echo import sys > debug_launcher.py
 echo import traceback >> debug_launcher.py
 echo. >> debug_launcher.py
 echo try: >> debug_launcher.py
+echo     # Patch pour torch avant d'importer Simple_TTS_GUI >> debug_launcher.py
+echo     import torch >> debug_launcher.py
+echo     if hasattr(torch, 'jit') and hasattr(torch.jit, '_builtins'): >> debug_launcher.py
+echo         if not hasattr(torch.jit._builtins, '_register_builtin'): >> debug_launcher.py
+echo             def dummy_register_builtin(op, qualified_op_name): >> debug_launcher.py
+echo                 pass >> debug_launcher.py
+echo             torch.jit._builtins._register_builtin = dummy_register_builtin >> debug_launcher.py
+echo             print("Patch appliquu00e9 pour torch.jit._builtins._register_builtin") >> debug_launcher.py
+echo. >> debug_launcher.py
 echo     from Simple_TTS_GUI import * >> debug_launcher.py
 echo     if __name__ == '__main__': >> debug_launcher.py
 echo         app = QApplication(sys.argv) >> debug_launcher.py
@@ -73,16 +82,16 @@ if %ERRORLEVEL% NEQ 0 (
     exit /b %ERRORLEVEL%
 )
 
-echo Compilation terminée avec succès
-echo L'exécutable se trouve dans le dossier dist
+echo Compilation terminu00e9e avec succu00e8s
+echo L'exu00e9cutable se trouve dans le dossier dist
 
-:: Copier les fichiers nécessaires dans le dossier dist
+:: Copier les fichiers nu00e9cessaires dans le dossier dist
 echo Copie des fichiers additionnels...
 xcopy /y style_nn.qss dist\
 xcopy /y README.md dist\ 2>nul
 xcopy /y LICENSE dist\ 2>nul
 
-:: Désactiver l'environnement virtuel
+:: Du00e9sactiver l'environnement virtuel
 deactivate
 
-echo Build terminé
+echo Build terminu00e9

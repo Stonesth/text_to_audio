@@ -1,27 +1,45 @@
-# Patch pour PyTorch 2.6+ qui ajoute les classes nu00e9cessaires u00e0 la liste des classes su00e9curisu00e9es
+# Patch pour PyTorch 2.6+ et XTTS v2
+import sys
+import os
 
 try:
     import torch
-    if hasattr(torch, 'serialization') and hasattr(torch.serialization, 'add_safe_globals'):
-        print("Application du patch pour PyTorch 2.6+...")
-        try:
-            # Importer les classes nu00e9cessaires pour XTTS
-            from TTS.tts.configs.xtts_config import XttsConfig
-            from TTS.tts.models.xtts import Xtts, XttsAudioConfig
-            from TTS.utils.audio import AudioProcessor
-            from TTS.config import load_config
-            from TTS.tts.configs.shared_configs import BaseTTSConfig
-            from TTS.utils.audio.torch_transforms import TorchSTFT
-            
-            # Ajouter les classes u00e0 la liste des classes su00e9curisu00e9es
-            torch.serialization.add_safe_globals([
-                XttsConfig, Xtts, XttsAudioConfig, AudioProcessor,
-                load_config, BaseTTSConfig, TorchSTFT
-            ])
-            print("Classes XTTS ajoutu00e9es u00e0 la liste des classes su00e9curisu00e9es pour PyTorch 2.6+")
-        except ImportError as e:
-            print(f"Impossible d'importer certaines classes XTTS: {e}")
+    import torch._C
+    from torch._C import _PyTorchPickleRegistryEntry
+    
+    # Vérifier si nous sommes sur PyTorch 2.6+
+    torch_version = torch.__version__.split('.')
+    is_torch_2_6_plus = int(torch_version[0]) >= 2 and int(torch_version[1]) >= 6
+    
+    if is_torch_2_6_plus:
+        print(f"Détection de PyTorch {torch.__version__}, application du patch pour XTTS v2")
+        
+        # Liste des classes à sécuriser pour le chargement
+        safe_classes = [
+            "XttsConfig",
+            "XttsAudioConfig",
+            "Xtts",
+            "AudioProcessor",
+            "load_config",
+            "BaseTTSConfig",
+            "TorchSTFT"
+        ]
+        
+        # Ajouter toutes les classes à la liste des classes sécurisées
+        for cls_name in safe_classes:
+            try:
+                registry_entry = _PyTorchPickleRegistryEntry(cls_name, "")
+                torch._C._add_docstring(registry_entry, f"Classe sécurisée pour XTTS: {cls_name}")
+                torch.register_pickle_registry_entry(registry_entry)
+                print(f"Classe ajoutée à la liste sécurisée: {cls_name}")
+            except Exception as e:
+                print(f"Erreur lors de l'ajout de {cls_name} à la liste sécurisée: {e}")
+        
+        print("Patch PyTorch 2.6+ appliqué avec succès")
+    else:
+        print(f"PyTorch {torch.__version__} détecté, pas besoin du patch pour XTTS v2")
+        
 except ImportError:
-    print("PyTorch non disponible, le patch ne sera pas appliquu00e9")
+    print("Impossible d'importer torch pour appliquer le patch PyTorch 2.6+")
 except Exception as e:
     print(f"Erreur lors de l'application du patch PyTorch 2.6+: {e}")
