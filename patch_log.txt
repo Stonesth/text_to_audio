@@ -142258,3 +142258,8 @@ ModuleNotFoundError: No module named 'torch'
 2025-03-13 15:41:11,100 - INFO - Import intercepté: types, fromlist=None, level=0
 2025-03-13 15:41:11,100 - INFO - Import intercepté: types, fromlist=None, level=0
 2025-03-13 15:41:11,100 - INFO - Import intercepté: types, fromlist=None, level=0
+2025-03-13 16:21:17,781 - INFO - === Démarrage du lanceur avec patchs ===
+2025-03-13 16:21:17,781 - INFO - Python version: 3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)]
+2025-03-13 16:21:17,781 - INFO - Chemin d'exécution: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py
+2025-03-13 16:21:17,781 - INFO - Importeur système remplacé avec succès
+2025-03-13 16:21:17,781 - INFO - Configuration de l'environnement...
