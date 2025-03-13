@@ -24,36 +24,31 @@ try:
             torch.jit._builtins._register_builtin = dummy_register_builtin
             print("Patch appliqué pour torch.jit._builtins._register_builtin")
     
-    # Patch pour torch.ops.torchaudio
-    if hasattr(torch, 'ops'):
-        if not hasattr(torch.ops, 'torchaudio'):
-            # Créer un module factice pour torchaudio
-            class DummyTorchaudioOps:
-                def __getattr__(self, name):
-                    print(f"Accès à torch.ops.torchaudio.{name} (factice)")
-                    def dummy_op(*args, **kwargs):
-                        return None
-                    return dummy_op
-            
-            # Ajouter le module factice à torch.ops
-            torch.ops.torchaudio = DummyTorchaudioOps()
-            print("Module factice créé pour torch.ops.torchaudio")
-        
-        # Patch pour torch.ops.torchvision
-        if not hasattr(torch.ops, 'torchvision'):
-            # Créer un module factice pour torchvision
-            class DummyTorchvisionOps:
-                def __getattr__(self, name):
-                    print(f"Accès à torch.ops.torchvision.{name} (factice)")
-                    def dummy_op(*args, **kwargs):
-                        if name == '_cuda_version':
-                            return 11700  # Version CUDA factice (11.7)
-                        return None
-                    return dummy_op
-            
-            # Ajouter le module factice à torch.ops
-            torch.ops.torchvision = DummyTorchvisionOps()
-            print("Module factice créé pour torch.ops.torchvision")
+    # Patch pour torchaudio - utiliser le patch complet
+    try:
+        # Importer le patch complet pour torchaudio
+        import torchaudio_complete_patch
+        print("Patch complet pour torchaudio appliqué")
+    except ImportError:
+        print("Le patch complet pour torchaudio n'a pas pu être importé")
+        # Fallback - patch simple pour torch.ops.torchaudio
+        if hasattr(torch, 'ops'):
+            if not hasattr(torch.ops, 'torchaudio'):
+                # Créer un module factice pour torchaudio
+                class DummyTorchaudioOps:
+                    def __init__(self):
+                        # Fonctions spécifiques requises par torchaudio.functional.filtering
+                        self._lfilter_core_loop = lambda *args, **kwargs: torch.zeros(1)
+                    
+                    def __getattr__(self, name):
+                        print(f"Accès à torch.ops.torchaudio.{name} (factice)")
+                        def dummy_op(*args, **kwargs):
+                            return None
+                        return dummy_op
+                
+                # Ajouter le module factice à torch.ops
+                torch.ops.torchaudio = DummyTorchaudioOps()
+                print("Module factice créé pour torch.ops.torchaudio")
     
     # Patch pour k_diffusion - utiliser le patch complet
     try:
