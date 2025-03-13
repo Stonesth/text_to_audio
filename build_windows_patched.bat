@@ -14,6 +14,16 @@ if errorlevel 1 (
     exit /b 1
 )
 
+:: Installer PyInstaller si necessaire
+echo Installation de PyInstaller dans l'environnement virtuel...
+%PYTHON_PATH% -m pip install pyinstaller
+if errorlevel 1 (
+    echo ERREUR: Impossible d'installer PyInstaller.
+    echo Verifiez votre connexion Internet et les permissions d'installation.
+    pause
+    exit /b 1
+)
+
 :: Definir les variables d'environnement
 set PYTHONPATH=%PYTHONPATH%;%CD%
 set PYSIMPLEGUI_VERBOSE=1
@@ -24,7 +34,7 @@ set SPEC_FILE=Simple_TTS_GUI_patched.spec
 
 :: Creer le fichier .spec personnalise
 echo Generation du fichier .spec: %SPEC_FILE%
-%PYTHON_PATH% -m pyinstaller --name Simple_TTS_GUI_patched ^^
+%PYTHON_PATH% -m PyInstaller --name Simple_TTS_GUI_patched ^^
     --onefile ^^
     --icon="./assets/icons/icon.ico" ^^
     --add-data="./assets;assets/" ^^
@@ -46,7 +56,7 @@ echo Modification de %SPEC_FILE% pour inclure les hooks de patch
 
 :: Compiler avec le fichier .spec modifie
 echo Compilation avec %SPEC_FILE%
-%PYTHON_PATH% -m pyinstaller %SPEC_FILE%
+%PYTHON_PATH% -m PyInstaller %SPEC_FILE%
 
 if errorlevel 1 (
     echo La compilation a echoue !
