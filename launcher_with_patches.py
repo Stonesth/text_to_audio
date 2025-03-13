@@ -102,13 +102,14 @@ class DummyTorchvisionOps:
 def patched_import(name, globals=None, locals=None, fromlist=(), level=0):
     logging.info(f"Import intercepté: {name}, fromlist={fromlist}, level={level}")
     
+    # Import nécessaire pour éviter l'erreur UnboundLocalError
+    import types
+    import sys
+    
     # Patch préventif pour torchaudio.functional.filtering
     if name == 'torchaudio.functional.filtering' or (name == 'torchaudio.functional' and 'filtering' in (fromlist or [])):
         logging.info("INTERCEPTION CRITIQUE: torchaudio.functional.filtering")
         logging.info("Création préventive d'un module factice pour torchaudio.functional.filtering")
-        
-        import types
-        import sys
         
         # Créer le module s'il n'existe pas
         if 'torchaudio' not in sys.modules:
@@ -135,7 +136,7 @@ def patched_import(name, globals=None, locals=None, fromlist=(), level=0):
                 logging.info(f"Appel de fonction torchaudio.functional.filtering factice")
                 try:
                     import torch
-                    return torch.zeros(1)
+                    return torch.zeros(1)  # Retourner un tenseur vide
                 except:
                     return None
             
