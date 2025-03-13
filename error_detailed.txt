@@ -1,4 +1,82 @@
-(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> python .\launcher_with_patches.py
-Une erreur s'est produite: local variable 'types' referenced before assignment
-Consultez le fichier de log 'patch_log.txt' pour plus de détails.
-(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> 
+build_windows_patched.bat
+Compilation de Simple TTS GUI (version patchee)
+Verification de Python 3.10...
+Python 3.10.9
+Generation du fichier .spec: Simple_TTS_GUI_patched.spec
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Scripts\python.exe: No module named pyinstaller
+'--onefile' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'--icon' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'--add-data' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'--add-data' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'--add-data' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'--hidden-import' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'--hidden-import' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'--hidden-import' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'--hidden-import' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'--hidden-import' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'--hidden-import' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'--hidden-import' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'--hidden-import' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+'--hidden-import' n’est pas reconnu en tant que commande interne
+ou externe, un programme exécutable ou un fichier de commandes.
+Traceback (most recent call last):
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 348, in <module>
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 106, in patched_import
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 106, in patched_import
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 106, in patched_import
+  [Previous line repeated 983 more times]
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 103, in patched_import
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 2216, in info
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 1539, in info
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 1684, in _log
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 1700, in handle
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 1762, in callHandlers
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 1028, in handle
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 1280, in emit
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 1160, in emit
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 999, in format
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 706, in format
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 675, in formatMessage
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 464, in format
+RecursionError: maximum recursion depth exceeded
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 546, in <module>
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 106, in patched_import
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 106, in patched_import
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 106, in patched_import
+  [Previous line repeated 983 more times]
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 103, in patched_import
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 2216, in info
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 1539, in info
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 1684, in _log
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 1700, in handle
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 1762, in callHandlers
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 1028, in handle
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 1280, in emit
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 1160, in emit
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 999, in format
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 706, in format
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 675, in formatMessage
+  File "C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Lib\logging\__init__.py", line 464, in format
+RecursionError: maximum recursion depth exceeded
+Modification de Simple_TTS_GUI_patched.spec pour inclure les hooks de patch
+Compilation avec Simple_TTS_GUI_patched.spec
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Scripts\python.exe: No module named pyinstaller
+La compilation a echoue !
+Appuyez sur une touche pour continuer...
