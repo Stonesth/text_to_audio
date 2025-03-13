@@ -100,11 +100,21 @@ class DummyTorchvisionOps:
 
 # Interception de l'import de torch et torchaudio
 def patched_import(name, globals=None, locals=None, fromlist=(), level=0):
-    logging.info(f"Import intercepté: {name}, fromlist={fromlist}, level={level}")
-    
-    # Import nécessaire pour éviter l'erreur UnboundLocalError
-    import types
+    # Éviter la récursion infinie lors de l'import de modules déjà traités
     import sys
+    import types
+    
+    # Éviter la récursion infinie pour les imports de logging
+    if name.startswith('logging'):
+        return original_import(name, globals, locals, fromlist, level)
+    
+    # Journalisation sans utiliser logging directement pour éviter la récursion
+    if name not in ['sys', 'types', 'traceback', 'os.path', 'os']:
+        try:
+            with open('patch_log.txt', 'a', encoding='utf-8') as log_file:
+                log_file.write(f"Import intercepté: {name}, fromlist={fromlist}, level={level}\n")
+        except Exception:
+            pass
     
     # Patch préventif pour torchaudio.functional.filtering
     if name == 'torchaudio.functional.filtering' or (name == 'torchaudio.functional' and 'filtering' in (fromlist or [])):
