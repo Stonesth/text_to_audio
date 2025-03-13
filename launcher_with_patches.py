@@ -104,17 +104,26 @@ def patched_import(name, globals=None, locals=None, fromlist=(), level=0):
     import sys
     import types
     
-    # Éviter la récursion infinie pour les imports de logging
-    if name.startswith('logging'):
+    # Conserver la trace des imports déjà traités pour éviter les boucles infinies
+    if not hasattr(patched_import, '_processed_imports'):
+        patched_import._processed_imports = set()
+    
+    # Créer une clé unique pour cet import
+    import_key = f"{name}:{','.join(fromlist) if fromlist else ''}:{level}"
+    
+    # Si cet import a déjà été traité ou s'il s'agit d'imports système critiques, utiliser l'import original
+    if import_key in patched_import._processed_imports or name in ['sys', 'types', 'logging', 'traceback', 'os', 'os.path']:
         return original_import(name, globals, locals, fromlist, level)
     
+    # Ajouter cet import à la liste des imports traités
+    patched_import._processed_imports.add(import_key)
+    
     # Journalisation sans utiliser logging directement pour éviter la récursion
-    if name not in ['sys', 'types', 'traceback', 'os.path', 'os']:
-        try:
-            with open('patch_log.txt', 'a', encoding='utf-8') as log_file:
-                log_file.write(f"Import intercepté: {name}, fromlist={fromlist}, level={level}\n")
-        except Exception:
-            pass
+    try:
+        with open('patch_log.txt', 'a', encoding='utf-8') as log_file:
+            log_file.write(f"Import intercepté: {name}, fromlist={fromlist}, level={level}\n")
+    except Exception:
+        pass
     
     # Patch préventif pour torchaudio.functional.filtering
     if name == 'torchaudio.functional.filtering' or (name == 'torchaudio.functional' and 'filtering' in (fromlist or [])):
