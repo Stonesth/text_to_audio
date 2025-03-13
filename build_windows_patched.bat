@@ -34,22 +34,14 @@ set SPEC_FILE=Simple_TTS_GUI_patched.spec
 
 :: Creer le fichier .spec personnalise
 echo Generation du fichier .spec: %SPEC_FILE%
-%PYTHON_PATH% -m PyInstaller --name Simple_TTS_GUI_patched ^^
-    --onefile ^^
-    --icon="./assets/icons/icon.ico" ^^
-    --add-data="./assets;assets/" ^^
-    --add-data="./pytorch_2_6_patch.py;." ^^
-    --add-data="./models;models/" ^^
-    --hidden-import=pyaudio ^^
-    --hidden-import=PyQt6 ^^
-    --hidden-import=PyQt6.sip ^^
-    --hidden-import=torch ^^
-    --hidden-import=torchaudio ^^
-    --hidden-import=torchaudio.functional.filtering ^^
-    --hidden-import=pysbd ^^
-    --hidden-import=numba ^^
-    --hidden-import=numba.core ^^
-    %MAIN_SCRIPT%
+
+:: Ecrire la commande dans un fichier temporaire et l'executer pour eviter les problemes de carets
+echo %PYTHON_PATH% -m PyInstaller --name Simple_TTS_GUI_patched --onefile --icon="./assets/icons/icon.ico" --add-data="./assets;assets/" --add-data="./pytorch_2_6_patch.py;." --add-data="./models;models/" --hidden-import=pyaudio --hidden-import=PyQt6 --hidden-import=PyQt6.sip --hidden-import=torch --hidden-import=torchaudio --hidden-import=torchaudio.functional.filtering --hidden-import=pysbd --hidden-import=numba --hidden-import=numba.core %MAIN_SCRIPT% > temp_cmd.bat
+
+call temp_cmd.bat
+
+:: Supprimer le fichier temporaire
+del temp_cmd.bat
 
 :: Modifier le fichier .spec pour inclure les hooks
 echo Modification de %SPEC_FILE% pour inclure les hooks de patch

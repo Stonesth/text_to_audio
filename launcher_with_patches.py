@@ -100,25 +100,17 @@ class DummyTorchvisionOps:
 
 # Interception de l'import de torch et torchaudio
 def patched_import(name, globals=None, locals=None, fromlist=(), level=0):
-    # Éviter la récursion infinie lors de l'import de modules déjà traités
+    # Import nécessaires
     import sys
-    import types
     
-    # Conserver la trace des imports déjà traités pour éviter les boucles infinies
-    if not hasattr(patched_import, '_processed_imports'):
-        patched_import._processed_imports = set()
+    # Liste des modules système à ne pas intercepter
+    system_modules = ['sys', 'types', 'traceback', 'os', 'os.path', 'logging', 'builtins', 'codecs', 'io']
     
-    # Créer une clé unique pour cet import
-    import_key = f"{name}:{','.join(fromlist) if fromlist else ''}:{level}"
-    
-    # Si cet import a déjà été traité ou s'il s'agit d'imports système critiques, utiliser l'import original
-    if import_key in patched_import._processed_imports or name in ['sys', 'types', 'logging', 'traceback', 'os', 'os.path']:
+    # Si c'est un module système ou une récursion, utiliser l'import original
+    if name in system_modules or name.startswith('logging') or name.startswith('_'):
         return original_import(name, globals, locals, fromlist, level)
     
-    # Ajouter cet import à la liste des imports traités
-    patched_import._processed_imports.add(import_key)
-    
-    # Journalisation sans utiliser logging directement pour éviter la récursion
+    # Journalisation directe sans logging pour éviter la récursion
     try:
         with open('patch_log.txt', 'a', encoding='utf-8') as log_file:
             log_file.write(f"Import intercepté: {name}, fromlist={fromlist}, level={level}\n")
