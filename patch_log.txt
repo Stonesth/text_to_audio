@@ -1,0 +1,188 @@
+2025-03-13 14:54:18,067 - INFO - === Démarrage du lanceur avec patchs ===
+2025-03-13 14:54:18,067 - INFO - Python version: 3.10.9 (tags/v3.10.9:1dd9be6, Dec  6 2022, 20:01:21) [MSC v.1934 64 bit (AMD64)]
+2025-03-13 14:54:18,068 - INFO - Chemin d'exécution: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py
+2025-03-13 14:54:18,068 - INFO - Importeur système remplacé avec succès
+2025-03-13 14:54:18,068 - INFO - Configuration de l'environnement...
+2025-03-13 14:54:18,068 - INFO - Import intercepté: torch, fromlist=None, level=0
+2025-03-13 14:54:18,069 - INFO - Import intercepté: _io, fromlist=[], level=0
+2025-03-13 14:54:18,069 - INFO - Import intercepté: math, fromlist=None, level=0
+2025-03-13 14:54:18,069 - INFO - Import intercepté: os, fromlist=None, level=0
+2025-03-13 14:54:18,069 - INFO - Import intercepté: sys, fromlist=None, level=0
+2025-03-13 14:54:18,069 - INFO - Import intercepté: platform, fromlist=None, level=0
+2025-03-13 14:54:18,070 - INFO - Import intercepté: _io, fromlist=[], level=0
+2025-03-13 14:54:18,071 - INFO - Import intercepté: collections, fromlist=None, level=0
+2025-03-13 14:54:18,071 - INFO - Import intercepté: os, fromlist=None, level=0
+2025-03-13 14:54:18,071 - INFO - Import intercepté: re, fromlist=None, level=0
+2025-03-13 14:54:18,071 - INFO - Import intercepté: sys, fromlist=None, level=0
+2025-03-13 14:54:18,071 - INFO - Import intercepté: subprocess, fromlist=None, level=0
+2025-03-13 14:54:18,071 - INFO - Import intercepté: _io, fromlist=[], level=0
+2025-03-13 14:54:18,072 - INFO - Import intercepté: builtins, fromlist=None, level=0
+2025-03-13 14:54:18,072 - INFO - Import intercepté: errno, fromlist=None, level=0
+2025-03-13 14:54:18,072 - INFO - Import intercepté: io, fromlist=None, level=0
+2025-03-13 14:54:18,072 - INFO - Import intercepté: os, fromlist=None, level=0
+2025-03-13 14:54:18,072 - INFO - Import intercepté: time, fromlist=None, level=0
+2025-03-13 14:54:18,072 - INFO - Import intercepté: signal, fromlist=None, level=0
+2025-03-13 14:54:18,073 - INFO - Import intercepté: _io, fromlist=[], level=0
+2025-03-13 14:54:18,073 - INFO - Import intercepté: _signal, fromlist=None, level=0
+2025-03-13 14:54:18,073 - INFO - Import intercepté: _signal, fromlist=('*',), level=0
+2025-03-13 14:54:18,073 - INFO - Import intercepté: enum, fromlist=('IntEnum',), level=0
+2025-03-13 14:54:18,074 - INFO - Import intercepté: sys, fromlist=None, level=0
+2025-03-13 14:54:18,074 - INFO - Import intercepté: threading, fromlist=None, level=0
+2025-03-13 14:54:18,074 - INFO - Import intercepté: warnings, fromlist=None, level=0
+2025-03-13 14:54:18,074 - INFO - Import intercepté: contextlib, fromlist=None, level=0
+2025-03-13 14:54:18,074 - INFO - Import intercepté: time, fromlist=('monotonic',), level=0
+2025-03-13 14:54:18,074 - INFO - Import intercepté: types, fromlist=None, level=0
+2025-03-13 14:54:18,074 - INFO - Import intercepté: fcntl, fromlist=None, level=0
+2025-03-13 14:54:18,074 - INFO - Import intercepté: msvcrt, fromlist=None, level=0
+2025-03-13 14:54:18,074 - INFO - Import intercepté: _winapi, fromlist=None, level=0
+2025-03-13 14:54:18,074 - INFO - Import intercepté: _winapi, fromlist=('CREATE_NEW_CONSOLE', 'CREATE_NEW_PROCESS_GROUP', 'STD_INPUT_HANDLE', 'STD_OUTPUT_HANDLE', 'STD_ERROR_HANDLE', 'SW_HIDE', 'STARTF_USESTDHANDLES', 'STARTF_USESHOWWINDOW', 'ABOVE_NORMAL_PRIORITY_CLASS', 'BELOW_NORMAL_PRIORITY_CLASS', 'HIGH_PRIORITY_CLASS', 'IDLE_PRIORITY_CLASS', 'NORMAL_PRIORITY_CLASS', 'REALTIME_PRIORITY_CLASS', 'CREATE_NO_WINDOW', 'DETACHED_PROCESS', 'CREATE_DEFAULT_ERROR_MODE', 'CREATE_BREAKAWAY_FROM_JOB'), level=0
+2025-03-13 14:54:18,074 - INFO - Import intercepté: functools, fromlist=None, level=0
+2025-03-13 14:54:18,074 - INFO - Import intercepté: itertools, fromlist=None, level=0
+2025-03-13 14:54:18,075 - INFO - Import intercepté: textwrap, fromlist=None, level=0
+2025-03-13 14:54:18,076 - INFO - Import intercepté: _io, fromlist=[], level=0
+2025-03-13 14:54:18,076 - INFO - Import intercepté: re, fromlist=None, level=0
+2025-03-13 14:54:18,077 - INFO - Import intercepté: ctypes, fromlist=None, level=0
+2025-03-13 14:54:18,077 - INFO - Import intercepté: _io, fromlist=[], level=0
+2025-03-13 14:54:18,078 - INFO - Import intercepté: os, fromlist=None, level=0
+2025-03-13 14:54:18,078 - INFO - Import intercepté: sys, fromlist=None, level=0
+2025-03-13 14:54:18,078 - INFO - Import intercepté: types, fromlist=None, level=0
+2025-03-13 14:54:18,078 - INFO - Import intercepté: _ctypes, fromlist=('Union', 'Structure', 'Array'), level=0
+2025-03-13 14:54:18,086 - INFO - Import intercepté: _ctypes, fromlist=('_Pointer',), level=0
+2025-03-13 14:54:18,086 - INFO - Import intercepté: _ctypes, fromlist=('CFuncPtr',), level=0
+2025-03-13 14:54:18,086 - INFO - Import intercepté: _ctypes, fromlist=('__version__',), level=0
+2025-03-13 14:54:18,086 - INFO - Import intercepté: _ctypes, fromlist=('RTLD_LOCAL', 'RTLD_GLOBAL'), level=0
+2025-03-13 14:54:18,086 - INFO - Import intercepté: _ctypes, fromlist=('ArgumentError',), level=0
+2025-03-13 14:54:18,086 - INFO - Import intercepté: struct, fromlist=('calcsize',), level=0
+2025-03-13 14:54:18,086 - INFO - Import intercepté: _io, fromlist=[], level=0
+2025-03-13 14:54:18,087 - INFO - Import intercepté: _struct, fromlist=('*',), level=0
+2025-03-13 14:54:18,087 - INFO - Import intercepté: _struct, fromlist=('_clearcache',), level=0
+2025-03-13 14:54:18,087 - INFO - Import intercepté: _struct, fromlist=('__doc__',), level=0
+2025-03-13 14:54:18,087 - INFO - Import intercepté: _ctypes, fromlist=('FormatError',), level=0
+2025-03-13 14:54:18,087 - INFO - Import intercepté: _ctypes, fromlist=('FUNCFLAG_CDECL', 'FUNCFLAG_PYTHONAPI', 'FUNCFLAG_USE_ERRNO', 'FUNCFLAG_USE_LASTERROR'), level=0
+2025-03-13 14:54:18,087 - INFO - Import intercepté: _ctypes, fromlist=('LoadLibrary',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: _ctypes, fromlist=('FUNCFLAG_STDCALL',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: _ctypes, fromlist=('sizeof', 'byref', 'addressof', 'alignment', 'resize'), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: _ctypes, fromlist=('get_errno', 'set_errno'), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: _ctypes, fromlist=('_SimpleCData',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: struct, fromlist=('calcsize',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: struct, fromlist=('calcsize',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: struct, fromlist=('calcsize',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: struct, fromlist=('calcsize',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: struct, fromlist=('calcsize',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: struct, fromlist=('calcsize',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: struct, fromlist=('calcsize',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: struct, fromlist=('calcsize',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: struct, fromlist=('calcsize',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: struct, fromlist=('calcsize',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: struct, fromlist=('calcsize',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: struct, fromlist=('calcsize',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: struct, fromlist=('calcsize',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: struct, fromlist=('calcsize',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: _ctypes, fromlist=('POINTER', 'pointer', '_pointer_type_cache'), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: _ctypes, fromlist=('_check_HRESULT', '_SimpleCData'), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: nt, fromlist=None, level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: nt, fromlist=None, level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: _ctypes, fromlist=('get_last_error', 'set_last_error'), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: _ctypes, fromlist=('_memmove_addr', '_memset_addr', '_string_at_addr', '_cast_addr'), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: _ctypes, fromlist=('_wstring_at_addr',), level=0
+2025-03-13 14:54:18,088 - INFO - Import intercepté: ctypes._endian, fromlist=('BigEndianStructure', 'LittleEndianStructure'), level=0
+2025-03-13 14:54:18,089 - INFO - Import intercepté: _io, fromlist=[], level=0
+2025-03-13 14:54:18,089 - INFO - Import intercepté: sys, fromlist=None, level=0
+2025-03-13 14:54:18,089 - INFO - Import intercepté: ctypes, fromlist=('*',), level=0
+2025-03-13 14:54:18,089 - INFO - Import intercepté: inspect, fromlist=None, level=0
+2025-03-13 14:54:18,089 - INFO - Import intercepté: _io, fromlist=[], level=0
+2025-03-13 14:54:18,090 - INFO - Import intercepté: abc, fromlist=None, level=0
+2025-03-13 14:54:18,090 - INFO - Import intercepté: ast, fromlist=None, level=0
+2025-03-13 14:54:18,091 - INFO - Import intercepté: _io, fromlist=[], level=0
+2025-03-13 14:54:18,091 - INFO - Import intercepté: sys, fromlist=None, level=0
+2025-03-13 14:54:18,091 - INFO - Import intercepté: _ast, fromlist=('*',), level=0
+2025-03-13 14:54:18,092 - INFO - Import intercepté: contextlib, fromlist=('contextmanager', 'nullcontext'), level=0
+2025-03-13 14:54:18,092 - INFO - Import intercepté: enum, fromlist=('IntEnum', 'auto'), level=0
+2025-03-13 14:54:18,093 - INFO - Import intercepté: dis, fromlist=None, level=0
+2025-03-13 14:54:18,093 - INFO - Import intercepté: _io, fromlist=[], level=0
+2025-03-13 14:54:18,093 - INFO - Import intercepté: sys, fromlist=None, level=0
+2025-03-13 14:54:18,094 - INFO - Import intercepté: types, fromlist=None, level=0
+2025-03-13 14:54:18,094 - INFO - Import intercepté: collections, fromlist=None, level=0
+2025-03-13 14:54:18,094 - INFO - Import intercepté: io, fromlist=None, level=0
+2025-03-13 14:54:18,094 - INFO - Import intercepté: opcode, fromlist=('*',), level=0
+2025-03-13 14:54:18,094 - INFO - Import intercepté: _io, fromlist=[], level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: _opcode, fromlist=('stack_effect',), level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: opcode, fromlist=('__all__',), level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: collections.abc, fromlist=None, level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: enum, fromlist=None, level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: importlib.machinery, fromlist=None, level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: itertools, fromlist=None, level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: linecache, fromlist=None, level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: os, fromlist=None, level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: re, fromlist=None, level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: sys, fromlist=None, level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: tokenize, fromlist=None, level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: token, fromlist=None, level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: types, fromlist=None, level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: warnings, fromlist=None, level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: functools, fromlist=None, level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: builtins, fromlist=None, level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: operator, fromlist=('attrgetter',), level=0
+2025-03-13 14:54:18,095 - INFO - Import intercepté: collections, fromlist=('namedtuple', 'OrderedDict'), level=0
+2025-03-13 14:54:18,096 - INFO - Import intercepté: _utils, fromlist=('_import_dotted_name', 'classproperty'), level=1
+2025-03-13 14:54:18,096 - INFO - Import intercepté: _io, fromlist=[], level=0
+2025-03-13 14:54:18,097 - INFO - Import intercepté: copyreg, fromlist=None, level=0
+2025-03-13 14:54:18,097 - INFO - Import intercepté: sys, fromlist=None, level=0
+2025-03-13 14:54:18,097 - INFO - Import intercepté: traceback, fromlist=None, level=0
+2025-03-13 14:54:18,097 - INFO - Import intercepté: warnings, fromlist=None, level=0
+2025-03-13 14:54:18,097 - INFO - Import intercepté: collections, fromlist=('defaultdict',), level=0
+2025-03-13 14:54:18,097 - INFO - Import intercepté: typing, fromlist=('Any', 'DefaultDict', 'List', 'Optional'), level=0
+2025-03-13 14:54:18,097 - INFO - Import intercepté: _io, fromlist=[], level=0
+2025-03-13 14:54:18,098 - INFO - Import intercepté: abc, fromlist=('abstractmethod', 'ABCMeta'), level=0
+2025-03-13 14:54:18,098 - INFO - Import intercepté: collections, fromlist=None, level=0
+2025-03-13 14:54:18,098 - INFO - Import intercepté: collections.abc, fromlist=None, level=0
+2025-03-13 14:54:18,098 - INFO - Import intercepté: contextlib, fromlist=None, level=0
+2025-03-13 14:54:18,098 - INFO - Import intercepté: functools, fromlist=None, level=0
+2025-03-13 14:54:18,098 - INFO - Import intercepté: operator, fromlist=None, level=0
+2025-03-13 14:54:18,098 - INFO - Import intercepté: re, fromlist=None, level=0
+2025-03-13 14:54:18,098 - INFO - Import intercepté: sys, fromlist=None, level=0
+2025-03-13 14:54:18,098 - INFO - Import intercepté: types, fromlist=None, level=0
+2025-03-13 14:54:18,098 - INFO - Import intercepté: types, fromlist=('WrapperDescriptorType', 'MethodWrapperType', 'MethodDescriptorType', 'GenericAlias'), level=0
+2025-03-13 14:54:18,099 - INFO - Import intercepté: torch, fromlist=None, level=0
+2025-03-13 14:54:18,099 - INFO - Module torch importé - Application des patchs...
+2025-03-13 14:54:18,099 - INFO - Import intercepté: traceback, fromlist=None, level=0
+2025-03-13 14:54:18,124 - ERROR - Une erreur s'est produite: local variable 'types' referenced before assignment
+2025-03-13 14:54:18,124 - ERROR - Traceback (most recent call last):
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 347, in <module>
+    import torch
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 182, in patched_import
+    module = original_import(name, globals, locals, fromlist, level)
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\torch\__init__.py", line 22, in <module>
+    from ._utils import _import_dotted_name, classproperty
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 336, in patched_import
+    return original_import(name, globals, locals, fromlist, level)
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\torch\_utils.py", line 8, in <module>
+    import torch
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 188, in patched_import
+    module.jit = types.ModuleType('torch.jit')
+UnboundLocalError: local variable 'types' referenced before assignment
+
+2025-03-13 14:55:03,002 - INFO - === Démarrage du lanceur avec patchs ===
+2025-03-13 14:55:03,002 - INFO - Python version: 3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)]
+2025-03-13 14:55:03,002 - INFO - Chemin d'exécution: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py
+2025-03-13 14:55:03,002 - INFO - Importeur système remplacé avec succès
+2025-03-13 14:55:03,002 - INFO - Configuration de l'environnement...
+2025-03-13 14:55:03,002 - INFO - Import intercepté: torch, fromlist=None, level=0
+2025-03-13 14:55:03,003 - INFO - Import intercepté: traceback, fromlist=None, level=0
+2025-03-13 14:55:03,004 - INFO - Import intercepté: ast, fromlist=None, level=0
+2025-03-13 14:55:03,004 - INFO - Import intercepté: _io, fromlist=[], level=0
+2025-03-13 14:55:03,005 - INFO - Import intercepté: sys, fromlist=None, level=0
+2025-03-13 14:55:03,005 - INFO - Import intercepté: re, fromlist=None, level=0
+2025-03-13 14:55:03,005 - INFO - Import intercepté: _ast, fromlist=('*',), level=0
+2025-03-13 14:55:03,006 - INFO - Import intercepté: contextlib, fromlist=('contextmanager', 'nullcontext'), level=0
+2025-03-13 14:55:03,006 - INFO - Import intercepté: enum, fromlist=('IntEnum', 'auto', '_simple_enum'), level=0
+2025-03-13 14:55:03,007 - INFO - Import intercepté: ast, fromlist=None, level=0
+2025-03-13 14:55:03,007 - ERROR - Une erreur s'est produite: No module named 'torch'
+2025-03-13 14:55:03,007 - ERROR - Traceback (most recent call last):
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 347, in <module>
+    import torch
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\launcher_with_patches.py", line 182, in patched_import
+    module = original_import(name, globals, locals, fromlist, level)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'torch'
+
