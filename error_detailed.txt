@@ -1,15 +1,47 @@
 Exception: 'function' object has no attribute '_register_builtin'
 Traceback (most recent call last):
-  File "debug_launcher.py", line 60, in <module>
-  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "launcher_with_patches.py", line 28, in <module>
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI24722\k_diffusion\__init__.py", line 1, in <module>
-    from . import augmentation, config, evaluation, external, gns, layers, models, sampling, utils
-  File "torchaudio_spec_patch.py", line 43, in patched_import
+  File "Simple_TTS_GUI.py", line 29, in <module>
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI354562\TTS\api.py", line 12, in <module>
+    from TTS.utils.synthesizer import Synthesizer
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI354562\TTS\utils\synthesizer.py", line 11, in <module>
+    from TTS.tts.configs.vits_config import VitsConfig
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI354562\TTS\tts\configs\vits_config.py", line 5, in <module>
+    from TTS.tts.models.vits import VitsArgs, VitsAudioConfig
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI354562\TTS\tts\models\vits.py", line 10, in <module>
+    import torchaudio
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI354562\torchaudio\__init__.py", line 1, in <module>
+    from torchaudio import (  # noqa: F401
   File "<frozen importlib._bootstrap>", line 1078, in _handle_fromlist
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
@@ -17,96 +49,15 @@ Traceback (most recent call last):
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI24722\k_diffusion\config.py", line 8, in <module>
-    from . import augmentation, layers, models, utils
-  File "torchaudio_spec_patch.py", line 43, in patched_import
-  File "<frozen importlib._bootstrap>", line 1078, in _handle_fromlist
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI354562\torchaudio\functional\__init__.py", line 1, in <module>
+    from .filtering import (
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI24722\k_diffusion\layers.py", line 8, in <module>
-    from . import sampling, utils
-  File "torchaudio_spec_patch.py", line 43, in patched_import
-  File "<frozen importlib._bootstrap>", line 1078, in _handle_fromlist
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI24722\k_diffusion\sampling.py", line 10, in <module>
-    from . import utils
-  File "torchaudio_spec_patch.py", line 43, in patched_import
-  File "<frozen importlib._bootstrap>", line 1078, in _handle_fromlist
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI24722\k_diffusion\utils.py", line 13, in <module>
-    from torchvision.transforms import functional as TF
-  File "torchaudio_spec_patch.py", line 43, in patched_import
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI24722\torchvision\__init__.py", line 6, in <module>
-    from torchvision import datasets, io, models, ops, transforms, utils
-  File "torchaudio_spec_patch.py", line 43, in patched_import
-  File "<frozen importlib._bootstrap>", line 1078, in _handle_fromlist
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI24722\torchvision\datasets\__init__.py", line 1, in <module>
-    from ._optical_flow import FlyingChairs, FlyingThings3D, HD1K, KittiFlow, Sintel
-  File "torchaudio_spec_patch.py", line 43, in patched_import
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI24722\torchvision\datasets\_optical_flow.py", line 12, in <module>
-    from ..io.image import _read_png_16
-  File "torchaudio_spec_patch.py", line 43, in patched_import
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 992, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI24722\torchvision\io\__init__.py", line 8, in <module>
-    from ._load_gpu_decoder import _HAS_GPU_VIDEO_DECODER
-  File "torchaudio_spec_patch.py", line 43, in patched_import
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI24722\torchvision\io\_load_gpu_decoder.py", line 1, in <module>
-    from ..extension import _load_library
-  File "torchaudio_spec_patch.py", line 43, in patched_import
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI24722\torchvision\extension.py", line 107, in <module>
-    _check_cuda_version()
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI24722\torchvision\extension.py", line 67, in _check_cuda_version
-    _version = torch.ops.torchvision._cuda_version()
-  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI24722\torch\_ops.py", line 575, in __getattr__
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI354562\torchaudio\functional\filtering.py", line 935, in <module>
+    _lfilter_core_cpu_loop = torch.ops.torchaudio._lfilter_core_loop
+  File "C:\Users\JF30LB\AppData\Local\Temp\_MEI354562\torch\_ops.py", line 575, in __getattr__
     torch.jit._builtins._register_builtin(op, qualified_op_name)
 AttributeError: 'function' object has no attribute '_register_builtin'
