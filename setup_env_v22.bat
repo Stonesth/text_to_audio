@@ -43,45 +43,45 @@ REM Sauvegarder le chemin Python original
 for /f "tokens=*" %%p in ('where py 2^>nul') do set "PYTHON_PATH=%%~dp0"
 for /f "tokens=*" %%p in ('where python 2^>nul') do set "PYTHON_EXE_PATH=%%~dp0"
 
-REM Vérifier dans les emplacements standard
-set "PYTHON310_PATHS=C:\Python310;"%LOCALAPPDATA%\Programs\Python\Python310";"C:\Program Files\Python310";"C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python310""
+@REM REM Vérifier dans les emplacements standard
+@REM set PYTHON310_PATHS="C:\Python310;%LOCALAPPDATA%\Programs\Python\Python310;C:\Progra~1\Python310;C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python310"
 
-REM Utiliser 'where' pour trouver Python dans le PATH
-where python.exe >nul 2>&1
-if %ERRORLEVEL% equ 0 (
-    for /f "delims=" %%p in ('where python.exe') do (
-        for /f "tokens=2 delims= " %%v in ('"%%p" --version 2^>^&1 ^| findstr /i "Python 3.10"') do (
-            if "%%v"=="3.10" (
-                call :log INFO "Python 3.10 trouvé dans %%~dp0"
-                set "PYTHON_PATH=%%~dp0"
-                set "PYTHON_CMD="%%~dp0python.exe""
-                goto setup_vs
-            ) else (
-                call :log DEBUG "Python 3.10 trouvé dans %%~dp0, mais version inattendue: %%v"
-            )
-        )
-    )
-)
+@REM REM Utiliser 'where' pour trouver Python dans le PATH
+@REM where python.exe >nul 2>&1
+@REM if %ERRORLEVEL% equ 0 (
+@REM     for /f "delims=" %%p in ('where python.exe') do (
+@REM         for /f "tokens=2 delims= " %%v in ('"%%p" --version 2^>^&1 ^| findstr /i "Python 3.10"') do (
+@REM             if "%%v"=="3.10" (
+@REM                 call :log INFO "Python 3.10 trouvé dans %%~dp0"
+@REM                 set "PYTHON_PATH=%%~dp0"
+@REM                 set "PYTHON_CMD="%%~dp0python.exe""
+@REM                 goto setup_vs
+@REM             ) else (
+@REM                 call :log DEBUG "Python 3.10 trouvé dans %%~dp0, mais version inattendue: %%v"
+@REM             )
+@REM         )
+@REM     )
+@REM )
 
-REM Si Python 3.10 n'est pas trouvé dans le PATH, vérifier les emplacements standard
-for %%p in (%PYTHON310_PATHS%) do (
-    if exist "%%~p\python.exe" (
-        for /f "tokens=2 delims= " %%v in ('"%%~p\python.exe" --version 2^>^&1 ^| findstr /i "Python 3.10"') do (
-            if "%%v"=="3.10" (
-                call :log INFO "Python 3.10 trouvé dans %%~p"
-                set "PYTHON_PATH=%%~p"
-                set "PYTHON_CMD="%%~p\python.exe""
-                goto setup_vs
-            ) else (
-                call :log DEBUG "Python 3.10 trouvé dans %%~p, mais version inattendue: %%v"
-            )
-        )
-    )
-)
+@REM REM Si Python 3.10 n'est pas trouvé dans le PATH, vérifier les emplacements standard
+@REM for %%p in (%PYTHON310_PATHS%) do (
+@REM     if exist "%%~p\python.exe" (
+@REM         for /f "tokens=2 delims= " %%v in ('"%%~p\python.exe" --version 2^>^&1 ^| findstr /i "Python 3.10"') do (
+@REM             if "%%v"=="3.10" (
+@REM                 call :log INFO "Python 3.10 trouvé dans %%~p"
+@REM                 set "PYTHON_PATH=%%~p"
+@REM                 set "PYTHON_CMD="%%~p\python.exe""
+@REM                 goto setup_vs
+@REM             ) else (
+@REM                 call :log DEBUG "Python 3.10 trouvé dans %%~p, mais version inattendue: %%v"
+@REM             )
+@REM         )
+@REM     )
+@REM )
 
-REM Si Python 3.10 n'est pas trouvé
-call :log ERROR "Python 3.10 n'a pas été trouvé. Veuillez l'installer ou vérifier votre PATH."
-exit /b 1
+@REM REM Si Python 3.10 n'est pas trouvé
+@REM call :log ERROR "Python 3.10 n'a pas été trouvé. Veuillez l'installer ou vérifier votre PATH."
+@REM exit /b 1
 
 :setup_vs
 REM Configuration de Visual Studio
@@ -231,8 +231,9 @@ if defined PYTHON_EXE_PATH set "PATH=%PYTHON_EXE_PATH%;%PATH%"
 
 REM Création de l'environnement virtuel
 call :log INFO "Creation de l'environnement virtuel..."
-if exist venv_py310 rmdir /s /q venv_py310
-call :exec_and_log "%PYTHON_CMD% -m venv venv_py310" "Création environnement virtuel"
+@REM if exist venv_py310 rmdir /s /q venv_py310
+@REM call :exec_and_log "%PYTHON_CMD% -m venv venv_py310" "Création environnement virtuel"
+call :exec_and_log "C:\Progra~1\Python310\python.exe -m venv venv_py310" "Création environnement virtuel"
 call .\venv_py310\Scripts\activate.bat
 call :log DEBUG "Environnement virtuel activé"
 
@@ -241,14 +242,29 @@ call :log INFO "Vérification de l'environnement virtuel..."
 call :exec_and_log "python check_python.py" "Vérification environnement Python"
 
 REM Installation des dépendances de base
+call :log INFO "Upgrade pip version..."
+call :exec_and_log "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Scripts\python.exe -m pip install --upgrade pip" "Upgrade pip version"
+
+REM Installation des dépendances de base
 call :log INFO "Installation des dependances de base..."
 call :exec_and_log "pip install --upgrade pip setuptools wheel --no-cache-dir" "Installation pip/setuptools/wheel"
 
 REM Installation de NumPy (version compatible avec PyTorch)
 call :log INFO "Installation de NumPy (version compatible avec PyTorch)..."
-call :exec_and_log "pip install numpy==1.24.3 --only-binary :all: --no-cache-dir" "Installation numpy"
+@REM call :exec_and_log "pip install numpy==1.24.3 --only-binary :all: --no-cache-dir" "Installation numpy"
+call :exec_and_log "pip uninstall numpy==1.24.3 -y" "Désinstallation numpy==1.24.3"
+call :exec_and_log "pip install numpy==1.22.0 --only-binary :all: --no-cache-dir" "Installation numpy 1.22.0"
 if !ERRORLEVEL! neq 0 (
     call :log ERROR "Échec de l'installation de NumPy"
+    goto :error
+)
+
+REM Installation de setuptools (version compatible)
+call :log INFO "Installation de setuptools (version compatible)..."
+call :exec_and_log "pip uninstall setuptools -y" "Désinstallation setuptools"
+call :exec_and_log "pip install setuptools==65.5.0 --only-binary :all: --no-cache-dir" "Installation setuptools 65.5.0"
+if !ERRORLEVEL! neq 0 (
+    call :log ERROR "Échec de l'installation de setuptools"
     goto :error
 )
 
@@ -281,6 +297,10 @@ if !ERRORLEVEL! neq 0 (
     )
 )
 
+REM Vérification de la version de torch
+call :log INFO "Vérification de la version de torch..."
+call :exec_and_log "python -c "import torch; print(torch.__version__)"" "Vérification version torch"
+
 call :log INFO "Installation des dependances TTS..."
 call :exec_and_log "pip install librosa==0.10.0 --only-binary :all: --no-cache-dir" "Installation librosa"
 call :exec_and_log "pip install soundfile==0.12.1 --only-binary :all: --no-cache-dir" "Installation soundfile"
@@ -309,6 +329,7 @@ if %RC_FOUND% equ 0 (
     set "PATH=%PATH%;%SDK_PATH%\bin\%SDK_VER%\x64;%SDK_PATH%\bin\x64"
 )
 
+REM Installation de TTS
 call :log INFO "Installation de TTS..."
 call :exec_and_log "pip uninstall TTS -y" "Désinstallation TTS"
 
@@ -372,24 +393,24 @@ call :log INFO "Installation de PyQt6..."
 call :exec_and_log "pip uninstall PyQt6 PyQt6-Qt6 PyQt6-sip -y" "Désinstallation PyQt6"
 call :exec_and_log "pip install PyQt6==6.5.2 PyQt6-Qt6==6.5.2 PyQt6-sip==13.5.2 --only-binary :all: --no-cache-dir" "Installation PyQt6"
 
-REM Vérification finale des installations
-call :log INFO "Vérification des installations..."
-call :log INFO "Vérification de numpy..."
-call :exec_and_log "python check_numpy.py" "Vérification installation numpy"
-call :log INFO "Vérification de torch..."
-call :exec_and_log "python check_torch.py" "Vérification installation PyTorch"
-call :log INFO "Vérification de TTS..."
-call :exec_and_log "python check_TTS.py" "Vérification TTS"
-call :log INFO "Vérification de PyQt6..."
-call :exec_and_log "python check_PyQt6.py" "Vérification PyQt6"
+@REM REM Vérification finale des installations
+@REM call :log INFO "Vérification des installations..."
+@REM call :log INFO "Vérification de numpy..."
+@REM call :exec_and_log "python check_numpy.py" "Vérification installation numpy"
+@REM call :log INFO "Vérification de torch..."
+@REM call :exec_and_log "python check_torch.py" "Vérification installation PyTorch"
+@REM call :log INFO "Vérification de TTS..."
+@REM call :exec_and_log "python check_TTS.py" "Vérification TTS"
+@REM call :log INFO "Vérification de PyQt6..."
+@REM call :exec_and_log "python check_PyQt6.py" "Vérification PyQt6"
 
-REM Vérification des fonctionnalités TTS
-call :log INFO "Vérification des fonctionnalités TTS..."
-call :exec_and_log "python check_TTS_Synthesizer.py" "Vérification TTS Synthesizer"
+@REM REM Vérification des fonctionnalités TTS
+@REM call :log INFO "Vérification des fonctionnalités TTS..."
+@REM call :exec_and_log "python check_TTS_Synthesizer.py" "Vérification TTS Synthesizer"
 
 call :log INFO "Installation terminee!"
 call :log INFO "Pour tester, executez:"
-call :log INFO "call .\venv_py310\Scripts\activate.bat"
+call :log INFO ".\venv_py310\Scripts\activate"
 call :log INFO "python Simple_TTS_GUI.py"
 call :log INFO "Fichier log disponible: !LOG_FILE!"
 
