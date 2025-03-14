@@ -1,8 +1,28 @@
-NOTE: Redirects are currently not supported in Windows or MacOs.
-111580 WARNING: Library not found: could not resolve 'avutil-56.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\torchaudio\\lib\\libtorchaudio_ffmpeg.pyd'.
-111580 WARNING: Library not found: could not resolve 'avcodec-58.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\torchaudio\\lib\\libtorchaudio_ffmpeg.pyd'.
-111580 WARNING: Library not found: could not resolve 'avfilter-7.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\torchaudio\\lib\\libtorchaudio_ffmpeg.pyd'.
-111580 WARNING: Library not found: could not resolve 'avdevice-58.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\torchaudio\\lib\\libtorchaudio_ffmpeg.pyd'.
-111580 WARNING: Library not found: could not resolve 'avformat-58.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\torchaudio\\lib\\libtorchaudio_ffmpeg.pyd'.
-111580 WARNING: Library not found: could not resolve 'avutil-56.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\torchaudio\\lib\\_torchaudio_ffmpeg.pyd'.
-111580 WARNING: Library not found: could not resolve 'avformat-58.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\torchaudio\\lib\\_torchaudio_ffmpeg.pyd'.
+Traceback (most recent call last):
+  File "Simple_TTS_GUI.py", line 29, in <module>
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\api.py", line 11, in <module>
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\utils\manage.py", line 12, in <module>
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\config\__init__.py", line 10, in <module>
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\config\shared_configs.py", line 5, in <module>
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "trainer\__init__.py", line 6, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI213362\\trainer\\VERSION'
