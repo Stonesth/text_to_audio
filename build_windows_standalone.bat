@@ -22,7 +22,6 @@ if errorlevel 1 (
 echo Création de l'exécutable...
 "venv_py310\Scripts\python.exe" -m PyInstaller --onefile --noconsole ^
     --name "Simple_TTS_GUI" ^
-    --hidden-import=pyaudio ^
     --hidden-import=PyQt6 ^
     --hidden-import=PyQt6.sip ^
     --hidden-import=torch ^
