@@ -56,6 +56,8 @@ if %ERRORLEVEL% equ 0 (
                 set "PYTHON_PATH=%%~dp0"
                 set "PYTHON_CMD="%%~dp0python.exe""
                 goto setup_vs
+            ) else (
+                call :log DEBUG "Python 3.10 trouvé dans %%~dp0, mais version inattendue: %%v"
             )
         )
     )
@@ -70,6 +72,8 @@ for %%p in (%PYTHON310_PATHS%) do (
                 set "PYTHON_PATH=%%~p"
                 set "PYTHON_CMD="%%~p\python.exe""
                 goto setup_vs
+            ) else (
+                call :log DEBUG "Python 3.10 trouvé dans %%~p, mais version inattendue: %%v"
             )
         )
     )
