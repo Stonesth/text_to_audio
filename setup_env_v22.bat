@@ -43,29 +43,40 @@ REM Sauvegarder le chemin Python original
 for /f "tokens=*" %%p in ('where py 2^>nul') do set "PYTHON_PATH=%%~dp0"
 for /f "tokens=*" %%p in ('where python 2^>nul') do set "PYTHON_EXE_PATH=%%~dp0"
 
-REM Vérifier si py launcher peut trouver Python 3.10
-call :log INFO "Verification Python 3.10 via py launcher"
-call :exec_and_log "py -3.10 --version" "Vérification Python 3.10 via py launcher"
-if not errorlevel 1 (
-    call :log INFO "Python 3.10 trouve via py launcher"
-    set "PYTHON_CMD=py -3.10"
-    goto setup_vs
-)
-
 REM Vérifier dans les emplacements standard
 set "PYTHON310_PATHS=C:\Python310;%LOCALAPPDATA%\Programs\Python\Python310;C:\Program Files\Python310;C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python310"
-for %%p in (%PYTHON310_PATHS%) do (
-    if exist "%%p\python.exe" (
-        call :log INFO "Python 3.10 trouve dans %%p"
-        set "PYTHON_PATH=%%p"
-        set "PYTHON_CMD="%%p\python.exe""
-        goto setup_vs
+
+REM Utiliser 'where' pour trouver Python dans le PATH
+where python.exe >nul 2>&1
+if %ERRORLEVEL% equ 0 (
+    for /f "delims=" %%p in ('where python.exe') do (
+        for /f "tokens=2 delims= " %%v in ('%%p --version 2^>^&1 ^| findstr /i "Python 3.10"') do (
+            if "%%v"=="3.10" (
+                call :log INFO "Python 3.10 trouvé dans %%~dp0"
+                set "PYTHON_PATH=%%~dp0"
+                set "PYTHON_CMD="%%~dp0python.exe""
+                goto setup_vs
+            )
+        )
     )
 )
 
-call :log ERROR "Python 3.10 n'est pas trouve. Veuillez l'installer depuis:"
-call :log ERROR "https://www.python.org/downloads/release/python-3109/"
-pause
+REM Si Python 3.10 n'est pas trouvé dans le PATH, vérifier les emplacements standard
+for %%p in (%PYTHON310_PATHS%) do (
+    if exist "%%p\python.exe" (
+        for /f "tokens=2 delims= " %%v in ('"%%p\python.exe" --version 2^>^&1 ^| findstr /i "Python 3.10"') do (
+            if "%%v"=="3.10" (
+                call :log INFO "Python 3.10 trouvé dans %%p"
+                set "PYTHON_PATH=%%p"
+                set "PYTHON_CMD="%%p\python.exe""
+                goto setup_vs
+            )
+        )
+    )
+)
+
+REM Si Python 3.10 n'est pas trouvé
+call :log ERROR "Python 3.10 n'a pas été trouvé. Veuillez l'installer ou vérifier votre PATH."
 exit /b 1
 
 :setup_vs
