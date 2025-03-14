@@ -11,15 +11,15 @@ Script de synthèse vocale utilisant différents modèles pour générer de l'au
 .\setup_env.bat
 
 # MAC
-python3 -m venv venv_py311
-source venv_py311/bin/activate
+python3 -m venv venv_py310
+source venv_py310/bin/activate
 pip install --upgrade pip
 pip install TTS
 pip install PyQt6  # Requis pour l'interface graphique
 ```
 
 # Windows
-.\venv_py311\Scripts\activate
+.\venv_py310\Scripts\activate
 
 # Sauvegarde des fichiers TTS sont généralement dans le dossier AppData\local\tts
 ex : C:\Users\[user]\AppData\Local\tts
