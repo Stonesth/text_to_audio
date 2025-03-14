@@ -23,8 +23,8 @@ echo Création de l'exécutable...
 "venv_py310\Scripts\python.exe" -m PyInstaller --onefile --noconsole ^
     --name "Simple_TTS_GUI" ^
     --icon="assets/icons/icon.ico" ^
-    --add-data="assets/*;assets" ^
-    --add-data="models/*;models" ^
+    --add-data="assets\*.*;assets" ^
+    --add-data="models\*.*;models" ^
     --hidden-import=pyaudio ^
     --hidden-import=PyQt6 ^
     --hidden-import=PyQt6.sip ^
