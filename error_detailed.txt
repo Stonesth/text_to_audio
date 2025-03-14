@@ -1,28 +1,55 @@
 Traceback (most recent call last):
+  File "torch\_sources.py", line 23, in get_source_lines_and_file
+    sourcelines, file_lineno = inspect.getsourcelines(obj)
+  File "inspect.py", line 1129, in getsourcelines
+  File "inspect.py", line 958, in findsource
+OSError: could not get source code
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
   File "Simple_TTS_GUI.py", line 29, in <module>
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\api.py", line 11, in <module>
+  File "TTS\api.py", line 12, in <module>
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\utils\manage.py", line 12, in <module>
+  File "TTS\utils\synthesizer.py", line 11, in <module>
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\config\__init__.py", line 10, in <module>
+  File "TTS\tts\configs\vits_config.py", line 5, in <module>
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\config\shared_configs.py", line 5, in <module>
+  File "TTS\tts\models\vits.py", line 25, in <module>
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "trainer\__init__.py", line 6, in <module>
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI213362\\trainer\\VERSION'
+  File "TTS\tts\layers\vits\networks.py", line 6, in <module>
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\tts\layers\glow_tts\glow.py", line 6, in <module>
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\tts\layers\generic\wavenet.py", line 6, in <module>
+  File "torch\jit\_script.py", line 1338, in script
+    ast = get_jit_def(obj, obj.__name__)
+  File "torch\jit\frontend.py", line 262, in get_jit_def
+    parsed_def = parse_def(fn) if not isinstance(fn, _ParsedDef) else fn
+  File "torch\_sources.py", line 120, in parse_def
+    sourcelines, file_lineno, filename = get_source_lines_and_file(
+  File "torch\_sources.py", line 32, in get_source_lines_and_file
+    raise OSError(msg) from e
+OSError: Can't get source for <function fused_add_tanh_sigmoid_multiply at 0x0000021EADAC5990>. TorchScript requires source access in order to carry out compilation, make sure original .py files are available.
