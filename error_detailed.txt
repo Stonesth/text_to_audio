@@ -1,30 +1,8 @@
-build_windows_standalone.bat
-Cr├⌐ation de l'ex├⌐cutable Windows autonome...
-Installation de PyInstaller...
-Requirement already satisfied: pyinstaller in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (6.12.0)
-Requirement already satisfied: setuptools>=42.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (75.8.2)
-Requirement already satisfied: altgraph in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (0.17.4)
-Requirement already satisfied: pyinstaller-hooks-contrib>=2025.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (2025.1)
-Requirement already satisfied: packaging>=22.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (23.1)
-Requirement already satisfied: pefile!=2024.8.26,>=2022.5.30 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (2023.2.7)
-Requirement already satisfied: pywin32-ctypes>=0.2.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (0.2.3)
-Cr├⌐ation de l'ex├⌐cutable...
-188 INFO: PyInstaller: 6.12.0, contrib hooks: 2025.1
-188 INFO: Python: 3.10.9
-204 INFO: Platform: Windows-10-10.0.22631-SP0
-204 INFO: Python environment: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
-204 INFO: wrote C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.spec
-220 INFO: Module search paths (PYTHONPATH):
-['C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio',
- 'C:\\Program Files\\Python310\\python310.zip',
- 'C:\\Program Files\\Python310\\DLLs',
- 'C:\\Program Files\\Python310\\lib',
- 'C:\\Program Files\\Python310',
- 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310',
- 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages',
- 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\setuptools\\_vendor',
- 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio']
-691 INFO: Appending 'datas' from .spec
-Unable to find 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\assets\\*' when adding binary and data files.
-La cr├⌐ation de l'ex├⌐cutable a ├⌐chou├⌐
-Appuyez sur une touche pour continuer...
+Traceback (most recent call last):
+  File "Simple_TTS_GUI.py", line 29, in <module>
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\__init__.py", line 3, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\JF30LB\\AppData\\Local\\Temp\\_MEI311762\\TTS\\VERSION'
