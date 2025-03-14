@@ -23,6 +23,7 @@ echo Création de l'exécutable...
 "venv_py310\Scripts\python.exe" -m PyInstaller --onefile --noconsole ^
     --name "Simple_TTS_GUI" ^
     --add-data="venv_py310\Lib\site-packages\TTS\VERSION;TTS" ^
+    --add-data="venv_py310\Lib\site-packages\trainer\VERSION;trainer" ^
     --add-binary="venv_py310\Lib\site-packages\torchaudio\lib\libtorchaudio_ffmpeg.pyd;." ^
     --add-binary="venv_py310\Lib\site-packages\torchaudio\lib\_torchaudio_ffmpeg.pyd;." ^
     --hidden-import=PyQt6 ^
