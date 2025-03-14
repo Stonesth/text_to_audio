@@ -1,4 +1,4 @@
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>build_windows_standalone.bat
+build_windows_standalone.bat
 Cr├⌐ation de l'ex├⌐cutable Windows autonome...
 Installation de PyInstaller...
 Requirement already satisfied: pyinstaller in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (6.12.0)
@@ -9,12 +9,12 @@ Requirement already satisfied: packaging>=22.0 in c:\users\jf30lb\projects\pytho
 Requirement already satisfied: pefile!=2024.8.26,>=2022.5.30 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (2023.2.7)
 Requirement already satisfied: pywin32-ctypes>=0.2.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyinstaller) (0.2.3)
 Cr├⌐ation de l'ex├⌐cutable...
-426 INFO: PyInstaller: 6.12.0, contrib hooks: 2025.1
-442 INFO: Python: 3.10.9
-442 INFO: Platform: Windows-10-10.0.22631-SP0
-442 INFO: Python environment: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
-442 INFO: wrote C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.spec
-458 INFO: Module search paths (PYTHONPATH):
+188 INFO: PyInstaller: 6.12.0, contrib hooks: 2025.1
+188 INFO: Python: 3.10.9
+204 INFO: Platform: Windows-10-10.0.22631-SP0
+204 INFO: Python environment: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
+204 INFO: wrote C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.spec
+220 INFO: Module search paths (PYTHONPATH):
 ['C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio',
  'C:\\Program Files\\Python310\\python310.zip',
  'C:\\Program Files\\Python310\\DLLs',
@@ -24,9 +24,7 @@ Cr├⌐ation de l'ex├⌐cutable...
  'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages',
  'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\setuptools\\_vendor',
  'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio']
-1259 INFO: Appending 'datas' from .spec
-Unable to find 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\assets' when adding binary and data files.
+691 INFO: Appending 'datas' from .spec
+Unable to find 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\assets\\*' when adding binary and data files.
 La cr├⌐ation de l'ex├⌐cutable a ├⌐chou├⌐
 Appuyez sur une touche pour continuer...
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>
