@@ -1,36 +1,15 @@
-===== DEBUT INSTALLATION 15-03-25 21:42:57,53 ===== 
+===== DEBUT INSTALLATION 15-03-25 22:13:43,17 ===== 
 [INFO] Démarrage de la création de l'installateur Simple TTS 
+[INFO] Configuration de Visual Studio... 
+[INFO] Configuration des chemins... 
+[DEBUG] Version MSVC détectée: 14.43.34808 
+[DEBUG] Configuration des includes... 
+[DEBUG] Configuration des bibliothèques... 
+[INFO] Vérification de rc.exe (Resource Compiler)... 
+[WARNING] rc.exe non trouvé, ajout du chemin du SDK Windows au PATH... 
 [INFO] Activation de l'environnement virtuel venv_py310... 
+[INFO] Vérification de l'environnement Python... 
+[INFO] Version Python actuelle: Python 3.10.9 
+[INFO] Vérification de PyInstaller... 
+[INFO] Vérification de PyQt6... 
 [INFO] Création du fichier spec pour PyInstaller... 
-[INFO] Compilation de l'application avec PyInstaller... 
-[INFO] Exécution: Compilation PyInstaller 
-[DEBUG] Commande: pyinstaller --clean --noconfirm Simple_TTS_GUI.spec 
-pyinstaller --clean --noconfirm Simple_TTS_GUI.spec 
-263 INFO: PyInstaller: 6.12.0, contrib hooks: 2025.1
-263 INFO: Python: 3.10.9
-273 INFO: Platform: Windows-10-10.0.22631-SP0
-273 INFO: Python environment: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
-273 INFO: Removing temporary files and cleaning cache in C:\Users\JF30LB\AppData\Local\pyinstaller
-Traceback (most recent call last):
-  File "C:\Progra~1\Python310\lib\runpy.py", line 196, in _run_module_as_main
-    return _run_code(code, main_globals, None,
-  File "C:\Progra~1\Python310\lib\runpy.py", line 86, in _run_code
-    exec(code, run_globals)
-  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Scripts\pyinstaller.exe\__main__.py", line 7, in <module>
-  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\__main__.py", line 231, in _console_script_run
-    run()
-  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\__main__.py", line 215, in run
-    run_build(pyi_config, spec_file, **vars(args))
-  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\__main__.py", line 70, in run_build
-    PyInstaller.building.build_main.main(pyi_config, spec_file, **kwargs)
-  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\build_main.py", line 1270, in main
-    build(specfile, distpath, workpath, clean_build)
-  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\build_main.py", line 1205, in build
-    code = compile(f.read(), spec, 'exec')
-  File "Simple_TTS_GUI.spec", line 3
-    Commande ECHO d\ufffdsactiv\ufffde.
-                           ^
-SyntaxError: (unicode error) 'utf-8' codec can't decode byte 0xe9 in position 1: invalid continuation byte
-[ERROR] Échec: Compilation PyInstaller (Code: 1) 
-[ERROR] La compilation a échoué. Veuillez consulter le fichier log pour plus de détails. 
-
