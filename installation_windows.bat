@@ -177,7 +177,7 @@ call :log INFO "Création du fichier spec pour PyInstaller..."
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo.
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo a = Analysis^(
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo     ['Simple_TTS_GUI.py'],
->> "%BASE_DIR%Simple_TTS_GUI.spec" echo     pathex=['%BASE_DIR%'],
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     pathex=[r'%BASE_DIR%'],
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo     binaries=[],
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo     datas=[],
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo     hiddenimports=hidden_imports,
@@ -208,12 +208,12 @@ call :log INFO "Création du fichier spec pour PyInstaller..."
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo     print^(f"Erreur lors de l'ajout du fichier VERSION de trainer: {e}"^)
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo.
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo # Ajouter les modèles TTS
->> "%BASE_DIR%Simple_TTS_GUI.spec" echo models_dir = os.path.join^('%BASE_DIR%', 'models'^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo models_dir = os.path.join^(r'%BASE_DIR%', 'models'^)
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo if os.path.exists^(models_dir^):
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo     for root, dirs, files in os.walk^(models_dir^):
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo         for file in files:
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo             file_path = os.path.join^(root, file^)
->> "%BASE_DIR%Simple_TTS_GUI.spec" echo             rel_path = os.path.relpath^(file_path, '%BASE_DIR%'^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo             rel_path = os.path.relpath^(file_path, r'%BASE_DIR%'^)
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo             a.datas += [^(rel_path, file_path, 'DATA'^)]
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo             print^(f"Ajout du fichier modèle: {rel_path}"^)
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo.
@@ -239,7 +239,7 @@ call :log INFO "Création du fichier spec pour PyInstaller..."
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo     target_arch=None,
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo     codesign_identity=None,
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo     entitlements_file=None,
->> "%BASE_DIR%Simple_TTS_GUI.spec" echo     icon='%BASE_DIR%icons\tts_icon.ico'
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     icon=r'%BASE_DIR%icons\tts_icon.ico'
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo ^)
 
 :: Compiler l'application avec PyInstaller
