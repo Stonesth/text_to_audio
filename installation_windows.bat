@@ -6,6 +6,7 @@ echo ===== Programme d'Installation Simple TTS =====
 echo Date et heure: %DATE% %TIME%
 echo ============================================
 
+
 :: Définir le répertoire de base comme le répertoire du script
 set "BASE_DIR=%~dp0"
 set "INSTALL_DIR=%BASE_DIR%installation"
@@ -147,99 +148,99 @@ if not exist "%INSTALL_DIR%" (
 
 :: Créer le fichier spec pour PyInstaller avec les bons chemins et dépendances
 call :log INFO "Création du fichier spec pour PyInstaller..."
-(
-echo # -*- mode: python -*-
-echo import os
-echo import importlib
-echo import site
-echo import sys
-echo 
-echo block_cipher = None
-echo 
-echo # Récupérer les chemins des packages
-echo venv_path = os.path.dirname(os.path.dirname(sys.executable))
-echo site_packages = site.getsitepackages()[0]
-echo 
-echo # Hidden imports spécifiques pour torch et TTS
-echo hidden_imports = [
-echo     'torch', 'torch.nn', 'torch.optim', 'torch.utils',
-echo     'torch.distributed._shard.checkpoint.*',
-echo     'torch.distributed._sharded_tensor.*',
-echo     'torch.distributed._sharding_spec.*',
-echo     'PyQt6', 'PyQt6.sip', 'PyQt6.QtCore', 'PyQt6.QtGui', 'PyQt6.QtWidgets',
-echo     'pkg_resources.py2_warn',
-echo     'TTS.tts.configs.xtts_config', 'TTS.tts.models.xtts',
-echo     'TTS', 'TTS.config', 'TTS.utils', 'TTS.tts',
-echo     'pytorch_2_6_patch',
-echo ]
-echo 
-echo a = Analysis(
-echo     ['Simple_TTS_GUI.py'],
-echo     pathex=['%BASE_DIR%'],
-echo     binaries=[],
-echo     datas=[],
-echo     hiddenimports=hidden_imports,
-echo     hookspath=[],
-echo     hooksconfig={},
-echo     runtime_hooks=[],
-echo     excludes=[],
-echo     win_no_prefer_redirects=False,
-echo     win_private_assemblies=False,
-echo     cipher=block_cipher,
-echo     noarchive=False,
-echo )
-echo 
-echo # Ajouter les fichiers VERSION requis
-echo tts_module_path = None
-echo try:
-echo     tts_module_path = os.path.dirname(importlib.import_module('TTS').__file__)
-echo     a.datas += [("VERSION", os.path.join(tts_module_path, "VERSION"), "DATA")]
-echo     print("Ajout du fichier VERSION de TTS")
-echo except (ImportError, FileNotFoundError) as e:
-echo     print(f"Erreur lors de l'ajout du fichier VERSION de TTS: {e}")
-echo 
-echo try:
-echo     trainer_module_path = os.path.dirname(importlib.import_module('trainer').__file__)
-echo     a.datas += [("trainer\VERSION", os.path.join(trainer_module_path, "VERSION"), "DATA")]
-echo     print("Ajout du fichier VERSION de trainer")
-echo except (ImportError, FileNotFoundError) as e:
-echo     print(f"Erreur lors de l'ajout du fichier VERSION de trainer: {e}")
-echo 
-echo # Ajouter les modèles TTS
-echo models_dir = os.path.join('%BASE_DIR%', 'models')
-echo if os.path.exists(models_dir):
-echo     for root, dirs, files in os.walk(models_dir):
-echo         for file in files:
-echo             file_path = os.path.join(root, file)
-echo             rel_path = os.path.relpath(file_path, '%BASE_DIR%')
-echo             a.datas += [(rel_path, file_path, 'DATA')]
-echo             print(f"Ajout du fichier modèle: {rel_path}")
-echo 
-echo pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
-echo 
-echo exe = EXE(
-echo     pyz,
-echo     a.scripts,
-echo     a.binaries,
-echo     a.zipfiles,
-echo     a.datas,
-echo     [],
-echo     name='Simple_TTS',
-echo     debug=False,
-echo     bootloader_ignore_signals=False,
-echo     strip=False,
-echo     upx=True,
-echo     upx_exclude=[],
-echo     runtime_tmpdir=None,
-echo     console=True,  # Mettre à True pendant le dév pour voir les erreurs
-echo     disable_windowed_traceback=False,
-echo     argv_emulation=False,
-echo     target_arch=None,
-echo     codesign_identity=None,
-echo     entitlements_file=None,
-echo     icon='%BASE_DIR%icons\tts_icon.ico'
-echo )
-) > "%BASE_DIR%Simple_TTS_GUI.spec"
+
+:: Utiliser une méthode plus sûre pour écrire le fichier ligne par ligne
+> "%BASE_DIR%Simple_TTS_GUI.spec" echo # -*- mode: python -*-
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo import os
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo import importlib
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo import site
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo import sys
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo.
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo block_cipher = None
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo.
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo # Récupérer les chemins des packages
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo venv_path = os.path.dirname^(os.path.dirname^(sys.executable^)^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo site_packages = site.getsitepackages^(^)[0]
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo.
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo # Hidden imports spécifiques pour torch et TTS
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo hidden_imports = [
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     'torch', 'torch.nn', 'torch.optim', 'torch.utils',
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     'torch.distributed._shard.checkpoint.*',
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     'torch.distributed._sharded_tensor.*',
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     'torch.distributed._sharding_spec.*',
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     'PyQt6', 'PyQt6.sip', 'PyQt6.QtCore', 'PyQt6.QtGui', 'PyQt6.QtWidgets',
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     'pkg_resources.py2_warn',
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     'TTS.tts.configs.xtts_config', 'TTS.tts.models.xtts',
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     'TTS', 'TTS.config', 'TTS.utils', 'TTS.tts',
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     'pytorch_2_6_patch',
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo ]
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo.
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo a = Analysis^(
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     ['Simple_TTS_GUI.py'],
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     pathex=['%BASE_DIR%'],
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     binaries=[],
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     datas=[],
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     hiddenimports=hidden_imports,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     hookspath=[],
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     hooksconfig={},
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     runtime_hooks=[],
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     excludes=[],
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     win_no_prefer_redirects=False,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     win_private_assemblies=False,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     cipher=block_cipher,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     noarchive=False,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo ^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo.
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo # Ajouter les fichiers VERSION requis
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo tts_module_path = None
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo try:
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     tts_module_path = os.path.dirname^(importlib.import_module^('TTS'^).__file__^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     a.datas += [^("VERSION", os.path.join^(tts_module_path, "VERSION"^), "DATA"^)]
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     print^("Ajout du fichier VERSION de TTS"^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo except ^(ImportError, FileNotFoundError^) as e:
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     print^(f"Erreur lors de l'ajout du fichier VERSION de TTS: {e}"^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo.
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo try:
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     trainer_module_path = os.path.dirname^(importlib.import_module^('trainer'^).__file__^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     a.datas += [^("trainer\VERSION", os.path.join^(trainer_module_path, "VERSION"^), "DATA"^)]
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     print^("Ajout du fichier VERSION de trainer"^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo except ^(ImportError, FileNotFoundError^) as e:
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     print^(f"Erreur lors de l'ajout du fichier VERSION de trainer: {e}"^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo.
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo # Ajouter les modèles TTS
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo models_dir = os.path.join^('%BASE_DIR%', 'models'^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo if os.path.exists^(models_dir^):
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     for root, dirs, files in os.walk^(models_dir^):
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo         for file in files:
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo             file_path = os.path.join^(root, file^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo             rel_path = os.path.relpath^(file_path, '%BASE_DIR%'^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo             a.datas += [^(rel_path, file_path, 'DATA'^)]
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo             print^(f"Ajout du fichier modèle: {rel_path}"^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo.
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo pyz = PYZ^(a.pure, a.zipped_data, cipher=block_cipher^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo.
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo exe = EXE^(
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     pyz,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     a.scripts,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     a.binaries,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     a.zipfiles,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     a.datas,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     [],
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     name='Simple_TTS',
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     debug=False,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     bootloader_ignore_signals=False,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     strip=False,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     upx=True,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     upx_exclude=[],
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     runtime_tmpdir=None,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     console=True,  # Mettre à True pendant le dév pour voir les erreurs
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     disable_windowed_traceback=False,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     argv_emulation=False,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     target_arch=None,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     codesign_identity=None,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     entitlements_file=None,
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     icon='%BASE_DIR%icons\tts_icon.ico'
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo ^)
 
 :: Compiler l'application avec PyInstaller
 call :log INFO "Compilation de l'application avec PyInstaller..."
