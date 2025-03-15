@@ -1,4 +1,4 @@
-===== DEBUT INSTALLATION 15-03-25 22:38:56,42 ===== 
+===== DEBUT INSTALLATION 15-03-25 22:42:07,45 ===== 
 [INFO] Démarrage de la création de l'installateur Simple TTS 
 [INFO] Configuration de Visual Studio... 
 [INFO] Configuration des chemins... 
@@ -17,11 +17,212 @@
 [INFO] Exécution: Compilation PyInstaller 
 [DEBUG] Commande: pyinstaller --clean --noconfirm Simple_TTS_GUI.spec 
 pyinstaller --clean --noconfirm Simple_TTS_GUI.spec 
-298 INFO: PyInstaller: 6.12.0, contrib hooks: 2025.1
-298 INFO: Python: 3.10.9
-306 INFO: Platform: Windows-10-10.0.22631-SP0
-306 INFO: Python environment: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
-306 INFO: Removing temporary files and cleaning cache in C:\Users\JF30LB\AppData\Local\pyinstaller
+290 INFO: PyInstaller: 6.12.0, contrib hooks: 2025.1
+290 INFO: Python: 3.10.9
+304 INFO: Platform: Windows-10-10.0.22631-SP0
+304 INFO: Python environment: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
+304 INFO: Removing temporary files and cleaning cache in C:\Users\JF30LB\AppData\Local\pyinstaller
+304 INFO: Module search paths (PYTHONPATH):
+['C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Scripts\\pyinstaller.exe',
+ 'C:\\Progra~1\\Python310\\python310.zip',
+ 'C:\\Progra~1\\Python310\\DLLs',
+ 'C:\\Progra~1\\Python310\\lib',
+ 'C:\\Progra~1\\Python310',
+ 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310',
+ 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages',
+ 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio',
+ 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio']
+1712 INFO: checking Analysis
+1712 INFO: Building Analysis because Analysis-00.toc is non existent
+1712 INFO: Running Analysis Analysis-00.toc
+1712 INFO: Target bytecode optimization level: 0
+1712 INFO: Initializing module dependency graph...
+1715 INFO: Initializing module graph hook caches...
+1743 INFO: Analyzing modules for base_library.zip ...
+2805 INFO: Processing standard module hook 'hook-heapq.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+2908 INFO: Processing standard module hook 'hook-encodings.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+5709 INFO: Processing standard module hook 'hook-pickle.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+9766 INFO: Caching module dependency graph...
+9782 INFO: Looking for Python shared library...
+9814 INFO: Using Python shared library: C:\Progra~1\Python310\python310.dll
+9814 INFO: Analyzing C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.py
+9829 INFO: Processing standard module hook 'hook-PyQt6.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+10063 INFO: Processing standard module hook 'hook-PyQt6.QtWidgets.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+10269 INFO: Processing standard module hook 'hook-PyQt6.QtCore.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+10460 INFO: Processing standard module hook 'hook-PyQt6.QtGui.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+10928 INFO: Processing standard module hook 'hook-torch.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+6421 WARNING: Failed to collect submodules for 'torch.testing._internal.opinfo' because importing 'torch.testing._internal.opinfo' raised: ModuleNotFoundError: No module named 'expecttest'
+W0315 22:42:32.372000 33624 Lib\site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\utils\hooks\__init__.py:666: DeprecationWarning: `torch.distributed._sharding_spec` will be deprecated, use `torch.distributed._shard.sharding_spec` instead
+  __import__(name)
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\utils\hooks\__init__.py:666: DeprecationWarning: `torch.distributed._sharded_tensor` will be deprecated, use `torch.distributed._shard.sharded_tensor` instead
+  __import__(name)
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\utils\hooks\__init__.py:666: DeprecationWarning: `torch.distributed._shard.checkpoint` will be deprecated, use `torch.distributed.checkpoint` instead
+  __import__(name)
+23434 INFO: hook-torch: this torch build does not depend on MKL...
+23434 INFO: hook-torch: raising recursion limit to 5000
+23491 INFO: Processing standard module hook 'hook-platform.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+23491 INFO: Processing pre-safe-import-module hook 'hook-typing_extensions.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+23491 INFO: SetuptoolsInfo: initializing cached setuptools info...
+24715 INFO: Processing standard module hook 'hook-sympy.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+24948 INFO: Processing standard module hook 'hook-numpy.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+26991 INFO: Processing pre-safe-import-module hook 'hook-distutils.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+26991 INFO: Processing pre-find-module-path hook 'hook-distutils.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_find_module_path'
+27739 INFO: Processing standard module hook 'hook-distutils.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+27833 INFO: Processing standard module hook 'hook-sysconfig.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+27943 INFO: Processing standard module hook 'hook-distutils.util.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+28175 INFO: Processing standard module hook 'hook-multiprocessing.util.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+28537 INFO: Processing standard module hook 'hook-xml.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+32705 INFO: Processing standard module hook 'hook-difflib.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+34018 INFO: Processing standard module hook 'hook-psutil.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+38424 INFO: Processing standard module hook 'hook-matplotlib.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+38925 INFO: Processing pre-safe-import-module hook 'hook-packaging.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+38941 INFO: Processing standard module hook 'hook-packaging.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+39021 INFO: Processing pre-safe-import-module hook 'hook-gi.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+39173 INFO: Processing standard module hook 'hook-PIL.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+39305 INFO: Processing standard module hook 'hook-PIL.Image.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+39847 INFO: Processing standard module hook 'hook-xml.etree.cElementTree.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+39879 INFO: Processing standard module hook 'hook-PIL.ImageFilter.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+41610 INFO: Processing standard module hook 'hook-jinja2.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+42812 INFO: Processing standard module hook 'hook-matplotlib.pyplot.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+43561 INFO: Processing standard module hook 'hook-matplotlib.backend_bases.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+44782 INFO: Processing pre-safe-import-module hook 'hook-six.moves.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+47164 INFO: Processing standard module hook 'hook-matplotlib.backends.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+47451 INFO: Processing pre-safe-import-module hook 'hook-importlib_resources.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+47510 INFO: Processing standard module hook 'hook-certifi.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+62692 INFO: Processing standard module hook 'hook-scipy.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+63430 INFO: Processing standard module hook 'hook-pycparser.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+64306 INFO: Processing standard module hook 'hook-setuptools.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+64415 INFO: Processing standard module hook 'hook-pkg_resources.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+65920 INFO: Processing pre-safe-import-module hook 'hook-importlib_metadata.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+69084 INFO: Processing standard module hook 'hook-scipy.sparse.csgraph.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+69474 INFO: Processing standard module hook 'hook-scipy.linalg.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+70054 INFO: Processing standard module hook 'hook-scipy.special._ufuncs.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+70212 INFO: Processing standard module hook 'hook-scipy.special._ellip_harm_2.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+76274 INFO: Processing standard module hook 'hook-scipy.spatial.transform.rotation.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+78028 INFO: Processing standard module hook 'hook-scipy.stats._stats.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+86578 INFO: Processing standard module hook 'hook-xml.dom.domreg.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+89640 INFO: Processing pre-safe-import-module hook 'hook-tensorflow.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\pre_safe_import_module'
+92693 INFO: Processing standard module hook 'hook-fsspec.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+93622 INFO: Processing standard module hook 'hook-pandas.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+95513 INFO: Processing standard module hook 'hook-pytz.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+98068 INFO: Processing standard module hook 'hook-pandas.io.formats.style.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+101423 INFO: Processing standard module hook 'hook-pandas.plotting.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+101660 INFO: Processing standard module hook 'hook-numba.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+101719 INFO: Processing standard module hook 'hook-llvmlite.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+103257 INFO: Processing standard module hook 'hook-pygments.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+116085 INFO: Processing pre-safe-import-module hook 'hook-win32com.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\pre_safe_import_module'
+122056 INFO: Processing standard module hook 'hook-sqlite3.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+122604 INFO: Processing standard module hook 'hook-pandas.io.clipboard.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+131384 INFO: Processing standard module hook 'hook-torchvision.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+159964 INFO: Processing standard module hook 'hook-transformers.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+164583 INFO: Processing standard module hook 'hook-charset_normalizer.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+165830 INFO: Processing standard module hook 'hook-pydantic.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+167806 INFO: Processing standard module hook 'hook-zoneinfo.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+184569 INFO: Processing standard module hook 'hook-torchvision.io.image.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+191306 INFO: Processing standard module hook 'hook-torchaudio.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+196774 INFO: Processing standard module hook 'hook-soundfile.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+199657 INFO: Processing standard module hook 'hook-scipy.io.matlab.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+203370 INFO: Processing standard module hook 'hook-regex.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+204545 INFO: Processing standard module hook 'hook-sudachipy.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+210655 INFO: Processing standard module hook 'hook-jieba.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+238332 INFO: Processing standard module hook 'hook-nltk.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+243056 INFO: Processing pre-find-module-path hook 'hook-tkinter.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_find_module_path'
+243071 INFO: TclTkInfo: initializing cached Tcl/Tk info...
+243307 INFO: Processing standard module hook 'hook-_tkinter.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+245093 INFO: Processing standard module hook 'hook-sklearn.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+245547 INFO: Processing standard module hook 'hook-sklearn.utils.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+246365 INFO: Processing standard module hook 'hook-sklearn.metrics.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+249417 INFO: Processing standard module hook 'hook-sklearn.metrics.cluster.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+249981 INFO: Processing standard module hook 'hook-sklearn.cluster.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+250113 INFO: Processing standard module hook 'hook-sklearn.metrics.pairwise.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+250845 INFO: Processing standard module hook 'hook-sklearn.neighbors.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+251083 INFO: Processing standard module hook 'hook-sklearn.linear_model.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+255781 INFO: Processing standard module hook 'hook-pycrfsuite.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+263221 INFO: Processing standard module hook 'hook-spacy.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+269910 INFO: Processing standard module hook 'hook-thinc.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+272294 INFO: Processing pre-safe-import-module hook 'hook-zipp.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+272543 INFO: Processing standard module hook 'hook-srsly.msgpack._packer.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+274644 INFO: Processing standard module hook 'hook-thinc.backends.numpy_ops.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+277781 INFO: Processing standard module hook 'hook-langcodes.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+289737 INFO: Processing pre-safe-import-module hook 'hook-wheel.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+336129 INFO: Processing standard module hook 'hook-librosa.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+339191 INFO: Processing standard module hook 'hook-pypinyin.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\pypinyin\\__pyinstaller'
+345381 INFO: Processing pre-safe-import-module hook 'hook-inflect.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+345460 INFO: Processing pre-safe-import-module hook 'hook-more_itertools.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+345774 INFO: Processing pre-safe-import-module hook 'hook-typeguard.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+346801 INFO: Processing standard module hook 'hook-babel.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+347480 INFO: Processing standard module hook 'hook-dateparser.utils.strptime.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+349814 INFO: Analyzing hidden import 'torch.distributed._shard.checkpoint.*'
+349814 ERROR: Hidden import 'torch.distributed._shard.checkpoint.*' not found
+349814 INFO: Analyzing hidden import 'torch.distributed._sharded_tensor.*'
+349814 ERROR: Hidden import 'torch.distributed._sharded_tensor.*' not found
+349814 INFO: Analyzing hidden import 'torch.distributed._sharding_spec.*'
+349831 ERROR: Hidden import 'torch.distributed._sharding_spec.*' not found
+349831 INFO: Analyzing hidden import 'PyQt6.sip'
+349831 INFO: Analyzing hidden import 'pkg_resources.py2_warn'
+349831 ERROR: Hidden import 'pkg_resources.py2_warn' not found
+349831 INFO: Analyzing hidden import 'pytorch_2_6_patch'
+349831 INFO: Processing module hooks (post-graph stage)...
+356668 INFO: Processing pre-safe-import-module hook 'hook-platformdirs.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+356708 INFO: Processing standard module hook 'hook-platformdirs.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+356944 INFO: Processing standard module hook 'hook-sklearn.tree.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+392353 INFO: Processing standard module hook 'hook-matplotlib.backends.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+392353 INFO: Matplotlib backend selection method: automatic discovery of used backends
+392353 INFO: Discovered Matplotlib backend(s) via `matplotlib.use()` call in module 'sympy.testing.runtests': ['Agg', 'Agg']
+392353 INFO: Discovered Matplotlib backend(s) via `matplotlib.use()` call in module 'TTS.tts.utils.visual': ['Agg']
+392353 INFO: The following Matplotlib backends were discovered by scanning for `matplotlib.use()` calls: ['Agg']. If your backend of choice is not in this list, either add a `matplotlib.use()` call to your code, or configure the backend collection via hook options (see: https://pyinstaller.org/en/stable/hooks-config.html#matplotlib-hooks).
+392353 INFO: Selected matplotlib backends: ['Agg']
+393301 INFO: Processing standard module hook 'hook-PIL.SpiderImagePlugin.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+406188 INFO: Processing standard module hook 'hook-setuptools._vendor.importlib_metadata.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+406468 INFO: Processing standard module hook 'hook-setuptools._vendor.jaraco.text.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+408758 INFO: Processing standard module hook 'hook-_tkinter.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+408758 INFO: Processing standard module hook 'hook-tzdata.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+409431 INFO: Performing binary vs. data reclassification (4370 entries)
+464423 INFO: Looking for ctypes DLLs
+464533 WARNING: Ignoring /usr/lib64/libgomp.so.1 imported from C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\torch\_inductor\codecache.py - only basenames are supported with ctypes imports!
+464612 INFO: Analyzing run-time hooks ...
+464643 INFO: Including run-time hook 'pyi_rth_inspect.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+464690 INFO: Including run-time hook 'pyi_rth_pkgutil.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+464722 INFO: Including run-time hook 'pyi_rth_multiprocessing.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+464750 INFO: Including run-time hook 'pyi_rth_setuptools.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+464788 INFO: Including run-time hook 'pyi_rth_pkgres.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+464829 INFO: Including run-time hook 'pyi_rth_mplconfig.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+464860 INFO: Processing pre-find-module-path hook 'hook-_pyi_rth_utils.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\pre_find_module_path'
+464876 INFO: Processing standard module hook 'hook-_pyi_rth_utils.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks'
+464907 INFO: Including run-time hook 'pyi_rth_nltk.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\rthooks'
+464911 INFO: Including run-time hook 'pyi_rth__tkinter.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+464923 INFO: Including run-time hook 'pyi_rth_pyqt6.py' from 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+465145 INFO: Creating base_library.zip...
+465223 INFO: Looking for dynamic libraries
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\build_main.py:227: UserWarning: The numpy.array_api submodule is still experimental. See NEP 47.
+  __import__(package)
+W0315 22:50:16.867000 33024 Lib\site-packages\torch\distributed\elastic\multiprocessing\redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\build_main.py:227: DeprecationWarning: `torch.distributed._sharding_spec` will be deprecated, use `torch.distributed._shard.sharding_spec` instead
+  __import__(package)
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\build_main.py:227: DeprecationWarning: `torch.distributed._sharded_tensor` will be deprecated, use `torch.distributed._shard.sharded_tensor` instead
+  __import__(package)
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\build_main.py:227: DeprecationWarning: `torch.distributed._shard.checkpoint` will be deprecated, use `torch.distributed.checkpoint` instead
+  __import__(package)
+487252 INFO: Extra DLL search directories (AddDllDirectory): ['C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyQt6\\Qt6\\bin', 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\numpy\\.libs', 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\scipy.libs', 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\matplotlib.libs', 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\torch\\lib', 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\torchvision', 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\torchvision', 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\torchvision', 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\torchvision']
+487252 INFO: Extra DLL search directories (PATH): ['C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyQt6\\Qt6\\bin']
+493332 WARNING: Library not found: could not resolve 'tbb12.dll', dependency of 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\numba\\np\\ufunc\\tbbpool.cp310-win_amd64.pyd'.
+493628 INFO: Warnings written to C:\Users\JF30LB\Projects\python\Projects\text_to_audio\build\Simple_TTS_GUI\warn-Simple_TTS_GUI.txt
+494535 INFO: Graph cross-reference written to C:\Users\JF30LB\Projects\python\Projects\text_to_audio\build\Simple_TTS_GUI\xref-Simple_TTS_GUI.html
+496690 INFO: checking PYZ
+496690 INFO: Building PYZ because PYZ-00.toc is non existent
+496690 INFO: Building PYZ (ZlibArchive) C:\Users\JF30LB\Projects\python\Projects\text_to_audio\build\Simple_TTS_GUI\PYZ-00.pyz
+504988 INFO: Building PYZ (ZlibArchive) C:\Users\JF30LB\Projects\python\Projects\text_to_audio\build\Simple_TTS_GUI\PYZ-00.pyz completed successfully.
+505490 INFO: checking PKG
+505490 INFO: Building PKG because PKG-00.toc is non existent
+505490 INFO: Building PKG (CArchive) Simple_TTS.pkg
+597441 INFO: Building PKG (CArchive) Simple_TTS.pkg completed successfully.
+597583 INFO: Bootloader C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\bootloader\Windows-64bit-intel\run.exe
+597583 INFO: checking EXE
+597583 INFO: Building EXE because EXE-00.toc is non existent
+597583 INFO: Building EXE from EXE-00.toc
+597583 INFO: Copying bootloader EXE to C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS.exe
+597896 INFO: Copying icon to EXE
 Traceback (most recent call last):
   File "C:\Progra~1\Python310\lib\runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
@@ -36,11 +237,24 @@ Traceback (most recent call last):
     PyInstaller.building.build_main.main(pyi_config, spec_file, **kwargs)
   File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\build_main.py", line 1270, in main
     build(specfile, distpath, workpath, clean_build)
-  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\build_main.py", line 1205, in build
-    code = compile(f.read(), spec, 'exec')
-  File "Simple_TTS_GUI.spec", line 28
-    pathex=[r'C:\Users\JF30LB\Projects\python\Projects\text_to_audio\'],
-            ^
-SyntaxError: unterminated string literal (detected at line 28)
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\build_main.py", line 1208, in build
+    exec(code, spec_namespace)
+  File "Simple_TTS_GUI.spec", line 70, in <module>
+    exe = EXE(
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\api.py", line 658, in __init__
+    self.__postinit__()
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\datastruct.py", line 184, in __postinit__
+    self.assemble()
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\api.py", line 771, in assemble
+    self._retry_operation(icon.CopyIcons, build_name, self.icon)
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\api.py", line 1033, in _retry_operation
+    return func(*args)
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\utils\win32\icon.py", line 206, in CopyIcons
+    srcpath = normalize_icon_type(srcpath, ("exe", "ico"), "ico", config.CONF["workpath"])
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\icon.py", line 34, in normalize_icon_type
+    raise FileNotFoundError(f"Icon input file {icon_path} not found")
+FileNotFoundError: Icon input file C:\Users\JF30LB\Projects\python\Projects\text_to_audio\icons\tts_icon.ico not found
+Ajout du fichier VERSION de TTS
+Ajout du fichier VERSION de trainer
 [ERROR] Échec: Compilation PyInstaller (Code: 1) 
 [ERROR] La compilation a échoué. Veuillez consulter le fichier log pour plus de détails. 
