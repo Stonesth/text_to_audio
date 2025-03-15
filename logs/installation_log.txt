@@ -1,4 +1,4 @@
-===== DEBUT INSTALLATION 15-03-25 22:31:24,61 ===== 
+===== DEBUT INSTALLATION 15-03-25 22:38:56,42 ===== 
 [INFO] Démarrage de la création de l'installateur Simple TTS 
 [INFO] Configuration de Visual Studio... 
 [INFO] Configuration des chemins... 
@@ -17,11 +17,11 @@
 [INFO] Exécution: Compilation PyInstaller 
 [DEBUG] Commande: pyinstaller --clean --noconfirm Simple_TTS_GUI.spec 
 pyinstaller --clean --noconfirm Simple_TTS_GUI.spec 
-456 INFO: PyInstaller: 6.12.0, contrib hooks: 2025.1
-458 INFO: Python: 3.10.9
-465 INFO: Platform: Windows-10-10.0.22631-SP0
-465 INFO: Python environment: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
-465 INFO: Removing temporary files and cleaning cache in C:\Users\JF30LB\AppData\Local\pyinstaller
+298 INFO: PyInstaller: 6.12.0, contrib hooks: 2025.1
+298 INFO: Python: 3.10.9
+306 INFO: Platform: Windows-10-10.0.22631-SP0
+306 INFO: Python environment: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
+306 INFO: Removing temporary files and cleaning cache in C:\Users\JF30LB\AppData\Local\pyinstaller
 Traceback (most recent call last):
   File "C:\Progra~1\Python310\lib\runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,
@@ -39,7 +39,7 @@ Traceback (most recent call last):
   File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\build_main.py", line 1205, in build
     code = compile(f.read(), spec, 'exec')
   File "Simple_TTS_GUI.spec", line 28
-    pathex=['C:\Users\JF30LB\Projects\python\Projects\text_to_audio\'],
+    pathex=[r'C:\Users\JF30LB\Projects\python\Projects\text_to_audio\'],
             ^
 SyntaxError: unterminated string literal (detected at line 28)
 [ERROR] Échec: Compilation PyInstaller (Code: 1) 
