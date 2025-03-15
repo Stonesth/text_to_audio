@@ -14,10 +14,10 @@ warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', message="sipPyTypeDict() is deprecated")
 
 # Appliquer le patch pour PyTorch 2.6+
-try:
-    from pytorch_2_6_patch import *
-except ImportError:
-    print("Le patch PyTorch 2.6+ n'a pas pu être importé")
+# try:
+#     from pytorch_2_6_patch import *
+# except ImportError:
+#     print("Le patch PyTorch 2.6+ n'a pas pu être importé")
 
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
                             QHBoxLayout, QLabel, QComboBox, QTextEdit, QPushButton,
@@ -27,16 +27,29 @@ from PyQt6.QtCore import Qt, QThread, pyqtSignal, QPropertyAnimation, QEasingCur
 from PyQt6.QtGui import QFont, QFontDatabase, QPixmap, QScreen, QColor
 import torch
 from TTS.api import TTS
-from TTS.tts.configs.xtts_config import XttsConfig
+# from TTS.tts.configs.xtts_config import XttsConfig
 
 # Filtrer les avertissements NumPy spécifiques
 warnings.filterwarnings('ignore', message='.*API version.*numpy.*')
 
 # Configuration pour PyTorch 2.6+
-if hasattr(torch.serialization, 'add_safe_globals'):
-    torch.serialization.add_safe_globals([XttsConfig])
+# if hasattr(torch.serialization, 'add_safe_globals'):
+#     torch.serialization.add_safe_globals([XttsConfig])
 
 class TTSWorker(QThread):
+
+
+
+
+    # Assurez-vous d'utiliser correctement l'objet TTS
+    tts = TTS(model_name="tts_models/en/ljspeech/tacotron2-DDC", progress_bar=True)
+
+    # Utilisez les méthodes disponibles sur l'objet tts
+    tts.tts_to_file(text="Hello world!", file_path="output.wav")
+
+
+
+
     """Thread worker pour la génération TTS"""
     finished = pyqtSignal()
     error = pyqtSignal(str)
