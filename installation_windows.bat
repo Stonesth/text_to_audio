@@ -14,6 +14,9 @@ if not exist "%BASE_DIR%logs" mkdir "%BASE_DIR%logs"
 set "LOG_FILE=%BASE_DIR%logs\installation_log.txt"
 echo ===== DEBUT INSTALLATION %DATE% %TIME% ===== > "!LOG_FILE!"
 
+:: Lancement du programme principal
+goto :main
+
 :: Fonction de journalisation
 :log
 set "LEVEL=%~1"
@@ -262,6 +265,3 @@ echo Vous pouvez maintenant distribuer l'installateur créé à d'autres utilisa
 echo Ils n'auront pas besoin d'installer Python pour utiliser l'application.
 pause
 exit /b 0
-
-:: Lancement du programme principal
-goto :main
