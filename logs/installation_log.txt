@@ -33,3 +33,4 @@ Traceback (most recent call last):
 SyntaxError: (unicode error) 'utf-8' codec can't decode byte 0xe9 in position 1: invalid continuation byte
 [ERROR] Échec: Compilation PyInstaller (Code: 1) 
 [ERROR] La compilation a échoué. Veuillez consulter le fichier log pour plus de détails. 
+
