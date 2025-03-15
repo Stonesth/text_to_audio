@@ -217,6 +217,10 @@ call :log INFO "Création du fichier spec pour PyInstaller..."
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo             a.datas += [^(rel_path, file_path, 'DATA'^)]
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo             print^(f"Ajout du fichier modèle: {rel_path}"^)
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo.
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo # Vérifier si l'icône existe et l'utiliser si disponible
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo icon_path = os.path.join^('%BASE_DIR:\=\\%', 'icons', 'tts_icon.ico'^)
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo icon_option = icon_path if os.path.exists^(icon_path^) else None
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo.
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo pyz = PYZ^(a.pure, a.zipped_data, cipher=block_cipher^)
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo.
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo exe = EXE^(
@@ -239,7 +243,7 @@ call :log INFO "Création du fichier spec pour PyInstaller..."
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo     target_arch=None,
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo     codesign_identity=None,
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo     entitlements_file=None,
->> "%BASE_DIR%Simple_TTS_GUI.spec" echo     icon='%BASE_DIR:\=\\%icons\\tts_icon.ico'
+>> "%BASE_DIR%Simple_TTS_GUI.spec" echo     icon=icon_option
 >> "%BASE_DIR%Simple_TTS_GUI.spec" echo ^)
 
 :: Compiler l'application avec PyInstaller
