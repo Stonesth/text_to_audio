@@ -5,9 +5,13 @@ echo ===== Programme d'Installation Simple TTS =====
 echo Date et heure: %DATE% %TIME%
 echo ============================================
 
+:: Définir le répertoire de base comme le répertoire du script
+set "BASE_DIR=%~dp0"
+set "INSTALL_DIR=%BASE_DIR%installation"
+
 :: Configuration de la journalisation
-if not exist "logs" mkdir logs
-set "LOG_FILE=%~dp0logs\installation_log.txt"
+if not exist "%BASE_DIR%logs" mkdir "%BASE_DIR%logs"
+set "LOG_FILE=%BASE_DIR%logs\installation_log.txt"
 echo ===== DEBUT INSTALLATION %DATE% %TIME% ===== > "!LOG_FILE!"
 
 :: Fonction de journalisation
@@ -38,249 +42,226 @@ if %RESULT% equ 0 (
 exit /b %RESULT%
 
 :main
-call :log INFO "Démarrage de l'installation de Simple TTS"
+call :log INFO "Démarrage de la création de l'installateur Simple TTS"
 
-:: Vérifier que Python 3.10 est installé
-call :log INFO "Vérification de Python 3.10..."
-where python.exe >nul 2>&1
-if %ERRORLEVEL% neq 0 (
-    call :log ERROR "Python n'est pas installé ou n'est pas dans le PATH."
-    echo Erreur: Python 3.10 est requis mais n'a pas été trouvé.
-    echo Téléchargez et installez Python 3.10 depuis https://www.python.org/downloads/release/python-3109/
+:: Vérifier l'existence de l'environnement virtuel
+if not exist "%BASE_DIR%venv_py310\Scripts\activate.bat" (
+    call :log ERROR "L'environnement virtuel venv_py310 n'existe pas. Veuillez exécuter setup_env_v22.bat d'abord."
+    echo Erreur: L'environnement virtuel venv_py310 n'existe pas.
+    echo Veuillez exécuter setup_env_v22.bat d'abord pour créer l'environnement.
     pause
     exit /b 1
 )
 
-:: Créer un dossier d'installation
-set "INSTALL_DIR=%ProgramFiles%\Simple TTS"
-echo Dossier d'installation: %INSTALL_DIR%
+:: Activer l'environnement virtuel
+call :log INFO "Activation de l'environnement virtuel venv_py310..."
+call "%BASE_DIR%venv_py310\Scripts\activate.bat"
 
-choice /C YN /M "Installer Simple TTS dans ce dossier?"
-if %ERRORLEVEL% neq 1 (
-    echo Installation annulée par l'utilisateur.
-    exit /b 0
+:: Vérifier PyInstaller
+pip show pyinstaller >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    call :log INFO "Installation de PyInstaller..."
+    call :exec_and_log "pip install pyinstaller" "Installation de PyInstaller"
 )
 
+:: Créer le dossier d'installation si nécessaire
 if not exist "%INSTALL_DIR%" (
     call :log INFO "Création du dossier d'installation: %INSTALL_DIR%"
     mkdir "%INSTALL_DIR%" 2>nul
-    if %ERRORLEVEL% neq 0 (
-        call :log ERROR "Impossible de créer le dossier d'installation. Essai avec les droits d'administrateur..."
-        echo Remarque: Des droits d'administrateur sont nécessaires pour installer dans %ProgramFiles%.
-        echo Redémarrez ce script en tant qu'administrateur ou choisissez un autre dossier.
-        
-        set /p "INSTALL_DIR=Entrez un autre chemin d'installation (ou appuyez sur Entrée pour annuler): "
-        if "!INSTALL_DIR!"=="" (
-            echo Installation annulée.
-            exit /b 1
-        )
-        
-        mkdir "!INSTALL_DIR!" 2>nul
-        if %ERRORLEVEL% neq 0 (
-            call :log ERROR "Impossible de créer le dossier d'installation: !INSTALL_DIR!"
-            echo Erreur: Impossible de créer le dossier d'installation.
-            pause
-            exit /b 1
-        )
-    )
 )
-
-:: Créer un environnement virtuel temporaire pour la compilation
-call :log INFO "Création d'un environnement virtuel temporaire pour la compilation..."
-set "TEMP_DIR=%TEMP%\simple_tts_build"
-if exist "%TEMP_DIR%" rmdir /s /q "%TEMP_DIR%"
-mkdir "%TEMP_DIR%"
-cd "%TEMP_DIR%"
-
-call :exec_and_log "python -m venv venv" "Création de l'environnement virtuel"
-call :exec_and_log "venv\Scripts\activate.bat" "Activation de l'environnement virtuel"
-
-:: Installer les dépendances nécessaires pour la compilation
-call :log INFO "Installation des dépendances pour la compilation..."
-call :exec_and_log "pip install -U pip" "Mise à jour de pip"
-call :exec_and_log "pip install wheel setuptools" "Installation des outils de base"
-call :exec_and_log "pip install pyinstaller" "Installation de PyInstaller"
-
-:: Installer les dépendances spécifiques à TTS
-call :log INFO "Installation des dépendances spécifiques à TTS..."
-call :exec_and_log "pip install numpy==1.21.0" "Installation de numpy spécifique"
-call :exec_and_log "pip install torch==2.0.1 torchaudio==2.0.2" "Installation de PyTorch"
-call :exec_and_log "pip install TTS==0.21.3" "Installation de TTS 0.21.3"
-call :exec_and_log "pip install PyQt6" "Installation de PyQt6"
-
-:: Copier les fichiers sources depuis le répertoire du projet
-call :log INFO "Copie des fichiers sources..."
-set "PROJECT_DIR=%~dp0"
-xcopy /y "%PROJECT_DIR%Simple_TTS_GUI.py" "%TEMP_DIR%\"
-xcopy /y "%PROJECT_DIR%Simple_TTS.py" "%TEMP_DIR%\"
-xcopy /y "%PROJECT_DIR%pytorch_2_6_patch.py" "%TEMP_DIR%\"
-xcopy /y "%PROJECT_DIR%*.png" "%TEMP_DIR%\\" 2>nul
-xcopy /y /s "%PROJECT_DIR%models" "%TEMP_DIR%\models\" 2>nul
-xcopy /y /s "%PROJECT_DIR%icons" "%TEMP_DIR%\icons\" 2>nul
 
 :: Créer le fichier spec pour PyInstaller
 call :log INFO "Création du fichier spec pour PyInstaller..."
-echo # -*- mode: python -*-                                                  > "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo block_cipher = None                                                    >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo                                                                        >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo a = Analysis(['Simple_TTS_GUI.py'],                                     >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo              pathex=['%TEMP_DIR%'],                                     >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo              binaries=[],                                               >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo              datas=[],                                                  >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo              hiddenimports=['torch.distributed._shard.checkpoint.*',    >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo                             'torch.distributed._sharded_tensor.*',      >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo                             'torch.distributed._sharding_spec.*',       >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo                             'pkg_resources.py2_warn',                   >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo                             'pytorch_2_6_patch'],                       >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo              hookspath=[],                                              >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo              runtime_hooks=[],                                          >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo              excludes=[],                                               >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo              win_no_prefer_redirects=False,                             >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo              win_private_assemblies=False,                              >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo              cipher=block_cipher,                                       >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo              noarchive=False)                                           >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo                                                                        >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo a.datas += [("VERSION", "%TEMP_DIR%\venv\Lib\site-packages\TTS\VERSION", "DATA")] >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo a.datas += [("trainer\VERSION", "%TEMP_DIR%\venv\Lib\site-packages\trainer\VERSION", "DATA")] >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo                                                                        >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)                  >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo                                                                        >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo exe = EXE(pyz,                                                          >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo           a.scripts,                                                    >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo           a.binaries,                                                   >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo           a.zipfiles,                                                   >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo           a.datas,                                                      >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo           [],                                                          >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo           name='Simple_TTS',                                            >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo           debug=False,                                                  >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo           bootloader_ignore_signals=False,                              >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo           strip=False,                                                  >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo           upx=True,                                                     >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo           upx_exclude=[],                                               >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo           runtime_tmpdir=None,                                          >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo           console=False,                                                >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
-echo           icon='%TEMP_DIR%\icons\tts_icon.ico')                        >> "%TEMP_DIR%\Simple_TTS_GUI.spec"
+echo # -*- mode: python -*-                                                  > "%BASE_DIR%Simple_TTS_GUI.spec"
+echo block_cipher = None                                                    >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo                                                                        >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo a = Analysis(['Simple_TTS_GUI.py'],                                     >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo              pathex=['%BASE_DIR%'],                                     >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo              binaries=[],                                               >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo              datas=[],                                                  >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo              hiddenimports=['torch.distributed._shard.checkpoint.*',    >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo                             'torch.distributed._sharded_tensor.*',      >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo                             'torch.distributed._sharding_spec.*',       >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo                             'pkg_resources.py2_warn',                   >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo                             'TTS.tts.configs.xtts_config',              >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo                             'TTS.tts.models.xtts',                      >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo                             'pytorch_2_6_patch'],                       >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo              hookspath=[],                                              >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo              runtime_hooks=[],                                          >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo              excludes=[],                                               >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo              win_no_prefer_redirects=False,                             >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo              win_private_assemblies=False,                              >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo              cipher=block_cipher,                                       >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo              noarchive=False)                                           >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo                                                                        >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo # Ajouter les fichiers VERSION requis                                  >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo tts_site_pkg = os.path.dirname(importlib.import_module('TTS').__file__) >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo a.datas += [("VERSION", os.path.join(tts_site_pkg, "VERSION"), "DATA")] >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo trainer_site_pkg = os.path.dirname(importlib.import_module('trainer').__file__) >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo a.datas += [("trainer\VERSION", os.path.join(trainer_site_pkg, "VERSION"), "DATA")] >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo                                                                        >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo # Ajouter les modèles TTS                                              >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo models_dir = os.path.join('%BASE_DIR%', 'models')                      >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo if os.path.exists(models_dir):                                         >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo     for root, dirs, files in os.walk(models_dir):                      >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo         for file in files:                                             >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo             file_path = os.path.join(root, file)                       >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo             rel_path = os.path.relpath(file_path, '%BASE_DIR%')        >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo             a.datas += [(rel_path, file_path, 'DATA')]                 >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo                                                                        >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)                  >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo                                                                        >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo exe = EXE(pyz,                                                          >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo           a.scripts,                                                    >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo           a.binaries,                                                   >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo           a.zipfiles,                                                   >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo           a.datas,                                                      >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo           [],                                                          >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo           name='Simple_TTS',                                            >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo           debug=False,                                                  >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo           bootloader_ignore_signals=False,                              >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo           strip=False,                                                  >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo           upx=True,                                                     >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo           runtime_tmpdir=None,                                          >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo           console=False,                                                >> "%BASE_DIR%Simple_TTS_GUI.spec"
+echo           icon='%BASE_DIR%icons\tts_icon.ico')                         >> "%BASE_DIR%Simple_TTS_GUI.spec"
 
 :: Compiler l'application avec PyInstaller
 call :log INFO "Compilation de l'application avec PyInstaller..."
-cd "%TEMP_DIR%"
+cd "%BASE_DIR%"
 call :exec_and_log "pyinstaller --clean --noconfirm Simple_TTS_GUI.spec" "Compilation PyInstaller"
+
+:: Vérifier si la compilation a réussi
+if not exist "%BASE_DIR%dist\Simple_TTS\Simple_TTS.exe" (
+    call :log ERROR "La compilation a échoué. Veuillez consulter le fichier log pour plus de détails."
+    echo Erreur: La compilation a échoué. Veuillez consulter %LOG_FILE% pour plus de détails.
+    pause
+    exit /b 1
+)
 
 :: Créer l'installateur avec NSIS (si disponible) ou simplement copier les fichiers
 if exist "%ProgramFiles(x86)%\NSIS\makensis.exe" (
     call :log INFO "Création de l'installateur avec NSIS..."
     
     :: Créer le script NSIS
-    echo !define APPNAME "Simple TTS"                   > "%TEMP_DIR%\installer.nsi"
-    echo !define COMPANYNAME "TTS Project"            >> "%TEMP_DIR%\installer.nsi"
-    echo !define DESCRIPTION "Application de synthèse vocale" >> "%TEMP_DIR%\installer.nsi"
-    echo !define VERSIONMAJOR 1                      >> "%TEMP_DIR%\installer.nsi"
-    echo !define VERSIONMINOR 0                      >> "%TEMP_DIR%\installer.nsi"
-    echo !define VERSIONBUILD 0                      >> "%TEMP_DIR%\installer.nsi"
-    echo                                             >> "%TEMP_DIR%\installer.nsi"
-    echo !define HELPURL "https://github.com/Stonesth/text_to_audio" >> "%TEMP_DIR%\installer.nsi"
-    echo !define UPDATEURL "https://github.com/Stonesth/text_to_audio" >> "%TEMP_DIR%\installer.nsi"
-    echo !define ABOUTURL "https://github.com/Stonesth/text_to_audio" >> "%TEMP_DIR%\installer.nsi"
-    echo                                             >> "%TEMP_DIR%\installer.nsi"
-    echo !define INSTALLSIZE 250000                  >> "%TEMP_DIR%\installer.nsi"
-    echo                                             >> "%TEMP_DIR%\installer.nsi"
-    echo !include "MUI2.nsh"                         >> "%TEMP_DIR%\installer.nsi"
-    echo                                             >> "%TEMP_DIR%\installer.nsi"
-    echo Name "${APPNAME}"                           >> "%TEMP_DIR%\installer.nsi"
-    echo OutFile "Simple_TTS_Setup.exe"              >> "%TEMP_DIR%\installer.nsi"
-    echo InstallDir "$PROGRAMFILES\${APPNAME}"       >> "%TEMP_DIR%\installer.nsi"
-    echo InstallDirRegKey HKCU "Software\${APPNAME}" "" >> "%TEMP_DIR%\installer.nsi"
-    echo                                             >> "%TEMP_DIR%\installer.nsi"
-    echo !define MUI_ABORTWARNING                    >> "%TEMP_DIR%\installer.nsi"
-    echo !define MUI_ICON "%TEMP_DIR%\icons\tts_icon.ico" >> "%TEMP_DIR%\installer.nsi"
-    echo                                             >> "%TEMP_DIR%\installer.nsi"
-    echo !insertmacro MUI_PAGE_WELCOME               >> "%TEMP_DIR%\installer.nsi"
-    echo !insertmacro MUI_PAGE_LICENSE "LICENSE.txt" >> "%TEMP_DIR%\installer.nsi"
-    echo !insertmacro MUI_PAGE_DIRECTORY             >> "%TEMP_DIR%\installer.nsi"
-    echo !insertmacro MUI_PAGE_INSTFILES             >> "%TEMP_DIR%\installer.nsi"
-    echo !insertmacro MUI_PAGE_FINISH                >> "%TEMP_DIR%\installer.nsi"
-    echo                                             >> "%TEMP_DIR%\installer.nsi"
-    echo !insertmacro MUI_LANGUAGE "French"          >> "%TEMP_DIR%\installer.nsi"
-    echo                                             >> "%TEMP_DIR%\installer.nsi"
-    echo Section "Simple TTS" SecDummy                >> "%TEMP_DIR%\installer.nsi"
-    echo   SetOutPath "$INSTDIR"                     >> "%TEMP_DIR%\installer.nsi"
-    echo   File /r "%TEMP_DIR%\dist\Simple_TTS\*.*"  >> "%TEMP_DIR%\installer.nsi"
-    echo   CreateDirectory "$SMPROGRAMS\${APPNAME}"  >> "%TEMP_DIR%\installer.nsi"
-    echo   CreateShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "$INSTDIR\Simple_TTS.exe" >> "%TEMP_DIR%\installer.nsi"
-    echo   CreateShortCut "$DESKTOP\${APPNAME}.lnk" "$INSTDIR\Simple_TTS.exe" >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteUninstaller "$INSTDIR\uninstall.exe" >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayName" "${APPNAME}" >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "UninstallString" "$\"$INSTDIR\uninstall.exe$\"" >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\" /S" >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "InstallLocation" "$\"$INSTDIR$\"" >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayIcon" "$\"$INSTDIR\Simple_TTS.exe$\"" >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "Publisher" "${COMPANYNAME}" >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "HelpLink" "${HELPURL}" >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLUpdateInfo" "${UPDATEURL}" >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLInfoAbout" "${ABOUTURL}" >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayVersion" "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}" >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMajor" ${VERSIONMAJOR} >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMinor" ${VERSIONMINOR} >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoModify" 1 >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoRepair" 1 >> "%TEMP_DIR%\installer.nsi"
-    echo   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "EstimatedSize" ${INSTALLSIZE} >> "%TEMP_DIR%\installer.nsi"
-    echo SectionEnd                                  >> "%TEMP_DIR%\installer.nsi"
-    echo                                             >> "%TEMP_DIR%\installer.nsi"
-    echo Section "Uninstall"                         >> "%TEMP_DIR%\installer.nsi"
-    echo   Delete "$INSTDIR\uninstall.exe"           >> "%TEMP_DIR%\installer.nsi"
-    echo   RMDir /r "$INSTDIR"                       >> "%TEMP_DIR%\installer.nsi"
-    echo   Delete "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" >> "%TEMP_DIR%\installer.nsi"
-    echo   RMDir "$SMPROGRAMS\${APPNAME}"            >> "%TEMP_DIR%\installer.nsi"
-    echo   Delete "$DESKTOP\${APPNAME}.lnk"          >> "%TEMP_DIR%\installer.nsi"
-    echo   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" >> "%TEMP_DIR%\installer.nsi"
-    echo SectionEnd                                  >> "%TEMP_DIR%\installer.nsi"
+    echo !define APPNAME "Simple TTS"                   > "%BASE_DIR%installer.nsi"
+    echo !define COMPANYNAME "TTS Project"            >> "%BASE_DIR%installer.nsi"
+    echo !define DESCRIPTION "Application de synthèse vocale" >> "%BASE_DIR%installer.nsi"
+    echo !define VERSIONMAJOR 1                      >> "%BASE_DIR%installer.nsi"
+    echo !define VERSIONMINOR 0                      >> "%BASE_DIR%installer.nsi"
+    echo !define VERSIONBUILD 0                      >> "%BASE_DIR%installer.nsi"
+    echo                                             >> "%BASE_DIR%installer.nsi"
+    echo !define HELPURL "https://github.com/Stonesth/text_to_audio" >> "%BASE_DIR%installer.nsi"
+    echo !define UPDATEURL "https://github.com/Stonesth/text_to_audio" >> "%BASE_DIR%installer.nsi"
+    echo !define ABOUTURL "https://github.com/Stonesth/text_to_audio" >> "%BASE_DIR%installer.nsi"
+    echo                                             >> "%BASE_DIR%installer.nsi"
+    echo !define INSTALLSIZE 250000                  >> "%BASE_DIR%installer.nsi"
+    echo                                             >> "%BASE_DIR%installer.nsi"
+    echo !include "MUI2.nsh"                         >> "%BASE_DIR%installer.nsi"
+    echo                                             >> "%BASE_DIR%installer.nsi"
+    echo Name "${APPNAME}"                           >> "%BASE_DIR%installer.nsi"
+    echo OutFile "%BASE_DIR%Simple_TTS_Setup.exe"     >> "%BASE_DIR%installer.nsi"
+    echo InstallDir "$PROGRAMFILES\${APPNAME}"       >> "%BASE_DIR%installer.nsi"
+    echo InstallDirRegKey HKCU "Software\${APPNAME}" "" >> "%BASE_DIR%installer.nsi"
+    echo                                             >> "%BASE_DIR%installer.nsi"
+    echo !define MUI_ABORTWARNING                    >> "%BASE_DIR%installer.nsi"
+    echo !define MUI_ICON "%BASE_DIR%icons\tts_icon.ico" >> "%BASE_DIR%installer.nsi"
+    echo                                             >> "%BASE_DIR%installer.nsi"
+    echo !insertmacro MUI_PAGE_WELCOME               >> "%BASE_DIR%installer.nsi"
+    echo !insertmacro MUI_PAGE_LICENSE "%BASE_DIR%LICENSE.txt" >> "%BASE_DIR%installer.nsi"
+    echo !insertmacro MUI_PAGE_DIRECTORY             >> "%BASE_DIR%installer.nsi"
+    echo !insertmacro MUI_PAGE_INSTFILES             >> "%BASE_DIR%installer.nsi"
+    echo !insertmacro MUI_PAGE_FINISH                >> "%BASE_DIR%installer.nsi"
+    echo                                             >> "%BASE_DIR%installer.nsi"
+    echo !insertmacro MUI_LANGUAGE "French"          >> "%BASE_DIR%installer.nsi"
+    echo                                             >> "%BASE_DIR%installer.nsi"
+    echo Section "Simple TTS" SecDummy                >> "%BASE_DIR%installer.nsi"
+    echo   SetOutPath "$INSTDIR"                     >> "%BASE_DIR%installer.nsi"
+    echo   File /r "%BASE_DIR%dist\Simple_TTS\*.*"   >> "%BASE_DIR%installer.nsi"
+    echo   CreateDirectory "$SMPROGRAMS\${APPNAME}"  >> "%BASE_DIR%installer.nsi"
+    echo   CreateShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "$INSTDIR\Simple_TTS.exe" >> "%BASE_DIR%installer.nsi"
+    echo   CreateShortCut "$DESKTOP\${APPNAME}.lnk" "$INSTDIR\Simple_TTS.exe" >> "%BASE_DIR%installer.nsi"
+    echo   WriteUninstaller "$INSTDIR\uninstall.exe" >> "%BASE_DIR%installer.nsi"
+    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayName" "${APPNAME}" >> "%BASE_DIR%installer.nsi"
+    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "UninstallString" "$\"$INSTDIR\uninstall.exe$\"" >> "%BASE_DIR%installer.nsi"
+    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\" /S" >> "%BASE_DIR%installer.nsi"
+    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "InstallLocation" "$\"$INSTDIR$\"" >> "%BASE_DIR%installer.nsi"
+    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayIcon" "$\"$INSTDIR\Simple_TTS.exe$\"" >> "%BASE_DIR%installer.nsi"
+    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "Publisher" "${COMPANYNAME}" >> "%BASE_DIR%installer.nsi"
+    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "HelpLink" "${HELPURL}" >> "%BASE_DIR%installer.nsi"
+    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLUpdateInfo" "${UPDATEURL}" >> "%BASE_DIR%installer.nsi"
+    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLInfoAbout" "${ABOUTURL}" >> "%BASE_DIR%installer.nsi"
+    echo   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayVersion" "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}" >> "%BASE_DIR%installer.nsi"
+    echo   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMajor" ${VERSIONMAJOR} >> "%BASE_DIR%installer.nsi"
+    echo   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMinor" ${VERSIONMINOR} >> "%BASE_DIR%installer.nsi"
+    echo   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoModify" 1 >> "%BASE_DIR%installer.nsi"
+    echo   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoRepair" 1 >> "%BASE_DIR%installer.nsi"
+    echo   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "EstimatedSize" ${INSTALLSIZE} >> "%BASE_DIR%installer.nsi"
+    echo SectionEnd                                  >> "%BASE_DIR%installer.nsi"
+    echo                                             >> "%BASE_DIR%installer.nsi"
+    echo Section "Uninstall"                         >> "%BASE_DIR%installer.nsi"
+    echo   Delete "$INSTDIR\uninstall.exe"           >> "%BASE_DIR%installer.nsi"
+    echo   RMDir /r "$INSTDIR"                       >> "%BASE_DIR%installer.nsi"
+    echo   Delete "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" >> "%BASE_DIR%installer.nsi"
+    echo   RMDir "$SMPROGRAMS\${APPNAME}"            >> "%BASE_DIR%installer.nsi"
+    echo   Delete "$DESKTOP\${APPNAME}.lnk"          >> "%BASE_DIR%installer.nsi"
+    echo   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" >> "%BASE_DIR%installer.nsi"
+    echo SectionEnd                                  >> "%BASE_DIR%installer.nsi"
     
     :: Créer un fichier LICENSE fictif si nécessaire
-    echo Licence Simple TTS                          > "%TEMP_DIR%\LICENSE.txt"
-    echo =====================================        >> "%TEMP_DIR%\LICENSE.txt"
-    echo                                             >> "%TEMP_DIR%\LICENSE.txt"
-    echo Ce logiciel est distribué sous les termes de la licence MIT. >> "%TEMP_DIR%\LICENSE.txt"
+    if not exist "%BASE_DIR%LICENSE.txt" (
+        echo Licence Simple TTS                          > "%BASE_DIR%LICENSE.txt"
+        echo =====================================        >> "%BASE_DIR%LICENSE.txt"
+        echo                                             >> "%BASE_DIR%LICENSE.txt"
+        echo Ce logiciel est distribué sous les termes de la licence MIT. >> "%BASE_DIR%LICENSE.txt"
+    )
     
     :: Compiler l'installateur NSIS
-    call :exec_and_log ""%ProgramFiles(x86)%\NSIS\makensis.exe" "%TEMP_DIR%\installer.nsi"" "Compilation de l'installateur NSIS"
+    call :exec_and_log ""%ProgramFiles(x86)%\NSIS\makensis.exe" "%BASE_DIR%installer.nsi"" "Compilation de l'installateur NSIS"
     
-    :: Copier l'installateur dans le dossier du projet
-    copy /y "%TEMP_DIR%\Simple_TTS_Setup.exe" "%PROJECT_DIR%\Simple_TTS_Setup.exe"
-    
-    call :log INFO "Installateur créé: %PROJECT_DIR%\Simple_TTS_Setup.exe"
-    echo Installateur créé avec succès: %PROJECT_DIR%\Simple_TTS_Setup.exe
+    call :log INFO "Installateur créé: %BASE_DIR%Simple_TTS_Setup.exe"
+    echo Installateur créé avec succès: %BASE_DIR%Simple_TTS_Setup.exe
 ) else (
     call :log INFO "NSIS non trouvé, création d'un package ZIP à la place..."
     
+    :: Créer un dossier d'installation portable
+    set "PORTABLE_DIR=%BASE_DIR%Simple_TTS_Portable"
+    if exist "%PORTABLE_DIR%" rmdir /s /q "%PORTABLE_DIR%"
+    mkdir "%PORTABLE_DIR%"
+    
+    :: Copier les fichiers compilés
+    xcopy /y /s "%BASE_DIR%dist\Simple_TTS\*" "%PORTABLE_DIR%\"
+    
+    :: Créer un script de lancement
+    echo @echo off                                   > "%PORTABLE_DIR%\Lancer_Simple_TTS.bat"
+    echo start "" "%~dp0Simple_TTS.exe"               >> "%PORTABLE_DIR%\Lancer_Simple_TTS.bat"
+    
     :: Vérifier si 7-Zip est installé
     if exist "%ProgramFiles%\7-Zip\7z.exe" (
-        call :exec_and_log ""%ProgramFiles%\7-Zip\7z.exe" a -tzip "%PROJECT_DIR%\Simple_TTS_Portable.zip" "%TEMP_DIR%\dist\Simple_TTS\*"" "Création du package ZIP"
-        call :log INFO "Package portable créé: %PROJECT_DIR%\Simple_TTS_Portable.zip"
-        echo Package portable créé avec succès: %PROJECT_DIR%\Simple_TTS_Portable.zip
+        call :exec_and_log ""%ProgramFiles%\7-Zip\7z.exe" a -tzip "%BASE_DIR%Simple_TTS_Portable.zip" "%PORTABLE_DIR%\*"" "Création du package ZIP"
+        call :log INFO "Package portable créé: %BASE_DIR%Simple_TTS_Portable.zip"
+        echo Package portable créé avec succès: %BASE_DIR%Simple_TTS_Portable.zip
+        
+        :: Supprimer le dossier temporaire
+        rmdir /s /q "%PORTABLE_DIR%"
     ) else (
-        :: Copier les fichiers compilés dans le dossier d'installation
-        call :log INFO "Copie des fichiers compilés dans le dossier d'installation..."
-        xcopy /y /s "%TEMP_DIR%\dist\Simple_TTS\*" "%INSTALL_DIR%\"
-        
-        :: Créer un raccourci sur le bureau
-        call :log INFO "Création d'un raccourci sur le bureau..."
-        powershell -Command "$WshShell = New-Object -ComObject WScript.Shell; $Shortcut = $WshShell.CreateShortcut('%USERPROFILE%\Desktop\Simple TTS.lnk'); $Shortcut.TargetPath = '%INSTALL_DIR%\Simple_TTS.exe'; $Shortcut.Save()"
-        
-        call :log INFO "Installation terminée: %INSTALL_DIR%"
-        echo Installation terminée avec succès dans: %INSTALL_DIR%
+        call :log INFO "7-Zip non trouvé, version portable créée dans: %PORTABLE_DIR%"
+        echo Version portable créée avec succès dans: %PORTABLE_DIR%
     )
 )
 
-:: Nettoyage
+:: Nettoyer les fichiers temporaires
 call :log INFO "Nettoyage des fichiers temporaires..."
-cd "%PROJECT_DIR%"
-rmdir /s /q "%TEMP_DIR%"
+if exist "%BASE_DIR%build" rmdir /s /q "%BASE_DIR%build"
+if exist "%BASE_DIR%dist" rmdir /s /q "%BASE_DIR%dist"
+if exist "%BASE_DIR%Simple_TTS_GUI.spec" del /f /q "%BASE_DIR%Simple_TTS_GUI.spec"
+if exist "%BASE_DIR%installer.nsi" del /f /q "%BASE_DIR%installer.nsi"
 
 echo ===== Installation terminée =====
+echo Vous pouvez maintenant distribuer l'installateur créé à d'autres utilisateurs.
+echo Ils n'auront pas besoin d'installer Python pour utiliser l'application.
 pause
 exit /b 0
 
 :: Lancement du programme principal
-:startup
-call :main
-goto :EOF
+goto :main
