@@ -1,61 +1,30 @@
-(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> .\build_executable_simple.bat
+(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> .\create_hooks.bat
+===== CR├ëATION DES HOOKS PYINSTALLER =====
 
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>setlocal enabledelayedexpansion
+CHECKPOINT 1 - Cr├⌐ation du r├⌐pertoire hooks...
+R├⌐pertoire hooks: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\hooks
 
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>set "LOG_FILE=C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\build_simple.txt"
+CHECKPOINT 2 - Cr├⌐ation du hook pour torch...
+Hook torch cr├⌐├⌐
 
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>set "ERROR_FILE=C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\error_simple.txt"
+CHECKPOINT 3 - Cr├⌐ation du hook pour TTS...
+Hook TTS cr├⌐├⌐
 
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>set "DEBUG_FILE=C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\debug_simple.txt"
+CHECKPOINT 4 - Cr├⌐ation du hook pour PyQt6...
+Hook PyQt6 cr├⌐├⌐
 
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>if not exist "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs" mkdir "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs"
+CHECKPOINT 5 - Cr├⌐ation du patch PyTorch 2.6...
+Patch PyTorch 2.6 cr├⌐├⌐
 
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo ===== JOURNAL DE COMPILATION PYINSTALLER =====  1>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\build_simple.txt"
+Test du patch PyTorch...
+INFO:__main__:Application du patch PyTorch 2.6+ pour XTTS
+INFO:__main__:AjoutΘ TTS.tts.configs.xtts_config.XttsConfig α safe_globals
+INFO:__main__:AjoutΘ TTS.tts.configs.xtts_config.XttsAudioConfig α safe_globals
+INFO:__main__:AjoutΘ TTS.tts.models.xtts.Xtts α safe_globals
+INFO:__main__:AjoutΘ TTS.utils.audio.processor.AudioProcessor α safe_globals
+INFO:__main__:AjoutΘ TTS.config.load_config α safe_globals
+INFO:__main__:AjoutΘ TTS.tts.configs.shared_configs.BaseTTSConfig α safe_globals
+WARNING:__main__:Impossible d'ajouter TTS.utils.audio.TorchSTFT: module 'TTS.utils.audio' has no attribute 'TorchSTFT'
 
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Date et heure: 17-03-25 14:50:53,42  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\build_simple.txt"
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo ===== ERREURS DE COMPILATION PYINSTALLER =====  1>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\error_simple.txt"
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Date et heure: 17-03-25 14:50:53,42  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\error_simple.txt"
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo ===== DEBUG DETAILLE DE LA COMPILATION =====  1>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\debug_simple.txt"
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Date et heure: 17-03-25 14:50:53,43  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\debug_simple.txt"
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo ===== CREATION DE L'EXECUTABLE AVEC PYINSTALLER =====     
-===== CREATION DE L'EXECUTABLE AVEC PYINSTALLER =====
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Date et heure: 17-03-25 14:50:53,43
-Date et heure: 17-03-25 14:50:53,43
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Demarrage du script  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\build_simple.txt"
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Verification de la version Python  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\build_simple.txt"
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Verification de la version Python...
-Verification de la version Python...
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>python --version  1>"C:\Users\JF30LB\AppData\Local\Temp\python_version.txt" 2>&1
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>set /p PYTHON_VERSION= 0<"C:\Users\JF30LB\AppData\Local\Temp\python_version.txt"
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>del "C:\Users\JF30LB\AppData\Local\Temp\python_version.txt"    
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Version Python detectee: Python 3.10.9  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\build_simple.txt"
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Version Python detectee: Python 3.10.9  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\debug_simple.txt"
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Version Python detectee: Python 3.10.9
-Version Python detectee: Python 3.10.9
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Python 3.10.9   | findstr "3.10"  1>nul
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>if 0 NEQ 0 (
-echo AVERTISSEMENT: La version Python detectee n'est pas 3.10  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\error_simple.txt"
- echo AVERTISSEMENT: La version Python detectee n'est pas 3.10
- echo AVERTISSEMENT: La version Python detectee n'est pas 3.10  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\debug_simple.txt"
- echo Il est recommande d'utiliser Python 3.10 pour garantir la compatibilite.
- echo Voulez-vous continuer quand meme? (O/N
-)
-
-C:\Users\JF30LB\Projects\python\Projects\text_to_audio>set /p CONTINUE=
+Op├⌐ration annul├⌐e.
+(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio>
