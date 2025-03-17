@@ -1,6 +1,9 @@
 ===== JOURNAL DE COMPILATION PYINSTALLER ===== 
-Date et heure: 17-03-25 14:34:16,86 
+Date et heure: 17-03-25 14:40:07,23 
 Demarrage du script 
+Verification de la version Python 
+Version Python detectee: Python 3.10.9 
+L'utilisateur a choisi de continuer avec Python Python 3.10.9 
 Verification de l'environnement virtuel venv_py310 
 Tentative d'activation de l'environnement virtuel 
 Environnement virtuel active: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310 

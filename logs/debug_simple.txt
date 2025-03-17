@@ -1,0 +1,22 @@
+===== DEBUG DETAILLE DE LA COMPILATION ===== 
+Date et heure: 17-03-25 14:40:07,24 
+Version Python detectee: Python 3.10.9 
+Poursuite avec Python Python 3.10.9 
+Verification de l'environnement virtuel venv_py310 
+Tentative d'activation de l'environnement virtuel 
+Code retour de l'activation: 0 
+Environnement virtuel active: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310 
+Verification de PyInstaller 
+Name: pyinstaller
+Version: 6.12.0
+Summary: PyInstaller bundles a Python application and all its dependencies into a single package.
+Home-page: https://www.pyinstaller.org/
+Author: Hartmut Goebel, Giovanni Bajo, David Vierra, David Cortesi, Martin Zibricky
+Author-email: 
+License: GPLv2-or-later with a special exception which allows to use PyInstaller to build and distribute non-free programs (including commercial ones)
+Location: c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages
+Requires: altgraph, packaging, pefile, pyinstaller-hooks-contrib, pywin32-ctypes, setuptools
+Required-by: 
+PyInstaller est disponible 
+Creation des fichiers Python (hooks et patch) 
+Creation du hook PyTorch... 
