@@ -47,21 +47,41 @@ echo CHECKPOINT 2 - Vérification de l'environnement virtuel... >> "%VERIFY_LOG%
 
 set "VENV_PATH=%~dp0venv_py310"
 echo Chemin environnement virtuel: %VENV_PATH% >> "%VERIFY_LOG%"
+echo Chemin environnement virtuel: %VENV_PATH%
 
-if not exist "%VENV_PATH%\Scripts\activate.bat" (
+if not exist "%VENV_PATH%" (
     echo ERREUR: Environnement virtuel venv_py310 non trouvé >> "%VERIFY_ERROR%"
     echo ERREUR: Environnement virtuel non trouvé en %VENV_PATH%
     echo Veuillez créer l'environnement virtuel avec: python -m venv venv_py310
     exit /b 1
 )
 
-:: Activation de l'environnement virtuel avec capture d'erreurs
+if not exist "%VENV_PATH%\Scripts\activate.bat" (
+    echo ERREUR: Script d'activation non trouvé en %VENV_PATH%\Scripts\activate.bat >> "%VERIFY_ERROR%"
+    echo ERREUR: Script d'activation non trouvé
+    exit /b 1
+)
+
+:: Activation de l'environnement virtuel avec capture d'erreurs explicite
 echo Tentative d'activation de l'environnement virtuel... >> "%VERIFY_LOG%"
 echo Tentative d'activation de l'environnement virtuel...
-call "%VENV_PATH%\Scripts\activate.bat" > "%TEMP%\venv_activation.txt" 2>&1
+
+:: Redirection complète de la sortie pour diagnostiquer le problème
+echo.>>"%VERIFY_LOG%"
+echo Commande exécutée: call "%VENV_PATH%\Scripts\activate.bat" >>"%VERIFY_LOG%"
+
+:: Exécution avec redirection explicite des erreurs et de la sortie standard
+call "%VENV_PATH%\Scripts\activate.bat" >"%TEMP%\venv_activation_out.txt" 2>"%TEMP%\venv_activation_err.txt"
 set ACTIVATION_RESULT=%ERRORLEVEL%
-type "%TEMP%\venv_activation.txt" >> "%VERIFY_LOG%"
-del "%TEMP%\venv_activation.txt"
+
+:: Capture et journalisation des sorties
+echo Code de retour: %ACTIVATION_RESULT% >>"%VERIFY_LOG%"
+echo ---Sortie standard--- >>"%VERIFY_LOG%"
+type "%TEMP%\venv_activation_out.txt" >>"%VERIFY_LOG%"
+echo ---Erreurs--- >>"%VERIFY_LOG%"
+type "%TEMP%\venv_activation_err.txt" >>"%VERIFY_LOG%"
+
+del "%TEMP%\venv_activation_out.txt" "%TEMP%\venv_activation_err.txt"
 
 if %ACTIVATION_RESULT% NEQ 0 (
     echo ERREUR: Échec d'activation de l'environnement virtuel >> "%VERIFY_ERROR%"
