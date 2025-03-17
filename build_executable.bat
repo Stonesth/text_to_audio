@@ -64,17 +64,17 @@ if not exist "pytorch_hook.py" (
     echo Création du hook PyTorch...
     (
         echo from PyInstaller.utils.hooks import collect_all
-        echo def hook(hook_api^):
+        echo def hook(hook_api):
         echo     packages = [
         echo         'torch',
         echo         'torchaudio',
         echo         'TTS',
         echo     ]
         echo     for package in packages:
-        echo         datas, binaries, hiddenimports = collect_all(package^)
-        echo         hook_api.add_datas(datas^)
-        echo         hook_api.add_binaries(binaries^)
-        echo         hook_api.add_imports(*hiddenimports^)
+        echo         datas, binaries, hiddenimports = collect_all(package)
+        echo         hook_api.add_datas(datas)
+        echo         hook_api.add_binaries(binaries)
+        echo         hook_api.add_imports(*hiddenimports)
         echo     # Ajouter les classes sécurisées pour PyTorch 2.6+
         echo     hook_api.add_imports('torchaudio.lib.libtorchaudio')
         echo     hook_api.add_imports('torch.lib.libtorch')
@@ -86,12 +86,12 @@ if not exist "tts_hook.py" (
     echo Création du hook TTS...
     (
         echo from PyInstaller.utils.hooks import collect_data_files, collect_all
-        echo def hook(hook_api^):
+        echo def hook(hook_api):
         echo     # Collecter tous les fichiers pour TTS
         echo     datas, binaries, hiddenimports = collect_all('TTS')
-        echo     hook_api.add_datas(datas^)
-        echo     hook_api.add_binaries(binaries^)
-        echo     hook_api.add_imports(*hiddenimports^)
+        echo     hook_api.add_datas(datas)
+        echo     hook_api.add_binaries(binaries)
+        echo     hook_api.add_imports(*hiddenimports)
         echo     # Ajouter explicitement les classes sécurisées
         echo     classes = [
         echo         'TTS.tts.configs.xtts_config.XttsConfig',
@@ -102,7 +102,7 @@ if not exist "tts_hook.py" (
         echo         'TTS.tts.configs.BaseTTSConfig',
         echo         'TTS.utils.audio.TorchSTFT'
         echo     ]
-        echo     hook_api.add_imports(*classes^)
+        echo     hook_api.add_imports(*classes)
     ) > tts_hook.py
 )
 
