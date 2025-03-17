@@ -1,6 +1,12 @@
 @echo off
 setlocal enabledelayedexpansion
 
+:: Supprimer le dossier dist et mettre un message d'avertissement
+if exist "%~dp0dist" (
+    echo AVERTISSEMENT: Le dossier dist existe déjà et sera supprimé
+    rmdir /s /q "%~dp0dist"
+)
+
 :: Configuration des fichiers de journalisation
 set "LOG_DIR=%~dp0logs"
 set "BUILD_LOG=%LOG_DIR%\build_exec.log"
