@@ -1,0 +1,9 @@
+===== JOURNAL DE COMPILATION PYINSTALLER ===== 
+Date et heure: 17-03-25 14:15:57,49 
+Demarrage du script 
+Verification de l'environnement virtuel venv_py310 
+Tentative d'activation de l'environnement virtuel 
+Environnement virtuel active: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310 
+Verification de PyInstaller 
+PyInstaller est disponible 
+Creation des fichiers Python (hooks et patch) 
