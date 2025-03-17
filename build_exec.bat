@@ -50,7 +50,7 @@ echo CHECKPOINT 3 - Création du fichier spec... >> "%BUILD_LOG%"
 echo CHECKPOINT 3 - Création du fichier spec...
 
 :: Générer le fichier spec avec des options de débogage
-echo Exécution de la commande: pyinstaller --name="Simple_TTS_GUI" --noconsole --additional-hooks-dir="%HOOKS_DIR%" --paths="%~dp0" --paths="%VIRTUAL_ENV%\Lib\site-packages" "Simple_TTS_GUI.py" --log-level=DEBUG >> "%BUILD_LOG%"
+echo Exécution de la commande: pyinstaller --name="Simple_TTS_GUI" --noconsole --additional-hooks-dir="%HOOKS_DIR%" "Simple_TTS_GUI.py" --log-level=DEBUG >> "%BUILD_LOG%"
 
 :: Vérifier que le fichier existe avant de continuer
 if not exist "Simple_TTS_GUI.py" (
@@ -63,7 +63,12 @@ if not exist "Simple_TTS_GUI.py" (
     exit /b 1
 )
 
-pyinstaller --name="Simple_TTS_GUI" --noconsole --additional-hooks-dir="%HOOKS_DIR%" --paths="%~dp0" --paths="%VIRTUAL_ENV%\Lib\site-packages" "Simple_TTS_GUI.py" --log-level=DEBUG > "%TEMP%\pyinstaller_spec.txt" 2>&1
+:: Assurez-vous que le nom du script est le dernier argument de PyInstaller
+echo %~dp0Simple_TTS_GUI.py >> "%BUILD_LOG%"
+echo ---------------- >> "%BUILD_LOG%"
+
+:: Utiliser le chemin absolu du fichier Python et la syntaxe sans caractères spéciaux
+pyinstaller --name=Simple_TTS_GUI --noconsole --additional-hooks-dir="%HOOKS_DIR%" --log-level=DEBUG "%~dp0Simple_TTS_GUI.py" > "%TEMP%\pyinstaller_spec.txt" 2>&1
 
 if %ERRORLEVEL% NEQ 0 (
     echo ERREUR: Échec de création du fichier spec >> "%BUILD_ERROR%"
