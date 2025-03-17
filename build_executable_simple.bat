@@ -1,9 +1,10 @@
 @echo on
 setlocal enabledelayedexpansion
 
-:: Fichiers de journalisation
+:: ===== CONFIGURATION DES LOGS =====
 set "LOG_FILE=%~dp0logs\build_simple.txt"
 set "ERROR_FILE=%~dp0logs\error_simple.txt"
+set "DEBUG_FILE=%~dp0logs\debug_simple.txt"
 
 :: Creation dossier de logs
 if not exist "%~dp0logs" mkdir "%~dp0logs"
@@ -14,15 +15,51 @@ echo Date et heure: %DATE% %TIME% >> "%LOG_FILE%"
 echo ===== ERREURS DE COMPILATION PYINSTALLER ===== > "%ERROR_FILE%"
 echo Date et heure: %DATE% %TIME% >> "%ERROR_FILE%"
 
+echo ===== DEBUG DETAILLE DE LA COMPILATION ===== > "%DEBUG_FILE%"
+echo Date et heure: %DATE% %TIME% >> "%DEBUG_FILE%"
+
 echo ===== CREATION DE L'EXECUTABLE AVEC PYINSTALLER =====
 echo Date et heure: %DATE% %TIME%
 echo Demarrage du script >> "%LOG_FILE%"
 
+:: ===== VERIFICATION DE LA VERSION PYTHON =====
+echo Verification de la version Python >> "%LOG_FILE%"
+echo Verification de la version Python...
+
+:: Capturer la version de Python
+python --version > "%TEMP%\python_version.txt" 2>&1
+set /p PYTHON_VERSION=<"%TEMP%\python_version.txt"
+del "%TEMP%\python_version.txt"
+
+echo Version Python detectee: %PYTHON_VERSION% >> "%LOG_FILE%"
+echo Version Python detectee: %PYTHON_VERSION% >> "%DEBUG_FILE%"
+echo Version Python detectee: %PYTHON_VERSION%
+
+:: Verifier si c'est Python 3.10
+echo %PYTHON_VERSION% | findstr "3.10" > nul
+if %ERRORLEVEL% neq 0 (
+    echo AVERTISSEMENT: La version Python detectee n'est pas 3.10 >> "%ERROR_FILE%"
+    echo AVERTISSEMENT: La version Python detectee n'est pas 3.10
+    echo AVERTISSEMENT: La version Python detectee n'est pas 3.10 >> "%DEBUG_FILE%"
+    echo Il est recommande d'utiliser Python 3.10 pour garantir la compatibilite.
+    echo Voulez-vous continuer quand meme? (O/N)
+    set /p CONTINUE=
+    if /i "%CONTINUE%" neq "O" (
+        echo Compilation annulee par l'utilisateur >> "%LOG_FILE%"
+        echo Compilation annulee.
+        exit /b 1
+    )
+    echo L'utilisateur a choisi de continuer avec Python %PYTHON_VERSION% >> "%LOG_FILE%"
+    echo Poursuite avec Python %PYTHON_VERSION% >> "%DEBUG_FILE%"
+)
+
 :: ===== VERIFICATION ENVIRONNEMENT VIRTUEL =====
 
 echo Verification de l'environnement virtuel venv_py310 >> "%LOG_FILE%"
+echo Verification de l'environnement virtuel venv_py310 >> "%DEBUG_FILE%"
 if not exist ".\venv_py310\Scripts\activate.bat" (
     echo L'environnement virtuel venv_py310 n'existe pas >> "%ERROR_FILE%"
+    echo L'environnement virtuel venv_py310 n'existe pas >> "%DEBUG_FILE%"
     echo ERREUR: L'environnement virtuel venv_py310 n'existe pas.
     echo Veuillez d'abord executer setup_env.bat pour creer l'environnement virtuel.
     pause
@@ -32,38 +69,55 @@ if not exist ".\venv_py310\Scripts\activate.bat" (
 echo Ce script va utiliser l'environnement virtuel venv_py310.
 echo Activation de l'environnement virtuel...
 echo Tentative d'activation de l'environnement virtuel >> "%LOG_FILE%"
+echo Tentative d'activation de l'environnement virtuel >> "%DEBUG_FILE%"
 call .\venv_py310\Scripts\activate.bat
+echo Code retour de l'activation: %ERRORLEVEL% >> "%DEBUG_FILE%"
 
 if not defined VIRTUAL_ENV (
     echo Impossible d'activer l'environnement virtuel venv_py310 >> "%ERROR_FILE%"
+    echo Impossible d'activer l'environnement virtuel venv_py310 >> "%DEBUG_FILE%"
     echo ERREUR: Impossible d'activer l'environnement virtuel venv_py310.
     pause
     exit /b 1
 )
 echo Environnement virtuel active avec succes: %VIRTUAL_ENV%
 echo Environnement virtuel active: %VIRTUAL_ENV% >> "%LOG_FILE%"
+echo Environnement virtuel active: %VIRTUAL_ENV% >> "%DEBUG_FILE%"
 
 :: ===== VERIFICATION PYINSTALLER =====
 
 echo Verification de PyInstaller >> "%LOG_FILE%"
+echo Verification de PyInstaller >> "%DEBUG_FILE%"
+pip show pyinstaller > "%TEMP%\pyinstaller_info.txt" 2>&1
+type "%TEMP%\pyinstaller_info.txt" >> "%DEBUG_FILE%"
+del "%TEMP%\pyinstaller_info.txt"
+
 pip show pyinstaller > nul 2>&1
 if %ERRORLEVEL% neq 0 (
     echo Installation de PyInstaller... >> "%LOG_FILE%"
+    echo Installation de PyInstaller... >> "%DEBUG_FILE%"
     echo Installation de PyInstaller...
-    pip install pyinstaller
+    pip install pyinstaller > "%TEMP%\pip_install.txt" 2>&1
+    type "%TEMP%\pip_install.txt" >> "%DEBUG_FILE%"
+    del "%TEMP%\pip_install.txt"
+    
     if %ERRORLEVEL% neq 0 (
         echo Impossible d'installer PyInstaller >> "%ERROR_FILE%"
+        echo Impossible d'installer PyInstaller >> "%DEBUG_FILE%"
         echo ERREUR: Impossible d'installer PyInstaller
         exit /b 1
     )
 )
 echo PyInstaller est disponible >> "%LOG_FILE%"
+echo PyInstaller est disponible >> "%DEBUG_FILE%"
 
 :: ===== CREATION DES FICHIERS PYTHON =====
 echo Creation des fichiers Python (hooks et patch) >> "%LOG_FILE%"
+echo Creation des fichiers Python (hooks et patch) >> "%DEBUG_FILE%"
 
 :: Creation du hook PyTorch
 del /f /q pytorch_hook.py 2>nul
+echo Creation du hook PyTorch... >> "%DEBUG_FILE%"
 echo Creation du hook PyTorch...
 @(
 echo from PyInstaller.utils.hooks import collect_all
@@ -83,9 +137,12 @@ echo     hook_api.add_imports('torchaudio.lib.libtorchaudio')
 echo     hook_api.add_imports('torch.lib.libtorch')
 ) > pytorch_hook.py
 echo Hook PyTorch cree avec succes >> "%LOG_FILE%"
+echo Hook PyTorch cree avec succes >> "%DEBUG_FILE%"
+if exist pytorch_hook.py echo Verification: Hook PyTorch existe bien dans %CD% >> "%DEBUG_FILE%"
 
 :: Creation du hook TTS
 del /f /q tts_hook.py 2>nul
+echo Creation du hook TTS... >> "%DEBUG_FILE%"
 echo Creation du hook TTS...
 @(
 echo from PyInstaller.utils.hooks import collect_data_files, collect_all
@@ -103,25 +160,34 @@ echo         'TTS.api.Xtts',
 echo         'TTS.utils.audio.AudioProcessor',
 echo         'TTS.config.load_config',
 echo         'TTS.tts.configs.base_tts_config.BaseTTSConfig',
-echo         'TTS.utils.audio.torch_transforms.TorchSTFT'
+echo         'TTS.utils.audio.torch_transforms.TorchSTFT',
+echo         'PyQt6.sip'
 echo     ]
 echo     hook_api.add_imports(*classes)
 ) > tts_hook.py
 echo Hook TTS cree avec succes >> "%LOG_FILE%"
+echo Hook TTS cree avec succes >> "%DEBUG_FILE%"
+if exist tts_hook.py echo Verification: Hook TTS existe bien dans %CD% >> "%DEBUG_FILE%"
 
 :: Creation du patch PyTorch 2.6+
 del /f /q pytorch_2_6_patch.py 2>nul
+echo Creation du patch PyTorch 2.6+... >> "%DEBUG_FILE%"
 echo Creation du patch PyTorch 2.6+...
 @(
 echo # Patch pour assurer la compatibilite avec PyTorch 2.6+
 echo import torch
 echo import warnings
+echo import sys
 echo 
 echo def apply_patch():
+echo     # Afficher la version de PyTorch
+echo     print(f"Version de PyTorch: {torch.__version__}")
+echo     print(f"Version de Python: {sys.version}")
 echo     # Applique le patch pour PyTorch 2.6+
 echo     try:
 echo         if hasattr(torch.serialization, 'add_safe_globals'):
 echo             # Classes a ajouter a la liste des classes securisees
+echo             print("PyTorch 2.6+ detecte, application du patch de securite...")
 echo             from TTS.tts.configs.xtts_config import XttsConfig
 echo             from TTS.tts.configs.shared_configs import XttsAudioConfig
 echo             from TTS.api import Xtts
@@ -130,29 +196,54 @@ echo             from TTS.config import load_config
 echo             from TTS.tts.configs.base_tts_config import BaseTTSConfig
 echo             from TTS.utils.audio.torch_transforms import TorchSTFT
 echo 
-echo             print("Application du patch PyTorch 2.6+...")
+echo             classes_securisees = [XttsConfig, XttsAudioConfig, Xtts,
+echo                                 AudioProcessor, load_config, BaseTTSConfig, TorchSTFT]
+echo 
+echo             print(f"Classes a securiser: {len(classes_securisees)}")
+echo             for idx, cls in enumerate(classes_securisees):
+echo                 print(f"  {idx+1}. {cls.__name__}")
+echo 
 echo             # Ajouter toutes les classes a la liste des classes securisees
-echo             torch.serialization.add_safe_globals([XttsConfig, XttsAudioConfig, Xtts,
-echo                                                   AudioProcessor, load_config, BaseTTSConfig, TorchSTFT])
+echo             torch.serialization.add_safe_globals(classes_securisees)
 echo             print("Patch PyTorch 2.6+ applique avec succes!")
+echo         else:
+echo             print("PyTorch version < 2.6 detecte, patch non necessaire")
 echo     except Exception as e:
-echo         warnings.warn("Impossible d'appliquer le patch PyTorch 2.6+: " + str(e))
+echo         warnings.warn(f"Impossible d'appliquer le patch PyTorch 2.6+: {str(e)}")
+echo         import traceback
+echo         traceback.print_exc()
 echo 
 echo # Appliquer le patch automatiquement a l'importation
 echo apply_patch()
 ) > pytorch_2_6_patch.py
 echo Patch PyTorch 2.6+ cree avec succes >> "%LOG_FILE%"
+echo Patch PyTorch 2.6+ cree avec succes >> "%DEBUG_FILE%"
+if exist pytorch_2_6_patch.py echo Verification: Patch PyTorch existe bien dans %CD% >> "%DEBUG_FILE%"
 
 :: ===== CREATION DU FICHIER SPEC =====
-
 echo Creation du fichier spec PyInstaller... >> "%LOG_FILE%"
+echo Creation du fichier spec PyInstaller... >> "%DEBUG_FILE%"
+
+:: Tester l'importation des modules avant de créer le spec
+echo Verification des imports Python importants... >> "%DEBUG_FILE%"
+python -c "import sys; print(f'Python: {sys.version}'); import torch; print(f'PyTorch: {torch.__version__}'); import PyQt6; print('PyQt6 importe avec succes'); import PyQt6.sip; print('PyQt6.sip importe avec succes'); import TTS; print(f'TTS version: {TTS.__version__}')" >> "%DEBUG_FILE%" 2>&1
+echo Resultat des tests d'importation: %ERRORLEVEL% >> "%DEBUG_FILE%"
 
 echo # -*- mode: python ; coding: utf-8 -*- > Simple_TTS_GUI.spec
 echo import os >> Simple_TTS_GUI.spec
 echo import sys >> Simple_TTS_GUI.spec
 echo from PyInstaller.utils.hooks import collect_all, collect_data_files >> Simple_TTS_GUI.spec
 echo. >> Simple_TTS_GUI.spec
+echo # Journal de debug >> Simple_TTS_GUI.spec
+echo with open('%~dp0logs\debug_simple.txt', 'a') as debug_file: >> Simple_TTS_GUI.spec
+echo     debug_file.write('Creation du fichier spec en cours...\n') >> Simple_TTS_GUI.spec
+echo     debug_file.write(f'Chemin absolu: {os.path.abspath(".")}\n') >> Simple_TTS_GUI.spec
+echo. >> Simple_TTS_GUI.spec
 echo block_cipher = None >> Simple_TTS_GUI.spec
+echo. >> Simple_TTS_GUI.spec
+echo # Collecte des donnees >> Simple_TTS_GUI.spec
+echo with open('%~dp0logs\debug_simple.txt', 'a') as debug_file: >> Simple_TTS_GUI.spec
+echo     debug_file.write('Collecte des donnees de packages...\n') >> Simple_TTS_GUI.spec
 echo. >> Simple_TTS_GUI.spec
 echo tts_datas, tts_binaries, tts_hiddenimports = collect_all('TTS') >> Simple_TTS_GUI.spec
 echo torch_datas, torch_binaries, torch_hiddenimports = collect_all('torch') >> Simple_TTS_GUI.spec
@@ -166,6 +257,8 @@ echo     ('test_en.txt', '.'), >> Simple_TTS_GUI.spec
 echo     ('test_fr.txt', '.'), >> Simple_TTS_GUI.spec
 echo     ('espeak-ng/*', 'espeak-ng'), >> Simple_TTS_GUI.spec
 echo     ('pytorch_2_6_patch.py', '.'), >> Simple_TTS_GUI.spec
+echo     ('pytorch_hook.py', '.'), >> Simple_TTS_GUI.spec
+echo     ('tts_hook.py', '.'), >> Simple_TTS_GUI.spec
 echo ] >> Simple_TTS_GUI.spec
 echo. >> Simple_TTS_GUI.spec
 echo all_datas = tts_datas + torch_datas + pyqt_datas + added_files >> Simple_TTS_GUI.spec
@@ -185,6 +278,12 @@ echo     'TTS.utils.audio.torch_transforms', >> Simple_TTS_GUI.spec
 echo     'pytorch_2_6_patch', >> Simple_TTS_GUI.spec
 echo ] >> Simple_TTS_GUI.spec
 echo. >> Simple_TTS_GUI.spec
+echo # Journaliser les hiddenimports >> Simple_TTS_GUI.spec
+echo with open('%~dp0logs\debug_simple.txt', 'a') as debug_file: >> Simple_TTS_GUI.spec
+echo     debug_file.write('Liste des imports caches:\n') >> Simple_TTS_GUI.spec
+echo     for imp in all_hiddenimports: >> Simple_TTS_GUI.spec
+echo         debug_file.write(f'  - {imp}\n') >> Simple_TTS_GUI.spec
+echo. >> Simple_TTS_GUI.spec
 echo a = Analysis( >> Simple_TTS_GUI.spec
 echo     ['Simple_TTS_GUI.py'], >> Simple_TTS_GUI.spec
 echo     pathex=[os.path.abspath('.')], >> Simple_TTS_GUI.spec
@@ -201,6 +300,10 @@ echo     cipher=block_cipher, >> Simple_TTS_GUI.spec
 echo     noarchive=False, >> Simple_TTS_GUI.spec
 echo ) >> Simple_TTS_GUI.spec
 echo. >> Simple_TTS_GUI.spec
+echo # Log fin de l'analyse >> Simple_TTS_GUI.spec
+echo with open('%~dp0logs\debug_simple.txt', 'a') as debug_file: >> Simple_TTS_GUI.spec
+echo     debug_file.write('Analyse terminee\n') >> Simple_TTS_GUI.spec
+echo. >> Simple_TTS_GUI.spec
 echo pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher) >> Simple_TTS_GUI.spec
 echo. >> Simple_TTS_GUI.spec
 echo exe = EXE( >> Simple_TTS_GUI.spec
@@ -209,7 +312,7 @@ echo     a.scripts, >> Simple_TTS_GUI.spec
 echo     [], >> Simple_TTS_GUI.spec
 echo     exclude_binaries=True, >> Simple_TTS_GUI.spec
 echo     name='Simple_TTS_GUI', >> Simple_TTS_GUI.spec
-echo     debug=False, >> Simple_TTS_GUI.spec
+echo     debug=True, >> Simple_TTS_GUI.spec
 echo     bootloader_ignore_signals=False, >> Simple_TTS_GUI.spec
 echo     strip=False, >> Simple_TTS_GUI.spec
 echo     upx=True, >> Simple_TTS_GUI.spec
@@ -234,27 +337,64 @@ echo     upx_exclude=[], >> Simple_TTS_GUI.spec
 echo     name='Simple_TTS_GUI', >> Simple_TTS_GUI.spec
 echo ) >> Simple_TTS_GUI.spec
 
+echo Fichier Simple_TTS_GUI.spec cree avec succes >> "%LOG_FILE%"
+echo Fichier Simple_TTS_GUI.spec cree avec succes >> "%DEBUG_FILE%"
+if exist Simple_TTS_GUI.spec echo Verification: Simple_TTS_GUI.spec existe bien dans %CD% >> "%DEBUG_FILE%"
+
 :: ===== EXECUTION DE PYINSTALLER =====
 
 echo Demarrage de la compilation avec PyInstaller >> "%LOG_FILE%"
+echo Demarrage de la compilation avec PyInstaller >> "%DEBUG_FILE%"
 echo ===== Demarrage de la compilation avec PyInstaller =====
-pyinstaller --clean Simple_TTS_GUI.spec
 
-if %ERRORLEVEL% equ 0 (
+:: Execution avec journalisation detaillee
+echo Execution de PyInstaller avec le fichier spec... >> "%DEBUG_FILE%"
+pyinstaller --clean Simple_TTS_GUI.spec > "%TEMP%\pyinstaller_output.txt" 2>&1
+set PYINSTALLER_EXIT_CODE=%ERRORLEVEL%
+
+:: Enregistrer la sortie de PyInstaller dans les fichiers de log
+type "%TEMP%\pyinstaller_output.txt" >> "%DEBUG_FILE%"
+if %PYINSTALLER_EXIT_CODE% neq 0 type "%TEMP%\pyinstaller_output.txt" >> "%ERROR_FILE%"
+del "%TEMP%\pyinstaller_output.txt"
+
+if %PYINSTALLER_EXIT_CODE% equ 0 (
     echo Compilation terminee avec succes >> "%LOG_FILE%"
+    echo Compilation terminee avec succes >> "%DEBUG_FILE%"
     echo ===== COMPILATION TERMINEE AVEC SUCCES =====
     echo L'executable est disponible dans le dossier: %CD%\dist\Simple_TTS_GUI
 ) else (
-    echo Erreur lors de la compilation avec code %ERRORLEVEL% >> "%ERROR_FILE%"
+    echo Erreur lors de la compilation avec code %PYINSTALLER_EXIT_CODE% >> "%ERROR_FILE%"
+    echo Erreur lors de la compilation avec code %PYINSTALLER_EXIT_CODE% >> "%DEBUG_FILE%"
     echo ===== ERREUR LORS DE LA COMPILATION =====
-    echo Veuillez verifier les erreurs ci-dessus.
+    echo Veuillez verifier les erreurs dans le fichier %ERROR_FILE%
+    echo Un journal detaille est disponible dans %DEBUG_FILE%
+)
+
+:: ===== VERIFICATION DE L'EXECUTABLE =====
+if %PYINSTALLER_EXIT_CODE% equ 0 (
+    echo Verification de l'executable cree... >> "%DEBUG_FILE%"
+    if exist "%CD%\dist\Simple_TTS_GUI\Simple_TTS_GUI.exe" (
+        echo Executable trouve avec succes >> "%DEBUG_FILE%"
+        echo Taille de l'executable: >> "%DEBUG_FILE%"
+        dir "%CD%\dist\Simple_TTS_GUI\Simple_TTS_GUI.exe" >> "%DEBUG_FILE%"
+    ) else (
+        echo Executable non trouve dans le repertoire dist >> "%ERROR_FILE%"
+        echo Executable non trouve dans le repertoire dist >> "%DEBUG_FILE%"
+        echo ERREUR: Executable non trouve dans le repertoire dist
+    )
 )
 
 :: Desactivation de l'environnement virtuel
 echo Desactivation de l'environnement virtuel >> "%LOG_FILE%"
+echo Desactivation de l'environnement virtuel >> "%DEBUG_FILE%"
 deactivate
 
 echo Script termine >> "%LOG_FILE%"
+echo Script termine >> "%DEBUG_FILE%"
 echo Script termine.
+echo Consultez les fichiers de log pour plus d'informations:
+echo - Journal principal: %LOG_FILE%
+echo - Journal des erreurs: %ERROR_FILE%
+echo - Journal detaille: %DEBUG_FILE%
 
 pause
