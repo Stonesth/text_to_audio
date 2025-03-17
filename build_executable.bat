@@ -4,8 +4,33 @@ setlocal enabledelayedexpansion
 echo ===== CREATION DE L'EXECUTABLE AVEC PYINSTALLER =====
 echo Date et heure: %DATE% %TIME%
 
+:: Vérification de l'existence de l'environnement virtuel
+if not exist ".\venv_py310\Scripts\activate.bat" (
+    echo ERREUR: L'environnement virtuel venv_py310 n'existe pas.
+    echo Veuillez d'abord exécuter setup_env.bat pour créer l'environnement virtuel.
+    echo.
+    pause
+    exit /b 1
+)
+
+echo.
+echo IMPORTANT: Ce script va utiliser l'environnement virtuel venv_py310.
+echo Assurez-vous que toutes les dépendances sont correctement installées dans cet environnement.
+echo Si vous avez besoin d'installer les dépendances, veuillez d'abord exécuter setup_env.bat.
+echo.
+
 :: Activation de l'environnement virtuel existant
+echo Activation de l'environnement virtuel venv_py310...
 call .\venv_py310\Scripts\activate.bat
+
+:: Vérification de l'activation réussie
+if not defined VIRTUAL_ENV (
+    echo ERREUR: Impossible d'activer l'environnement virtuel venv_py310.
+    pause
+    exit /b 1
+)
+echo Environnement virtuel activé avec succès: %VIRTUAL_ENV%
+echo.
 
 :: Vérification de PyInstaller
 pip show pyinstaller > nul 2>&1
