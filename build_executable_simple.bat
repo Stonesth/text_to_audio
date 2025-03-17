@@ -57,21 +57,42 @@ if %ERRORLEVEL% neq 0 (
 
 echo Verification de l'environnement virtuel venv_py310 >> "%LOG_FILE%"
 echo Verification de l'environnement virtuel venv_py310 >> "%DEBUG_FILE%"
-if not exist ".\venv_py310\Scripts\activate.bat" (
-    echo L'environnement virtuel venv_py310 n'existe pas >> "%ERROR_FILE%"
-    echo L'environnement virtuel venv_py310 n'existe pas >> "%DEBUG_FILE%"
-    echo ERREUR: L'environnement virtuel venv_py310 n'existe pas.
-    echo Veuillez d'abord executer setup_env.bat pour creer l'environnement virtuel.
-    pause
+
+:: Forcer l'activation de l'environnement virtuel même si déjà activé
+echo Forcage de l'activation de l'environnement virtuel... >> "%DEBUG_FILE%"
+
+:: Déterminer le chemin absolu de l'environnement virtuel
+set "VENV_PATH=%~dp0venv_py310"
+echo Chemin absolu de l'environnement virtuel: %VENV_PATH% >> "%DEBUG_FILE%"
+
+:: Vérifier si le répertoire existe
+if not exist "%VENV_PATH%" (
+    echo ERREUR: L'environnement virtuel n'existe pas au chemin %VENV_PATH% >> "%ERROR_FILE%"
+    echo ERREUR: L'environnement virtuel n'existe pas au chemin %VENV_PATH% >> "%DEBUG_FILE%"
+    echo ERREUR: L'environnement virtuel n'existe pas.
+    echo Veuillez créer un environnement virtuel avec la commande:
+    echo python -m venv venv_py310
     exit /b 1
 )
 
-echo Ce script va utiliser l'environnement virtuel venv_py310.
-echo Activation de l'environnement virtuel...
-echo Tentative d'activation de l'environnement virtuel >> "%LOG_FILE%"
-echo Tentative d'activation de l'environnement virtuel >> "%DEBUG_FILE%"
-call .\venv_py310\Scripts\activate.bat
-echo Code retour de l'activation: %ERRORLEVEL% >> "%DEBUG_FILE%"
+:: Tester l'activation avec redirection explicite des erreurs
+echo Test d'activation avec redirection des erreurs... >> "%DEBUG_FILE%"
+call "%VENV_PATH%\Scripts\activate.bat" > "%TEMP%\venv_activation.txt" 2>&1
+set ACTIVATION_CODE=%ERRORLEVEL%
+
+:: Vérifier si l'activation a réussi
+type "%TEMP%\venv_activation.txt" >> "%DEBUG_FILE%"
+echo Code de retour de l'activation: %ACTIVATION_CODE% >> "%DEBUG_FILE%"
+
+if %ACTIVATION_CODE% neq 0 (
+    echo ERREUR: Impossible d'activer l'environnement virtuel (code %ACTIVATION_CODE%) >> "%ERROR_FILE%"
+    echo ERREUR: Impossible d'activer l'environnement virtuel (code %ACTIVATION_CODE%) >> "%DEBUG_FILE%"
+    type "%TEMP%\venv_activation.txt" >> "%ERROR_FILE%"
+    echo ERREUR: Impossible d'activer l'environnement virtuel
+    echo Veuillez vérifier que l'environnement virtuel est correctement configuré
+    exit /b 1
+)
+del "%TEMP%\venv_activation.txt"
 
 if not defined VIRTUAL_ENV (
     echo Impossible d'activer l'environnement virtuel venv_py310 >> "%ERROR_FILE%"
