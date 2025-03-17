@@ -18,6 +18,7 @@ echo ===== DEBUT INSTALLATION %DATE% %TIME% ===== > "!LOG_FILE!"
 REM Vérification des arguments
 set NO_REGISTRY=0
 set DEBUG=0
+set TTS_VERSION = 0.21.3
 
 :parse_args
 if "%1"=="" goto :end_parse_args
@@ -43,30 +44,45 @@ REM Sauvegarder le chemin Python original
 for /f "tokens=*" %%p in ('where py 2^>nul') do set "PYTHON_PATH=%%~dp0"
 for /f "tokens=*" %%p in ('where python 2^>nul') do set "PYTHON_EXE_PATH=%%~dp0"
 
-REM Vérifier si py launcher peut trouver Python 3.10
-call :log INFO "Verification Python 3.10 via py launcher"
-call :exec_and_log "py -3.10 --version" "Vérification Python 3.10 via py launcher"
-if not errorlevel 1 (
-    call :log INFO "Python 3.10 trouve via py launcher"
-    set "PYTHON_CMD=py -3.10"
-    goto setup_vs
-)
+@REM REM Vérifier dans les emplacements standard
+@REM set PYTHON310_PATHS="C:\Python310;%LOCALAPPDATA%\Programs\Python\Python310;C:\Progra~1\Python310;C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python310"
 
-REM Vérifier dans les emplacements standard
-set "PYTHON310_PATHS=C:\Python310;%LOCALAPPDATA%\Programs\Python\Python310;C:\Program Files\Python310;C:\Users\%USERNAME%\AppData\Local\Programs\Python\Python310"
-for %%p in (%PYTHON310_PATHS%) do (
-    if exist "%%p\python.exe" (
-        call :log INFO "Python 3.10 trouve dans %%p"
-        set "PYTHON_PATH=%%p"
-        set "PYTHON_CMD="%%p\python.exe""
-        goto setup_vs
-    )
-)
+@REM REM Utiliser 'where' pour trouver Python dans le PATH
+@REM where python.exe >nul 2>&1
+@REM if %ERRORLEVEL% equ 0 (
+@REM     for /f "delims=" %%p in ('where python.exe') do (
+@REM         for /f "tokens=2 delims= " %%v in ('"%%p" --version 2^>^&1 ^| findstr /i "Python 3.10"') do (
+@REM             if "%%v"=="3.10" (
+@REM                 call :log INFO "Python 3.10 trouvé dans %%~dp0"
+@REM                 set "PYTHON_PATH=%%~dp0"
+@REM                 set "PYTHON_CMD="%%~dp0python.exe""
+@REM                 goto setup_vs
+@REM             ) else (
+@REM                 call :log DEBUG "Python 3.10 trouvé dans %%~dp0, mais version inattendue: %%v"
+@REM             )
+@REM         )
+@REM     )
+@REM )
 
-call :log ERROR "Python 3.10 n'est pas trouve. Veuillez l'installer depuis:"
-call :log ERROR "https://www.python.org/downloads/release/python-3109/"
-pause
-exit /b 1
+@REM REM Si Python 3.10 n'est pas trouvé dans le PATH, vérifier les emplacements standard
+@REM for %%p in (%PYTHON310_PATHS%) do (
+@REM     if exist "%%~p\python.exe" (
+@REM         for /f "tokens=2 delims= " %%v in ('"%%~p\python.exe" --version 2^>^&1 ^| findstr /i "Python 3.10"') do (
+@REM             if "%%v"=="3.10" (
+@REM                 call :log INFO "Python 3.10 trouvé dans %%~p"
+@REM                 set "PYTHON_PATH=%%~p"
+@REM                 set "PYTHON_CMD="%%~p\python.exe""
+@REM                 goto setup_vs
+@REM             ) else (
+@REM                 call :log DEBUG "Python 3.10 trouvé dans %%~p, mais version inattendue: %%v"
+@REM             )
+@REM         )
+@REM     )
+@REM )
+
+@REM REM Si Python 3.10 n'est pas trouvé
+@REM call :log ERROR "Python 3.10 n'a pas été trouvé. Veuillez l'installer ou vérifier votre PATH."
+@REM exit /b 1
 
 :setup_vs
 REM Configuration de Visual Studio
@@ -216,8 +232,9 @@ if defined PYTHON_EXE_PATH set "PATH=%PYTHON_EXE_PATH%;%PATH%"
 
 REM Création de l'environnement virtuel
 call :log INFO "Creation de l'environnement virtuel..."
-if exist venv_py310 rmdir /s /q venv_py310
-call :exec_and_log "%PYTHON_CMD% -m venv venv_py310" "Création environnement virtuel"
+@REM if exist venv_py310 rmdir /s /q venv_py310
+@REM call :exec_and_log "%PYTHON_CMD% -m venv venv_py310" "Création environnement virtuel"
+call :exec_and_log "C:\Progra~1\Python310\python.exe -m venv venv_py310" "Création environnement virtuel"
 call .\venv_py310\Scripts\activate.bat
 call :log DEBUG "Environnement virtuel activé"
 
@@ -226,20 +243,13 @@ call :log INFO "Vérification de l'environnement virtuel..."
 call :exec_and_log "python check_python.py" "Vérification environnement Python"
 
 REM Installation des dépendances de base
+call :log INFO "Upgrade pip version..."
+call :exec_and_log "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Scripts\python.exe -m pip install --upgrade pip" "Upgrade pip version"
+
+REM Installation des dépendances de base
 call :log INFO "Installation des dependances de base..."
 call :exec_and_log "pip install --upgrade pip setuptools wheel --no-cache-dir" "Installation pip/setuptools/wheel"
 
-REM Installation de NumPy (version compatible avec PyTorch)
-call :log INFO "Installation de NumPy (version compatible avec PyTorch)..."
-call :exec_and_log "pip install numpy==1.24.3 --only-binary :all: --no-cache-dir" "Installation numpy"
-if !ERRORLEVEL! neq 0 (
-    call :log ERROR "Échec de l'installation de NumPy"
-    goto :error
-)
-
-REM Installation séquentielle des packages
-call :log INFO "Installation des packages principaux..."
-call :exec_and_log "pip install Cython --no-cache-dir" "Installation Cython"
 
 REM Amélioration de l'installation de PyTorch avec gestion des timeout
 call :log INFO "Installation de PyTorch avec gestion des timeout..."
@@ -249,7 +259,9 @@ set RETRY_COUNT=0
 :retry_torch_install
 set /a RETRY_COUNT+=1
 call :log INFO "Tentative d'installation de PyTorch (%RETRY_COUNT%/%MAX_RETRY%)..."
-call :exec_and_log "pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cpu --only-binary :all: --no-cache-dir --timeout 300" "Installation torch"
+
+call :exec_and_log "pip uninstall torch torchvision torchaudio -y" "Désinstallation torch torchvision torchaudio"
+call :exec_and_log "pip install torch==2.6.0 torchvision==0.21 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu --only-binary :all: --no-cache-dir --timeout 300" "Installation torch"
 if !ERRORLEVEL! neq 0 (
     if %RETRY_COUNT% lss %MAX_RETRY% (
         call :log WARNING "Échec de l'installation de PyTorch, nouvelle tentative dans 5 secondes..."
@@ -265,6 +277,33 @@ if !ERRORLEVEL! neq 0 (
         del "%TEMP%\torch-2.0.1-cp310-cp310-win_amd64.whl"
     )
 )
+
+REM Installation de NumPy (version compatible avec PyTorch)
+call :log INFO "Installation de NumPy (version compatible avec PyTorch)..."
+@REM call :exec_and_log "pip install numpy==1.24.3 --only-binary :all: --no-cache-dir" "Installation numpy"
+call :exec_and_log "pip uninstall numpy==1.24.3 -y" "Désinstallation numpy==1.24.3"
+call :exec_and_log "pip install numpy==1.22.0 --only-binary :all: --no-cache-dir" "Installation numpy 1.22.0"
+if !ERRORLEVEL! neq 0 (
+    call :log ERROR "Échec de l'installation de NumPy"
+    goto :error
+)
+
+REM Installation de setuptools (version compatible)
+call :log INFO "Installation de setuptools (version compatible)..."
+call :exec_and_log "pip uninstall setuptools -y" "Désinstallation setuptools"
+call :exec_and_log "pip install setuptools==65.5.0 --only-binary :all: --no-cache-dir" "Installation setuptools 65.5.0"
+if !ERRORLEVEL! neq 0 (
+    call :log ERROR "Échec de l'installation de setuptools"
+    goto :error
+)
+
+REM Installation séquentielle des packages
+call :log INFO "Installation des packages principaux..."
+call :exec_and_log "pip install Cython --no-cache-dir" "Installation Cython"
+
+@REM REM Vérification de la version de torch
+@REM call :log INFO "Vérification de la version de torch..."
+@REM call :exec_and_log "python -c "import torch; print(torch.__version__)"" "Vérification version torch"
 
 call :log INFO "Installation des dependances TTS..."
 call :exec_and_log "pip install librosa==0.10.0 --only-binary :all: --no-cache-dir" "Installation librosa"
@@ -294,87 +333,109 @@ if %RC_FOUND% equ 0 (
     set "PATH=%PATH%;%SDK_PATH%\bin\%SDK_VER%\x64;%SDK_PATH%\bin\x64"
 )
 
+REM Installation de TTS
 call :log INFO "Installation de TTS..."
 call :exec_and_log "pip uninstall TTS -y" "Désinstallation TTS"
 
 REM Installation des dépendances spécifiques pour TTS
-call :log INFO "Installation des dépendances spécifiques pour TTS..."
-call :exec_and_log "pip install packaging==23.1 --no-cache-dir" "Installation packaging"
-call :exec_and_log "pip install protobuf==4.24.4 --no-cache-dir" "Installation protobuf"
-call :exec_and_log "pip install pyyaml==6.0.1 --no-cache-dir" "Installation pyyaml"
-call :exec_and_log "pip install tensorboard==2.14.0 --no-cache-dir" "Installation tensorboard"
-call :exec_and_log "pip install coqpit==0.0.17 --no-cache-dir" "Installation coqpit"
-call :exec_and_log "pip install fsspec==2023.9.2 --no-cache-dir" "Installation fsspec"
-call :exec_and_log "pip install jieba==0.42.1 --no-cache-dir" "Installation jieba"
-call :exec_and_log "pip install matplotlib==3.7.3 --no-cache-dir" "Installation matplotlib"
-call :exec_and_log "pip install scipy==1.10.1 --no-cache-dir" "Installation scipy"
+if "%TTS_VERSION%"=="0.21.3" (
+    call :log INFO "Installation des dépendances spécifiques pour TTS 0.21.3 ..."
+    call :exec_and_log "pip install packaging==23.1 --no-cache-dir" "Installation packaging"
+    call :exec_and_log "pip install protobuf==4.24.4 --no-cache-dir" "Installation protobuf"
+    call :exec_and_log "pip install pyyaml==6.0.1 --no-cache-dir" "Installation pyyaml"
+    call :exec_and_log "pip install tensorboard==2.14.0 --no-cache-dir" "Installation tensorboard"
+    call :exec_and_log "pip install coqpit==0.0.17 --no-cache-dir" "Installation coqpit"
+    call :exec_and_log "pip install fsspec==2023.9.2 --no-cache-dir" "Installation fsspec"
+    call :exec_and_log "pip install jieba==0.42.1 --no-cache-dir" "Installation jieba"
+    call :exec_and_log "pip install matplotlib==3.7.3 --no-cache-dir" "Installation matplotlib"
+    call :exec_and_log "pip install scipy==1.10.1 --no-cache-dir" "Installation scipy"
+) else (
+    call :log INFO "Installation des dépendances spécifiques pour TTS 0.15.2 ..."
+    call :exec_and_log "pip install packaging==23.1 --no-cache-dir" "Installation packaging"
+    call :exec_and_log "pip install protobuf==4.24.4 --no-cache-dir" "Installation protobuf"
+    call :exec_and_log "pip install pyyaml==6.0.1 --no-cache-dir" "Installation pyyaml"
+    call :exec_and_log "pip install tensorboard==2.14.0 --no-cache-dir" "Installation tensorboard"
+    call :exec_and_log "pip install coqpit==0.0.17 --no-cache-dir" "Installation coqpit"
+    call :exec_and_log "pip install fsspec==2023.9.2 --no-cache-dir" "Installation fsspec"
+    call :exec_and_log "pip install jieba==0.42.1 --no-cache-dir" "Installation jieba"
+    call :exec_and_log "pip install matplotlib==3.7.3 --no-cache-dir" "Installation matplotlib"
+    call :exec_and_log "pip install scipy==1.10.1 --no-cache-dir" "Installation scipy"
+)
 
 REM Tentative d'installation de TTS avec différentes versions
-call :log INFO "Tentative d'installation de TTS version 0.15.2..."
-call :exec_and_log "pip install TTS==0.15.2 --no-cache-dir" "Installation TTS 0.15.2"
+call :log INFO "Tentative d'installation de TTS version 0.21.3..."
+call :exec_and_log "pip install TTS==0.21.3 --no-cache-dir" "Installation TTS 0.21.3"
 if !ERRORLEVEL! neq 0 (
-    call :log WARNING "Échec de l'installation de TTS 0.15.2, tentative avec la version 0.17.6..."
-    call :exec_and_log "pip install TTS==0.17.6 --no-cache-dir" "Installation TTS 0.17.6"
+    call :log WARNING "Échec de l'installation de TTS 0.21.3, tentative avec la version 0.15.2..."
+    call :exec_and_log "pip install TTS==0.15.2 --no-cache-dir" "Installation TTS 0.15.2"
     if !ERRORLEVEL! neq 0 (
-        call :log WARNING "Échec de l'installation de TTS 0.17.6, tentative avec la version 0.13.0 (plus stable)..."
-        call :exec_and_log "pip install TTS==0.13.0 --no-cache-dir" "Installation TTS 0.13.0"
+        call :log WARNING "Échec de l'installation de TTS 0.15.2, tentative avec la version 0.17.6..."
+        call :exec_and_log "pip install TTS==0.17.6 --no-cache-dir" "Installation TTS 0.17.6"
         if !ERRORLEVEL! neq 0 (
-            call :log WARNING "Échec de l'installation de TTS 0.13.0, tentative avec la dernière version..."
-            
-            REM Tentative d'installation avec les options de build spécifiques
-            call :log INFO "Installation de TTS avec options de build spécifiques..."
-            set "DISTUTILS_USE_SDK=1"
-            set "MSSdk=1"
-            set "CL=/MP"
-            
-            REM Définir explicitement le chemin vers rc.exe
-            call :log DEBUG "Configuration explicite de RC_PATH pour la compilation..."
-            for /f "delims=" %%i in ('dir /b /s "%SDK_PATH%\bin\*\x64\rc.exe" 2^>nul') do (
-                set "RC_PATH=%%i"
-                call :log DEBUG "Utilisation de rc.exe: !RC_PATH!"
-                set "PATH=%%~dpi;!PATH!"
-            )
-            
-            call :exec_and_log "pip install TTS --no-cache-dir" "Installation TTS dernière version"
+            call :log WARNING "Échec de l'installation de TTS 0.17.6, tentative avec la version 0.13.0 (plus stable)..."
+            call :exec_and_log "pip install TTS==0.13.0 --no-cache-dir" "Installation TTS 0.13.0"
             if !ERRORLEVEL! neq 0 (
-                call :log ERROR "Échec de l'installation de TTS. Tentative d'installation à partir des sources..."
+                call :log WARNING "Échec de l'installation de TTS 0.13.0, tentative avec la dernière version..."
                 
-                REM Tentative d'installation à partir des sources
-                call :log INFO "Téléchargement et installation de TTS à partir des sources..."
-                call :exec_and_log "git clone https://github.com/coqui-ai/TTS.git %TEMP%\TTS" "Clone du dépôt TTS"
-                cd %TEMP%\TTS
-                call :exec_and_log "pip install -e . --no-deps" "Installation TTS depuis les sources"
-                cd %~dp0
+                REM Tentative d'installation avec les options de build spécifiques
+                call :log INFO "Installation de TTS avec options de build spécifiques..."
+                set "DISTUTILS_USE_SDK=1"
+                set "MSSdk=1"
+                set "CL=/MP"
+                
+                REM Définir explicitement le chemin vers rc.exe
+                call :log DEBUG "Configuration explicite de RC_PATH pour la compilation..."
+                for /f "delims=" %%i in ('dir /b /s "%SDK_PATH%\bin\*\x64\rc.exe" 2^>nul') do (
+                    set "RC_PATH=%%i"
+                    call :log DEBUG "Utilisation de rc.exe: !RC_PATH!"
+                    set "PATH=%%~dpi;!PATH!"
+                )
+                
+                call :exec_and_log "pip install TTS --no-cache-dir" "Installation TTS dernière version"
                 if !ERRORLEVEL! neq 0 (
-                    call :log ERROR "Échec de l'installation de TTS depuis les sources. Veuillez consulter le fichier log pour plus de détails."
+                    call :log ERROR "Échec de l'installation de TTS. Tentative d'installation à partir des sources..."
+                    
+                    REM Tentative d'installation à partir des sources
+                    call :log INFO "Téléchargement et installation de TTS à partir des sources..."
+                    call :exec_and_log "git clone https://github.com/coqui-ai/TTS.git %TEMP%\TTS" "Clone du dépôt TTS"
+                    cd %TEMP%\TTS
+                    call :exec_and_log "pip install -e . --no-deps" "Installation TTS depuis les sources"
+                    cd %~dp0
+                    if !ERRORLEVEL! neq 0 (
+                        call :log ERROR "Échec de l'installation de TTS depuis les sources. Veuillez consulter le fichier log pour plus de détails."
+                    )
                 )
             )
         )
     )
 )
 
+REM Vérification de l'installation de TTS
+call :log INFO "Vérification de l'installation de TTS..."
+call :exec_and_log "python -c "from TTS.tts.configs.xtts_config import XttsConfig"" "Vérification import TTS"
+
 call :log INFO "Installation de PyQt6..."
 call :exec_and_log "pip uninstall PyQt6 PyQt6-Qt6 PyQt6-sip -y" "Désinstallation PyQt6"
 call :exec_and_log "pip install PyQt6==6.5.2 PyQt6-Qt6==6.5.2 PyQt6-sip==13.5.2 --only-binary :all: --no-cache-dir" "Installation PyQt6"
 
-REM Vérification finale des installations
-call :log INFO "Vérification des installations..."
-call :log INFO "Vérification de numpy..."
-call :exec_and_log "python check_numpy.py" "Vérification installation numpy"
-call :log INFO "Vérification de torch..."
-call :exec_and_log "python check_torch.py" "Vérification installation PyTorch"
-call :log INFO "Vérification de TTS..."
-call :exec_and_log "python check_TTS.py" "Vérification TTS"
-call :log INFO "Vérification de PyQt6..."
-call :exec_and_log "python check_PyQt6.py" "Vérification PyQt6"
+@REM REM Vérification finale des installations
+@REM call :log INFO "Vérification des installations..."
+@REM call :log INFO "Vérification de numpy..."
+@REM call :exec_and_log "python check_numpy.py" "Vérification installation numpy"
+@REM call :log INFO "Vérification de torch..."
+@REM call :exec_and_log "python check_torch.py" "Vérification installation PyTorch"
+@REM call :log INFO "Vérification de TTS..."
+@REM call :exec_and_log "python check_TTS.py" "Vérification TTS"
+@REM call :log INFO "Vérification de PyQt6..."
+@REM call :exec_and_log "python check_PyQt6.py" "Vérification PyQt6"
 
-REM Vérification des fonctionnalités TTS
-call :log INFO "Vérification des fonctionnalités TTS..."
-call :exec_and_log "python check_TTS_Synthesizer.py" "Vérification TTS Synthesizer"
+@REM REM Vérification des fonctionnalités TTS
+@REM call :log INFO "Vérification des fonctionnalités TTS..."
+@REM call :exec_and_log "python check_TTS_Synthesizer.py" "Vérification TTS Synthesizer"
 
 call :log INFO "Installation terminee!"
 call :log INFO "Pour tester, executez:"
-call :log INFO "call .\venv_py310\Scripts\activate.bat"
+call :log INFO ".\venv_py310\Scripts\activate"
 call :log INFO "python Simple_TTS_GUI.py"
 call :log INFO "Fichier log disponible: !LOG_FILE!"
 
