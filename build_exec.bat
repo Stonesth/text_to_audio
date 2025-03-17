@@ -183,7 +183,7 @@ echo [%TIMESTAMP%]   Lancement de la compilation finale...
 echo [%TIMESTAMP%]   Lancement de la compilation finale... >> "%BUILD_LOG%"
 echo Cette étape peut prendre plusieurs minutes, veuillez patienter...
 
-pyinstaller --clean "Simple_TTS_GUI.spec" --log-level=DEBUG > "%TEMP%\pyinstaller_build.txt" 2>&1
+pyinstaller --clean -y "Simple_TTS_GUI.spec" --log-level=DEBUG > "%TEMP%\pyinstaller_build.txt" 2>&1
 set BUILD_RESULT=%ERRORLEVEL%
 
 type "%TEMP%\pyinstaller_build.txt" >> "%BUILD_LOG%"
