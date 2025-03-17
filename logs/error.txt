@@ -1,0 +1,28 @@
+(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> .\build_executable.bat
+===== CREATION DE L'EXECUTABLE AVEC PYINSTALLER =====
+Date et heure: 17-03-25 13:37:20,89
+
+IMPORTANT: Ce script va utiliser l'environnement virtuel venv_py310.
+Assurez-vous que toutes les d├⌐pendances sont correctement install├⌐es dans cet environnement.
+Si vous avez besoin d'installer les d├⌐pendances, veuillez d'abord ex├⌐cuter setup_env.bat.
+
+Activation de l'environnement virtuel venv_py310...
+Environnement virtuel activÃ© avec succÃ¨s: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
+
+CrÃ©ation du hook PyTorch...
+from PyInstaller.utils.hooks import collect_all
+def hook(hook_api):
+    packages = [
+        'torch',
+        'torchaudio',
+        'TTS',
+    ]
+    for package in packages:
+        datas, binaries, hiddenimports = collect_all(package)
+        hook_api.add_datas(datas)
+        hook_api.add_binaries(binaries)
+        hook_api.add_imports(*hiddenimports)
+    # Ajouter les classes sÃ©curisÃ©es pour PyTorch 2.6+
+    hook_api.add_imports('torchaudio.lib.libtorchaudio'
+    hook_api.add_imports('torch.lib.libtorch'
+: était inattendu.
