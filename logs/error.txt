@@ -1,8 +1,100 @@
-===== COMPILATION DE L'EXu00c9CUTABLE =====
-CHECKPOINT 1 - Vu00e9rification des hooks...
+(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> deactivate      
+PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> .\verify_env.bat
+===== V├ëRIFICATION DE L'ENVIRONNEMENT PYTHON =====
+CHECKPOINT 1 - V├⌐rification de la version Python...
+Version d├⌐tect├⌐e: Python 3.11.9
+AVERTISSEMENT: Version Python non recommand├⌐e. Python 3.10 est recommand├⌐.
+Continuer quand m├¬me? (O/N
+o
+
+CHECKPOINT 2 - V├⌐rification de l'environnement virtuel...
+Chemin environnement virtuel: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
+Tentative d'activation de l'environnement virtuel...
+Environnement virtuel activÃ©: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
+
+CHECKPOINT 3 - VÃ©rification des modules nÃ©cessaires...
+Date et heure: 2025-03-17 16:30:08.789623
+Python: 3.10.9 (tags/v3.10.9:1dd9be6, Dec  6 2022, 20:01:21) [MSC v.1934 64 bit (AMD64)]
+Environnement virtuel: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
+Plateforme: Windows-10-10.0.22631-SP0
+
+Test des modules requis:
+  PyInstaller: OK
+    Version: 6.12.0
+    Chemin: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\__init__.py
+  PyQt6: OK
+    Version: Inconnue
+    Chemin: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyQt6\__init__.py     
+  PyQt6.sip: OK
+    Version: Inconnue
+    Chemin: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyQt6\__init__.py     
+  torch: OK
+    Version: 2.6.0+cpu
+    Chemin: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\torch\__init__.py     
+  TTS: OK
+    Version: 0.21.3
+    Chemin: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\TTS\__init__.py       
+
+Tous les modules requis sont disponibles.
+
+CHECKPOINT 4 - VÃ©rification de PyInstaller...
+Name: pyinstaller
+Version: 6.12.0
+Summary: PyInstaller bundles a Python application and all its dependencies into a single package.
+Home-page: https://www.pyinstaller.org/
+Author: Hartmut Goebel, Giovanni Bajo, David Vierra, David Cortesi, Martin Zibricky
+Author-email:
+License: GPLv2-or-later with a special exception which allows to use PyInstaller to build and distribute non-free programs (including commercial ones)
+Location: c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages
+Requires: altgraph, packaging, pefile, pyinstaller-hooks-contrib, pywin32-ctypes, setuptools
+Required-by:
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Scripts\pyinstaller.exe
+C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Scripts\pyinstaller.exe
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts\pyinstaller.exe
+
+===== VÃ‰RIFICATION TERMINÃ‰E AVEC SUCCÃˆS =====
+Tous les contrÃ´les ont rÃ©ussi. Vous pouvez maintenant exÃ©cuter create_hooks.bat
+
+PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio>  .\venv_py310\Scripts\activate
+(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> .\create_hooks.bat
+===== CR├ëATION DES HOOKS PYINSTALLER =====
+
+CHECKPOINT 1 - Cr├⌐ation du r├⌐pertoire hooks...
+R├⌐pertoire hooks: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\hooks
+
+CHECKPOINT 2 - Cr├⌐ation du hook pour torch...
+Hook torch cr├⌐├⌐
+
+CHECKPOINT 3 - Cr├⌐ation du hook pour TTS...
+Hook TTS cr├⌐├⌐
+
+CHECKPOINT 4 - Cr├⌐ation du hook pour PyQt6...
+Hook PyQt6 cr├⌐├⌐
+
+CHECKPOINT 5 - Cr├⌐ation du patch PyTorch 2.6...
+Patch PyTorch 2.6 cr├⌐├⌐
+
+Test du patch PyTorch...
+INFO:__main__:Application du patch PyTorch 2.6+ pour XTTS
+INFO:__main__:AjoutΘ TTS.tts.configs.xtts_config.XttsConfig α safe_globals
+INFO:__main__:AjoutΘ TTS.tts.configs.xtts_config.XttsAudioConfig α safe_globals
+INFO:__main__:AjoutΘ TTS.tts.models.xtts.Xtts α safe_globals
+INFO:__main__:AjoutΘ TTS.utils.audio.processor.AudioProcessor α safe_globals
+INFO:__main__:AjoutΘ TTS.config.load_config α safe_globals
+INFO:__main__:AjoutΘ TTS.tts.configs.shared_configs.BaseTTSConfig α safe_globals
+WARNING:__main__:Impossible d'ajouter TTS.utils.audio.TorchSTFT: module 'TTS.utils.audio' has no attribute 'TorchSTFT'
+o
+
+===== CR├ëATION DES HOOKS TERMIN├ëE =====
+Tous les hooks et patches ont ├⌐t├⌐ cr├⌐├⌐s avec succ├¿s.
+Vous pouvez maintenant ex├⌐cuter build_exec.bat
+
+(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> .\build_exec.bat
+===== COMPILATION DE L'EX├ëCUTABLE =====
+CHECKPOINT 1 - V├⌐rification des hooks...
 CHECKPOINT 2 - Capture des variables d'environnement...
-CHECKPOINT 3 - Cru00e9ation du fichier spec...
-ERREUR: u00c9chec de cru00e9ation du fichier spec
+CHECKPOINT 3 - Cr├⌐ation du fichier spec...
+ERREUR: ├ëchec de cr├⌐ation du fichier spec
 usage: pyinstaller [-h] [-v] [-D] [-F] [--specpath DIR] [-n NAME]
                    [--contents-directory CONTENTS_DIRECTORY]
                    [--add-data SOURCE:DEST] [--add-binary SOURCE:DEST]
@@ -17,7 +109,7 @@ usage: pyinstaller [-h] [-v] [-D] [-F] [--specpath DIR] [-n NAME]
                    [-d {all,imports,bootloader,noarchive}] [--optimize LEVEL]
                    [--python-option PYTHON_OPTION] [-s] [--noupx]
                    [--upx-exclude FILE] [-c] [-w]
-                   [--hide-console {hide-late,hide-early,minimize-early,minimize-late}]
+                   [--hide-console {hide-early,minimize-late,hide-late,minimize-early}]
                    [-i <FILE.ico or FILE.exe,ID or FILE.icns or Image or "NONE">]
                    [--disable-windowed-traceback] [--version-file FILE]
                    [--manifest <FILE or XML>] [-m <FILE or XML>] [-r RESOURCE]
@@ -30,4 +122,4 @@ usage: pyinstaller [-h] [-v] [-D] [-F] [--specpath DIR] [-n NAME]
                    [--log-level LEVEL]
                    scriptname [scriptname ...]
 pyinstaller: error: the following arguments are required: scriptname
-(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio>
+(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> 
