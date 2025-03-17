@@ -97,9 +97,6 @@ python Simple_TTS.py --lang 1 --text-file text_fr.txt --use-cuda --length-scale 
 Une interface graphique est disponible via le script `Simple_TTS_GUI.py`. Pour l'utiliser :
 
 ```bash
-# Installer PyQt6
-pip install PyQt6
-
 # Lancer l'interface graphique
 python Simple_TTS_GUI.py
 ```
