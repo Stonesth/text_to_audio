@@ -110,15 +110,15 @@ if not exist "tts_hook.py" (
 if not exist "pytorch_2_6_patch.py" (
     echo Création du patch PyTorch 2.6+...
     (
-        echo """Patch pour assurer la compatibilité avec PyTorch 2.6+"""
+        echo # Patch pour assurer la compatibilite avec PyTorch 2.6+
         echo import torch
         echo import warnings
-        echo 
+        echo.
         echo def apply_patch():
-        echo     """Applique le patch pour PyTorch 2.6+"""
+        echo     # Applique le patch pour PyTorch 2.6+
         echo     try:
         echo         if hasattr(torch.serialization, 'add_safe_globals'):
-        echo             # Classes à ajouter à la liste des classes sécurisées
+        echo             # Classes a ajouter a la liste des classes securisees
         echo             from TTS.tts.configs.xtts_config import XttsConfig
         echo             from TTS.tts.configs.shared_configs import XttsAudioConfig
         echo             from TTS.api import Xtts
@@ -126,16 +126,16 @@ if not exist "pytorch_2_6_patch.py" (
         echo             from TTS.config import load_config
         echo             from TTS.tts.configs.base_tts_config import BaseTTSConfig
         echo             from TTS.utils.audio.torch_transforms import TorchSTFT
-        echo 
+        echo.
         echo             print("Application du patch PyTorch 2.6+...")
-        echo             # Ajouter toutes les classes à la liste des classes sécurisées
+        echo             # Ajouter toutes les classes a la liste des classes securisees
         echo             torch.serialization.add_safe_globals([XttsConfig, XttsAudioConfig, Xtts,
         echo                                                   AudioProcessor, load_config, BaseTTSConfig, TorchSTFT])
-        echo             print("Patch PyTorch 2.6+ appliqué avec succès!")
+        echo             print("Patch PyTorch 2.6+ applique avec succes!")
         echo     except Exception as e:
-        echo         warnings.warn(f"Impossible d'appliquer le patch PyTorch 2.6+: {e}")
-        echo 
-        echo # Appliquer le patch automatiquement à l'importation
+        echo         warnings.warn("Impossible d'appliquer le patch PyTorch 2.6+: " + str(e))
+        echo.
+        echo # Appliquer le patch automatiquement a l'importation
         echo apply_patch()
     ) > pytorch_2_6_patch.py
 )
