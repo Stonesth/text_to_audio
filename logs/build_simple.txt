@@ -1,5 +1,5 @@
 ===== JOURNAL DE COMPILATION PYINSTALLER ===== 
-Date et heure: 17-03-25 14:15:57,49 
+Date et heure: 17-03-25 14:34:16,86 
 Demarrage du script 
 Verification de l'environnement virtuel venv_py310 
 Tentative d'activation de l'environnement virtuel 
