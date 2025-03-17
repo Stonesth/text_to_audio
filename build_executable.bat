@@ -1,21 +1,22 @@
-@echo off
+@echo on
 setlocal enabledelayedexpansion
 
-:: Configuration de la journalisation
-set "LOG_FILE=%~dp0logs\build_executable_log.txt"
-set "ERROR_FILE=%~dp0logs\error.txt"
+:: Fichiers de journalisation
+set "LOG_FILE=%~dp0logs\build_log.txt"
+set "ERROR_FILE=%~dp0logs\error_log.txt"
 
-:: Création du dossier de logs s'il n'existe pas
+:: Creation dossier de logs
 if not exist "%~dp0logs" mkdir "%~dp0logs"
 
-:: Effacer les fichiers de log précédents
 echo ===== JOURNAL DE COMPILATION PYINSTALLER ===== > "%LOG_FILE%"
 echo Date et heure: %DATE% %TIME% >> "%LOG_FILE%"
-echo. >> "%LOG_FILE%"
 
 echo ===== ERREURS DE COMPILATION PYINSTALLER ===== > "%ERROR_FILE%"
 echo Date et heure: %DATE% %TIME% >> "%ERROR_FILE%"
-echo. >> "%ERROR_FILE%"
+
+echo ===== CREATION DE L'EXECUTABLE AVEC PYINSTALLER =====
+echo Date et heure: %DATE% %TIME%
+echo Demarrage du script >> "%LOG_FILE%"
 
 :: Fonction de journalisation
 :log
@@ -32,32 +33,28 @@ goto :eof
 :: Gestionnaire d'exceptions
 :try
 setlocal
-call :log "[TRY] Début du bloc %~1"
+call :log "[TRY] Debut du bloc %~1"
 goto :eof
 
 :catch
 if %ERRORLEVEL% neq 0 (
-    call :error "[ERREUR] Échec dans le bloc %~1 avec code %ERRORLEVEL%"
+    call :error "[ERREUR] Echec dans le bloc %~1 avec code %ERRORLEVEL%"
     goto :end_catch
 )
-call :log "[OK] Bloc %~1 exécuté avec succès"
+call :log "[OK] Bloc %~1 execute avec succes"
 :end_catch
 endlocal & set LAST_ERROR=%ERRORLEVEL%
 goto :eof
 
-echo ===== CREATION DE L'EXECUTABLE AVEC PYINSTALLER =====
-echo Date et heure: %DATE% %TIME%
-call :log "Démarrage du script de compilation"
-
-:: ===== SECTION: VÉRIFICATION ENVIRONNEMENT VIRTUEL =====
+:: ===== SECTION: VERIFICATION ENVIRONNEMENT VIRTUEL =====
 call :try "VERIFICATION_ENV"
 
-:: Vérification de l'existence de l'environnement virtuel
-call :log "Vérification de l'environnement virtuel venv_py310"
+:: Verification de l'existence de l'environnement virtuel
+call :log "Verification de l'environnement virtuel venv_py310"
 if not exist ".\venv_py310\Scripts\activate.bat" (
     call :error "L'environnement virtuel venv_py310 n'existe pas"
     echo ERREUR: L'environnement virtuel venv_py310 n'existe pas.
-    echo Veuillez d'abord exécuter setup_env.bat pour créer l'environnement virtuel.
+    echo Veuillez d'abord executer setup_env.bat pour creer l'environnement virtuel.
     echo.
     pause
     exit /b 1
@@ -65,8 +62,8 @@ if not exist ".\venv_py310\Scripts\activate.bat" (
 
 echo.
 echo IMPORTANT: Ce script va utiliser l'environnement virtuel venv_py310.
-echo Assurez-vous que toutes les dépendances sont correctement installées dans cet environnement.
-echo Si vous avez besoin d'installer les dépendances, veuillez d'abord exécuter setup_env.bat.
+echo Assurez-vous que toutes les dependances sont correctement installees dans cet environnement.
+echo Si vous avez besoin d'installer les dependances, veuillez d'abord executer setup_env.bat.
 echo.
 
 :: Activation de l'environnement virtuel existant
@@ -74,25 +71,25 @@ echo Activation de l'environnement virtuel venv_py310...
 call :log "Tentative d'activation de l'environnement virtuel"
 call .\venv_py310\Scripts\activate.bat
 
-:: Vérification de l'activation réussie
+:: Verification de l'activation reussie
 if not defined VIRTUAL_ENV (
     call :error "Impossible d'activer l'environnement virtuel venv_py310"
     echo ERREUR: Impossible d'activer l'environnement virtuel venv_py310.
     pause
     exit /b 1
 )
-echo Environnement virtuel activé avec succès: %VIRTUAL_ENV%
-call :log "Environnement virtuel activé: %VIRTUAL_ENV%"
+echo Environnement virtuel active avec succes: %VIRTUAL_ENV%
+call :log "Environnement virtuel active: %VIRTUAL_ENV%"
 echo.
 
 call :catch "VERIFICATION_ENV"
 if %LAST_ERROR% neq 0 exit /b %LAST_ERROR%
 
-:: ===== SECTION: VÉRIFICATION PYINSTALLER =====
+:: ===== SECTION: VERIFICATION PYINSTALLER =====
 call :try "VERIFICATION_PYINSTALLER"
 
-:: Vérification de PyInstaller
-call :log "Vérification de PyInstaller"
+:: Verification de PyInstaller
+call :log "Verification de PyInstaller"
 pip show pyinstaller > nul 2>&1
 if %ERRORLEVEL% neq 0 (
     call :log "Installation de PyInstaller..."
@@ -109,36 +106,36 @@ call :log "PyInstaller est disponible"
 call :catch "VERIFICATION_PYINSTALLER"
 if %LAST_ERROR% neq 0 exit /b %LAST_ERROR%
 
-:: ===== SECTION: CRÉATION DES RÉPERTOIRES =====
+:: ===== SECTION: CREATION DES REPERTOIRES =====
 call :try "CREATION_REPERTOIRES"
 
-:: Création du répertoire build s'il n'existe pas
-call :log "Vérification du répertoire de build"
+:: Creation du repertoire build s'il n'existe pas
+call :log "Verification du repertoire de build"
 if not exist "build" (
     mkdir build
-    call :log "Répertoire build créé"
+    call :log "Repertoire build cree"
 ) else (
-    call :log "Répertoire build existe déjà"
+    call :log "Repertoire build existe deja"
 )
 
 call :catch "CREATION_REPERTOIRES"
 if %LAST_ERROR% neq 0 exit /b %LAST_ERROR%
 
-:: ===== SECTION: VÉRIFICATION ESPEAK-NG =====
+:: ===== SECTION: VERIFICATION ESPEAK-NG =====
 call :try "VERIFICATION_ESPEAK"
 
-:: Téléchargement du dossier espeak-ng s'il n'existe pas
-call :log "Vérification du dossier espeak-ng"
+:: Telechargement du dossier espeak-ng s'il n'existe pas
+call :log "Verification du dossier espeak-ng"
 if not exist "espeak-ng" (
-    call :log "Le dossier espeak-ng n'existe pas, demande à l'utilisateur"
-    echo Téléchargement et extraction du dossier espeak-ng...
-    :: Si vous avez un fichier ZIP espeak-ng, décommentez ces lignes et ajustez le chemin
+    call :log "Le dossier espeak-ng n'existe pas, demande a l'utilisateur"
+    echo Telechargement et extraction du dossier espeak-ng...
+    :: Si vous avez un fichier ZIP espeak-ng, decommentez ces lignes et ajustez le chemin
     :: powershell -Command "Invoke-WebRequest -Uri 'URL_DU_FICHIER_ZIP_ESPEAK_NG' -OutFile 'espeak-ng.zip'"
     :: powershell -Command "Expand-Archive -Path 'espeak-ng.zip' -DestinationPath '.'"
     :: del espeak-ng.zip
     
-    echo ATTENTION: Veuillez placer manuellement le dossier espeak-ng dans ce répertoire.
-    echo Appuyez sur une touche pour continuer une fois le dossier espeak-ng ajouté...
+    echo ATTENTION: Veuillez placer manuellement le dossier espeak-ng dans ce repertoire.
+    echo Appuyez sur une touche pour continuer une fois le dossier espeak-ng ajoute...
     pause > nul
 ) else (
     call :log "Le dossier espeak-ng existe"
@@ -147,14 +144,14 @@ if not exist "espeak-ng" (
 call :catch "VERIFICATION_ESPEAK"
 if %LAST_ERROR% neq 0 exit /b %LAST_ERROR%
 
-:: ===== SECTION: CRÉATION DU HOOK PYTORCH =====
+:: ===== SECTION: CREATION DU HOOK PYTORCH =====
 call :try "CREATION_HOOK_PYTORCH"
 
-:: Création d'un hook pour PyTorch
-call :log "Vérification du hook PyTorch"
+:: Creation d'un hook pour PyTorch
+call :log "Verification du hook PyTorch"
 if not exist "pytorch_hook.py" (
-    call :log "Création du fichier pytorch_hook.py"
-    echo Création du hook PyTorch...
+    call :log "Creation du fichier pytorch_hook.py"
+    echo Creation du hook PyTorch...
     (
         echo from PyInstaller.utils.hooks import collect_all
         echo def hook(hook_api):
@@ -172,22 +169,22 @@ if not exist "pytorch_hook.py" (
         echo     hook_api.add_imports('torchaudio.lib.libtorchaudio')
         echo     hook_api.add_imports('torch.lib.libtorch')
     ) > pytorch_hook.py
-    call :log "Fichier pytorch_hook.py créé avec succès"
+    call :log "Fichier pytorch_hook.py cree avec succes"
 ) else (
-    call :log "Le fichier pytorch_hook.py existe déjà"
+    call :log "Le fichier pytorch_hook.py existe deja"
 )
 
 call :catch "CREATION_HOOK_PYTORCH"
 if %LAST_ERROR% neq 0 exit /b %LAST_ERROR%
 
-:: ===== SECTION: CRÉATION DU HOOK TTS =====
+:: ===== SECTION: CREATION DU HOOK TTS =====
 call :try "CREATION_HOOK_TTS"
 
-:: Création d'un hook pour TTS
-call :log "Vérification du hook TTS"
+:: Creation d'un hook pour TTS
+call :log "Verification du hook TTS"
 if not exist "tts_hook.py" (
-    call :log "Création du fichier tts_hook.py"
-    echo Création du hook TTS...
+    call :log "Creation du fichier tts_hook.py"
+    echo Creation du hook TTS...
     (
         echo from PyInstaller.utils.hooks import collect_data_files, collect_all
         echo def hook(hook_api):
@@ -208,22 +205,22 @@ if not exist "tts_hook.py" (
         echo     ]
         echo     hook_api.add_imports(*classes)
     ) > tts_hook.py
-    call :log "Fichier tts_hook.py créé avec succès"
+    call :log "Fichier tts_hook.py cree avec succes"
 ) else (
-    call :log "Le fichier tts_hook.py existe déjà"
+    call :log "Le fichier tts_hook.py existe deja"
 )
 
 call :catch "CREATION_HOOK_TTS"
 if %LAST_ERROR% neq 0 exit /b %LAST_ERROR%
 
-:: ===== SECTION: CRÉATION DU PATCH PYTORCH =====
+:: ===== SECTION: CREATION DU PATCH PYTORCH =====
 call :try "CREATION_PATCH_PYTORCH"
 
-:: Création du fichier patch pour PyTorch 2.6+
-call :log "Vérification du patch PyTorch 2.6+"
+:: Creation du fichier patch pour PyTorch 2.6+
+call :log "Verification du patch PyTorch 2.6+"
 if not exist "pytorch_2_6_patch.py" (
-    call :log "Création du fichier pytorch_2_6_patch.py"
-    echo Création du patch PyTorch 2.6+...
+    call :log "Creation du fichier pytorch_2_6_patch.py"
+    echo Creation du patch PyTorch 2.6+...
     (
         echo # Patch pour assurer la compatibilite avec PyTorch 2.6+
         echo import torch
@@ -253,20 +250,20 @@ if not exist "pytorch_2_6_patch.py" (
         echo # Appliquer le patch automatiquement a l'importation
         echo apply_patch()
     ) > pytorch_2_6_patch.py
-    call :log "Fichier pytorch_2_6_patch.py créé avec succès"
+    call :log "Fichier pytorch_2_6_patch.py cree avec succes"
 ) else (
-    call :log "Le fichier pytorch_2_6_patch.py existe déjà"
+    call :log "Le fichier pytorch_2_6_patch.py existe deja"
 )
 
 call :catch "CREATION_PATCH_PYTORCH"
 if %LAST_ERROR% neq 0 exit /b %LAST_ERROR%
 
-:: ===== SECTION: CRÉATION DU FICHIER SPEC =====
+:: ===== SECTION: CREATION DU FICHIER SPEC =====
 call :try "CREATION_SPEC"
 
-:: Création du fichier spec pour PyInstaller
-call :log "Création du fichier spec PyInstaller"
-echo Création du fichier spec PyInstaller...
+:: Creation du fichier spec pour PyInstaller
+call :log "Creation du fichier spec PyInstaller"
+echo Creation du fichier spec PyInstaller...
 (
     echo # -*- mode: python ; coding: utf-8 -*-
     echo import os
@@ -362,27 +359,27 @@ echo Création du fichier spec PyInstaller...
     echo     name='Simple_TTS_GUI',
     echo )
 ) > Simple_TTS_GUI.spec
-call :log "Fichier Simple_TTS_GUI.spec créé avec succès"
+call :log "Fichier Simple_TTS_GUI.spec cree avec succes"
 
 call :catch "CREATION_SPEC"
 if %LAST_ERROR% neq 0 exit /b %LAST_ERROR%
 
-:: ===== SECTION: EXÉCUTION DE PYINSTALLER =====
+:: ===== SECTION: EXECUTION DE PYINSTALLER =====
 call :try "EXECUTION_PYINSTALLER"
 
-:: Exécution de PyInstaller
-call :log "Démarrage de la compilation avec PyInstaller"
-echo ===== Démarrage de la compilation avec PyInstaller =====
+:: Execution de PyInstaller
+call :log "Demarrage de la compilation avec PyInstaller"
+echo ===== Demarrage de la compilation avec PyInstaller =====
 pyinstaller --clean Simple_TTS_GUI.spec
 
 if %ERRORLEVEL% equ 0 (
-    call :log "Compilation terminée avec succès"
-    echo ===== COMPILATION TERMINÉE AVEC SUCCÈS =====
-    echo L'exécutable est disponible dans le dossier: %CD%\dist\Simple_TTS_GUI
+    call :log "Compilation terminee avec succes"
+    echo ===== COMPILATION TERMINEE AVEC SUCCES =====
+    echo L'executable est disponible dans le dossier: %CD%\dist\Simple_TTS_GUI
 ) else (
     call :error "Erreur lors de la compilation avec code %ERRORLEVEL%"
     echo ===== ERREUR LORS DE LA COMPILATION =====
-    echo Veuillez vérifier les erreurs ci-dessus.
+    echo Veuillez verifier les erreurs ci-dessus.
 )
 
 call :catch "EXECUTION_PYINSTALLER"
@@ -391,12 +388,12 @@ if %LAST_ERROR% neq 0 exit /b %LAST_ERROR%
 :: ===== SECTION: FINALISATION =====
 call :try "FINALISATION"
 
-:: Désactivation de l'environnement virtuel
-call :log "Désactivation de l'environnement virtuel"
+:: Desactivation de l'environnement virtuel
+call :log "Desactivation de l'environnement virtuel"
 deactivate
 
-call :log "Script terminé"
-echo Script terminé.
+call :log "Script termine"
+echo Script termine.
 
 call :catch "FINALISATION"
 
