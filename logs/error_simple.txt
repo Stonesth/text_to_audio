@@ -1,2 +1,0 @@
-===== ERREURS DE COMPILATION PYINSTALLER ===== 
-Date et heure: 17-03-25 14:50:53,42 
