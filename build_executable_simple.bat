@@ -220,6 +220,54 @@ echo Patch PyTorch 2.6+ cree avec succes >> "%LOG_FILE%"
 echo Patch PyTorch 2.6+ cree avec succes >> "%DEBUG_FILE%"
 if exist pytorch_2_6_patch.py echo Verification: Patch PyTorch existe bien dans %CD% >> "%DEBUG_FILE%"
 
+:: ===== VERIFICATION DES IMPORTATIONS APRÈS HOOKS =====
+echo Verification des importations apres creation des hooks... >> "%DEBUG_FILE%"
+echo ===== TEST IMPORTATION HOOKS ET PATCH ===== > "%TEMP%\import_test.txt"
+
+:: Créer un script temporaire pour tester les importations
+echo import sys > "%TEMP%\test_imports.py"
+echo print("Python: " + sys.version) >> "%TEMP%\test_imports.py"
+echo print("\nChemin d'importation:") >> "%TEMP%\test_imports.py"
+echo for path in sys.path: >> "%TEMP%\test_imports.py"
+echo     print(f"  - {path}") >> "%TEMP%\test_imports.py"
+echo. >> "%TEMP%\test_imports.py"
+
+:: Test des imports clés
+echo print("\nTest des imports cles:") >> "%TEMP%\test_imports.py"
+echo modules_a_tester = ['PyQt6', 'PyQt6.sip', 'torch', 'TTS', 'pytorch_2_6_patch'] >> "%TEMP%\test_imports.py"
+echo for module_name in modules_a_tester: >> "%TEMP%\test_imports.py"
+echo     try: >> "%TEMP%\test_imports.py"
+echo         exec(f"import {module_name}") >> "%TEMP%\test_imports.py"
+echo         module = eval(module_name.split('.')[0]) >> "%TEMP%\test_imports.py"
+echo         version = getattr(module, '__version__', 'Inconnue') >> "%TEMP%\test_imports.py"
+echo         filepath = getattr(module, '__file__', 'Inconnu') >> "%TEMP%\test_imports.py"
+echo         print(f"  {module_name}: OK") >> "%TEMP%\test_imports.py"
+echo         print(f"    Version: {version}") >> "%TEMP%\test_imports.py"
+echo         print(f"    Chemin: {filepath}") >> "%TEMP%\test_imports.py"
+echo     except Exception as e: >> "%TEMP%\test_imports.py"
+echo         print(f"  {module_name}: ERREUR - {str(e)}") >> "%TEMP%\test_imports.py"
+echo         import traceback >> "%TEMP%\test_imports.py"
+echo         traceback.print_exc() >> "%TEMP%\test_imports.py"
+
+:: Vérifier specifiquement pour torch.serialization.add_safe_globals
+echo. >> "%TEMP%\test_imports.py"
+echo print("\nVerification de torch.serialization.add_safe_globals:") >> "%TEMP%\test_imports.py"
+echo try: >> "%TEMP%\test_imports.py"
+echo     import torch >> "%TEMP%\test_imports.py"
+echo     if hasattr(torch.serialization, 'add_safe_globals'): >> "%TEMP%\test_imports.py"
+echo         print("  add_safe_globals est disponible") >> "%TEMP%\test_imports.py"
+echo     else: >> "%TEMP%\test_imports.py"
+echo         print("  add_safe_globals n'est PAS disponible") >> "%TEMP%\test_imports.py"
+echo except Exception as e: >> "%TEMP%\test_imports.py"
+echo     print(f"  ERREUR lors de la verification: {str(e)}") >> "%TEMP%\test_imports.py"
+
+:: Exécuter le script de test et capturer la sortie
+python "%TEMP%\test_imports.py" > "%TEMP%\import_test.txt" 2>&1
+type "%TEMP%\import_test.txt" >> "%DEBUG_FILE%"
+echo Resultat du test d'importation: %ERRORLEVEL% >> "%DEBUG_FILE%"
+del "%TEMP%\test_imports.py"
+del "%TEMP%\import_test.txt"
+
 :: ===== CREATION DU FICHIER SPEC =====
 echo Creation du fichier spec PyInstaller... >> "%LOG_FILE%"
 echo Creation du fichier spec PyInstaller... >> "%DEBUG_FILE%"
@@ -284,58 +332,81 @@ echo     debug_file.write('Liste des imports caches:\n') >> Simple_TTS_GUI.spec
 echo     for imp in all_hiddenimports: >> Simple_TTS_GUI.spec
 echo         debug_file.write(f'  - {imp}\n') >> Simple_TTS_GUI.spec
 echo. >> Simple_TTS_GUI.spec
-echo a = Analysis( >> Simple_TTS_GUI.spec
-echo     ['Simple_TTS_GUI.py'], >> Simple_TTS_GUI.spec
-echo     pathex=[os.path.abspath('.')], >> Simple_TTS_GUI.spec
-echo     binaries=all_binaries, >> Simple_TTS_GUI.spec
-echo     datas=all_datas, >> Simple_TTS_GUI.spec
-echo     hiddenimports=all_hiddenimports, >> Simple_TTS_GUI.spec
-echo     hookspath=['.'], >> Simple_TTS_GUI.spec
-echo     hooksconfig={}, >> Simple_TTS_GUI.spec
-echo     runtime_hooks=[], >> Simple_TTS_GUI.spec
-echo     excludes=[], >> Simple_TTS_GUI.spec
-echo     win_no_prefer_redirects=False, >> Simple_TTS_GUI.spec
-echo     win_private_assemblies=False, >> Simple_TTS_GUI.spec
-echo     cipher=block_cipher, >> Simple_TTS_GUI.spec
-echo     noarchive=False, >> Simple_TTS_GUI.spec
-echo ) >> Simple_TTS_GUI.spec
+echo # Gestionnaire d'erreur global >> Simple_TTS_GUI.spec
+echo import sys >> Simple_TTS_GUI.spec
+echo original_excepthook = sys.excepthook >> Simple_TTS_GUI.spec
+echo def custom_excepthook(exctype, value, traceback): >> Simple_TTS_GUI.spec
+echo     with open('%~dp0logs\error_simple.txt', 'a') as err_file: >> Simple_TTS_GUI.spec
+echo         err_file.write(f"\n\n===== ERREUR CRITIQUE DANS LE SPEC =====\n") >> Simple_TTS_GUI.spec
+echo         err_file.write(f"Type: {exctype}\n") >> Simple_TTS_GUI.spec
+echo         err_file.write(f"Valeur: {value}\n") >> Simple_TTS_GUI.spec
+echo         import traceback as tb >> Simple_TTS_GUI.spec
+echo         tb.print_exc(file=err_file) >> Simple_TTS_GUI.spec
+echo     # Appel au gestionnaire d'origine >> Simple_TTS_GUI.spec
+echo     original_excepthook(exctype, value, traceback) >> Simple_TTS_GUI.spec
+echo sys.excepthook = custom_excepthook >> Simple_TTS_GUI.spec
 echo. >> Simple_TTS_GUI.spec
-echo # Log fin de l'analyse >> Simple_TTS_GUI.spec
-echo with open('%~dp0logs\debug_simple.txt', 'a') as debug_file: >> Simple_TTS_GUI.spec
-echo     debug_file.write('Analyse terminee\n') >> Simple_TTS_GUI.spec
+echo try: # Envelopper tout le code dans un bloc try-except global >> Simple_TTS_GUI.spec
+echo     a = Analysis( >> Simple_TTS_GUI.spec
+echo         ['Simple_TTS_GUI.py'], >> Simple_TTS_GUI.spec
+echo         pathex=[os.path.abspath('.')], >> Simple_TTS_GUI.spec
+echo         binaries=all_binaries, >> Simple_TTS_GUI.spec
+echo         datas=all_datas, >> Simple_TTS_GUI.spec
+echo         hiddenimports=all_hiddenimports, >> Simple_TTS_GUI.spec
+echo         hookspath=['.'], >> Simple_TTS_GUI.spec
+echo         hooksconfig={}, >> Simple_TTS_GUI.spec
+echo         runtime_hooks=[], >> Simple_TTS_GUI.spec
+echo         excludes=[], >> Simple_TTS_GUI.spec
+echo         win_no_prefer_redirects=False, >> Simple_TTS_GUI.spec
+echo         win_private_assemblies=False, >> Simple_TTS_GUI.spec
+echo         cipher=block_cipher, >> Simple_TTS_GUI.spec
+echo         noarchive=False, >> Simple_TTS_GUI.spec
+echo     ) >> Simple_TTS_GUI.spec
 echo. >> Simple_TTS_GUI.spec
-echo pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher) >> Simple_TTS_GUI.spec
+echo     # Log fin de l'analyse >> Simple_TTS_GUI.spec
+echo     with open('%~dp0logs\debug_simple.txt', 'a') as debug_file: >> Simple_TTS_GUI.spec
+echo         debug_file.write('Analyse terminee\n') >> Simple_TTS_GUI.spec
 echo. >> Simple_TTS_GUI.spec
-echo exe = EXE( >> Simple_TTS_GUI.spec
-echo     pyz, >> Simple_TTS_GUI.spec
-echo     a.scripts, >> Simple_TTS_GUI.spec
-echo     [], >> Simple_TTS_GUI.spec
-echo     exclude_binaries=True, >> Simple_TTS_GUI.spec
-echo     name='Simple_TTS_GUI', >> Simple_TTS_GUI.spec
-echo     debug=True, >> Simple_TTS_GUI.spec
-echo     bootloader_ignore_signals=False, >> Simple_TTS_GUI.spec
-echo     strip=False, >> Simple_TTS_GUI.spec
-echo     upx=True, >> Simple_TTS_GUI.spec
-echo     upx_exclude=[], >> Simple_TTS_GUI.spec
-echo     runtime_tmpdir=None, >> Simple_TTS_GUI.spec
-echo     console=True, >> Simple_TTS_GUI.spec
-echo     disable_windowed_traceback=False, >> Simple_TTS_GUI.spec
-echo     target_arch=None, >> Simple_TTS_GUI.spec
-echo     codesign_identity=None, >> Simple_TTS_GUI.spec
-echo     entitlements_file=None, >> Simple_TTS_GUI.spec
-echo     icon='resources/nn_logo.png', >> Simple_TTS_GUI.spec
-echo ) >> Simple_TTS_GUI.spec
+echo     pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher) >> Simple_TTS_GUI.spec
 echo. >> Simple_TTS_GUI.spec
-echo coll = COLLECT( >> Simple_TTS_GUI.spec
-echo     exe, >> Simple_TTS_GUI.spec
-echo     a.binaries, >> Simple_TTS_GUI.spec
-echo     a.zipfiles, >> Simple_TTS_GUI.spec
-echo     a.datas, >> Simple_TTS_GUI.spec
-echo     strip=False, >> Simple_TTS_GUI.spec
-echo     upx=True, >> Simple_TTS_GUI.spec
-echo     upx_exclude=[], >> Simple_TTS_GUI.spec
-echo     name='Simple_TTS_GUI', >> Simple_TTS_GUI.spec
-echo ) >> Simple_TTS_GUI.spec
+echo     exe = EXE( >> Simple_TTS_GUI.spec
+echo         pyz, >> Simple_TTS_GUI.spec
+echo         a.scripts, >> Simple_TTS_GUI.spec
+echo         [], >> Simple_TTS_GUI.spec
+echo         exclude_binaries=True, >> Simple_TTS_GUI.spec
+echo         name='Simple_TTS_GUI', >> Simple_TTS_GUI.spec
+echo         debug=True, >> Simple_TTS_GUI.spec
+echo         bootloader_ignore_signals=False, >> Simple_TTS_GUI.spec
+echo         strip=False, >> Simple_TTS_GUI.spec
+echo         upx=True, >> Simple_TTS_GUI.spec
+echo         upx_exclude=[], >> Simple_TTS_GUI.spec
+echo         runtime_tmpdir=None, >> Simple_TTS_GUI.spec
+echo         console=True, >> Simple_TTS_GUI.spec
+echo         disable_windowed_traceback=False, >> Simple_TTS_GUI.spec
+echo         target_arch=None, >> Simple_TTS_GUI.spec
+echo         codesign_identity=None, >> Simple_TTS_GUI.spec
+echo         entitlements_file=None, >> Simple_TTS_GUI.spec
+echo         icon='resources/nn_logo.png', >> Simple_TTS_GUI.spec
+echo     ) >> Simple_TTS_GUI.spec
+echo. >> Simple_TTS_GUI.spec
+echo     coll = COLLECT( >> Simple_TTS_GUI.spec
+echo         exe, >> Simple_TTS_GUI.spec
+echo         a.binaries, >> Simple_TTS_GUI.spec
+echo         a.zipfiles, >> Simple_TTS_GUI.spec
+echo         a.datas, >> Simple_TTS_GUI.spec
+echo         strip=False, >> Simple_TTS_GUI.spec
+echo         upx=True, >> Simple_TTS_GUI.spec
+echo         upx_exclude=[], >> Simple_TTS_GUI.spec
+echo         name='Simple_TTS_GUI', >> Simple_TTS_GUI.spec
+echo     ) >> Simple_TTS_GUI.spec
+echo except Exception as e: >> Simple_TTS_GUI.spec
+echo     with open('%~dp0logs\error_simple.txt', 'a') as err_file: >> Simple_TTS_GUI.spec
+echo         err_file.write(f"\n\n===== ERREUR CRITIQUE DANS LE SPEC =====\n") >> Simple_TTS_GUI.spec
+echo         err_file.write(f"Type: {type(e)}\n") >> Simple_TTS_GUI.spec
+echo         err_file.write(f"Valeur: {str(e)}\n") >> Simple_TTS_GUI.spec
+echo         import traceback as tb >> Simple_TTS_GUI.spec
+echo         tb.print_exc(file=err_file) >> Simple_TTS_GUI.spec
+echo. >> Simple_TTS_GUI.spec
 
 echo Fichier Simple_TTS_GUI.spec cree avec succes >> "%LOG_FILE%"
 echo Fichier Simple_TTS_GUI.spec cree avec succes >> "%DEBUG_FILE%"
@@ -349,12 +420,43 @@ echo ===== Demarrage de la compilation avec PyInstaller =====
 
 :: Execution avec journalisation detaillee
 echo Execution de PyInstaller avec le fichier spec... >> "%DEBUG_FILE%"
-pyinstaller --clean Simple_TTS_GUI.spec > "%TEMP%\pyinstaller_output.txt" 2>&1
+echo. > "%TEMP%\pyinstaller_output.txt"
+echo ===== DEBUT EXECUTION PYINSTALLER ===== >> "%TEMP%\pyinstaller_output.txt"
+
+:: Capturer l'environnement avant l'exécution
+echo ENVIRONNEMENT D'EXECUTION: >> "%TEMP%\pyinstaller_output.txt"
+echo Repertoire courant: %CD% >> "%TEMP%\pyinstaller_output.txt"
+echo PATH: %PATH% >> "%TEMP%\pyinstaller_output.txt"
+echo PYTHONPATH: %PYTHONPATH% >> "%TEMP%\pyinstaller_output.txt"
+echo. >> "%TEMP%\pyinstaller_output.txt"
+
+:: Vérifier le contenu du fichier spec avant exécution
+echo CONTENU DU FICHIER SPEC: >> "%TEMP%\pyinstaller_output.txt"
+type Simple_TTS_GUI.spec >> "%TEMP%\pyinstaller_output.txt"
+echo. >> "%TEMP%\pyinstaller_output.txt"
+
+:: Vérifier que les hooks existe bien
+if exist pytorch_hook.py echo HOOK PYTORCH EXISTE >> "%TEMP%\pyinstaller_output.txt"
+if exist tts_hook.py echo HOOK TTS EXISTE >> "%TEMP%\pyinstaller_output.txt"
+if exist pytorch_2_6_patch.py echo PATCH PYTORCH EXISTE >> "%TEMP%\pyinstaller_output.txt"
+echo. >> "%TEMP%\pyinstaller_output.txt"
+
+:: Demander à Python de lister tous les modules importables
+echo MODULES IMPORTABLES: >> "%TEMP%\pyinstaller_output.txt"
+python -c "help('modules')" >> "%TEMP%\pyinstaller_output.txt" 2>&1
+echo. >> "%TEMP%\pyinstaller_output.txt"
+
+echo ===== EXECUTION PYINSTALLER PROPREMENT DITE ===== >> "%TEMP%\pyinstaller_output.txt"
+pyinstaller --clean Simple_TTS_GUI.spec >> "%TEMP%\pyinstaller_output.txt" 2>&1
 set PYINSTALLER_EXIT_CODE=%ERRORLEVEL%
+echo ===== FIN EXECUTION PYINSTALLER (Code: %PYINSTALLER_EXIT_CODE%) ===== >> "%TEMP%\pyinstaller_output.txt"
 
 :: Enregistrer la sortie de PyInstaller dans les fichiers de log
 type "%TEMP%\pyinstaller_output.txt" >> "%DEBUG_FILE%"
-if %PYINSTALLER_EXIT_CODE% neq 0 type "%TEMP%\pyinstaller_output.txt" >> "%ERROR_FILE%"
+if %PYINSTALLER_EXIT_CODE% neq 0 (
+    echo ERREUR PYINSTALLER DETECTEE: >> "%ERROR_FILE%"
+    type "%TEMP%\pyinstaller_output.txt" >> "%ERROR_FILE%"
+)
 del "%TEMP%\pyinstaller_output.txt"
 
 if %PYINSTALLER_EXIT_CODE% equ 0 (
