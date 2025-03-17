@@ -1,0 +1,108 @@
+=== RAPPORT DE COMPILATION PYINSTALLER === 
+[2025-03-17 21:22:38] ===== COMPILATION DE L'EXÉCUTABLE ===== 
+[2025-03-17 21:22:38] CHECKPOINT 1 - Vérification des hooks... 
+[2025-03-17 21:22:38]   Hooks trouvés avec succès dans C:\Users\JF30LB\Projects\python\Projects\text_to_audio\hooks 
+[2025-03-17 21:22:38] CHECKPOINT 2 - Capture des variables d'environnement... 
+[2025-03-17 21:22:38]   Environnement virtuel: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310 
+PYTHONPATH:  
+PATH: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Scripts;c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.2.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_new\Scripts;c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.2.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_new\Scripts;C:\Program Files\Python310\;C:\Program Files\Python310\Scripts\;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files\Microsoft Visual Studio\2022\Community\\MSBuild\Current\Bin\amd64;"C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\";C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe;C:\Program Files\OpenLogic\jdk-17.0.13.11-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk-11\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\JF30LB\AppData\Local\Programs\Python\Python312\Scripts;C:\ProgramData\Anaconda3\Scripts;C:\Users\JF30LB\OneDrive - NN\Programmes\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\eSpeak NG\;C:\Program Files\eSpeak NG\;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Scripts;c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;c:\Users\JF30LB\.vscode\extensions\ms-python.python-2025.0.0-win32-x64\python_files\deactivate\powershell;C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_build\Scripts;C:\Program Files\Python310\;C:\Program Files\Python310\Scripts\;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Users\JF30LB\AppData\Local\Programs\Microsoft VS Code\bin 
+[2025-03-17 21:22:38]   Répertoire courant: C:\Users\JF30LB\Projects\python\Projects\text_to_audio 
+[2025-03-17 21:22:38] CHECKPOINT 3 - Création du fichier spec... 
+[2025-03-17 21:22:39]   Exécution de la commande PyInstaller... 
+[2025-03-17 21:22:39]   Fichier Simple_TTS_GUI.py trouvé avec succès 
+Chemin complet du script: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.py 
+[2025-03-17 21:22:39]   Lancement de PyInstaller pour créer le fichier spec... 
+[2025-03-17 21:22:39]   Fichier spec créé avec succès 
+401 INFO: PyInstaller: 6.12.0, contrib hooks: 2025.1
+401 INFO: Python: 3.10.9
+418 INFO: Platform: Windows-10-10.0.22631-SP0
+418 INFO: Python environment: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
+418 INFO: wrote C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.spec
+418 DEBUG: Testing UPX availability ...
+418 DEBUG: UPX is not available.
+418 DEBUG: script: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.py
+418 INFO: Module search paths (PYTHONPATH):
+['C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\Scripts\\pyinstaller.exe',
+ 'C:\\Progra~1\\Python310\\python310.zip',
+ 'C:\\Progra~1\\Python310\\DLLs',
+ 'C:\\Progra~1\\Python310\\lib',
+ 'C:\\Progra~1\\Python310',
+ 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310',
+ 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages',
+ 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio']
+350 DEBUG: discover_hook_directories: Hook directories: [('C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\pypinyin\\__pyinstaller', 0), ('C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks', -1000), ('C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\_pyinstaller_hooks_contrib', -1000)]
+1015 INFO: checking Analysis
+2370 INFO: checking PYZ
+2784 INFO: checking PKG
+2807 INFO: Building because C:\Users\JF30LB\Projects\python\Projects\text_to_audio\build\Simple_TTS_GUI\localpycs\pyimod01_archive.pyc changed
+2807 INFO: Building PKG (CArchive) Simple_TTS_GUI.pkg
+2820 DEBUG: Compiling python script/module file C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\loader\pyiboot01_bootstrap.py
+2820 DEBUG: Compiling python script/module file C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Lib\site-packages\PyInstaller\hooks\rthooks\pyi_rth_inspect.py
+2820 DEBUG: Compiling python script/module file C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Lib\site-packages\PyInstaller\hooks\rthooks\pyi_rth_pkgutil.py
+2820 DEBUG: Compiling python script/module file C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Lib\site-packages\PyInstaller\hooks\rthooks\pyi_rth_multiprocessing.py
+2820 DEBUG: Compiling python script/module file C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Lib\site-packages\PyInstaller\hooks\rthooks\pyi_rth_setuptools.py
+2820 DEBUG: Compiling python script/module file C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Lib\site-packages\PyInstaller\hooks\rthooks\pyi_rth_pkgres.py
+2820 DEBUG: Compiling python script/module file C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Lib\site-packages\PyInstaller\hooks\rthooks\pyi_rth_mplconfig.py
+2820 DEBUG: Compiling python script/module file C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Lib\site-packages\_pyinstaller_hooks_contrib\rthooks\pyi_rth_nltk.py
+2820 DEBUG: Compiling python script/module file C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Lib\site-packages\PyInstaller\hooks\rthooks\pyi_rth__tkinter.py
+2820 DEBUG: Compiling python script/module file C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Lib\site-packages\PyInstaller\hooks\rthooks\pyi_rth_pyqt6.py
+2820 DEBUG: Compiling python script/module file C:\Users\JF30LB\Projects\python\Projects\text_to_audio\Simple_TTS_GUI.py
+2853 INFO: Building PKG (CArchive) Simple_TTS_GUI.pkg completed successfully.
+2868 INFO: Bootloader C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\bootloader\Windows-64bit-intel\runw.exe
+2869 INFO: checking EXE
+2870 INFO: Rebuilding EXE-00.toc because pkg is more recent
+2870 INFO: Building EXE from EXE-00.toc
+2885 INFO: Copying bootloader EXE to C:\Users\JF30LB\Projects\python\Projects\text_to_audio\build\Simple_TTS_GUI\Simple_TTS_GUI.exe
+2894 INFO: Copying icon to EXE
+2895 DEBUG: Copying icons from ['C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\venv_py310\\lib\\site-packages\\PyInstaller\\bootloader\\images\\icon-windowed.ico']
+2897 DEBUG: Writing RT_GROUP_ICON 1 resource with 104 bytes
+2897 DEBUG: Writing RT_ICON 1 resource with 3752 bytes
+2897 DEBUG: Writing RT_ICON 2 resource with 2216 bytes
+2897 DEBUG: Writing RT_ICON 3 resource with 1384 bytes
+2897 DEBUG: Writing RT_ICON 4 resource with 38188 bytes
+2897 DEBUG: Writing RT_ICON 5 resource with 9640 bytes
+2897 DEBUG: Writing RT_ICON 6 resource with 4264 bytes
+2897 DEBUG: Writing RT_ICON 7 resource with 1128 bytes
+2900 INFO: Copying 0 resources to EXE
+2900 INFO: Embedding manifest in EXE
+2909 INFO: Appending PKG archive to EXE
+3087 INFO: Fixing EXE headers
+13077 INFO: Building EXE from EXE-00.toc completed successfully.
+13198 INFO: checking COLLECT
+13198 INFO: Building COLLECT because COLLECT-00.toc is non existent
+13198 INFO: Building COLLECT COLLECT-00.toc
+341799 INFO: Building COLLECT COLLECT-00.toc completed successfully.
+342249 INFO: Build complete! The results are available in: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist
+[2025-03-17 21:28:22] CHECKPOINT 4 - Ajout de la gestion d'erreurs au fichier spec... 
+[2025-03-17 21:28:22]   Préparation des modifications du fichier spec 
+[2025-03-17 21:28:22]   Application des modifications au fichier spec 
+[2025-03-17 21:28:22]   Fichier spec modifié avec gestion d'erreurs 
+[2025-03-17 21:28:22] CHECKPOINT 5 - Compilation de l'exécutable... 
+[2025-03-17 21:28:22]   Lancement de la compilation finale... 
+416 INFO: PyInstaller: 6.12.0, contrib hooks: 2025.1
+416 INFO: Python: 3.10.9
+432 INFO: Platform: Windows-10-10.0.22631-SP0
+432 INFO: Python environment: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
+432 DEBUG: Testing UPX availability ...
+432 DEBUG: UPX is not available.
+432 INFO: Removing temporary files and cleaning cache in C:\Users\JF30LB\AppData\Local\pyinstaller
+Traceback (most recent call last):
+  File "C:\Progra~1\Python310\lib\runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "C:\Progra~1\Python310\lib\runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\Scripts\pyinstaller.exe\__main__.py", line 7, in <module>
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\__main__.py", line 231, in _console_script_run
+    run()
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\__main__.py", line 215, in run
+    run_build(pyi_config, spec_file, **vars(args))
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\__main__.py", line 70, in run_build
+    PyInstaller.building.build_main.main(pyi_config, spec_file, **kwargs)
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\build_main.py", line 1270, in main
+    build(specfile, distpath, workpath, clean_build)
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\PyInstaller\building\build_main.py", line 1205, in build
+    code = compile(f.read(), spec, 'exec')
+  File "Simple_TTS_GUI.spec", line 9
+    a = Analysis(
+    ^
+IndentationError: expected an indented block after 'try' statement on line 5

@@ -1,0 +1,22 @@
+=== RAPPORT DE CR√âATION DES HOOKS === 
+===== CR√âATION DES HOOKS PYINSTALLER ===== 
+CHECKPOINT 1 - Cr√©ation du r√©pertoire hooks... 
+R√©pertoire hooks cr√©√©/v√©rifi√©: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\hooks 
+CHECKPOINT 2 - Cr√©ation du hook pour torch... 
+Hook torch cr√©√©: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\hooks\hook-torch.py 
+CHECKPOINT 3 - Cr√©ation du hook pour TTS... 
+Hook TTS cr√©√©: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\hooks\hook-TTS.py 
+CHECKPOINT 4 - Cr√©ation du hook pour PyQt6... 
+Hook PyQt6 cr√©√©: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\hooks\hook-PyQt6.py 
+CHECKPOINT 5 - Cr√©ation du patch PyTorch 2.6... 
+Patch PyTorch 2.6 cr√©√©: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\pytorch_2_6_patch.py 
+Test du patch PyTorch... 
+INFO:__main__:Application du patch PyTorch 2.6+ pour XTTS
+INFO:__main__:AjoutÈ TTS.tts.configs.xtts_config.XttsConfig ‡ safe_globals
+INFO:__main__:AjoutÈ TTS.tts.configs.xtts_config.XttsAudioConfig ‡ safe_globals
+INFO:__main__:AjoutÈ TTS.tts.models.xtts.Xtts ‡ safe_globals
+INFO:__main__:AjoutÈ TTS.utils.audio.processor.AudioProcessor ‡ safe_globals
+INFO:__main__:AjoutÈ TTS.config.load_config ‡ safe_globals
+INFO:__main__:AjoutÈ TTS.tts.configs.shared_configs.BaseTTSConfig ‡ safe_globals
+WARNING:__main__:Impossible d'ajouter TTS.utils.audio.TorchSTFT: module 'TTS.utils.audio' has no attribute 'TorchSTFT'
+===== CR√âATION DES HOOKS TERMIN√âE ===== 
