@@ -1,3 +1,61 @@
-===== ERREURS DE COMPILATION PYINSTALLER ===== 
-Date et heure: 17-03-25 14:01:32,59 
- 
+(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> .\build_executable_simple.bat
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>setlocal enabledelayedexpansion
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>set "LOG_FILE=C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\build_simple.txt"
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>set "ERROR_FILE=C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\error_simple.txt"
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>set "DEBUG_FILE=C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\debug_simple.txt"
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>if not exist "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs" mkdir "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs"
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo ===== JOURNAL DE COMPILATION PYINSTALLER =====  1>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\build_simple.txt"
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Date et heure: 17-03-25 14:50:53,42  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\build_simple.txt"
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo ===== ERREURS DE COMPILATION PYINSTALLER =====  1>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\error_simple.txt"
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Date et heure: 17-03-25 14:50:53,42  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\error_simple.txt"
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo ===== DEBUG DETAILLE DE LA COMPILATION =====  1>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\debug_simple.txt"
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Date et heure: 17-03-25 14:50:53,43  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\debug_simple.txt"
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo ===== CREATION DE L'EXECUTABLE AVEC PYINSTALLER =====     
+===== CREATION DE L'EXECUTABLE AVEC PYINSTALLER =====
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Date et heure: 17-03-25 14:50:53,43
+Date et heure: 17-03-25 14:50:53,43
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Demarrage du script  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\build_simple.txt"
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Verification de la version Python  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\build_simple.txt"
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Verification de la version Python...
+Verification de la version Python...
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>python --version  1>"C:\Users\JF30LB\AppData\Local\Temp\python_version.txt" 2>&1
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>set /p PYTHON_VERSION= 0<"C:\Users\JF30LB\AppData\Local\Temp\python_version.txt"
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>del "C:\Users\JF30LB\AppData\Local\Temp\python_version.txt"    
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Version Python detectee: Python 3.10.9  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\build_simple.txt"
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Version Python detectee: Python 3.10.9  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\debug_simple.txt"
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Version Python detectee: Python 3.10.9
+Version Python detectee: Python 3.10.9
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>echo Python 3.10.9   | findstr "3.10"  1>nul
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>if 0 NEQ 0 (
+echo AVERTISSEMENT: La version Python detectee n'est pas 3.10  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\error_simple.txt"
+ echo AVERTISSEMENT: La version Python detectee n'est pas 3.10
+ echo AVERTISSEMENT: La version Python detectee n'est pas 3.10  1>>"C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\debug_simple.txt"
+ echo Il est recommande d'utiliser Python 3.10 pour garantir la compatibilite.
+ echo Voulez-vous continuer quand meme? (O/N
+)
+
+C:\Users\JF30LB\Projects\python\Projects\text_to_audio>set /p CONTINUE=
