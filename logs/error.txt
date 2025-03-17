@@ -1,30 +1,33 @@
-(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> .\create_hooks.bat
-===== CR├ëATION DES HOOKS PYINSTALLER =====
-
-CHECKPOINT 1 - Cr├⌐ation du r├⌐pertoire hooks...
-R├⌐pertoire hooks: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\hooks
-
-CHECKPOINT 2 - Cr├⌐ation du hook pour torch...
-Hook torch cr├⌐├⌐
-
-CHECKPOINT 3 - Cr├⌐ation du hook pour TTS...
-Hook TTS cr├⌐├⌐
-
-CHECKPOINT 4 - Cr├⌐ation du hook pour PyQt6...
-Hook PyQt6 cr├⌐├⌐
-
-CHECKPOINT 5 - Cr├⌐ation du patch PyTorch 2.6...
-Patch PyTorch 2.6 cr├⌐├⌐
-
-Test du patch PyTorch...
-INFO:__main__:Application du patch PyTorch 2.6+ pour XTTS
-INFO:__main__:AjoutΘ TTS.tts.configs.xtts_config.XttsConfig α safe_globals
-INFO:__main__:AjoutΘ TTS.tts.configs.xtts_config.XttsAudioConfig α safe_globals
-INFO:__main__:AjoutΘ TTS.tts.models.xtts.Xtts α safe_globals
-INFO:__main__:AjoutΘ TTS.utils.audio.processor.AudioProcessor α safe_globals
-INFO:__main__:AjoutΘ TTS.config.load_config α safe_globals
-INFO:__main__:AjoutΘ TTS.tts.configs.shared_configs.BaseTTSConfig α safe_globals
-WARNING:__main__:Impossible d'ajouter TTS.utils.audio.TorchSTFT: module 'TTS.utils.audio' has no attribute 'TorchSTFT'
-
-Op├⌐ration annul├⌐e.
+===== COMPILATION DE L'EXu00c9CUTABLE =====
+CHECKPOINT 1 - Vu00e9rification des hooks...
+CHECKPOINT 2 - Capture des variables d'environnement...
+CHECKPOINT 3 - Cru00e9ation du fichier spec...
+ERREUR: u00c9chec de cru00e9ation du fichier spec
+usage: pyinstaller [-h] [-v] [-D] [-F] [--specpath DIR] [-n NAME]
+                   [--contents-directory CONTENTS_DIRECTORY]
+                   [--add-data SOURCE:DEST] [--add-binary SOURCE:DEST]
+                   [-p DIR] [--hidden-import MODULENAME]
+                   [--collect-submodules MODULENAME]
+                   [--collect-data MODULENAME] [--collect-binaries MODULENAME]
+                   [--collect-all MODULENAME] [--copy-metadata PACKAGENAME]
+                   [--recursive-copy-metadata PACKAGENAME]
+                   [--additional-hooks-dir HOOKSPATH]
+                   [--runtime-hook RUNTIME_HOOKS] [--exclude-module EXCLUDES]
+                   [--splash IMAGE_FILE]
+                   [-d {all,imports,bootloader,noarchive}] [--optimize LEVEL]
+                   [--python-option PYTHON_OPTION] [-s] [--noupx]
+                   [--upx-exclude FILE] [-c] [-w]
+                   [--hide-console {hide-late,hide-early,minimize-early,minimize-late}]
+                   [-i <FILE.ico or FILE.exe,ID or FILE.icns or Image or "NONE">]
+                   [--disable-windowed-traceback] [--version-file FILE]
+                   [--manifest <FILE or XML>] [-m <FILE or XML>] [-r RESOURCE]
+                   [--uac-admin] [--uac-uiaccess] [--argv-emulation]
+                   [--osx-bundle-identifier BUNDLE_IDENTIFIER]
+                   [--target-architecture ARCH] [--codesign-identity IDENTITY]
+                   [--osx-entitlements-file FILENAME] [--runtime-tmpdir PATH]
+                   [--bootloader-ignore-signals] [--distpath DIR]
+                   [--workpath WORKPATH] [-y] [--upx-dir UPX_DIR] [--clean]
+                   [--log-level LEVEL]
+                   scriptname [scriptname ...]
+pyinstaller: error: the following arguments are required: scriptname
 (venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio>
