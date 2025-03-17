@@ -1,0 +1,4 @@
+===== JOURNAL DE COMPILATION PYINSTALLER ===== 
+Date et heure: 17-03-25 14:01:32,57 
+ 
+Commande ECHO d‚sactiv‚e.

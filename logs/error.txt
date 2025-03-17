@@ -1,12 +1,3 @@
-(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> .\build_executable.bat
-===== CREATION DE L'EXECUTABLE AVEC PYINSTALLER =====
-Date et heure: 17-03-25 13:40:18,46
-
-IMPORTANT: Ce script va utiliser l'environnement virtuel venv_py310.
-Assurez-vous que toutes les d├⌐pendances sont correctement install├⌐es dans cet environnement.
-Si vous avez besoin d'installer les d├⌐pendances, veuillez d'abord ex├⌐cuter setup_env.bat.
-
-Activation de l'environnement virtuel venv_py310...
-Environnement virtuel activÃ© avec succÃ¨s: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
-
-: était inattendu.
+===== ERREURS DE COMPILATION PYINSTALLER ===== 
+Date et heure: 17-03-25 14:01:32,59 
+ 
