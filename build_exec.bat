@@ -120,7 +120,7 @@ if exist "%~dp0VERSION_trainer" (
     echo [%TIMESTAMP%]   Fichier VERSION créé avec valeur par défaut
 )
 
-:: Regarder que le fichier VERSION est bien dans le dossier dis\Simple_TTS_GUI\_internal\trainer
+:: Regarder que le fichier VERSION est bien dans le dossier dist\Simple_TTS_GUI\_internal\trainer
 if not exist "%~dp0dist\Simple_TTS_GUI\_internal\trainer\VERSION" (
     echo ERREUR: Le fichier VERSION n'a pas été copié dans le dossier dist\Simple_TTS_GUI\_internal\trainer >> "%BUILD_ERROR%"
     echo ERREUR: Le fichier VERSION n'a pas été copié dans le dossier dist\Simple_TTS_GUI\_internal\trainer
@@ -168,6 +168,30 @@ if not exist "dist\Simple_TTS_GUI\Simple_TTS_GUI.exe" (
     set TIMESTAMP=%datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2% %datetime:~8,2%:%datetime:~10,2%:%datetime:~12,2%
     echo [%TIMESTAMP%]   L'exécutable a été créé avec succès
     echo [%TIMESTAMP%]   L'exécutable a été créé avec succès >> "%BUILD_LOG%"
+)
+
+:: Vérifier et copier le fichier VERSION directement dans le dossier dist
+for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /format:list') do set datetime=%%I
+set TIMESTAMP=%datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2% %datetime:~8,2%:%datetime:~10,2%:%datetime:~12,2%
+echo [%TIMESTAMP%]   Création du dossier trainer dans dist\Simple_TTS_GUI\_internal...
+echo [%TIMESTAMP%]   Création du dossier trainer dans dist\Simple_TTS_GUI\_internal... >> "%BUILD_LOG%"
+
+:: Créer le dossier trainer dans le dossier dist
+mkdir "dist\Simple_TTS_GUI\_internal\trainer" 2>nul
+
+:: Copier le fichier VERSION dans le dossier dist
+echo 0.0.36 > "dist\Simple_TTS_GUI\_internal\trainer\VERSION"
+echo [%TIMESTAMP%]   Fichier VERSION créé dans dist\Simple_TTS_GUI\_internal\trainer >> "%BUILD_LOG%"
+echo [%TIMESTAMP%]   Fichier VERSION créé dans dist\Simple_TTS_GUI\_internal\trainer
+
+:: Regarder que le fichier VERSION est bien dans le dossier dist\Simple_TTS_GUI\_internal\trainer
+if not exist "%~dp0dist\Simple_TTS_GUI\_internal\trainer\VERSION" (
+    echo ERREUR: Le fichier VERSION n'a pas été copié dans le dossier dist\Simple_TTS_GUI\_internal\trainer >> "%BUILD_ERROR%"
+    echo ERREUR: Le fichier VERSION n'a pas été copié dans le dossier dist\Simple_TTS_GUI\_internal\trainer
+    exit /b 1
+) else (
+    echo [%TIMESTAMP%]   Fichier VERSION copié avec succès dans le dossier dist\Simple_TTS_GUI\_internal\trainer >> "%BUILD_LOG%"
+    echo [%TIMESTAMP%]   Fichier VERSION copié avec succès dans le dossier dist\Simple_TTS_GUI\_internal\trainer
 )
 
 echo.
