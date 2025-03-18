@@ -194,6 +194,42 @@ if %PATCH_TEST% NEQ 0 (
     )
 )
 
+:: CHECKPOINT 6 - Création du hook pour trainer
+echo.
+echo CHECKPOINT 6 - Création du hook pour trainer...
+echo CHECKPOINT 6 - Création du hook pour trainer... >> "%HOOK_LOG%"
+
+echo # Fichier hook-trainer.py pour PyInstaller > "%HOOKS_DIR%\hook-trainer.py"
+echo from PyInstaller.utils.hooks import collect_all, collect_data_files >> "%HOOKS_DIR%\hook-trainer.py"
+echo from pathlib import Path >> "%HOOKS_DIR%\hook-trainer.py"
+echo import os >> "%HOOKS_DIR%\hook-trainer.py"
+echo. >> "%HOOKS_DIR%\hook-trainer.py"
+echo # Collecter tous les modules, les packages et les données >> "%HOOKS_DIR%\hook-trainer.py"
+echo datas, binaries, hiddenimports = collect_all('trainer') >> "%HOOKS_DIR%\hook-trainer.py"
+echo. >> "%HOOKS_DIR%\hook-trainer.py"
+echo # Ajouter explicitement le fichier VERSION >> "%HOOKS_DIR%\hook-trainer.py"
+echo trainer_path = os.path.dirname(__file__) >> "%HOOKS_DIR%\hook-trainer.py"
+echo version_path = Path(trainer_path).parent / 'VERSION_trainer' >> "%HOOKS_DIR%\hook-trainer.py"
+echo. >> "%HOOKS_DIR%\hook-trainer.py"
+echo # Créer un fichier VERSION temporaire s'il n'existe pas >> "%HOOKS_DIR%\hook-trainer.py"
+echo if not version_path.exists(): >> "%HOOKS_DIR%\hook-trainer.py"
+echo     with open(version_path, 'w') as f: >> "%HOOKS_DIR%\hook-trainer.py"
+echo         f.write('0.0.36') >> "%HOOKS_DIR%\hook-trainer.py"
+echo. >> "%HOOKS_DIR%\hook-trainer.py"
+echo # Ajouter le fichier VERSION au package trainer >> "%HOOKS_DIR%\hook-trainer.py"
+echo datas.append((str(version_path), 'trainer')) >> "%HOOKS_DIR%\hook-trainer.py"
+echo. >> "%HOOKS_DIR%\hook-trainer.py"
+echo # S'assurer que tous les imports nécessaires sont présents >> "%HOOKS_DIR%\hook-trainer.py"
+echo hiddenimports.extend([ >> "%HOOKS_DIR%\hook-trainer.py"
+echo     'trainer.trainer', >> "%HOOKS_DIR%\hook-trainer.py"
+echo     'trainer.io', >> "%HOOKS_DIR%\hook-trainer.py"
+echo     'trainer.logging', >> "%HOOKS_DIR%\hook-trainer.py"
+echo     'trainer.callback', >> "%HOOKS_DIR%\hook-trainer.py"
+echo ]) >> "%HOOKS_DIR%\hook-trainer.py"
+
+echo Hook trainer créé: %HOOKS_DIR%\hook-trainer.py >> "%HOOK_LOG%"
+echo Hook trainer créé
+
 echo.
 echo ===== CRÉATION DES HOOKS TERMINÉE =====
 echo ===== CRÉATION DES HOOKS TERMINÉE ===== >> "%HOOK_LOG%"
