@@ -4,29 +4,59 @@ Traceback (most recent call last):
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\api.py", line 11, in <module>
-    from TTS.utils.manage import ModelManager
+  File "TTS\api.py", line 12, in <module>
+    from TTS.utils.synthesizer import Synthesizer
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\utils\manage.py", line 14, in <module>
-    from TTS.config import load_config
+  File "TTS\utils\synthesizer.py", line 11, in <module>
+    from TTS.tts.configs.vits_config import VitsConfig
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\config\__init__.py", line 10, in <module>
-    from TTS.config.shared_configs import *
+  File "TTS\tts\configs\vits_config.py", line 5, in <module>
+    from TTS.tts.models.vits import VitsArgs, VitsAudioConfig
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\config\shared_configs.py", line 5, in <module>
-    from trainer import TrainerConfig
+  File "TTS\tts\models\vits.py", line 33, in <module>
+    from TTS.tts.utils.text.characters import BaseCharacters, BaseVocabulary, _characters, _pad, _phonemes, _punctuations
   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
   File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "trainer\__init__.py", line 6, in <module>
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\dist\\Simple_TTS_GUI\\_internal\\trainer\\VERSION'
+  File "TTS\tts\utils\text\__init__.py", line 1, in <module>
+    from TTS.tts.utils.text.tokenizer import TTSTokenizer
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\tts\utils\text\tokenizer.py", line 3, in <module>
+    from TTS.tts.utils.text import cleaners
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\tts\utils\text\cleaners.py", line 11, in <module>
+    from .english.number_norm import normalize_numbers as en_normalize_numbers
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\tts\utils\text\english\number_norm.py", line 6, in <module>
+    import inflect
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "inflect\__init__.py", line 2071, in <module>
+  File "inflect\__init__.py", line 2093, in engine
+  File "typeguard\_decorators.py", line 224, in typechecked
+  File "typeguard\_decorators.py", line 69, in instrument
+  File "inspect.py", line 1147, in getsource
+  File "inspect.py", line 1129, in getsourcelines
+  File "inspect.py", line 958, in findsource
+OSError: could not get source code

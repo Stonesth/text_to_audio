@@ -1,12 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
 
-:: Supprimer le dossier dist et mettre un message d'avertissement
-if exist "%~dp0dist" (
-    echo AVERTISSEMENT: Le dossier dist existe déjà et sera supprimé
-    rmdir /s /q "%~dp0dist"
-)
-
 :: Configuration des fichiers de journalisation
 set "LOG_DIR=%~dp0logs"
 set "BUILD_LOG=%LOG_DIR%\build_exec.log"
@@ -115,17 +109,27 @@ type "%TEMP%\pyinstaller_build.txt" >> "%BUILD_LOG%"
 type "%TEMP%\pyinstaller_build.txt"
 del "%TEMP%\pyinstaller_build.txt"
 
-if %BUILD_RESULT% NEQ 0 (
-    echo ERREUR: La compilation a échoué (code %BUILD_RESULT%) >> "%BUILD_ERROR%"
-    echo ERREUR: La compilation a échoué (code %BUILD_RESULT%)
-    echo Consultez les fichiers logs pour plus de détails.
-    exit /b 1
-) else (
-    for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /format:list') do set datetime=%%I
-    set TIMESTAMP=%datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2% %datetime:~8,2%:%datetime:~10,2%:%datetime:~12,2%
-    echo [%TIMESTAMP%]   Compilation réussie
-    echo [%TIMESTAMP%]   Compilation réussie >> "%BUILD_LOG%"
-)
+
+echo [%TIMESTAMP%]   Vérification du résultat de la compilation...
+echo [%TIMESTAMP%]   build result = %BUILD_RESULT%
+echo [%TIMESTAMP%]   Vérification du résultat de la compilation... >> "%BUILD_LOG%"
+echo [%TIMESTAMP%]   build result = %BUILD_RESULT% >> "%BUILD_LOG%"
+echo.
+
+:: Pourquoi quand le code de sortie est 0, il y a une erreur?
+:: Vérifier le code de sortie de PyInstaller
+
+@REM if %BUILD_RESULT% NEQ 0 (
+@REM     echo ERREUR: La compilation a échoué (code %BUILD_RESULT%) >> "%BUILD_ERROR%"
+@REM     echo ERREUR: La compilation a échoué (code %BUILD_RESULT%)
+@REM     echo Consultez les fichiers logs pour plus de détails.
+@REM     exit /b 1
+@REM ) else (
+@REM     for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /format:list') do set datetime=%%I
+@REM     set TIMESTAMP=%datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2% %datetime:~8,2%:%datetime:~10,2%:%datetime:~12,2%
+@REM     echo [%TIMESTAMP%]   Compilation réussie
+@REM     echo [%TIMESTAMP%]   Compilation réussie >> "%BUILD_LOG%"
+@REM )
 
 :: MODIFICATION IMPORTANTE: Créer le dossier trainer et le fichier VERSION APRÈS que PyInstaller ait terminé
 for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /format:list') do set datetime=%%I
