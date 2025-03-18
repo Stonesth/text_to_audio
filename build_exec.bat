@@ -98,6 +98,7 @@ if not exist "Simple_TTS_GUI.py" (
 
 :: Assurez-vous que le nom du script est le dernier argument de PyInstaller
 echo Chemin complet du script: %~dp0Simple_TTS_GUI.py >> "%BUILD_LOG%"
+echo Chemin complet du script: %~dp0Simple_TTS_GUI.py
 
 :: Créer le dossier trainer directement dans la structure qui sera compilée
 for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /format:list') do set datetime=%%I
@@ -105,20 +106,16 @@ set TIMESTAMP=%datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2% %datetime:~8,2%:%d
 echo [%TIMESTAMP%]   Création du dossier trainer et copie du fichier VERSION...
 echo [%TIMESTAMP%]   Création du dossier trainer et copie du fichier VERSION... >> "%BUILD_LOG%"
 
-:: Copier le fichier VERSION_trainer vers le répertoire du projet
-if exist "%~dp0VERSION_trainer" (
-    echo %~dp0VERSION_trainer >> "%BUILD_LOG%"
-    mkdir "%~dp0trainer" 2>nul
-    copy "%~dp0VERSION_trainer" "%~dp0trainer\VERSION" /Y >> "%BUILD_LOG%" 2>&1
-    echo [%TIMESTAMP%]   Fichier VERSION copié avec succès dans le dossier trainer >> "%BUILD_LOG%"
-    echo [%TIMESTAMP%]   Fichier VERSION copié avec succès dans le dossier trainer
-) else (
-    echo [%TIMESTAMP%]   AVERTISSEMENT: Fichier VERSION_trainer introuvable >> "%BUILD_ERROR%"
-    echo [%TIMESTAMP%]   AVERTISSEMENT: Fichier VERSION_trainer introuvable
-    echo 0.0.36 > "%~dp0trainer\VERSION"
-    echo [%TIMESTAMP%]   Fichier VERSION créé avec valeur par défaut >> "%BUILD_LOG%"
-    echo [%TIMESTAMP%]   Fichier VERSION créé avec valeur par défaut
-)
+:: Copier le fichier VERSION trainer vers le répertoire du projet dist\Simple_TTS_GUI\_internal\trainer
+:: Créer le dossier si il n'existe pas
+mkdir "dist\Simple_TTS_GUI\_internal\trainer" 2>nul
+echo 0.0.36 > "dist\Simple_TTS_GUI\_internal\trainer\VERSION"
+echo [%TIMESTAMP%]   Fichier VERSION créé dans dist\Simple_TTS_GUI\_internal\trainer >> "%BUILD_LOG%"
+echo [%TIMESTAMP%]   Fichier VERSION créé dans dist\Simple_TTS_GUI\_internal\trainer
+
+:: Mettre une pause dans le script pour valider que tout est en ordre
+pause
+
 
 :: Regarder que le fichier VERSION est bien dans le dossier dist\Simple_TTS_GUI\_internal\trainer
 if not exist "%~dp0dist\Simple_TTS_GUI\_internal\trainer\VERSION" (
@@ -175,14 +172,6 @@ for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /format:list') do 
 set TIMESTAMP=%datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2% %datetime:~8,2%:%datetime:~10,2%:%datetime:~12,2%
 echo [%TIMESTAMP%]   Création du dossier trainer dans dist\Simple_TTS_GUI\_internal...
 echo [%TIMESTAMP%]   Création du dossier trainer dans dist\Simple_TTS_GUI\_internal... >> "%BUILD_LOG%"
-
-:: Créer le dossier trainer dans le dossier dist
-mkdir "dist\Simple_TTS_GUI\_internal\trainer" 2>nul
-
-:: Copier le fichier VERSION dans le dossier dist
-echo 0.0.36 > "dist\Simple_TTS_GUI\_internal\trainer\VERSION"
-echo [%TIMESTAMP%]   Fichier VERSION créé dans dist\Simple_TTS_GUI\_internal\trainer >> "%BUILD_LOG%"
-echo [%TIMESTAMP%]   Fichier VERSION créé dans dist\Simple_TTS_GUI\_internal\trainer
 
 :: Regarder que le fichier VERSION est bien dans le dossier dist\Simple_TTS_GUI\_internal\trainer
 if not exist "%~dp0dist\Simple_TTS_GUI\_internal\trainer\VERSION" (
