@@ -114,10 +114,47 @@ echo hiddenimports += sip_modules >> "%HOOKS_DIR%\hook-PyQt6.py"
 echo Hook PyQt6 créé: %HOOKS_DIR%\hook-PyQt6.py >> "%HOOK_LOG%"
 echo Hook PyQt6 créé
 
-:: CHECKPOINT 5 - Création du patch PyTorch 2.6
+
+:: CHECKPOINT 5 - Création du hook pour trainer
 echo.
-echo CHECKPOINT 5 - Création du patch PyTorch 2.6...
-echo CHECKPOINT 5 - Création du patch PyTorch 2.6... >> "%HOOK_LOG%"
+echo CHECKPOINT 5 - Création du hook pour trainer...
+echo CHECKPOINT 5 - Création du hook pour trainer... >> "%HOOK_LOG%"
+
+echo # Fichier hook-trainer.py pour PyInstaller > "%HOOKS_DIR%\hook-trainer.py"
+echo from PyInstaller.utils.hooks import collect_all, collect_data_files >> "%HOOKS_DIR%\hook-trainer.py"
+echo from pathlib import Path >> "%HOOKS_DIR%\hook-trainer.py"
+echo import os >> "%HOOKS_DIR%\hook-trainer.py"
+echo. >> "%HOOKS_DIR%\hook-trainer.py"
+echo # Collecter tous les modules, les packages et les données >> "%HOOKS_DIR%\hook-trainer.py"
+echo datas, binaries, hiddenimports = collect_all('trainer') >> "%HOOKS_DIR%\hook-trainer.py"
+echo. >> "%HOOKS_DIR%\hook-trainer.py"
+echo # Ajouter explicitement le fichier VERSION >> "%HOOKS_DIR%\hook-trainer.py"
+echo trainer_path = os.path.dirname(__file__) >> "%HOOKS_DIR%\hook-trainer.py"
+echo version_path = Path(trainer_path).parent / 'VERSION_trainer' >> "%HOOKS_DIR%\hook-trainer.py"
+echo. >> "%HOOKS_DIR%\hook-trainer.py"
+echo # Créer un fichier VERSION temporaire s'il n'existe pas >> "%HOOKS_DIR%\hook-trainer.py"
+echo if not version_path.exists(): >> "%HOOKS_DIR%\hook-trainer.py"
+echo     with open(version_path, 'w') as f: >> "%HOOKS_DIR%\hook-trainer.py"
+echo         f.write('0.0.36') >> "%HOOKS_DIR%\hook-trainer.py"
+echo. >> "%HOOKS_DIR%\hook-trainer.py"
+echo # Ajouter le fichier VERSION au package trainer >> "%HOOKS_DIR%\hook-trainer.py"
+echo datas.append((str(version_path), 'trainer')) >> "%HOOKS_DIR%\hook-trainer.py"
+echo. >> "%HOOKS_DIR%\hook-trainer.py"
+echo # S'assurer que tous les imports nécessaires sont présents >> "%HOOKS_DIR%\hook-trainer.py"
+echo hiddenimports.extend([ >> "%HOOKS_DIR%\hook-trainer.py"
+echo     'trainer.trainer', >> "%HOOKS_DIR%\hook-trainer.py"
+echo     'trainer.io', >> "%HOOKS_DIR%\hook-trainer.py"
+echo     'trainer.logging', >> "%HOOKS_DIR%\hook-trainer.py"
+echo     'trainer.callback', >> "%HOOKS_DIR%\hook-trainer.py"
+echo ]) >> "%HOOKS_DIR%\hook-trainer.py"
+
+echo Hook trainer créé: %HOOKS_DIR%\hook-trainer.py >> "%HOOK_LOG%"
+echo Hook trainer créé
+
+:: CHECKPOINT 6 - Création du patch PyTorch 2.6
+echo.
+echo CHECKPOINT 6 - Création du patch PyTorch 2.6...
+echo CHECKPOINT 6 - Création du patch PyTorch 2.6... >> "%HOOK_LOG%"
 
 echo # Patch pour PyTorch 2.6+ > "%~dp0pytorch_2_6_patch.py"
 echo """Patch pour assurer la compatibilité avec PyTorch 2.6+ qui utilise weights_only=True par défaut""" >> "%~dp0pytorch_2_6_patch.py"
@@ -194,41 +231,6 @@ if %PATCH_TEST% NEQ 0 (
     )
 )
 
-:: CHECKPOINT 6 - Création du hook pour trainer
-echo.
-echo CHECKPOINT 6 - Création du hook pour trainer...
-echo CHECKPOINT 6 - Création du hook pour trainer... >> "%HOOK_LOG%"
-
-echo # Fichier hook-trainer.py pour PyInstaller > "%HOOKS_DIR%\hook-trainer.py"
-echo from PyInstaller.utils.hooks import collect_all, collect_data_files >> "%HOOKS_DIR%\hook-trainer.py"
-echo from pathlib import Path >> "%HOOKS_DIR%\hook-trainer.py"
-echo import os >> "%HOOKS_DIR%\hook-trainer.py"
-echo. >> "%HOOKS_DIR%\hook-trainer.py"
-echo # Collecter tous les modules, les packages et les données >> "%HOOKS_DIR%\hook-trainer.py"
-echo datas, binaries, hiddenimports = collect_all('trainer') >> "%HOOKS_DIR%\hook-trainer.py"
-echo. >> "%HOOKS_DIR%\hook-trainer.py"
-echo # Ajouter explicitement le fichier VERSION >> "%HOOKS_DIR%\hook-trainer.py"
-echo trainer_path = os.path.dirname(__file__) >> "%HOOKS_DIR%\hook-trainer.py"
-echo version_path = Path(trainer_path).parent / 'VERSION_trainer' >> "%HOOKS_DIR%\hook-trainer.py"
-echo. >> "%HOOKS_DIR%\hook-trainer.py"
-echo # Créer un fichier VERSION temporaire s'il n'existe pas >> "%HOOKS_DIR%\hook-trainer.py"
-echo if not version_path.exists(): >> "%HOOKS_DIR%\hook-trainer.py"
-echo     with open(version_path, 'w') as f: >> "%HOOKS_DIR%\hook-trainer.py"
-echo         f.write('0.0.36') >> "%HOOKS_DIR%\hook-trainer.py"
-echo. >> "%HOOKS_DIR%\hook-trainer.py"
-echo # Ajouter le fichier VERSION au package trainer >> "%HOOKS_DIR%\hook-trainer.py"
-echo datas.append((str(version_path), 'trainer')) >> "%HOOKS_DIR%\hook-trainer.py"
-echo. >> "%HOOKS_DIR%\hook-trainer.py"
-echo # S'assurer que tous les imports nécessaires sont présents >> "%HOOKS_DIR%\hook-trainer.py"
-echo hiddenimports.extend([ >> "%HOOKS_DIR%\hook-trainer.py"
-echo     'trainer.trainer', >> "%HOOKS_DIR%\hook-trainer.py"
-echo     'trainer.io', >> "%HOOKS_DIR%\hook-trainer.py"
-echo     'trainer.logging', >> "%HOOKS_DIR%\hook-trainer.py"
-echo     'trainer.callback', >> "%HOOKS_DIR%\hook-trainer.py"
-echo ]) >> "%HOOKS_DIR%\hook-trainer.py"
-
-echo Hook trainer créé: %HOOKS_DIR%\hook-trainer.py >> "%HOOK_LOG%"
-echo Hook trainer créé
 
 echo.
 echo ===== CRÉATION DES HOOKS TERMINÉE =====

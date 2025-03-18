@@ -120,6 +120,16 @@ if exist "%~dp0VERSION_trainer" (
     echo [%TIMESTAMP%]   Fichier VERSION créé avec valeur par défaut
 )
 
+:: Regarder que le fichier VERSION est bien dans le dossier dis\Simple_TTS_GUI\_internal\trainer
+if not exist "%~dp0dist\Simple_TTS_GUI\_internal\trainer\VERSION" (
+    echo ERREUR: Le fichier VERSION n'a pas été copié dans le dossier dist\Simple_TTS_GUI\_internal\trainer >> "%BUILD_ERROR%"
+    echo ERREUR: Le fichier VERSION n'a pas été copié dans le dossier dist\Simple_TTS_GUI\_internal\trainer
+    exit /b 1
+) else (
+    echo [%TIMESTAMP%]   Fichier VERSION copié avec succès dans le dossier dist\Simple_TTS_GUI\_internal\trainer >> "%BUILD_LOG%"
+    echo [%TIMESTAMP%]   Fichier VERSION copié avec succès dans le dossier dist\Simple_TTS_GUI\_internal\trainer
+)
+
 :: Utiliser le chemin absolu du fichier Python et la syntaxe sans caractères spéciaux
 for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /format:list') do set datetime=%%I
 set TIMESTAMP=%datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2% %datetime:~8,2%:%datetime:~10,2%:%datetime:~12,2%
