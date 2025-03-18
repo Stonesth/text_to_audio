@@ -1,10 +1,32 @@
-715992 DEBUG: Writing RT_ICON 7 resource with 1128 bytes
-715992 INFO: Copying 0 resources to EXE
-715992 INFO: Embedding manifest in EXE
-715992 INFO: Appending PKG archive to EXE
-716181 INFO: Fixing EXE headers
-725704 INFO: Building EXE from EXE-00.toc completed successfully.
-725835 INFO: checking COLLECT
-725835 INFO: Building COLLECT because COLLECT-00.toc is non existent
-Error: The output directory "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI" is not empty. Please remove all its contents or use the -y option (remove output directory without confirmation).
-(venv_py310) PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio> 
+Traceback (most recent call last):
+  File "Simple_TTS_GUI.py", line 18, in <module>
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\api.py", line 11, in <module>
+    from TTS.utils.manage import ModelManager
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\utils\manage.py", line 14, in <module>
+    from TTS.config import load_config
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\config\__init__.py", line 10, in <module>
+    from TTS.config.shared_configs import *
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\config\shared_configs.py", line 5, in <module>
+    from trainer import TrainerConfig
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "trainer\__init__.py", line 6, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\dist\\Simple_TTS_GUI\\_internal\\trainer\\VERSION'
