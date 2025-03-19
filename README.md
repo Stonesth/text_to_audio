@@ -19,7 +19,7 @@ pip install PyQt6  # Requis pour l'interface graphique
 ```
 
 # Windows
-.\venv_py311\Scripts\activate
+.\venv_py310\Scripts\activate
 
 ## Commandes disponibles
 
