@@ -13,8 +13,6 @@ if exist "%~dp0build" (
     rmdir /s /q "%~dp0build"
 )
 
-pause
-
 :: Configuration des fichiers de journalisation
 set "LOG_DIR=%~dp0logs"
 set "BUILD_LOG=%LOG_DIR%\build_exec.log"
