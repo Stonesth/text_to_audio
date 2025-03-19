@@ -1,3 +1,12 @@
+# Simple_TTS_GUI.py - Interface graphique pour Simple_TTS
+
+# Importer le module pour désactiver les vérifications de type de typeguard
+try:
+    import typeguard_env
+    print("Module typeguard_env chargé avec succès")
+except ImportError:
+    print("AVERTISSEMENT: Module typeguard_env non trouvé, les vérifications typeguard seront actives")
+
 """
 Interface graphique pour Simple_TTS utilisant PyQt6
 """
