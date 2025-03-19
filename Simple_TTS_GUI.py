@@ -122,7 +122,15 @@ class TTSWorker(QThread):
             # Configuration des paramètres selon le modèle
             kwargs = {}
             
-            if self.params['lang'] == 1:  # Français
+            if self.params['lang'] == 0:  # Anglais (VCTK)
+                speaker = self.params['speaker']
+                if speaker.startswith("VCTK_"):
+                    speaker = speaker[5:]
+                kwargs['speaker'] = speaker
+            elif self.params['lang'] == 1:  # Anglais
+                # Pas besoin de paramètres supérieurs pour les modèles anglais de base
+                pass
+            elif self.params['lang'] == 2:  # Français
                 if self.params['fr_model'] == 0:  # XTTS v2
                     ref_audio = self.params.get('reference_audio')
                     self.progress.emit(f"Configuration XTTS v2:")
@@ -135,11 +143,6 @@ class TTSWorker(QThread):
                     kwargs['language'] = 'fr-fr'
                 elif self.params['fr_model'] == 3:  # VITS
                     pass
-            elif self.params['lang'] == 2:  # VCTK
-                speaker = self.params['speaker']
-                if speaker.startswith("VCTK_"):
-                    speaker = speaker[5:]
-                kwargs['speaker'] = speaker
             
             # Génération audio
             tts.tts_to_file(
@@ -158,7 +161,11 @@ class TTSWorker(QThread):
         lang_idx = self.params['lang']
         model_idx = self.params['en_model'] if lang_idx != 1 else self.params['fr_model']
         
-        if lang_idx == 0:  # Anglais
+        if lang_idx == 0:  # Anglais (VCTK)
+            models = [
+                "tts_models/en/vctk/vits"
+            ]
+        elif lang_idx == 1:  # Anglais
             models = [
                 "tts_models/en/jenny/jenny",
                 "tts_models/en/ljspeech/tacotron2-DDC",
@@ -166,17 +173,12 @@ class TTSWorker(QThread):
                 "tts_models/en/ljspeech/speedy-speech",
                 "tts_models/en/ljspeech/neural_hmm"
             ]
-        elif lang_idx == 1:  # Français
+        elif lang_idx == 2:  # Français
             models = [
-                # Correction ici: utilisez le nom exact du modèle XTTS v2
                 "tts_models/multilingual/multi-dataset/xtts_v2",
                 "tts_models/fr/css10/vits",
                 "tts_models/multilingual/multi-dataset/your_tts",
                 "tts_models/multilingual/multi-dataset/your_tts"
-            ]
-        else:  # Anglais (VCTK)
-            models = [
-                "tts_models/en/vctk/vits"
             ]
         
         # Log du nom du modèle pour le débogage
@@ -374,7 +376,7 @@ class MainWindow(QMainWindow):
         lang_layout = QHBoxLayout()
         lang_label = QLabel("Langue:")
         self.lang_combo = QComboBox()
-        self.lang_combo.addItems(["Anglais", "Français", "Anglais (VCTK)"])
+        self.lang_combo.addItems(["Anglais (VCTK)", "Anglais", "Français"])
         self.lang_combo.currentIndexChanged.connect(self.on_lang_changed)
         lang_layout.addWidget(lang_label)
         lang_layout.addWidget(self.lang_combo)
@@ -387,7 +389,6 @@ class MainWindow(QMainWindow):
         model_layout = QHBoxLayout()
         model_label = QLabel("Modèle:")
         self.model_combo = QComboBox()
-        self.update_model_list(0)
         model_layout.addWidget(model_label)
         model_layout.addWidget(self.model_combo)
         self.model_combo.currentIndexChanged.connect(self.on_model_changed)
@@ -400,9 +401,15 @@ class MainWindow(QMainWindow):
         speaker_layout = QHBoxLayout()
         speaker_label = QLabel("Voix VCTK:")
         self.speaker_combo = QComboBox()
+        self.speaker_combo.addItems([
+            "VCTK_p232 (homme)",
+            "VCTK_p273 (femme)",
+            "VCTK_p278 (femme)",
+            "VCTK_p279 (homme)",
+            "VCTK_p304 (femme)"
+        ])
         speaker_layout.addWidget(speaker_label)
         speaker_layout.addWidget(self.speaker_combo)
-        self.speaker_combo.setEnabled(False)
         self.main_layout.addLayout(speaker_layout)
 
         # XTTS Reference Audio
@@ -504,11 +511,20 @@ class MainWindow(QMainWindow):
         ref_audio_button.clicked.connect(self.choose_ref_audio)
         self.generate_button.clicked.connect(self.generate_audio)
         self.play_button.clicked.connect(self.play_audio)
+        
+        # Initialiser l'interface avec les bons modèles
+        self.update_model_list(0)
+        self.speaker_combo.setEnabled(True) # VCTK est sélectionné par défaut
+        self.ref_audio_path.setEnabled(False)
 
     def update_model_list(self, lang_index):
         """Met à jour la liste des modèles en fonction de la langue."""
         self.model_combo.clear()
-        if lang_index == 0:  # Anglais
+        if lang_index == 0:  # Anglais (VCTK)
+            self.model_combo.addItems([
+                "VITS"
+            ])
+        elif lang_index == 1:  # Anglais
             self.model_combo.addItems([
                 "Jenny (voix féminine)",
                 "Tacotron2-DDC",
@@ -516,25 +532,12 @@ class MainWindow(QMainWindow):
                 "Speedy-Speech",
                 "Neural HMM"
             ])
-        elif lang_index == 1:  # Français
+        else:  # Français
             self.model_combo.addItems([
                 "XTTS v2",
                 "VITS",
-                "YourTTS (voix masculine)",
+                "YourTTS (voix féminine)",
                 "YourTTS (voix féminine)"
-            ])
-        else:  # Anglais (VCTK)
-            self.model_combo.addItems([
-                "VITS"
-            ])
-            # Mise à jour de la liste des speakers VCTK avec leurs descriptions
-            self.speaker_combo.clear()
-            self.speaker_combo.addItems([
-                "VCTK_p232 (homme)",
-                "VCTK_p273 (femme)",
-                "VCTK_p278 (femme)",
-                "VCTK_p279 (homme)",
-                "VCTK_p304 (femme)"
             ])
 
         self.update_ui_elements()
@@ -542,14 +545,14 @@ class MainWindow(QMainWindow):
     def on_lang_changed(self, lang_index):
         """Gère le changement de langue."""
         self.update_model_list(lang_index)
-        self.speaker_combo.setEnabled(lang_index == 2)  # Active VCTK speakers uniquement pour VCTK
+        self.speaker_combo.setEnabled(lang_index == 0)  # Active VCTK speakers uniquement pour VCTK
         # Active le choix du fichier audio de référence uniquement pour XTTS v2
-        self.ref_audio_path.setEnabled(lang_index == 1 and self.model_combo.currentIndex() == 0)
+        self.ref_audio_path.setEnabled(lang_index == 2 and self.model_combo.currentIndex() == 0)
 
     def on_model_changed(self, index):
         """Gère le changement de modèle."""
         # Active le choix du fichier audio de référence uniquement pour XTTS v2
-        is_xtts = self.lang_combo.currentIndex() == 1 and index == 0
+        is_xtts = self.lang_combo.currentIndex() == 2 and index == 0
         self.ref_audio_path.setEnabled(is_xtts)
 
     def choose_output_dir(self):
@@ -590,7 +593,7 @@ class MainWindow(QMainWindow):
     def generate_audio(self):
         """Génère l'audio à partir du texte."""
         # Vérification pour Neural HMM qui nécessite espeak
-        if (self.lang_combo.currentIndex() == 0 and  # Anglais
+        if (self.lang_combo.currentIndex() == 1 and  # Anglais
             self.model_combo.currentText() == "Neural HMM" and 
             not self.check_espeak_installed()):
             
@@ -613,7 +616,8 @@ class MainWindow(QMainWindow):
                 return
             else:  # Second bouton (Changer de modèle)
                 # Changer pour un autre modèle (ex: Tacotron2)
-                self.model_combo.setCurrentIndex(0)
+                if self.lang_combo.currentIndex() == 1:  # Anglais
+                    self.model_combo.setCurrentIndex(0)  # Jenny/Tacotron2
                 return
 
         # Validation du texte avant génération
@@ -642,7 +646,7 @@ class MainWindow(QMainWindow):
             
             if clicked == changer:
                 # Changer automatiquement pour un autre modèle
-                if self.lang_combo.currentIndex() == 0:  # Anglais
+                if self.lang_combo.currentIndex() == 1:  # Anglais
                     self.model_combo.setCurrentIndex(0)  # Jenny/Tacotron2
                 return
             elif clicked == annuler:
@@ -735,28 +739,27 @@ class MainWindow(QMainWindow):
     def get_speaker(self):
         """Retourne l'ID du speaker sans la description."""
         speaker = self.speaker_combo.currentText()
-        if self.lang_combo.currentIndex() == 2:  # VCTK
+        if self.lang_combo.currentIndex() == 0:  # VCTK
             # Extraire uniquement l'ID du speaker (VCTK_pXXX) de la description
             return speaker.split(" ")[0]
         return speaker
 
     def get_model_name(self):
-        """Retourne le nom du modèle en fonction de la langue choisie."""
         lang_idx = self.lang_combo.currentIndex()
         model_idx = self.model_combo.currentIndex()
         
-        # Modèles pour l'anglais
+        # Modèles VCTK
         if lang_idx == 0:
+            models = ["tts_models/en/vctk/vits"]
+        # Modèles pour l'anglais
+        elif lang_idx == 1:
             models = ["tts_models/en/jenny/jenny", "tts_models/en/ljspeech/tacotron2-DDC", 
                      "tts_models/en/ljspeech/glow-tts", "tts_models/en/ljspeech/speedy-speech",
                      "tts_models/en/ljspeech/neural_hmm"]
         # Modèles pour le français
-        elif lang_idx == 1:
+        else:
             models = ["tts_models/multilingual/multi-dataset/xtts_v2", "tts_models/fr/css10/vits",
                      "tts_models/multilingual/multi-dataset/your_tts", "tts_models/multilingual/multi-dataset/your_tts"]
-        # Modèles VCTK
-        else:
-            models = ["tts_models/en/vctk/vits"]
         
         return models[model_idx]
 
