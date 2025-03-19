@@ -151,86 +151,6 @@ echo ]) >> "%HOOKS_DIR%\hook-trainer.py"
 echo Hook trainer créé: %HOOKS_DIR%\hook-trainer.py >> "%HOOK_LOG%"
 echo Hook trainer créé
 
-@REM :: CHECKPOINT 6 - Création du patch PyTorch 2.6
-@REM echo.
-@REM echo CHECKPOINT 6 - Création du patch PyTorch 2.6...
-@REM echo CHECKPOINT 6 - Création du patch PyTorch 2.6... >> "%HOOK_LOG%"
-
-@REM echo # Patch pour PyTorch 2.6+ > "%~dp0pytorch_2_6_patch.py"
-@REM echo """Patch pour assurer la compatibilité avec PyTorch 2.6+ qui utilise weights_only=True par défaut""" >> "%~dp0pytorch_2_6_patch.py"
-@REM echo import sys >> "%~dp0pytorch_2_6_patch.py"
-@REM echo import torch >> "%~dp0pytorch_2_6_patch.py"
-@REM echo import importlib >> "%~dp0pytorch_2_6_patch.py"
-@REM echo import logging >> "%~dp0pytorch_2_6_patch.py"
-@REM echo. >> "%~dp0pytorch_2_6_patch.py"
-@REM echo logger = logging.getLogger(__name__) >> "%~dp0pytorch_2_6_patch.py"
-@REM echo. >> "%~dp0pytorch_2_6_patch.py"
-@REM echo def apply_patch(): >> "%~dp0pytorch_2_6_patch.py"
-@REM echo     """Applique le patch pour PyTorch 2.6+""" >> "%~dp0pytorch_2_6_patch.py"
-@REM echo     try: >> "%~dp0pytorch_2_6_patch.py"
-@REM echo         if hasattr(torch.serialization, 'add_safe_globals'): >> "%~dp0pytorch_2_6_patch.py"
-@REM echo             logger.info("Application du patch PyTorch 2.6+ pour XTTS") >> "%~dp0pytorch_2_6_patch.py"
-@REM echo. >> "%~dp0pytorch_2_6_patch.py"
-@REM echo             # Liste des classes à ajouter à safe_globals >> "%~dp0pytorch_2_6_patch.py"
-@REM echo             classes_to_add = [ >> "%~dp0pytorch_2_6_patch.py"
-@REM echo                 ('TTS.tts.configs.xtts_config', 'XttsConfig'), >> "%~dp0pytorch_2_6_patch.py"
-@REM echo                 ('TTS.tts.configs.xtts_config', 'XttsAudioConfig'), >> "%~dp0pytorch_2_6_patch.py"
-@REM echo                 ('TTS.tts.models.xtts', 'Xtts'), >> "%~dp0pytorch_2_6_patch.py"
-@REM echo                 ('TTS.utils.audio.processor', 'AudioProcessor'), >> "%~dp0pytorch_2_6_patch.py"
-@REM echo                 ('TTS.config', 'load_config'), >> "%~dp0pytorch_2_6_patch.py"
-@REM echo                 ('TTS.tts.configs.shared_configs', 'BaseTTSConfig'), >> "%~dp0pytorch_2_6_patch.py"
-@REM echo                 ('TTS.utils.audio', 'TorchSTFT'), >> "%~dp0pytorch_2_6_patch.py"
-@REM echo             ] >> "%~dp0pytorch_2_6_patch.py"
-@REM echo. >> "%~dp0pytorch_2_6_patch.py"
-@REM echo             # Importer et ajouter chaque classe >> "%~dp0pytorch_2_6_patch.py"
-@REM echo             for module_path, class_name in classes_to_add: >> "%~dp0pytorch_2_6_patch.py"
-@REM echo                 try: >> "%~dp0pytorch_2_6_patch.py"
-@REM echo                     module = importlib.import_module(module_path) >> "%~dp0pytorch_2_6_patch.py"
-@REM echo                     cls = getattr(module, class_name) >> "%~dp0pytorch_2_6_patch.py"
-@REM echo                     torch.serialization.add_safe_globals([(f"{module_path}.{class_name}", cls)]) >> "%~dp0pytorch_2_6_patch.py"
-@REM echo                     logger.info(f"Ajouté {module_path}.{class_name} à safe_globals") >> "%~dp0pytorch_2_6_patch.py"
-@REM echo                 except Exception as e: >> "%~dp0pytorch_2_6_patch.py"
-@REM echo                     logger.warning(f"Impossible d'ajouter {module_path}.{class_name}: {e}") >> "%~dp0pytorch_2_6_patch.py"
-@REM echo. >> "%~dp0pytorch_2_6_patch.py"
-@REM echo             return True >> "%~dp0pytorch_2_6_patch.py"
-@REM echo         else: >> "%~dp0pytorch_2_6_patch.py"
-@REM echo             logger.info("PyTorch < 2.6 détecté, pas besoin de patch") >> "%~dp0pytorch_2_6_patch.py"
-@REM echo             return False >> "%~dp0pytorch_2_6_patch.py"
-@REM echo     except Exception as e: >> "%~dp0pytorch_2_6_patch.py"
-@REM echo         logger.error(f"Erreur lors de l'application du patch PyTorch: {e}") >> "%~dp0pytorch_2_6_patch.py"
-@REM echo         return False >> "%~dp0pytorch_2_6_patch.py"
-@REM echo. >> "%~dp0pytorch_2_6_patch.py"
-@REM echo if __name__ == "__main__": >> "%~dp0pytorch_2_6_patch.py"
-@REM echo     logging.basicConfig(level=logging.INFO) >> "%~dp0pytorch_2_6_patch.py"
-@REM echo     apply_patch() >> "%~dp0pytorch_2_6_patch.py"
-
-@REM echo Patch PyTorch 2.6 créé: %~dp0pytorch_2_6_patch.py >> "%HOOK_LOG%"
-@REM echo Patch PyTorch 2.6 créé
-
-@REM :: Vérifier le fonctionnement du patch
-@REM echo.
-@REM echo Test du patch PyTorch...
-@REM echo Test du patch PyTorch... >> "%HOOK_LOG%"
-
-@REM python "%~dp0pytorch_2_6_patch.py" > "%TEMP%\patch_test.txt" 2>&1
-@REM set PATCH_TEST=%ERRORLEVEL%
-@REM type "%TEMP%\patch_test.txt" >> "%HOOK_LOG%"
-@REM type "%TEMP%\patch_test.txt"
-@REM del "%TEMP%\patch_test.txt"
-
-@REM if %PATCH_TEST% NEQ 0 (
-@REM     echo AVERTISSEMENT: Le test du patch PyTorch a échoué >> "%HOOK_ERROR%"
-@REM     echo AVERTISSEMENT: Le test du patch PyTorch a échoué
-@REM     echo Cela pourrait causer des problèmes avec les modèles XTTS
-@REM     echo Continuer quand même? (O/N)
-@REM     set /p CONTINUE=
-@REM     if /i not "%CONTINUE%"=="O" (
-@REM         echo Opération annulée par l'utilisateur >> "%HOOK_LOG%"
-@REM         echo Opération annulée.
-@REM         exit /b 1
-@REM     )
-@REM )
-
 :: CHECKPOINT 7 - Création du hook pour inflect
 echo.
 echo CHECKPOINT 7 - Création du hook pour inflect...
@@ -268,6 +188,35 @@ echo os.environ["TYPEGUARD_DISABLE"] = "1" >> "%~dp0typeguard_env.py"
 
 echo Fichier d'environnement typeguard créé: %~dp0typeguard_env.py >> "%HOOK_LOG%"
 echo Fichier d'environnement typeguard créé
+
+:: CHECKPOINT 9 - Création du hook pour jamo
+echo.
+echo CHECKPOINT 9 - Création du hook pour jamo...
+echo CHECKPOINT 9 - Création du hook pour jamo... >> "%HOOK_LOG%"
+
+echo # Fichier hook-jamo.py pour PyInstaller > "%HOOKS_DIR%\hook-jamo.py"
+echo from PyInstaller.utils.hooks import collect_data_files, copy_metadata >> "%HOOKS_DIR%\hook-jamo.py"
+echo import os >> "%HOOKS_DIR%\hook-jamo.py"
+echo import sys >> "%HOOKS_DIR%\hook-jamo.py"
+echo import jamo >> "%HOOKS_DIR%\hook-jamo.py"
+echo import shutil >> "%HOOKS_DIR%\hook-jamo.py"
+echo. >> "%HOOKS_DIR%\hook-jamo.py"
+echo # Collecter tous les fichiers de données >> "%HOOKS_DIR%\hook-jamo.py"
+echo datas = collect_data_files('jamo') >> "%HOOKS_DIR%\hook-jamo.py"
+echo. >> "%HOOKS_DIR%\hook-jamo.py"
+echo # Ajouter explicitement les fichiers JSON de données >> "%HOOKS_DIR%\hook-jamo.py"
+echo jamo_path = os.path.dirname(jamo.__file__) >> "%HOOKS_DIR%\hook-jamo.py"
+echo data_dir = os.path.join(jamo_path, 'data') >> "%HOOKS_DIR%\hook-jamo.py"
+echo. >> "%HOOKS_DIR%\hook-jamo.py"
+echo # S'assurer que tous les fichiers JSON sont inclus >> "%HOOKS_DIR%\hook-jamo.py"
+echo for file in os.listdir(data_dir): >> "%HOOKS_DIR%\hook-jamo.py"
+echo     if file.endswith('.json'): >> "%HOOKS_DIR%\hook-jamo.py"
+echo         source_file = os.path.join(data_dir, file) >> "%HOOKS_DIR%\hook-jamo.py"
+echo         datas.append((source_file, os.path.join('jamo', 'data'))) >> "%HOOKS_DIR%\hook-jamo.py"
+echo         print(f"Ajout du fichier {file} au package jamo") >> "%HOOKS_DIR%\hook-jamo.py"
+
+echo Hook jamo créé: %HOOKS_DIR%\hook-jamo.py >> "%HOOK_LOG%"
+echo Hook jamo créé
 
 echo.
 echo ===== TOUTES LES OPÉRATIONS SONT TERMINÉES =====
