@@ -24,6 +24,7 @@ pip install PyQt6  # Requis pour l'interface graphique
 # Sauvegarde des fichiers TTS sont généralement dans le dossier AppData\local\tts
 ex : C:\Users\[user]\AppData\Local\tts
 
+
 ## Commandes disponibles
 
 ### 1. Modèles Anglais (--lang 0)
