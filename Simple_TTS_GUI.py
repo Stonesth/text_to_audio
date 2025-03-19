@@ -526,18 +526,18 @@ class MainWindow(QMainWindow):
             ])
         elif lang_index == 1:  # Anglais
             self.model_combo.addItems([
-                "Jenny (voix féminine)",
-                "Tacotron2-DDC",
-                "Glow-TTS",
-                "Speedy-Speech",
-                "Neural HMM"
+                "Jenny (féminine)",
+                "Tacotron2-DDC (féminine)",
+                "Glow-TTS (midel féminine)",
+                "Speedy-Speech (midel féminine)",
+                "Neural HMM (féminine)"
             ])
         else:  # Français
             self.model_combo.addItems([
-                "XTTS v2",
-                "VITS",
-                "YourTTS (voix féminine)",
-                "YourTTS (voix féminine)"
+                "XTTS v2 (Voix reference)",
+                "VITS (bug)",
+                "YourTTS (féminine)",
+                "YourTTS (masculin)"
             ])
 
         self.update_ui_elements()
