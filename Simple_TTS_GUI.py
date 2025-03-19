@@ -400,13 +400,6 @@ class MainWindow(QMainWindow):
         speaker_layout = QHBoxLayout()
         speaker_label = QLabel("Voix VCTK:")
         self.speaker_combo = QComboBox()
-        self.speaker_combo.addItems([
-            "VCTK_p232 (homme, bien)",
-            "VCTK_p273 (femme, bien)",
-            "VCTK_p278 (femme, bien)",
-            "VCTK_p279 (homme, bien)",
-            "VCTK_p304 (femme)"
-        ])
         speaker_layout.addWidget(speaker_label)
         speaker_layout.addWidget(self.speaker_combo)
         self.speaker_combo.setEnabled(False)
