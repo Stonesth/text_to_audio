@@ -8,15 +8,6 @@ CHECKPOINT 3 - CrÃ©ation du hook pour TTS...
 Hook TTS crÃ©Ã©: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\hooks\hook-TTS.py 
 CHECKPOINT 4 - CrÃ©ation du hook pour PyQt6... 
 Hook PyQt6 crÃ©Ã©: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\hooks\hook-PyQt6.py 
-CHECKPOINT 5 - CrÃ©ation du patch PyTorch 2.6... 
-Patch PyTorch 2.6 crÃ©Ã©: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\pytorch_2_6_patch.py 
-Test du patch PyTorch... 
-INFO:__main__:Application du patch PyTorch 2.6+ pour XTTS
-INFO:__main__:Ajouté TTS.tts.configs.xtts_config.XttsConfig à safe_globals
-INFO:__main__:Ajouté TTS.tts.configs.xtts_config.XttsAudioConfig à safe_globals
-INFO:__main__:Ajouté TTS.tts.models.xtts.Xtts à safe_globals
-INFO:__main__:Ajouté TTS.utils.audio.processor.AudioProcessor à safe_globals
-INFO:__main__:Ajouté TTS.config.load_config à safe_globals
-INFO:__main__:Ajouté TTS.tts.configs.shared_configs.BaseTTSConfig à safe_globals
-WARNING:__main__:Impossible d'ajouter TTS.utils.audio.TorchSTFT: module 'TTS.utils.audio' has no attribute 'TorchSTFT'
+CHECKPOINT 5 - CrÃ©ation du hook pour trainer... 
+Hook trainer crÃ©Ã©: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\hooks\hook-trainer.py 
 ===== CRÃ‰ATION DES HOOKS TERMINÃ‰E ===== 
