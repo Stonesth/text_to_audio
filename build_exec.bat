@@ -167,6 +167,27 @@ if not exist "%~dp0dist\Simple_TTS_GUI\_internal\trainer\VERSION" (
     echo [%TIMESTAMP%]   Fichier VERSION créé avec succès dans %~dp0dist\Simple_TTS_GUI\_internal\trainer
 )
 
+:: MODIFICATION IMPORTANTE: Créer le dossier gruut et le fichier VERSION APRÈS que PyInstaller ait terminé
+for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /format:list') do set datetime=%%I
+set TIMESTAMP=%datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2% %datetime:~8,2%:%datetime:~10,2%:%datetime:~12,2%
+echo [%TIMESTAMP%]   Création du dossier gruut dans dist\Simple_TTS_GUI\_internal (APRÈS PyInstaller)...
+echo [%TIMESTAMP%]   Création du dossier gruut dans dist\Simple_TTS_GUI\_internal (APRÈS PyInstaller)... >> "%BUILD_LOG%"
+:: Créer le dossier gruut dans le dossier final dist
+mkdir "%~dp0dist\Simple_TTS_GUI\_internal\gruut" 2>nul
+
+:: Créer le fichier VERSION avec le bon contenu
+echo 2.2.3 > "%~dp0dist\Simple_TTS_GUI\_internal\gruut\VERSION"
+
+:: Vérifier que le fichier a bien été créé
+if not exist "%~dp0dist\Simple_TTS_GUI\_internal\gruut\VERSION" (
+    echo ERREUR: Le fichier VERSION n'a pas pu être créé dans le dossier dist\Simple_TTS_GUI\_internal\gruut >> "%BUILD_ERROR%"
+    echo ERREUR: Le fichier VERSION n'a pas pu être créé dans le dossier dist\Simple_TTS_GUI\_internal\gruut
+    exit /b 1
+) else (
+    echo [%TIMESTAMP%]   Fichier VERSION créé avec succès dans %~dp0dist\Simple_TTS_GUI\_internal\gruut >> "%BUILD_LOG%"
+    echo [%TIMESTAMP%]   Fichier VERSION créé avec succès dans %~dp0dist\Simple_TTS_GUI\_internal\gruut
+)
+
 :: Vérifier l'existence de l'exécutable
 if not exist "dist\Simple_TTS_GUI\Simple_TTS_GUI.exe" (
     echo ERREUR: L'exécutable n'a pas été créé >> "%BUILD_ERROR%"
