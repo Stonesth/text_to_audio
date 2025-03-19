@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 :: Configuration du script de signature
 set "APP_NAME=Simple_TTS_GUI"
 set "EXE_PATH=%~dp0dist\%APP_NAME%\%APP_NAME%.exe"
-set "CERTIFICATE_NAME=Certificate_NN.crt"
+set "CERTIFICATE_NAME=YOUR_CERTIFICATE_NAME_2"
 
 :: Configuration des fichiers de journalisation
 set "LOG_DIR=%~dp0logs"
@@ -81,48 +81,48 @@ echo SignTool trouvé: %SIGNTOOL_PATH%
 echo [%TIMESTAMP%] Vérification du certificat... >> "%SIGN_LOG%"
 echo Vérification du certificat...
 
-@REM :: Ce bloc peut êatre adapté en fonction de la méthode de stockage du certificat
-@REM if "%CERTIFICATE_NAME%"=="YOUR_CERTIFICATE_NAME" (
-@REM     echo AVERTISSEMENT: Vous devez configurer le nom de votre certificat dans ce script >> "%SIGN_LOG%"
-@REM     echo AVERTISSEMENT: Vous devez configurer le nom de votre certificat dans ce script
-@REM     echo Modifiez la variable CERTIFICATE_NAME dans sign_executable.bat
+:: Ce bloc peut êatre adapté en fonction de la méthode de stockage du certificat
+if "%CERTIFICATE_NAME%"=="YOUR_CERTIFICATE_NAME" (
+    echo AVERTISSEMENT: Vous devez configurer le nom de votre certificat dans ce script >> "%SIGN_LOG%"
+    echo AVERTISSEMENT: Vous devez configurer le nom de votre certificat dans ce script
+    echo Modifiez la variable CERTIFICATE_NAME dans sign_executable.bat
     
-@REM     echo Voulez-vous continuer avec un certificat auto-signé pour les tests ? (O/N)
-@REM     set /p CONTINUE=
-@REM     if /i not "!CONTINUE!"=="O" (
-@REM         echo Opération annulée par l'utilisateur >> "%SIGN_LOG%"
-@REM         echo Opération annulée.
-@REM         exit /b 1
-@REM     )
+    echo Voulez-vous continuer avec un certificat auto-signé pour les tests ? (O/N)
+    set /p CONTINUE=
+    if /i not "!CONTINUE!"=="O" (
+        echo Opération annulée par l'utilisateur >> "%SIGN_LOG%"
+        echo Opération annulée.
+        exit /b 1
+    )
     
-@REM     :: Option pour utiliser un certificat auto-signé pour les tests
-@REM     echo [%TIMESTAMP%] Génération d'un certificat auto-signé pour les tests... >> "%SIGN_LOG%"
-@REM     echo Génération d'un certificat auto-signé pour les tests...
+    :: Option pour utiliser un certificat auto-signé pour les tests
+    echo [%TIMESTAMP%] Génération d'un certificat auto-signé pour les tests... >> "%SIGN_LOG%"
+    echo Génération d'un certificat auto-signé pour les tests...
     
-@REM     :: Générer un certificat auto-signé (makecert doit êatre installé)
-@REM     echo Ceci nécessite makecert.exe du SDK Windows. Si vous n'avez pas ce fichier, veuillez annuler et configurer un certificat valide.
-@REM     echo Appuyez sur une touche pour continuer ou CTRL+C pour annuler...
-@REM     pause > nul
+    :: Générer un certificat auto-signé (makecert doit êatre installé)
+    echo Ceci nécessite makecert.exe du SDK Windows. Si vous n'avez pas ce fichier, veuillez annuler et configurer un certificat valide.
+    echo Appuyez sur une touche pour continuer ou CTRL+C pour annuler...
+    pause > nul
     
-@REM     if not exist "%~dp0temp" mkdir "%~dp0temp"
+    if not exist "%~dp0temp" mkdir "%~dp0temp"
     
-@REM     where makecert > nul 2>&1
-@REM     if %ERRORLEVEL% NEQ 0 (
-@REM         echo ERREUR: makecert.exe n'est pas disponible. Impossible de créer un certificat auto-signé. >> "%SIGN_ERROR%"
-@REM         echo ERREUR: makecert.exe n'est pas disponible. Impossible de créer un certificat auto-signé.
-@REM         exit /b 1
-@REM     )
+    where makecert > nul 2>&1
+    if %ERRORLEVEL% NEQ 0 (
+        echo ERREUR: makecert.exe n'est pas disponible. Impossible de créer un certificat auto-signé. >> "%SIGN_ERROR%"
+        echo ERREUR: makecert.exe n'est pas disponible. Impossible de créer un certificat auto-signé.
+        exit /b 1
+    )
     
-@REM     makecert -r -pe -n "CN=Simple_TTS_GUI_SelfSigned" -ss MY -sr CurrentUser -a sha256 -cy authority -sky signature "%~dp0temp\Simple_TTS_GUI_SelfSigned.cer"
-@REM     set "CERTIFICATE_NAME=Simple_TTS_GUI_SelfSigned"
-@REM     echo [%TIMESTAMP%] Certificat auto-signé %CERTIFICATE_NAME% généré >> "%SIGN_LOG%"
-@REM     echo Certificat auto-signé %CERTIFICATE_NAME% généré
-@REM     echo AVERTISSEMENT: Ce certificat n'est valide que pour les tests locaux!
-@REM     echo Les utilisateurs verront toujours des avertissements de sécurité avec ce certificat
-@REM ) else (
-@REM     echo [%TIMESTAMP%] Certificat %CERTIFICATE_NAME% trouvé >> "%SIGN_LOG%"
-@REM     echo Certificat %CERTIFICATE_NAME% trouvé
-@REM )
+    makecert -r -pe -n "CN=Simple_TTS_GUI_SelfSigned" -ss MY -sr CurrentUser -a sha256 -cy authority -sky signature "%~dp0temp\Simple_TTS_GUI_SelfSigned.cer"
+    set "CERTIFICATE_NAME=Simple_TTS_GUI_SelfSigned"
+    echo [%TIMESTAMP%] Certificat auto-signé %CERTIFICATE_NAME% généré >> "%SIGN_LOG%"
+    echo Certificat auto-signé %CERTIFICATE_NAME% généré
+    echo AVERTISSEMENT: Ce certificat n'est valide que pour les tests locaux!
+    echo Les utilisateurs verront toujours des avertissements de sécurité avec ce certificat
+) else (
+    echo [%TIMESTAMP%] Certificat %CERTIFICATE_NAME% trouvé >> "%SIGN_LOG%"
+    echo Certificat %CERTIFICATE_NAME% trouvé
+)
 
 :: Procéder à la signature
 echo [%TIMESTAMP%] Signature de l'exécutable %APP_NAME%.exe... >> "%SIGN_LOG%"
