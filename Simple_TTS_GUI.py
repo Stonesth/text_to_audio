@@ -128,7 +128,7 @@ class TTSWorker(QThread):
                     speaker = speaker[5:]
                 kwargs['speaker'] = speaker
             elif self.params['lang'] == 1:  # Anglais
-                # Pas besoin de paramètres supérieurs pour les modèles anglais de base
+                # Pas besoin de paramètres supplémentaires pour les modèles anglais de base
                 pass
             elif self.params['lang'] == 2:  # Français
                 if self.params['fr_model'] == 0:  # XTTS v2
@@ -143,6 +143,8 @@ class TTSWorker(QThread):
                     kwargs['language'] = 'fr-fr'
                 elif self.params['fr_model'] == 3:  # VITS
                     pass
+            elif self.params['lang'] == 3:  # Néerlandais
+                kwargs['language'] = 'nl'
             
             # Génération audio
             tts.tts_to_file(
@@ -179,6 +181,10 @@ class TTSWorker(QThread):
                 "tts_models/fr/css10/vits",
                 "tts_models/multilingual/multi-dataset/your_tts",
                 "tts_models/multilingual/multi-dataset/your_tts"
+            ]
+        elif lang_idx == 3:  # Néerlandais
+            models = [
+                "tts_models/nl/your_tts"
             ]
         
         # Log du nom du modèle pour le débogage
@@ -376,7 +382,7 @@ class MainWindow(QMainWindow):
         lang_layout = QHBoxLayout()
         lang_label = QLabel("Langue:")
         self.lang_combo = QComboBox()
-        self.lang_combo.addItems(["Anglais (VCTK)", "Anglais", "Français"])
+        self.lang_combo.addItems(["Anglais (VCTK)", "Anglais", "Français", "Néerlandais"])
         self.lang_combo.currentIndexChanged.connect(self.on_lang_changed)
         lang_layout.addWidget(lang_label)
         lang_layout.addWidget(self.lang_combo)
@@ -532,12 +538,16 @@ class MainWindow(QMainWindow):
                 "Speedy-Speech (midel féminine)",
                 "Neural HMM (féminine)"
             ])
-        else:  # Français
+        elif lang_index == 2:  # Français
             self.model_combo.addItems([
                 "XTTS v2 (Voix reference)",
                 "VITS (bug)",
                 "YourTTS (féminine)",
                 "YourTTS (masculin)"
+            ])
+        elif lang_index == 3:  # Néerlandais
+            self.model_combo.addItems([
+                "YourTTS"
             ])
 
         self.update_ui_elements()
@@ -741,7 +751,9 @@ class MainWindow(QMainWindow):
         speaker = self.speaker_combo.currentText()
         if self.lang_combo.currentIndex() == 0:  # VCTK
             # Extraire uniquement l'ID du speaker (VCTK_pXXX) de la description
-            return speaker.split(" ")[0]
+            parts = speaker.split(" ")
+            if len(parts) >= 1:
+                return parts[0]
         return speaker
 
     def get_model_name(self):
@@ -757,9 +769,12 @@ class MainWindow(QMainWindow):
                      "tts_models/en/ljspeech/glow-tts", "tts_models/en/ljspeech/speedy-speech",
                      "tts_models/en/ljspeech/neural_hmm"]
         # Modèles pour le français
-        else:
+        elif lang_idx == 2:
             models = ["tts_models/multilingual/multi-dataset/xtts_v2", "tts_models/fr/css10/vits",
                      "tts_models/multilingual/multi-dataset/your_tts", "tts_models/multilingual/multi-dataset/your_tts"]
+        # Modèles pour le néerlandais
+        elif lang_idx == 3:
+            models = ["tts_models/nl/your_tts"]
         
         return models[model_idx]
 
