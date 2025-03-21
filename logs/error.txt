@@ -1,127 +1,135 @@
-Traceback (most recent call last):
-  File "Simple_TTS_GUI.py", line 27, in <module>
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\api.py", line 12, in <module>
-    from TTS.utils.synthesizer import Synthesizer
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\utils\synthesizer.py", line 11, in <module>
-    from TTS.tts.configs.vits_config import VitsConfig
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\tts\configs\vits_config.py", line 5, in <module>
-    from TTS.tts.models.vits import VitsArgs, VitsAudioConfig
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\tts\models\vits.py", line 33, in <module>
-    from TTS.tts.utils.text.characters import BaseCharacters, BaseVocabulary, _characters, _pad, _phonemes, _punctuations
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\tts\utils\text\__init__.py", line 1, in <module>
-    from TTS.tts.utils.text.tokenizer import TTSTokenizer
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\tts\utils\text\tokenizer.py", line 5, in <module>
-    from TTS.tts.utils.text.phonemizers import DEF_LANG_TO_PHONEMIZER, get_phonemizer_by_name
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\tts\utils\text\phonemizers\__init__.py", line 5, in <module>
-    from TTS.tts.utils.text.phonemizers.gruut_wrapper import Gruut
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\tts\utils\text\phonemizers\gruut_wrapper.py", line 4, in <module>
-    import gruut
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "gruut\__init__.py", line 20, in <module>
-  File "pathlib.py", line 1134, in read_text
-  File "pathlib.py", line 1119, in open
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\dist\\Simple_TTS_GUI\\_internal\\gruut\\VERSION'
+<Configuration>
+    <Properties>
+        <property name="filePattern">${date:yyyy-MM-dd-HH_mm_ss}</property>
+        <property name="filePatternTF-5599">${date:yyyy-MM-dd-HH_mm}</property>
+        <property name="filePatternTF-CASF410B">${date:yyyy-MM-dd-HH_mm}</property>
+    </Properties>
+    <Appenders>
+        <File name="file" fileName="../logs/application${filePattern}.log" append="false">
+            <PatternLayout pattern="%d{ABSOLUTE} %-5p %c:%L - %m%n"/>
+        </File>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{ABSOLUTE} %-5p %c:%L - %m%n"/>
+        </Console>
+        <File name="SQLLog" fileName="../logs/sql${filePattern}.log">
+            <PatternLayout pattern="%d{ABSOLUTE} %-5p %c:%L - %m%n"/>
+        </File>
+        <!-- New log file appender for the TF-5599-->
+        <RollingFile name="TF-5599" fileName="../logs/TF-5599/TF-5599.log"
+                     filePattern="../logs/TF-5599/TF-5599-%d{yyyy-MM-dd-HH-mm}-%i.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm} %-5p %c{1}:%L - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="5" modulate="true"/>
+                <Delete basePath="../logs/TF-5599/TF-5599" maxAge="2d">
+                    <IfFileName glob="TF-5599-*.log"/>
+                </Delete>
+            </Policies>
+        </RollingFile>
+        <!-- New log file appender for the I2D160L-->
+        <RollingFile name="I2D160L" fileName="../logs/I2D/I2D160/I2D160L.log"
+                     filePattern="../logs/I2D/I2D160/I2D160L-%d{yyyy-MM-dd-HH-mm}-%i.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm} %-5p %c{1}:%L - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="5" modulate="true"/>
+                <Delete basePath="../logs/I2D/I2D160" maxAge="2d">
+                    <IfFileName glob="I2D160L-*.log"/>
+                </Delete>
+            </Policies>
+        </RollingFile>
+        <!-- New log file appender for the I2D160N-->
+        <RollingFile name="I2D160N" fileName="../logs/I2D/I2D160/I2D160N.log"
+                     filePattern="../logs/I2D/I2D160/I2D160N-%d{yyyy-MM-dd-HH-mm}-%i.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm} %-5p %c{1}:%L - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="5" modulate="true"/>
+                <Delete basePath="../logs/I2D/I2D160" maxAge="2d">
+                    <IfFileName glob="I2D160N-*.log"/>
+                </Delete>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+
+        <!--  work-around for internal bug -->
+        <Logger name="innowake.mee.natural.runtime.sysout" level="info"/>
+        <Logger name="innowake.mee.base.execption.rethrow" level="off"/>
+
+        <Logger name="org.springframework" level="info"/>
 
 
-Traceback (most recent call last):
-  File "Simple_TTS_GUI.py", line 27, in <module>
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\api.py", line 12, in <module>
-    from TTS.utils.synthesizer import Synthesizer
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\utils\synthesizer.py", line 11, in <module>
-    from TTS.tts.configs.vits_config import VitsConfig
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\tts\configs\vits_config.py", line 5, in <module>
-    from TTS.tts.models.vits import VitsArgs, VitsAudioConfig
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\tts\models\vits.py", line 33, in <module>
-    from TTS.tts.utils.text.characters import BaseCharacters, BaseVocabulary, _characters, _pad, _phonemes, _punctuations
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\tts\utils\text\__init__.py", line 1, in <module>
-    from TTS.tts.utils.text.tokenizer import TTSTokenizer
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\tts\utils\text\tokenizer.py", line 5, in <module>
-    from TTS.tts.utils.text.phonemizers import DEF_LANG_TO_PHONEMIZER, get_phonemizer_by_name
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\tts\utils\text\phonemizers\__init__.py", line 6, in <module>
-    from TTS.tts.utils.text.phonemizers.ko_kr_phonemizer import KO_KR_Phonemizer
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\tts\utils\text\phonemizers\ko_kr_phonemizer.py", line 3, in <module>
-    from TTS.tts.utils.text.korean.phonemizer import korean_text_to_phonemes
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "TTS\tts\utils\text\korean\phonemizer.py", line 1, in <module>
-    from jamo import hangul_to_jamo
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "jamo\__init__.py", line 2, in <module>
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
-  File "jamo\jamo.py", line 24, in <module>
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\dist\\Simple_TTS_GUI\\_internal\\jamo\\data\\U+11xx.json'
+        <Logger name="innowake.mee.natural.api.move" level="off"/>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Specific Logger                                                     -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <Logger name="innowake.lib.license" level="error"/>
+        <Logger name="innowake.mee.base.memory.layout" level="warn"/>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Performance Logger                                                  -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <Logger name="prof" level="off"/>
+        <Logger name="innowake.mee.natural.runtime.performance" level="off"/>
+        <Logger name="prof.mee.runtime.cobol.api" level="off"/>
+        <Logger name="com.innowake.gen" level="trace"/>
+
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- TF-5599                                                         -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <Logger name="nn.fliba.gen.procedures" level="debug" additivity="false">
+            <AppenderRef ref="TF-5599"/>
+        </Logger>
+        <Logger name="nn.fliba.gen.batchmanager" level="debug" additivity="false">
+            <AppenderRef ref="TF-5599"/>
+        </Logger>
+
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- ============== I2D160                                             -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- I2D160L =>   CASF410B                                                   -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <Logger name="nn.fliba.gen.procedures.Casf410bCoda2Inlezen" level="debug" additivity="false">
+            <AppenderRef ref="I2D160L"/>
+        </Logger>
+        <Logger name="nn.fliba.gen.batchmanager.CASF410B" level="debug" additivity="false">
+            <AppenderRef ref="I2D160L"/>
+        </Logger>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- I2D160N =>  CASF415B                                                   -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <Logger name="nn.fliba.gen.actions.CasZoekBest" level="debug" additivity="false">
+            <AppenderRef ref="I2D160N"/>
+        </Logger>
+        <Logger name="nn.fliba.gen.actions.CasZoekBestZeroBalancingCashpool" level="debug" additivity="false">
+            <AppenderRef ref="I2D160N"/>
+        </Logger>
+        <Logger name="nn.fliba.gen.actions.CasZoekBestLifeAllerlei" level="debug" additivity="false">
+            <AppenderRef ref="I2D160N"/>
+        </Logger>
+        <Logger name="nn.fliba.gen.procedures.Casf415bVerwerkCodaBetaling" level="debug" additivity="false">
+            <AppenderRef ref="I2D160N"/>
+        </Logger>
+        <Logger name="nn.fliba.gen.batchmanager.CASF415B" level="debug" additivity="false">
+            <AppenderRef ref="I2D160N"/>
+        </Logger>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Root Logger                                                         -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <Root level="trace">
+            <AppenderRef ref="file"/>
+            <!-- <AppenderRef ref="SQLLog" /> -->
+        </Root>
+
+
+        <Logger name="com.innowake.genTargeting.PerfStatNew" additivity="false" level="trace">
+            <appender-ref ref="SQLLog"/>
+        </Logger>
+
+    </Loggers>
+
+
+</Configuration>
