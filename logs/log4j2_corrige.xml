@@ -31,6 +31,7 @@
             <DefaultRolloverStrategy max="20">
                 <Delete basePath="../logs/TF-5599" maxDepth="1" maxAge="2d" deleteEmptyDirectories="true">
                     <IfFileName glob="TF-5599-*.log"/>
+                    <IfLastModified age="2d"/>
                 </Delete>
             </DefaultRolloverStrategy>
         </RollingFile>
@@ -47,6 +48,7 @@
             <DefaultRolloverStrategy max="20">
                 <Delete basePath="../logs/I2D/I2D160" maxDepth="1" maxAge="2d" deleteEmptyDirectories="true">
                     <IfFileName glob="I2D160L-*.log"/>
+                    <IfLastModified age="2d"/>
                 </Delete>
             </DefaultRolloverStrategy>
         </RollingFile>
@@ -63,6 +65,7 @@
             <DefaultRolloverStrategy max="20">
                 <Delete basePath="../logs/I2D/I2D160" maxDepth="1" maxAge="2d" deleteEmptyDirectories="true">
                     <IfFileName glob="I2D160N-*.log"/>
+                    <IfLastModified age="2d"/>
                 </Delete>
             </DefaultRolloverStrategy>
         </RollingFile>
