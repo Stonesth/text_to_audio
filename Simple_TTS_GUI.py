@@ -144,7 +144,20 @@ class TTSWorker(QThread):
                 elif self.params['fr_model'] == 3:  # VITS
                     pass
             elif self.params['lang'] == 3:  # Néerlandais
-                kwargs['language'] = 'nl'
+                # Utiliser le modèle néerlandais natif quand disponible, sinon utiliser YourTTS
+                model_name = self.get_model_name()
+                if model_name == "tts_models/nl/css10/vits":
+                    # Configuration pour le modèle néerlandais natif
+                    self.progress.emit(f"Configuration du modèle néerlandais natif:")
+                    self.progress.emit(f"- Modèle: {model_name}")
+                    self.progress.emit(f"- Ne pas spécifier de paramètre de langue pour les modèles monolingues")
+                else:
+                    # Configuration pour le modèle YourTTS comme fallback
+                    kwargs['language'] = 'nl'
+                    kwargs['speaker'] = 'female-en-5'
+                    self.progress.emit(f"Configuration YourTTS pour le néerlandais:")
+                    self.progress.emit(f"- Language: nl")
+                    self.progress.emit(f"- Speaker: female-en-5")
             
             # Génération audio
             tts.tts_to_file(
@@ -184,7 +197,8 @@ class TTSWorker(QThread):
             ]
         elif lang_idx == 3:  # Néerlandais
             models = [
-                "tts_models/nl/your_tts"
+                "tts_models/nl/css10/vits",
+                "tts_models/multilingual/multi-dataset/your_tts"
             ]
         
         # Log du nom du modèle pour le débogage
@@ -547,6 +561,7 @@ class MainWindow(QMainWindow):
             ])
         elif lang_index == 3:  # Néerlandais
             self.model_combo.addItems([
+                "VITS",
                 "YourTTS"
             ])
 
@@ -774,7 +789,10 @@ class MainWindow(QMainWindow):
                      "tts_models/multilingual/multi-dataset/your_tts", "tts_models/multilingual/multi-dataset/your_tts"]
         # Modèles pour le néerlandais
         elif lang_idx == 3:
-            models = ["tts_models/nl/your_tts"]
+            models = [
+                "tts_models/nl/css10/vits",
+                "tts_models/multilingual/multi-dataset/your_tts"
+            ]
         
         return models[model_idx]
 
