@@ -220,18 +220,6 @@ if not exist "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\mecabrc" (
     echo [%TIMESTAMP%]   Fichier mecabrc créé avec succès dans %~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir
 )
 
-:: Créer les répertoires supplémentaires pour MeCab
-mkdir "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\char.bin" 2>nul
-mkdir "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\sys.dic" 2>nul
-mkdir "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\unk.dic" 2>nul
-
-:: Créer des fichiers vides pour MeCab
-type nul > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\char.bin\char.bin"
-type nul > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\sys.dic\sys.dic"
-type nul > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\unk.dic\unk.dic"
-type nul > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\dicrc"
-type nul > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\matrix.bin"
-
 :: Vérifier l'existence de l'exécutable
 if not exist "dist\Simple_TTS_GUI\Simple_TTS_GUI.exe" (
     echo ERREUR: L'exécutable n'a pas été créé >> "%BUILD_ERROR%"
@@ -243,6 +231,25 @@ if not exist "dist\Simple_TTS_GUI\Simple_TTS_GUI.exe" (
     set TIMESTAMP=%datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2% %datetime:~8,2%:%datetime:~10,2%:%datetime:~12,2%
     echo [%TIMESTAMP%]   L'exécutable a été créé avec succès
     echo [%TIMESTAMP%]   L'exécutable a été créé avec succès >> "%BUILD_LOG%"
+)
+
+:: Créer le fichier dicrc dans unidic_lite/dicdir
+(
+echo cost-factor = 800
+echo bos-feature = BOS/EOS,*,*,*,*,*,*,*,*
+echo eval-size = 8
+echo unk-eval-size = 4
+echo config-charset = utf8
+) > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\dicrc"
+
+:: Vérifier que le fichier dicrc a bien été créé
+if not exist "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\dicrc" (
+    echo ERREUR: Le fichier dicrc n'a pas pu être créé dans le dossier dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir >> "%BUILD_ERROR%"
+    echo ERREUR: Le fichier dicrc n'a pas pu être créé dans le dossier dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir
+    exit /b 1
+) else (
+    echo [%TIMESTAMP%]   Fichier dicrc créé avec succès dans %~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir >> "%BUILD_LOG%"
+    echo [%TIMESTAMP%]   Fichier dicrc créé avec succès dans %~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir
 )
 
 echo.
