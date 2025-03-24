@@ -1,48 +1,55 @@
-import requests
-import urllib3
 import os
+import sys
+import urllib3
+import warnings
 from tqdm import tqdm
 
-# Désactiver les avertissements SSL
+# Désactiver les avertissements SSL et warnings généraux
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-print("⚠️ ATTENTION: Vérification SSL désactivée pour ce téléchargement uniquement")
+warnings.filterwarnings("ignore")
+os.environ["PYTHONWARNINGS"] = "ignore"
+print("\u26a0ufe0f ATTENTION: Vérification SSL désactivée pour ce téléchargement uniquement")
 
-# URL du modèle néerlandais CSS10 VITS
-url = "https://coqui.gateway.scarf.sh/tts_models--nl--css10--vits.zip"
-
-# Nom du fichier local
-filename = "tts_models--nl--css10--vits.zip"
-
-# Créer le dossier de destination si nécessaire
-os.makedirs(os.path.dirname(filename) if os.path.dirname(filename) else '.', exist_ok=True)
+# Modèle à télécharger
+model_name = "tts_models/nl/css10/vits"
+print(f"\nTéléchargement du modèle néerlandais: {model_name}")
 
 try:
-    print(f"Téléchargement du modèle néerlandais depuis {url}...")
+    # S'assurer que tous les paquets nécessaires sont installés
+    import pkg_resources
+    required_packages = ['TTS']
+    for package in required_packages:
+        try:
+            pkg_resources.get_distribution(package)
+        except pkg_resources.DistributionNotFound:
+            print(f"\nInstallation du package requis: {package}...")
+            import subprocess
+            subprocess.check_call([sys.executable, "-m", "pip", "install", package])
     
-    # Télécharger avec une barre de progression
-    response = requests.get(url, stream=True, verify=False)
-    response.raise_for_status()  # Vérifier si le téléchargement a réussi
+    # Import après avoir vérifié l'installation
+    from TTS.utils.manage import ModelManager
     
-    # Taille totale en octets
-    total_size = int(response.headers.get('content-length', 0))
-    block_size = 1024  # 1 Kibibyte
+    # Désactiver la vérification SSL pour la bibliothèque TTS
+    import ssl
+    if hasattr(ssl, '_create_unverified_context'):
+        ssl._create_default_https_context = ssl._create_unverified_context
     
-    # Créer une barre de progression
-    with open(filename, 'wb') as f, tqdm(
-            desc=filename,
-            total=total_size,
-            unit='iB',
-            unit_scale=True,
-            unit_divisor=1024,
-        ) as bar:
-            for data in response.iter_content(block_size):
-                size = f.write(data)
-                bar.update(size)
+    # Utiliser le gestionnaire de modèles de TTS pour télécharger le modèle
+    model_manager = ModelManager()
     
-    print(f"\n✅ Téléchargement terminé! Fichier sauvegardé sous: {os.path.abspath(filename)}")
-    print("\nPour charger ce modèle dans Simple_TTS:")
-    print("python simple_TTS.py --model_name tts_models/nl/css10/vits")
+    # Afficher l'URL du modèle
+    model_path, config_path, model_item = model_manager.download_model(model_name)
+    
+    print(f"\u2705 Téléchargement terminé avec succès!")
+    print(f"\nChemin du modèle: {model_path}")
+    print(f"Chemin de la configuration: {config_path}")
+    
+    print("\nPour utiliser ce modèle dans Simple_TTS:")
+    print(f"python simple_TTS.py --model_name {model_name}")
 
 except Exception as e:
-    print(f"\n❌ Erreur de téléchargement: {e}")
-    print("Veuillez vérifier votre connexion internet et réessayer.")
+    print(f"\u274c Erreur: {e}")
+    print("\nSolution alternative: téléchargement manuel")
+    print("1. Ouvrez un terminal avec l'environnement Python activé")
+    print("2. Exécutez la commande:")
+    print("   python -m TTS.bin.download_model --model_name tts_models/nl/css10/vits")
