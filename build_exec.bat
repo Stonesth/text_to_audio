@@ -252,9 +252,70 @@ if not exist "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\dicrc" (
     echo [%TIMESTAMP%]   Fichier dicrc créé avec succès dans %~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir
 )
 
+:: Créer les fichiers de dictionnaire essentiels pour MeCab
+:: Créer un fichier unk.dic vide (dictionnaire de mots inconnus)
+echo. > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\unk.dic"
+
+:: Créer char.bin (table de conversion des caractères)
+echo. > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\char.bin"
+
+:: Créer sys.dic (dictionnaire système)
+echo. > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\sys.dic"
+
+:: Créer matrix.bin (matrice de transition des parties du discours)
+echo. > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\matrix.bin"
+
+:: Vérifier que les fichiers ont bien été créés
+if not exist "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\unk.dic" (
+    echo ERREUR: Le fichier unk.dic n'a pas pu être créé >> "%BUILD_ERROR%"
+    exit /b 1
+) else if not exist "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\char.bin" (
+    echo ERREUR: Le fichier char.bin n'a pas pu être créé >> "%BUILD_ERROR%"
+    exit /b 1
+) else if not exist "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\sys.dic" (
+    echo ERREUR: Le fichier sys.dic n'a pas pu être créé >> "%BUILD_ERROR%"
+    exit /b 1
+) else if not exist "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\matrix.bin" (
+    echo ERREUR: Le fichier matrix.bin n'a pas pu être créé >> "%BUILD_ERROR%"
+    exit /b 1
+) else (
+    echo [%TIMESTAMP%]   Tous les fichiers de dictionnaire MeCab créés avec succès >> "%BUILD_LOG%"
+    echo [%TIMESTAMP%]   Tous les fichiers de dictionnaire MeCab créés avec succès
+)
+
 echo.
 for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /format:list') do set datetime=%%I
 set TIMESTAMP=%datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2% %datetime:~8,2%:%datetime:~10,2%:%datetime:~12,2%
+
+:: Extraire les vrais fichiers du dictionnaire unidic_lite depuis l'environnement Python
+echo.
+echo [%TIMESTAMP%]   Extraction des fichiers dictionnaire unidic_lite depuis l'environnement Python... >> "%BUILD_LOG%"
+echo [%TIMESTAMP%]   Extraction des fichiers dictionnaire unidic_lite depuis l'environnement Python...
+
+:: Activer l'environnement virtuel si présent
+if exist "%~dp0venv_py310\Scripts\activate.bat" (
+    call "%~dp0venv_py310\Scripts\activate.bat"
+)
+
+:: Exécuter le script d'extraction Python
+python "%~dp0extract_unidic_files.py" "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir"
+if %ERRORLEVEL% NEQ 0 (
+    echo AVERTISSEMENT: L'extraction des fichiers unidic_lite a échoué. Les fichiers vides seront utilisés. >> "%BUILD_ERROR%"
+    echo AVERTISSEMENT: L'extraction des fichiers unidic_lite a échoué. Les fichiers vides seront utilisés.
+) else (
+    echo [%TIMESTAMP%]   Fichiers dictionnaire unidic_lite extraits avec succès >> "%BUILD_LOG%"
+    echo [%TIMESTAMP%]   Fichiers dictionnaire unidic_lite extraits avec succès
+)
+
+:: Désactiver l'environnement virtuel si activé
+if defined VIRTUAL_ENV (
+    call deactivate
+)
+
+echo.
+for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /format:list') do set datetime=%%I
+set TIMESTAMP=%datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2% %datetime:~8,2%:%datetime:~10,2%:%datetime:~12,2%
+
 echo [%TIMESTAMP%] ===== COMPILATION TERMINÉE AVEC SUCCÈS =====
 echo [%TIMESTAMP%] ===== COMPILATION TERMINÉE AVEC SUCCÈS ===== >> "%BUILD_LOG%"
 echo L'exécutable a été créé avec succès: %~dp0dist\Simple_TTS_GUI\Simple_TTS_GUI.exe
