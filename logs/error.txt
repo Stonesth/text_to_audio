@@ -1,4 +1,8 @@
-python Simple_TTS_GUI.py
+.\add_certificate.bat
+Installation du certificat pour l'environnement Python...
+Activation de l'environnement virtuel Python...
+Configuration des variables d'environnement SSL...
+Installation permanente du certificat...
 Error processing line 1 of C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\ssl_cert_env.pth:
 
   Traceback (most recent call last):
@@ -23,4 +27,13 @@ Error processing line 1 of C:\Users\JF30LB\Projects\python\Projects\text_to_audi
   SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
 
 Remainder of file ignored
-Module typeguard_env chargé avec succès
+Bundle de certificats certifi trouvé à : C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\certifi\cacert.pem
+Le certificat est déjà installé dans le bundle.
+
+Configuration terminée. Python utilisera maintenant ce certificat.
+Pour vérifier, exécutez: python -c "import requests; print(requests.get('https://httpbin.org/get').json())"      
+
+Configuration termin├⌐e avec succ├¿s !
+Vous pouvez maintenant utiliser Python avec le certificat personnalis├⌐.
+
+(venv_py310) C:\Users\JF30LB\Projects\python\Projects\text_to_audio>
