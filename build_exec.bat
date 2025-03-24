@@ -201,6 +201,25 @@ if not exist "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\version" (
     echo [%TIMESTAMP%]   Fichier version créé avec succès dans %~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir
 )
 
+:: Créer le fichier mecabrc (configuration MeCab)
+(
+echo dicdir = %%~dp0
+echo userdic = 
+echo ; output-format-type = wakati
+echo ; input-buffer-size = 8192
+echo ; node-format = %m\n
+) > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\mecabrc"
+
+:: Vérifier que le fichier mecabrc a bien été créé
+if not exist "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\mecabrc" (
+    echo ERREUR: Le fichier mecabrc n'a pas pu être créé dans le dossier dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir >> "%BUILD_ERROR%"
+    echo ERREUR: Le fichier mecabrc n'a pas pu être créé dans le dossier dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir
+    exit /b 1
+) else (
+    echo [%TIMESTAMP%]   Fichier mecabrc créé avec succès dans %~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir >> "%BUILD_LOG%"
+    echo [%TIMESTAMP%]   Fichier mecabrc créé avec succès dans %~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir
+)
+
 :: Vérifier l'existence de l'exécutable
 if not exist "dist\Simple_TTS_GUI\Simple_TTS_GUI.exe" (
     echo ERREUR: L'exécutable n'a pas été créé >> "%BUILD_ERROR%"
