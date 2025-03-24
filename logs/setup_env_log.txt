@@ -1,0 +1,463 @@
+===== DEBUT INSTALLATION 24-03-25 12:22:37,45 ===== 
+[24-03-25 12:22:37,46] [INFO] Verification de Python 3.10... 
+[24-03-25 12:22:37,72] [INFO] Verification de Visual Studio... 
+[24-03-25 12:22:37,74] [INFO] Vérification des redistribuables VC++... 
+[24-03-25 12:22:37,75] [DEBUG] vcruntime140.dll trouvé, vérification de la version... 
+[24-03-25 12:22:37,75] [DEBUG] Version du fichier vcruntime140.dll: 
+[24-03-25 12:22:38,18] [DEBUG] msvcp140.dll et vcruntime140_1.dll trouvés, probablement VC++ 2022 installé 
+[24-03-25 12:22:38,19] [INFO] Redistribuables VC++ 2022 déjà installés. 
+[24-03-25 12:22:38,21] [INFO] Configuration des chemins... 
+[24-03-25 12:22:38,24] [DEBUG] Version MSVC détectée: 14.43.34808 
+[24-03-25 12:22:38,26] [INFO] Configuration des includes... 
+[24-03-25 12:22:38,27] [DEBUG] INCLUDE=C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\include;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\ATLMFC\include;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\winrt;C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\cppwinrt 
+[24-03-25 12:22:38,29] [INFO] Configuration des bibliothèques... 
+[24-03-25 12:22:38,31] [DEBUG] LIB=C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\lib\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\ATLMFC\lib\x64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22621.0\ucrt\x64;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.22621.0\um\x64 
+[24-03-25 12:22:38,32] [INFO] Configuration du PATH... 
+[24-03-25 12:22:38,33] [INFO] Configuration de l'environnement de build... 
+[24-03-25 12:22:38,35] [DEBUG] Appel de vcvarsall.bat 
+[24-03-25 12:22:44,18] [DEBUG] vcvars64.bat exécuté avec succès 
+[24-03-25 12:22:44,21] [INFO] Vérification de Python après configuration de l'environnement... 
+[24-03-25 12:22:44,23] [INFO] Creation de l'environnement virtuel... 
+[24-03-25 12:22:44,33] [COMMAND] Création environnement virtuel - Debut d'execution 
+[24-03-25 12:22:50,56] [COMMAND] Création environnement virtuel - Fin d'exécution (code: 0) 
+[24-03-25 12:22:50,87] [DEBUG] Environnement virtuel activé 
+[24-03-25 12:22:50,93] [INFO] Vérification de l'environnement virtuel... 
+[24-03-25 12:22:51,03] [COMMAND] Vérification environnement Python - Debut d'execution 
+Python: 3.10.9 (tags/v3.10.9:1dd9be6, Dec  6 2022, 20:01:21) [MSC v.1934 64 bit (AMD64)]
+Prefix: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310
+[24-03-25 12:22:51,28] [COMMAND] Vérification environnement Python - Fin d'exécution (code: 0) 
+[24-03-25 12:22:51,32] [INFO] Upgrade pip version... 
+[24-03-25 12:22:51,35] [COMMAND] Upgrade pip version - Debut d'execution 
+Requirement already satisfied: pip in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (25.0.1)
+[24-03-25 12:22:54,08] [COMMAND] Upgrade pip version - Fin d'exécution (code: 0) 
+[24-03-25 12:22:54,16] [INFO] Installation des dependances de base... 
+[24-03-25 12:22:54,24] [COMMAND] Installation pip/setuptools/wheel - Debut d'execution 
+Requirement already satisfied: pip in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (25.0.1)
+Requirement already satisfied: setuptools in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (65.5.0)
+Collecting setuptools
+  Downloading setuptools-77.0.3-py3-none-any.whl.metadata (6.6 kB)
+Requirement already satisfied: wheel in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (0.45.1)
+Downloading setuptools-77.0.3-py3-none-any.whl (1.3 MB)
+   ---------------------------------------- 1.3/1.3 MB 10.6 MB/s eta 0:00:00
+Installing collected packages: setuptools
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 65.5.0
+    Uninstalling setuptools-65.5.0:
+      Successfully uninstalled setuptools-65.5.0
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+tts 0.21.3 requires numpy==1.22.0; python_version <= "3.10", but you have numpy 2.2.3 which is incompatible.
+Successfully installed setuptools-77.0.3
+[24-03-25 12:23:13,29] [COMMAND] Installation pip/setuptools/wheel - Fin d'exécution (code: 0) 
+[24-03-25 12:23:13,33] [INFO] Installation de PyTorch avec gestion des timeout... 
+[24-03-25 12:23:13,37] [INFO] Tentative d'installation de PyTorch (1/3)... 
+[24-03-25 12:23:13,41] [COMMAND] Désinstallation torch torchvision torchaudio - Debut d'execution 
+Found existing installation: torch 2.6.0+cpu
+Uninstalling torch-2.6.0+cpu:
+  Successfully uninstalled torch-2.6.0+cpu
+Found existing installation: torchvision 0.21.0+cpu
+Uninstalling torchvision-0.21.0+cpu:
+  Successfully uninstalled torchvision-0.21.0+cpu
+Found existing installation: torchaudio 2.6.0+cpu
+Uninstalling torchaudio-2.6.0+cpu:
+  Successfully uninstalled torchaudio-2.6.0+cpu
+[24-03-25 12:23:18,76] [COMMAND] Désinstallation torch torchvision torchaudio - Fin d'exécution (code: 0) 
+[24-03-25 12:23:18,78] [COMMAND] Installation torch - Debut d'execution 
+Looking in indexes: https://download.pytorch.org/whl/cpu
+Collecting torch==2.6.0
+  Downloading https://download.pytorch.org/whl/cpu/torch-2.6.0%2Bcpu-cp310-cp310-win_amd64.whl.metadata (28 kB)
+Collecting torchvision==0.21
+  Downloading https://download.pytorch.org/whl/cpu/torchvision-0.21.0%2Bcpu-cp310-cp310-win_amd64.whl.metadata (6.3 kB)
+Collecting torchaudio==2.6.0
+  Downloading https://download.pytorch.org/whl/cpu/torchaudio-2.6.0%2Bcpu-cp310-cp310-win_amd64.whl.metadata (6.7 kB)
+Requirement already satisfied: filelock in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torch==2.6.0) (3.13.1)
+Requirement already satisfied: typing-extensions>=4.10.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torch==2.6.0) (4.12.2)
+Requirement already satisfied: networkx in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torch==2.6.0) (2.8.8)
+Requirement already satisfied: jinja2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torch==2.6.0) (3.1.4)
+Requirement already satisfied: fsspec in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torch==2.6.0) (2023.9.2)
+Requirement already satisfied: sympy==1.13.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torch==2.6.0) (1.13.1)
+Requirement already satisfied: numpy in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torchvision==0.21) (2.2.3)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torchvision==0.21) (11.1.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from sympy==1.13.1->torch==2.6.0) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from jinja2->torch==2.6.0) (3.0.2)
+Downloading https://download.pytorch.org/whl/cpu/torch-2.6.0%2Bcpu-cp310-cp310-win_amd64.whl (206.5 MB)
+   ---------------------------------------- 206.5/206.5 MB ? eta 0:00:00
+Downloading https://download.pytorch.org/whl/cpu/torchvision-0.21.0%2Bcpu-cp310-cp310-win_amd64.whl (1.6 MB)
+   ---------------------------------------- 1.6/1.6 MB 13.9 MB/s eta 0:00:00
+Downloading https://download.pytorch.org/whl/cpu/torchaudio-2.6.0%2Bcpu-cp310-cp310-win_amd64.whl (2.4 MB)
+   ---------------------------------------- 2.4/2.4 MB 17.4 MB/s eta 0:00:00
+Installing collected packages: torch, torchvision, torchaudio
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+tts 0.21.3 requires numpy==1.22.0; python_version <= "3.10", but you have numpy 2.2.3 which is incompatible.
+Successfully installed torch-2.6.0+cpu torchaudio-2.6.0+cpu torchvision-0.21.0+cpu
+[24-03-25 12:27:20,19] [COMMAND] Installation torch - Fin d'exécution (code: 0) 
+[24-03-25 12:27:20,24] [INFO] Installation de NumPy (version compatible avec PyTorch)... 
+[24-03-25 12:27:20,31] [COMMAND] Désinstallation numpy==1.24.3 - Debut d'execution 
+Found existing installation: numpy 2.2.3
+Uninstalling numpy-2.2.3:
+  Successfully uninstalled numpy-2.2.3
+[24-03-25 12:27:24,91] [COMMAND] Désinstallation numpy==1.24.3 - Fin d'exécution (code: 0) 
+[24-03-25 12:27:24,96] [COMMAND] Installation numpy 1.22.0 - Debut d'execution 
+Collecting numpy==1.22.0
+  Downloading numpy-1.22.0-cp310-cp310-win_amd64.whl.metadata (2.1 kB)
+Downloading numpy-1.22.0-cp310-cp310-win_amd64.whl (14.7 MB)
+   ---------------------------------------- 14.7/14.7 MB 19.7 MB/s eta 0:00:00
+Installing collected packages: numpy
+Successfully installed numpy-1.22.0
+[24-03-25 12:27:49,59] [COMMAND] Installation numpy 1.22.0 - Fin d'exécution (code: 0) 
+[24-03-25 12:27:49,65] [INFO] Installation de setuptools (version compatible)... 
+[24-03-25 12:27:49,68] [COMMAND] Désinstallation setuptools - Debut d'execution 
+Found existing installation: setuptools 77.0.3
+Uninstalling setuptools-77.0.3:
+  Successfully uninstalled setuptools-77.0.3
+[24-03-25 12:27:52,19] [COMMAND] Désinstallation setuptools - Fin d'exécution (code: 0) 
+[24-03-25 12:27:52,24] [COMMAND] Installation setuptools 65.5.0 - Debut d'execution 
+Collecting setuptools==65.5.0
+  Downloading setuptools-65.5.0-py3-none-any.whl.metadata (6.3 kB)
+Downloading setuptools-65.5.0-py3-none-any.whl (1.2 MB)
+   ---------------------------------------- 1.2/1.2 MB 12.4 MB/s eta 0:00:00
+Installing collected packages: setuptools
+Successfully installed setuptools-65.5.0
+[24-03-25 12:28:03,49] [COMMAND] Installation setuptools 65.5.0 - Fin d'exécution (code: 0) 
+[24-03-25 12:28:03,58] [INFO] Installation des packages principaux... 
+[24-03-25 12:28:03,65] [COMMAND] Installation Cython - Debut d'execution 
+Requirement already satisfied: Cython in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (0.29.30)
+[24-03-25 12:28:05,90] [COMMAND] Installation Cython - Fin d'exécution (code: 0) 
+[24-03-25 12:28:05,99] [INFO] Installation des dependances TTS... 
+[24-03-25 12:28:06,03] [COMMAND] Installation librosa - Debut d'execution 
+Requirement already satisfied: librosa==0.10.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (0.10.0)
+Requirement already satisfied: audioread>=2.1.9 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (3.0.1)
+Requirement already satisfied: numpy>=1.20.3 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (1.22.0)
+Requirement already satisfied: scipy>=1.2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (1.11.4)
+Requirement already satisfied: scikit-learn>=0.20.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (1.3.0)
+Requirement already satisfied: joblib>=0.14 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (1.4.2)
+Requirement already satisfied: decorator>=4.3.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (5.2.1)
+Requirement already satisfied: numba>=0.51.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (0.57.0)
+Requirement already satisfied: soundfile>=0.12.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (0.12.1)
+Requirement already satisfied: pooch>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (1.8.2)
+Requirement already satisfied: soxr>=0.3.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (0.5.0.post1)
+Requirement already satisfied: typing-extensions>=4.1.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (4.12.2)
+Requirement already satisfied: lazy-loader>=0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (0.4)
+Requirement already satisfied: msgpack>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa==0.10.0) (1.1.0)
+Requirement already satisfied: packaging in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from lazy-loader>=0.1->librosa==0.10.0) (23.1)
+Requirement already satisfied: llvmlite<0.41,>=0.40.0dev0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from numba>=0.51.0->librosa==0.10.0) (0.40.1)
+Requirement already satisfied: platformdirs>=2.5.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pooch>=1.0->librosa==0.10.0) (4.3.6)
+Requirement already satisfied: requests>=2.19.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pooch>=1.0->librosa==0.10.0) (2.32.3)
+Requirement already satisfied: threadpoolctl>=2.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from scikit-learn>=0.20.0->librosa==0.10.0) (3.6.0)
+Requirement already satisfied: cffi>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from soundfile>=0.12.1->librosa==0.10.0) (1.17.1)
+Requirement already satisfied: pycparser in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from cffi>=1.0->soundfile>=0.12.1->librosa==0.10.0) (2.22)
+Requirement already satisfied: charset-normalizer<4,>=2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests>=2.19.0->pooch>=1.0->librosa==0.10.0) (2025.1.31)
+[24-03-25 12:28:08,64] [COMMAND] Installation librosa - Fin d'exécution (code: 0) 
+[24-03-25 12:28:08,73] [COMMAND] Installation soundfile - Debut d'execution 
+Requirement already satisfied: soundfile==0.12.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (0.12.1)
+Requirement already satisfied: cffi>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from soundfile==0.12.1) (1.17.1)
+Requirement already satisfied: pycparser in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from cffi>=1.0->soundfile==0.12.1) (2.22)
+[24-03-25 12:28:11,29] [COMMAND] Installation soundfile - Fin d'exécution (code: 0) 
+[24-03-25 12:28:11,33] [COMMAND] Installation Unidecode - Debut d'execution 
+Requirement already satisfied: Unidecode==1.3.7 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (1.3.7)
+[24-03-25 12:28:13,68] [COMMAND] Installation Unidecode - Fin d'exécution (code: 0) 
+[24-03-25 12:28:13,73] [COMMAND] Installation tqdm - Debut d'execution 
+Requirement already satisfied: tqdm in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (4.64.1)
+Requirement already satisfied: colorama in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tqdm) (0.4.6)
+[24-03-25 12:28:16,11] [COMMAND] Installation tqdm - Fin d'exécution (code: 0) 
+[24-03-25 12:28:16,15] [INFO] Vérification de rc.exe pour la compilation... 
+[24-03-25 12:28:16,34] [WARNING] rc.exe non trouvé, tentative d'ajout du chemin du SDK Windows au PATH... 
+[24-03-25 12:28:16,36] [INFO] Installation de TTS... 
+[24-03-25 12:28:16,38] [COMMAND] Désinstallation TTS - Debut d'execution 
+Found existing installation: TTS 0.21.3
+Uninstalling TTS-0.21.3:
+  Successfully uninstalled TTS-0.21.3
+[24-03-25 12:28:17,78] [COMMAND] Désinstallation TTS - Fin d'exécution (code: 0) 
+[24-03-25 12:28:17,82] [INFO] Installation des dépendances spécifiques pour TTS 0.15.2 ... 
+[24-03-25 12:28:17,86] [COMMAND] Installation packaging - Debut d'execution 
+Requirement already satisfied: packaging==23.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (23.1)
+[24-03-25 12:28:20,12] [COMMAND] Installation packaging - Fin d'exécution (code: 0) 
+[24-03-25 12:28:20,17] [COMMAND] Installation protobuf - Debut d'execution 
+Requirement already satisfied: protobuf==4.24.4 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (4.24.4)
+[24-03-25 12:28:22,23] [COMMAND] Installation protobuf - Fin d'exécution (code: 0) 
+[24-03-25 12:28:22,28] [COMMAND] Installation pyyaml - Debut d'execution 
+Requirement already satisfied: pyyaml==6.0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (6.0.1)
+[24-03-25 12:28:24,41] [COMMAND] Installation pyyaml - Fin d'exécution (code: 0) 
+[24-03-25 12:28:24,49] [COMMAND] Installation tensorboard - Debut d'execution 
+Requirement already satisfied: tensorboard==2.14.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (2.14.0)
+Requirement already satisfied: absl-py>=0.4 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (2.1.0)
+Requirement already satisfied: grpcio>=1.48.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (1.71.0)
+Requirement already satisfied: google-auth<3,>=1.6.3 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (2.38.0)
+Requirement already satisfied: google-auth-oauthlib<1.1,>=0.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (1.0.0)
+Requirement already satisfied: markdown>=2.6.8 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (3.7)
+Requirement already satisfied: numpy>=1.12.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (1.22.0)
+Requirement already satisfied: protobuf>=3.19.6 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (4.24.4)
+Requirement already satisfied: requests<3,>=2.21.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (2.32.3)
+Requirement already satisfied: setuptools>=41.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (65.5.0)
+Requirement already satisfied: tensorboard-data-server<0.8.0,>=0.7.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (0.7.2)
+Requirement already satisfied: werkzeug>=1.0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (3.1.3)
+Requirement already satisfied: wheel>=0.26 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard==2.14.0) (0.45.1)
+Requirement already satisfied: cachetools<6.0,>=2.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from google-auth<3,>=1.6.3->tensorboard==2.14.0) (5.5.2)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from google-auth<3,>=1.6.3->tensorboard==2.14.0) (0.4.1)
+Requirement already satisfied: rsa<5,>=3.1.4 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from google-auth<3,>=1.6.3->tensorboard==2.14.0) (4.9)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from google-auth-oauthlib<1.1,>=0.5->tensorboard==2.14.0) (2.0.0)
+Requirement already satisfied: charset-normalizer<4,>=2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests<3,>=2.21.0->tensorboard==2.14.0) (3.4.1)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests<3,>=2.21.0->tensorboard==2.14.0) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests<3,>=2.21.0->tensorboard==2.14.0) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests<3,>=2.21.0->tensorboard==2.14.0) (2025.1.31)
+Requirement already satisfied: MarkupSafe>=2.1.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from werkzeug>=1.0.1->tensorboard==2.14.0) (3.0.2)
+Requirement already satisfied: pyasn1<0.7.0,>=0.4.6 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard==2.14.0) (0.6.1)
+Requirement already satisfied: oauthlib>=3.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<1.1,>=0.5->tensorboard==2.14.0) (3.2.2)
+[24-03-25 12:28:26,52] [COMMAND] Installation tensorboard - Fin d'exécution (code: 0) 
+[24-03-25 12:28:26,57] [COMMAND] Installation coqpit - Debut d'execution 
+Requirement already satisfied: coqpit==0.0.17 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (0.0.17)
+[24-03-25 12:28:28,62] [COMMAND] Installation coqpit - Fin d'exécution (code: 0) 
+[24-03-25 12:28:28,71] [COMMAND] Installation fsspec - Debut d'execution 
+Requirement already satisfied: fsspec==2023.9.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (2023.9.2)
+[24-03-25 12:28:30,85] [COMMAND] Installation fsspec - Fin d'exécution (code: 0) 
+[24-03-25 12:28:30,91] [COMMAND] Installation jieba - Debut d'execution 
+Requirement already satisfied: jieba==0.42.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (0.42.1)
+[24-03-25 12:28:33,58] [COMMAND] Installation jieba - Fin d'exécution (code: 0) 
+[24-03-25 12:28:33,63] [COMMAND] Installation matplotlib - Debut d'execution 
+Requirement already satisfied: matplotlib==3.7.3 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (3.7.3)
+Requirement already satisfied: contourpy>=1.0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.3) (1.2.1)
+Requirement already satisfied: cycler>=0.10 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.3) (0.12.1)
+Requirement already satisfied: fonttools>=4.22.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.3) (4.56.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.3) (1.4.8)
+Requirement already satisfied: numpy<2,>=1.20 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.3) (1.22.0)
+Requirement already satisfied: packaging>=20.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.3) (23.1)
+Requirement already satisfied: pillow>=6.2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.3) (11.1.0)
+Requirement already satisfied: pyparsing>=2.3.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.3) (3.2.1)
+Requirement already satisfied: python-dateutil>=2.7 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib==3.7.3) (2.9.0.post0)
+Requirement already satisfied: six>=1.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from python-dateutil>=2.7->matplotlib==3.7.3) (1.17.0)
+[24-03-25 12:28:36,84] [COMMAND] Installation matplotlib - Fin d'exécution (code: 0) 
+[24-03-25 12:28:37,02] [COMMAND] Installation scipy - Debut d'execution 
+Collecting scipy==1.10.1
+  Downloading scipy-1.10.1-cp310-cp310-win_amd64.whl.metadata (58 kB)
+Requirement already satisfied: numpy<1.27.0,>=1.19.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from scipy==1.10.1) (1.22.0)
+Downloading scipy-1.10.1-cp310-cp310-win_amd64.whl (42.5 MB)
+   ---------------------------------------- 42.5/42.5 MB 20.6 MB/s eta 0:00:00
+Installing collected packages: scipy
+  Attempting uninstall: scipy
+    Found existing installation: scipy 1.11.4
+    Uninstalling scipy-1.11.4:
+      Successfully uninstalled scipy-1.11.4
+Successfully installed scipy-1.10.1
+[24-03-25 12:29:19,02] [COMMAND] Installation scipy - Fin d'exécution (code: 0) 
+[24-03-25 12:29:19,06] [INFO] Tentative d'installation de TTS version 0.21.3... 
+[24-03-25 12:29:19,10] [COMMAND] Installation TTS 0.21.3 - Debut d'execution 
+Collecting TTS==0.21.3
+  Downloading TTS-0.21.3.tar.gz (1.7 MB)
+     ---------------------------------------- 1.7/1.7 MB 14.9 MB/s eta 0:00:00
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: numpy==1.22.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (1.22.0)
+Requirement already satisfied: cython>=0.29.30 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.29.30)
+Collecting scipy>=1.11.2 (from TTS==0.21.3)
+  Downloading scipy-1.15.2-cp310-cp310-win_amd64.whl.metadata (60 kB)
+Requirement already satisfied: torch>=2.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (2.6.0+cpu)
+Requirement already satisfied: torchaudio in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (2.6.0+cpu)
+Requirement already satisfied: soundfile>=0.12.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.12.1)
+Requirement already satisfied: librosa>=0.10.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.10.0)
+Requirement already satisfied: scikit-learn>=1.3.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (1.3.0)
+Requirement already satisfied: numba>=0.57.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.57.0)
+Requirement already satisfied: inflect>=5.6.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (5.6.0)
+Requirement already satisfied: tqdm>=4.64.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (4.64.1)
+Requirement already satisfied: anyascii>=0.3.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.3.2)
+Requirement already satisfied: pyyaml>=6.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (6.0.1)
+Requirement already satisfied: fsspec>=2023.6.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (2023.9.2)
+Requirement already satisfied: aiohttp>=3.8.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (3.8.6)
+Requirement already satisfied: packaging>=23.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (23.1)
+Requirement already satisfied: flask>=2.0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (2.3.3)
+Requirement already satisfied: pysbd>=0.3.4 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.3.4)
+Requirement already satisfied: umap-learn>=0.5.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.5.1)
+Requirement already satisfied: pandas<2.0,>=1.4 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (1.5.3)
+Requirement already satisfied: matplotlib>=3.7.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (3.7.3)
+Requirement already satisfied: trainer>=0.0.32 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.0.36)
+Requirement already satisfied: coqpit>=0.0.16 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.0.17)
+Requirement already satisfied: jieba in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.42.1)
+Requirement already satisfied: pypinyin in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.53.0)
+Requirement already satisfied: hangul_romanize in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.1.0)
+Requirement already satisfied: gruut==2.2.3 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from gruut[de,es,fr]==2.2.3->TTS==0.21.3) (2.2.3)
+Requirement already satisfied: jamo in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.4.1)
+Requirement already satisfied: nltk in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (3.9.1)
+Requirement already satisfied: g2pkk>=0.1.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.1.2)
+Requirement already satisfied: bangla in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.0.2)
+Requirement already satisfied: bnnumerizer in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.0.2)
+Requirement already satisfied: bnunicodenormalizer in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.1.1)
+Requirement already satisfied: einops>=0.6.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.6.1)
+Requirement already satisfied: transformers>=4.33.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (4.33.3)
+Requirement already satisfied: encodec>=0.1.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.1.1)
+Requirement already satisfied: unidecode>=1.3.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (1.3.7)
+Requirement already satisfied: num2words in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from TTS==0.21.3) (0.5.14)
+Requirement already satisfied: spacy>=3 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy[ja]>=3->TTS==0.21.3) (3.8.4)
+Requirement already satisfied: Babel<3.0.0,>=2.8.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.21.3) (2.17.0)
+Requirement already satisfied: dateparser~=1.1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.21.3) (1.1.8)
+Requirement already satisfied: gruut-ipa<1.0,>=0.12.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.21.3) (0.13.0)
+Requirement already satisfied: gruut_lang_en~=2.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.21.3) (2.0.1)
+Requirement already satisfied: jsonlines~=1.2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.21.3) (1.2.0)
+Requirement already satisfied: networkx<3.0.0,>=2.5.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.21.3) (2.8.8)
+Requirement already satisfied: python-crfsuite~=0.9.7 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.21.3) (0.9.11)
+Requirement already satisfied: gruut_lang_de~=2.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from gruut[de,es,fr]==2.2.3->TTS==0.21.3) (2.0.1)
+Requirement already satisfied: gruut_lang_es~=2.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from gruut[de,es,fr]==2.2.3->TTS==0.21.3) (2.0.1)
+Requirement already satisfied: gruut_lang_fr~=2.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from gruut[de,es,fr]==2.2.3->TTS==0.21.3) (2.0.2)
+Requirement already satisfied: attrs>=17.3.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from aiohttp>=3.8.1->TTS==0.21.3) (25.3.0)
+Requirement already satisfied: charset-normalizer<4.0,>=2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from aiohttp>=3.8.1->TTS==0.21.3) (3.4.1)
+Requirement already satisfied: multidict<7.0,>=4.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from aiohttp>=3.8.1->TTS==0.21.3) (6.1.0)
+Requirement already satisfied: async-timeout<5.0,>=4.0.0a3 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from aiohttp>=3.8.1->TTS==0.21.3) (4.0.3)
+Requirement already satisfied: yarl<2.0,>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from aiohttp>=3.8.1->TTS==0.21.3) (1.18.3)
+Requirement already satisfied: frozenlist>=1.1.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from aiohttp>=3.8.1->TTS==0.21.3) (1.5.0)
+Requirement already satisfied: aiosignal>=1.1.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from aiohttp>=3.8.1->TTS==0.21.3) (1.3.2)
+Requirement already satisfied: Werkzeug>=2.3.7 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from flask>=2.0.1->TTS==0.21.3) (3.1.3)
+Requirement already satisfied: Jinja2>=3.1.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from flask>=2.0.1->TTS==0.21.3) (3.1.4)
+Requirement already satisfied: itsdangerous>=2.1.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from flask>=2.0.1->TTS==0.21.3) (2.2.0)
+Requirement already satisfied: click>=8.1.3 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from flask>=2.0.1->TTS==0.21.3) (8.1.8)
+Requirement already satisfied: blinker>=1.6.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from flask>=2.0.1->TTS==0.21.3) (1.9.0)
+Requirement already satisfied: audioread>=2.1.9 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa>=0.10.0->TTS==0.21.3) (3.0.1)
+Requirement already satisfied: joblib>=0.14 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa>=0.10.0->TTS==0.21.3) (1.4.2)
+Requirement already satisfied: decorator>=4.3.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa>=0.10.0->TTS==0.21.3) (5.2.1)
+Requirement already satisfied: pooch>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa>=0.10.0->TTS==0.21.3) (1.8.2)
+Requirement already satisfied: soxr>=0.3.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa>=0.10.0->TTS==0.21.3) (0.5.0.post1)
+Requirement already satisfied: typing-extensions>=4.1.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa>=0.10.0->TTS==0.21.3) (4.12.2)
+Requirement already satisfied: lazy-loader>=0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa>=0.10.0->TTS==0.21.3) (0.4)
+Requirement already satisfied: msgpack>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from librosa>=0.10.0->TTS==0.21.3) (1.1.0)
+Requirement already satisfied: contourpy>=1.0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib>=3.7.0->TTS==0.21.3) (1.2.1)
+Requirement already satisfied: cycler>=0.10 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib>=3.7.0->TTS==0.21.3) (0.12.1)
+Requirement already satisfied: fonttools>=4.22.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib>=3.7.0->TTS==0.21.3) (4.56.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib>=3.7.0->TTS==0.21.3) (1.4.8)
+Requirement already satisfied: pillow>=6.2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib>=3.7.0->TTS==0.21.3) (11.1.0)
+Requirement already satisfied: pyparsing>=2.3.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib>=3.7.0->TTS==0.21.3) (3.2.1)
+Requirement already satisfied: python-dateutil>=2.7 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from matplotlib>=3.7.0->TTS==0.21.3) (2.9.0.post0)
+Requirement already satisfied: docopt>=0.6.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from num2words->TTS==0.21.3) (0.6.2)
+Requirement already satisfied: llvmlite<0.41,>=0.40.0dev0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from numba>=0.57.0->TTS==0.21.3) (0.40.1)
+Requirement already satisfied: pytz>=2020.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pandas<2.0,>=1.4->TTS==0.21.3) (2025.1)
+Requirement already satisfied: threadpoolctl>=2.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from scikit-learn>=1.3.0->TTS==0.21.3) (3.6.0)
+INFO: pip is looking at multiple versions of scipy to determine which version is compatible with other requirements. This could take a while.
+  Downloading scipy-1.15.1-cp310-cp310-win_amd64.whl.metadata (60 kB)
+  Downloading scipy-1.15.0-cp310-cp310-win_amd64.whl.metadata (60 kB)
+  Downloading scipy-1.14.1-cp310-cp310-win_amd64.whl.metadata (60 kB)
+  Downloading scipy-1.14.0-cp310-cp310-win_amd64.whl.metadata (60 kB)
+  Downloading scipy-1.13.1-cp310-cp310-win_amd64.whl.metadata (60 kB)
+  Downloading scipy-1.13.0-cp310-cp310-win_amd64.whl.metadata (60 kB)
+  Downloading scipy-1.12.0-cp310-cp310-win_amd64.whl.metadata (60 kB)
+INFO: pip is still looking at multiple versions of scipy to determine which version is compatible with other requirements. This could take a while.
+  Downloading scipy-1.11.4-cp310-cp310-win_amd64.whl.metadata (60 kB)
+Requirement already satisfied: cffi>=1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from soundfile>=0.12.0->TTS==0.21.3) (1.17.1)
+Requirement already satisfied: spacy-legacy<3.1.0,>=3.0.11 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy>=3->spacy[ja]>=3->TTS==0.21.3) (3.0.12)
+Requirement already satisfied: spacy-loggers<2.0.0,>=1.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy>=3->spacy[ja]>=3->TTS==0.21.3) (1.0.5)
+Requirement already satisfied: murmurhash<1.1.0,>=0.28.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy>=3->spacy[ja]>=3->TTS==0.21.3) (1.0.12)
+Requirement already satisfied: cymem<2.1.0,>=2.0.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy>=3->spacy[ja]>=3->TTS==0.21.3) (2.0.11)
+Requirement already satisfied: preshed<3.1.0,>=3.0.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy>=3->spacy[ja]>=3->TTS==0.21.3) (3.0.9)
+Requirement already satisfied: thinc<8.4.0,>=8.3.4 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy>=3->spacy[ja]>=3->TTS==0.21.3) (8.3.4)
+Requirement already satisfied: wasabi<1.2.0,>=0.9.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy>=3->spacy[ja]>=3->TTS==0.21.3) (1.1.3)
+Requirement already satisfied: srsly<3.0.0,>=2.4.3 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy>=3->spacy[ja]>=3->TTS==0.21.3) (2.5.1)
+Requirement already satisfied: catalogue<2.1.0,>=2.0.6 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy>=3->spacy[ja]>=3->TTS==0.21.3) (2.0.10)
+Requirement already satisfied: weasel<0.5.0,>=0.1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy>=3->spacy[ja]>=3->TTS==0.21.3) (0.4.1)
+Requirement already satisfied: typer<1.0.0,>=0.3.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy>=3->spacy[ja]>=3->TTS==0.21.3) (0.15.2)
+Requirement already satisfied: requests<3.0.0,>=2.13.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy>=3->spacy[ja]>=3->TTS==0.21.3) (2.32.3)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy>=3->spacy[ja]>=3->TTS==0.21.3) (2.10.6)
+Requirement already satisfied: setuptools in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy>=3->spacy[ja]>=3->TTS==0.21.3) (65.5.0)
+Requirement already satisfied: langcodes<4.0.0,>=3.2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy>=3->spacy[ja]>=3->TTS==0.21.3) (3.5.0)
+Requirement already satisfied: sudachipy!=0.6.1,>=0.5.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy[ja]>=3->TTS==0.21.3) (0.6.10)
+Requirement already satisfied: sudachidict_core>=20211220 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from spacy[ja]>=3->TTS==0.21.3) (20250129)
+Requirement already satisfied: filelock in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torch>=2.1->TTS==0.21.3) (3.13.1)
+Requirement already satisfied: sympy==1.13.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from torch>=2.1->TTS==0.21.3) (1.13.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from sympy==1.13.1->torch>=2.1->TTS==0.21.3) (1.3.0)
+Requirement already satisfied: colorama in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tqdm>=4.64.1->TTS==0.21.3) (0.4.6)
+Requirement already satisfied: psutil in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from trainer>=0.0.32->TTS==0.21.3) (7.0.0)
+Requirement already satisfied: tensorboard in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from trainer>=0.0.32->TTS==0.21.3) (2.14.0)
+Requirement already satisfied: huggingface-hub<1.0,>=0.15.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from transformers>=4.33.0->TTS==0.21.3) (0.29.3)
+Requirement already satisfied: regex!=2019.12.17 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from transformers>=4.33.0->TTS==0.21.3) (2024.11.6)
+Requirement already satisfied: tokenizers!=0.11.3,<0.14,>=0.11.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from transformers>=4.33.0->TTS==0.21.3) (0.13.3)
+Requirement already satisfied: safetensors>=0.3.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from transformers>=4.33.0->TTS==0.21.3) (0.5.3)
+Requirement already satisfied: pynndescent>=0.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from umap-learn>=0.5.1->TTS==0.21.3) (0.5.13)
+Requirement already satisfied: pycparser in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from cffi>=1.0->soundfile>=0.12.0->TTS==0.21.3) (2.22)
+Requirement already satisfied: tzlocal in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from dateparser~=1.1.0->gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.21.3) (5.3.1)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from Jinja2>=3.1.2->flask>=2.0.1->TTS==0.21.3) (3.0.2)
+Requirement already satisfied: six in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from jsonlines~=1.2.0->gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.21.3) (1.17.0)
+Requirement already satisfied: language-data>=1.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from langcodes<4.0.0,>=3.2.0->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (1.3.0)
+Requirement already satisfied: platformdirs>=2.5.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pooch>=1.0->librosa>=0.10.0->TTS==0.21.3) (4.3.6)
+Requirement already satisfied: annotated-types>=0.6.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (0.7.0)
+Requirement already satisfied: pydantic-core==2.27.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (2.27.2)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests<3.0.0,>=2.13.0->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests<3.0.0,>=2.13.0->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests<3.0.0,>=2.13.0->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (2025.1.31)
+Requirement already satisfied: blis<1.3.0,>=1.2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from thinc<8.4.0,>=8.3.4->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (1.2.0)
+Requirement already satisfied: confection<1.0.0,>=0.0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from thinc<8.4.0,>=8.3.4->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (0.1.5)
+Requirement already satisfied: shellingham>=1.3.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from typer<1.0.0,>=0.3.0->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (1.5.4)
+Requirement already satisfied: rich>=10.11.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from typer<1.0.0,>=0.3.0->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (13.9.4)
+Requirement already satisfied: cloudpathlib<1.0.0,>=0.7.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from weasel<0.5.0,>=0.1.0->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (0.21.0)
+Requirement already satisfied: smart-open<8.0.0,>=5.2.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from weasel<0.5.0,>=0.1.0->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (7.1.0)
+Requirement already satisfied: propcache>=0.2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from yarl<2.0,>=1.0->aiohttp>=3.8.1->TTS==0.21.3) (0.3.0)
+Requirement already satisfied: absl-py>=0.4 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer>=0.0.32->TTS==0.21.3) (2.1.0)
+Requirement already satisfied: grpcio>=1.48.2 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer>=0.0.32->TTS==0.21.3) (1.71.0)
+Requirement already satisfied: google-auth<3,>=1.6.3 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer>=0.0.32->TTS==0.21.3) (2.38.0)
+Requirement already satisfied: google-auth-oauthlib<1.1,>=0.5 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer>=0.0.32->TTS==0.21.3) (1.0.0)
+Requirement already satisfied: markdown>=2.6.8 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer>=0.0.32->TTS==0.21.3) (3.7)
+Requirement already satisfied: protobuf>=3.19.6 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer>=0.0.32->TTS==0.21.3) (4.24.4)
+Requirement already satisfied: tensorboard-data-server<0.8.0,>=0.7.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer>=0.0.32->TTS==0.21.3) (0.7.2)
+Requirement already satisfied: wheel>=0.26 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tensorboard->trainer>=0.0.32->TTS==0.21.3) (0.45.1)
+Requirement already satisfied: cachetools<6.0,>=2.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from google-auth<3,>=1.6.3->tensorboard->trainer>=0.0.32->TTS==0.21.3) (5.5.2)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from google-auth<3,>=1.6.3->tensorboard->trainer>=0.0.32->TTS==0.21.3) (0.4.1)
+Requirement already satisfied: rsa<5,>=3.1.4 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from google-auth<3,>=1.6.3->tensorboard->trainer>=0.0.32->TTS==0.21.3) (4.9)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from google-auth-oauthlib<1.1,>=0.5->tensorboard->trainer>=0.0.32->TTS==0.21.3) (2.0.0)
+Requirement already satisfied: marisa-trie>=1.1.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from language-data>=1.2->langcodes<4.0.0,>=3.2.0->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (1.2.1)
+Requirement already satisfied: markdown-it-py>=2.2.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from rich>=10.11.0->typer<1.0.0,>=0.3.0->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (3.0.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from rich>=10.11.0->typer<1.0.0,>=0.3.0->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (2.19.1)
+Requirement already satisfied: wrapt in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from smart-open<8.0.0,>=5.2.1->weasel<0.5.0,>=0.1.0->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (1.17.2)
+Requirement already satisfied: tzdata in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from tzlocal->dateparser~=1.1.0->gruut==2.2.3->gruut[de,es,fr]==2.2.3->TTS==0.21.3) (2025.1)
+Requirement already satisfied: mdurl~=0.1 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from markdown-it-py>=2.2.0->rich>=10.11.0->typer<1.0.0,>=0.3.0->spacy>=3->spacy[ja]>=3->TTS==0.21.3) (0.1.2)
+Requirement already satisfied: pyasn1<0.7.0,>=0.4.6 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard->trainer>=0.0.32->TTS==0.21.3) (0.6.1)
+Requirement already satisfied: oauthlib>=3.0.0 in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<1.1,>=0.5->tensorboard->trainer>=0.0.32->TTS==0.21.3) (3.2.2)
+Downloading scipy-1.11.4-cp310-cp310-win_amd64.whl (44.1 MB)
+   ---------------------------------------- 44.1/44.1 MB 22.8 MB/s eta 0:00:00
+Building wheels for collected packages: TTS
+  Building wheel for TTS (pyproject.toml): started
+  Building wheel for TTS (pyproject.toml): finished with status 'done'
+  Created wheel for TTS: filename=tts-0.21.3-cp310-cp310-win_amd64.whl size=908716 sha256=c4cbe35a0948ca06c0d8cd214a41c7a9558436ceff117e4e4321388d0218328b
+  Stored in directory: C:\Users\JF30LB\AppData\Local\Temp\pip-ephem-wheel-cache-maosyqlj\wheels\3f\3b\a7\e75b94ba7205aab83f3c9517fdb41cce6580d1fe953d1621e6
+Successfully built TTS
+Installing collected packages: scipy, TTS
+  Attempting uninstall: scipy
+    Found existing installation: scipy 1.10.1
+    Uninstalling scipy-1.10.1:
+      Successfully uninstalled scipy-1.10.1
+Successfully installed TTS-0.21.3 scipy-1.11.4
+[24-03-25 12:31:11,85] [COMMAND] Installation TTS 0.21.3 - Fin d'exécution (code: 0) 
+[24-03-25 12:31:11,92] [INFO] Vérification de l'installation de TTS... 
+[24-03-25 12:31:11,97] [COMMAND] TTS.tts.configs.xtts_config - Debut d'execution 
+[24-03-25 12:31:12,30] [COMMAND] TTS.tts.configs.xtts_config - Fin d'exécution (code: 1) 
+[24-03-25 12:31:12,32] [ERROR] Erreur lors de l'exécution de la commande: TTS.tts.configs.xtts_config (code: 1) 
+[24-03-25 12:31:12,36] [INFO] Installation de PyQt6... 
+[24-03-25 12:31:12,41] [COMMAND] Désinstallation PyQt6 - Debut d'execution 
+Found existing installation: PyQt6 6.5.2
+Uninstalling PyQt6-6.5.2:
+  Successfully uninstalled PyQt6-6.5.2
+Found existing installation: PyQt6-Qt6 6.5.2
+Uninstalling PyQt6-Qt6-6.5.2:
+  Successfully uninstalled PyQt6-Qt6-6.5.2
+Found existing installation: PyQt6-sip 13.5.2
+Uninstalling PyQt6-sip-13.5.2:
+  Successfully uninstalled PyQt6-sip-13.5.2
+[24-03-25 12:31:15,62] [COMMAND] Désinstallation PyQt6 - Fin d'exécution (code: 0) 
+[24-03-25 12:31:15,65] [COMMAND] Installation PyQt6 - Debut d'execution 
+Collecting PyQt6==6.5.2
+  Downloading PyQt6-6.5.2-cp37-abi3-win_amd64.whl.metadata (2.2 kB)
+Collecting PyQt6-Qt6==6.5.2
+  Downloading PyQt6_Qt6-6.5.2-py3-none-win_amd64.whl.metadata (551 bytes)
+Collecting PyQt6-sip==13.5.2
+  Downloading PyQt6_sip-13.5.2-cp310-cp310-win_amd64.whl.metadata (524 bytes)
+Downloading PyQt6-6.5.2-cp37-abi3-win_amd64.whl (6.5 MB)
+   ---------------------------------------- 6.5/6.5 MB 11.4 MB/s eta 0:00:00
+Downloading PyQt6_Qt6-6.5.2-py3-none-win_amd64.whl (59.3 MB)
+   ---------------------------------------- 59.3/59.3 MB 8.9 MB/s eta 0:00:00
+Downloading PyQt6_sip-13.5.2-cp310-cp310-win_amd64.whl (72 kB)
+Installing collected packages: PyQt6-Qt6, PyQt6-sip, PyQt6
+Successfully installed PyQt6-6.5.2 PyQt6-Qt6-6.5.2 PyQt6-sip-13.5.2
+[24-03-25 12:31:31,32] [COMMAND] Installation PyQt6 - Fin d'exécution (code: 0) 
+[24-03-25 12:31:31,37] [INFO] Installation terminee 
+[24-03-25 12:31:31,39] [INFO] Pour tester, executez: 
+[24-03-25 12:31:31,41] [INFO] .\venv_py310\Scripts\activate 
+[24-03-25 12:31:31,43] [INFO] python Simple_TTS_GUI.py 
+[24-03-25 12:31:31,46] [INFO] Fichier log disponible: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\logs\setup_env_log.txt 
