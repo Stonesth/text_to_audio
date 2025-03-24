@@ -185,6 +185,22 @@ if not exist "%~dp0dist\Simple_TTS_GUI\_internal\gruut\VERSION" (
     echo [%TIMESTAMP%]   Fichier VERSION créé avec succès dans %~dp0dist\Simple_TTS_GUI\_internal\gruut
 )
 
+:: Créer le répertoire unidic_lite/dicdir s'il n'existe pas
+mkdir "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir" 2>nul
+
+:: Créer le fichier version dans unidic_lite/dicdir
+echo 1.0.0 > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\version"
+
+:: Vérifier que le fichier a bien été créé
+if not exist "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\version" (
+    echo ERREUR: Le fichier version n'a pas pu être créé dans le dossier dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir >> "%BUILD_ERROR%"
+    echo ERREUR: Le fichier version n'a pas pu être créé dans le dossier dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir
+    exit /b 1
+) else (
+    echo [%TIMESTAMP%]   Fichier version créé avec succès dans %~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir >> "%BUILD_LOG%"
+    echo [%TIMESTAMP%]   Fichier version créé avec succès dans %~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir
+)
+
 :: Vérifier l'existence de l'exécutable
 if not exist "dist\Simple_TTS_GUI\Simple_TTS_GUI.exe" (
     echo ERREUR: L'exécutable n'a pas été créé >> "%BUILD_ERROR%"
