@@ -83,11 +83,21 @@ class TTSWorker(QThread):
                 self.progress.emit(f"Device: {device}")
                 self.progress.emit(f"Modèle: {model_name}")
                 
-                if 'reference_audio' in self.params:
-                    self.progress.emit(f"Audio de référence: {self.params['reference_audio']}")
-                else:
-                    self.progress.emit("⚠️ Attention: Pas d'audio de référence spécifié")
-
+                # Vérifier si un fichier audio de référence est spécifié
+                if 'reference_audio' not in self.params or not self.params['reference_audio']:
+                    raise ValueError("Un fichier audio de référence est obligatoire pour utiliser XTTS v2")
+                
+                ref_audio = self.params['reference_audio']
+                self.progress.emit(f"- Audio de référence: {ref_audio}")
+                self.progress.emit(f"- Genre sélectionné: {self.params['xtts_gender']}")
+                
+                # Initialisation de kwargs avant utilisation
+                kwargs = {}
+                kwargs['speaker_wav'] = ref_audio
+                kwargs['language'] = 'fr'
+                # Utiliser male-en-2 pour homme, female-en-5 pour femme
+                kwargs['speaker'] = 'male-en-2' if self.params['xtts_gender'] == 'Homme' else 'female-en-5'
+                
                 try:
                     # Utilisation de tts_models/multilingual/multi-dataset/your_tts comme alternative
                     self.progress.emit("Tentative d'utilisation du modèle YourTTS comme alternative...")
@@ -97,7 +107,8 @@ class TTSWorker(QThread):
                     # Config pour YourTTS en français
                     kwargs = {
                         'language': 'fr-fr',
-                        'speaker_wav': self.params.get('reference_audio')
+                        'speaker_wav': self.params.get('reference_audio'),
+                        'speaker': 'female-en-5'  # Ajout du paramètre speaker manquant
                     }
                     
                     # Génération
@@ -138,6 +149,7 @@ class TTSWorker(QThread):
                     self.progress.emit(f"- Audio de référence: {ref_audio}")
                     kwargs['speaker_wav'] = ref_audio
                     kwargs['language'] = 'fr'
+                    kwargs['speaker'] = self.params['xtts_gender']  # Ajout du paramètre speaker
                 elif self.params['fr_model'] in [1, 2]:  # YourTTS
                     kwargs['speaker'] = 'male-en-2' if self.params['fr_model'] == 1 else 'female-en-5'
                     kwargs['language'] = 'fr-fr'
@@ -444,6 +456,16 @@ class MainWindow(QMainWindow):
         ref_audio_layout.addWidget(ref_audio_button)
         self.main_layout.addLayout(ref_audio_layout)
 
+        # Sélecteur de genre pour XTTS
+        self.xtts_gender_layout = QHBoxLayout()
+        self.xtts_gender_label = QLabel("Genre de voix (XTTS):")
+        self.xtts_gender_combo = QComboBox()
+        self.xtts_gender_combo.addItems(["Homme", "Femme"])
+        self.xtts_gender_combo.setCurrentIndex(1)  # Femme par défaut
+        self.xtts_gender_layout.addWidget(self.xtts_gender_label)
+        self.xtts_gender_layout.addWidget(self.xtts_gender_combo)
+        self.main_layout.addLayout(self.xtts_gender_layout)
+
         # CUDA
         cuda_layout = QHBoxLayout()
         self.cuda_check = QCheckBox("Utiliser CUDA (si disponible)")
@@ -645,6 +667,22 @@ class MainWindow(QMainWindow):
                     self.model_combo.setCurrentIndex(0)  # Jenny/Tacotron2
                 return
 
+        # Vérification pour XTTS qui nécessite un fichier audio de référence
+        if (self.lang_combo.currentIndex() == 2 and  # Français
+            self.model_combo.currentIndex() == 0 and  # XTTS v2
+            not self.ref_audio_path.text() or self.ref_audio_path.text() == "Non sélectionné"):
+            
+            msg = QMessageBox(self)
+            msg.setIcon(QMessageBox.Icon.Warning)
+            msg.setText("Audio de référence requis")
+            msg.setInformativeText(
+                "Le modèle XTTS v2 nécessite un fichier audio de référence pour fonctionner.\n\n"
+                "Veuillez sélectionner un fichier audio."
+            )
+            msg.addButton("OK", QMessageBox.ButtonRole.AcceptRole)
+            msg.exec()
+            return
+
         # Validation du texte avant génération
         text = self.text_edit.toPlainText().strip()
         if not text:
@@ -712,7 +750,9 @@ class MainWindow(QMainWindow):
             "fr_model": self.model_combo.currentIndex(),
             "speaker": self.get_speaker(),
             "use_cuda": self.cuda_check.isChecked(),
-            "model_name": self.model_combo.currentText()
+            "model_name": self.model_combo.currentText(),
+            "xtts_gender": self.xtts_gender_combo.currentText(),
+            "reference_audio": self.ref_audio_path.text() if self.ref_audio_path.text() != "Non sélectionné" else ""
         }
         
         # Ajout des paramètres spécifiques selon le modèle
