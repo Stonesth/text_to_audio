@@ -1,8 +1,9 @@
-.\add_certificate.bat
-Installation du certificat pour l'environnement Python...
+.\configure_certificat.bat
+===== CONFIGURATION DU CERTIFICAT SSL POUR PYTHON =====
+
 Activation de l'environnement virtuel Python...
-Configuration des variables d'environnement SSL...
-Installation permanente du certificat...
+Configuration temporaire des variables d'environnement SSL...
+Installation/mise u00e0 jour de certifi...
 Error processing line 1 of C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\ssl_cert_env.pth:
 
   Traceback (most recent call last):
@@ -10,8 +11,8 @@ Error processing line 1 of C:\Users\JF30LB\Projects\python\Projects\text_to_audi
       exec(line)
     File "<string>", line 1
       import os; os.environ['SSL_CERT_FILE'] = 'C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\certifi\cacert.pem'
-                                                                                                                 
-                                      ^
+                                                                                                   
+                                                    ^
   SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
 
 Remainder of file ignored
@@ -22,16 +23,45 @@ Error processing line 1 of C:\Users\JF30LB\Projects\python\Projects\text_to_audi
       exec(line)
     File "<string>", line 1
       import os; os.environ['SSL_CERT_FILE'] = 'C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\certifi\cacert.pem'
-                                                                                                                 
-                                      ^
+                                                                                                   
+                                                    ^
   SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
 
 Remainder of file ignored
-Bundle de certificats certifi trouvé à : C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\certifi\cacert.pem
-Le certificat est déjà installé dans le bundle.
+Requirement already satisfied: certifi in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (2025.1.31)
+Configuration permanente du certificat SSL...
+Error processing line 1 of C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\ssl_cert_env.pth:
 
-Configuration terminée. Python utilisera maintenant ce certificat.
-Pour vérifier, exécutez: python -c "import requests; print(requests.get('https://httpbin.org/get').json())"      
+  Traceback (most recent call last):
+    File "C:\Progra~1\Python310\lib\site.py", line 186, in addpackage
+      exec(line)
+    File "<string>", line 1
+      import os; os.environ['SSL_CERT_FILE'] = 'C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\certifi\cacert.pem'
+                                                                                                   
+                                                    ^
+  SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
 
-Configuration termin├⌐e avec succ├¿s !
-Vous pouvez maintenant utiliser Python avec le certificat personnalis├⌐.
+Remainder of file ignored
+Error processing line 1 of C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\ssl_cert_env.pth:
+
+  Traceback (most recent call last):
+    File "C:\Progra~1\Python310\lib\site.py", line 186, in addpackage
+      exec(line)
+    File "<string>", line 1
+      import os; os.environ['SSL_CERT_FILE'] = 'C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\certifi\cacert.pem'
+                                                                                                   
+                                                    ^
+  SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
+
+Remainder of file ignored
+  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\setup_certificate.py", line 91
+    cert_path = r""""
+                    ^
+SyntaxError: unterminated string literal (detected at line 91)
+
+Configuration terminu00e9e !
+
+Vous pouvez maintenant fermer cette fenu00eatre et lancer votre application Python.
+
+Appuyez sur une touche pour continuer...
+PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio>
