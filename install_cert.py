@@ -50,19 +50,21 @@ def install_certificate(cert_path):
     print("Certificat installé avec succès dans le bundle certifi.")
     
     # Configurer les variables d'environnement Python
-    pip_path = os.path.join(os.path.dirname(sys.executable), "pip")
     site_packages = site.getsitepackages()[0]
     print(f"Dossier site-packages : {site_packages}")
     
-    # Convertir les chemins pour éviter les problèmes d'échappement
-    cert_path_safe = certifi_path.replace('\\', '/')
-    
-    # Créer un fichier .pth pour ajouter les variables d'environnement
+    # Supprimer l'ancien fichier .pth s'il existe
     env_pth_path = os.path.join(site_packages, "ssl_cert_env.pth")
+    if os.path.exists(env_pth_path):
+        os.remove(env_pth_path)
+        print(f"Ancien fichier {env_pth_path} supprimé")
+    
+    # Créer un fichier .pth avec les bons échappements
     with open(env_pth_path, 'w') as env_file:
-        env_file.write(f"import os; os.environ['SSL_CERT_FILE'] = r'{cert_path_safe}'\n")
-        env_file.write(f"import os; os.environ['REQUESTS_CA_BUNDLE'] = r'{cert_path_safe}'\n")
-        env_file.write(f"import os; os.environ['CURL_CA_BUNDLE'] = r'{cert_path_safe}'\n")
+        env_file.write('import os\n')
+        env_file.write(f'os.environ["SSL_CERT_FILE"] = r"{certifi_path}"\n')
+        env_file.write(f'os.environ["REQUESTS_CA_BUNDLE"] = r"{certifi_path}"\n')
+        env_file.write(f'os.environ["CURL_CA_BUNDLE"] = r"{certifi_path}"\n')
     
     print(f"Variables d'environnement permanentes configurées dans : {env_pth_path}")
     return True
