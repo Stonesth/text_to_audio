@@ -35,5 +35,3 @@ Pour vérifier, exécutez: python -c "import requests; print(requests.get('https
 
 Configuration termin├⌐e avec succ├¿s !
 Vous pouvez maintenant utiliser Python avec le certificat personnalis├⌐.
-
-(venv_py310) C:\Users\JF30LB\Projects\python\Projects\text_to_audio>
