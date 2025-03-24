@@ -220,6 +220,18 @@ if not exist "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\mecabrc" (
     echo [%TIMESTAMP%]   Fichier mecabrc créé avec succès dans %~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir
 )
 
+:: Créer les répertoires supplémentaires pour MeCab
+mkdir "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\char.bin" 2>nul
+mkdir "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\sys.dic" 2>nul
+mkdir "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\unk.dic" 2>nul
+
+:: Créer des fichiers vides pour MeCab
+type nul > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\char.bin\char.bin"
+type nul > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\sys.dic\sys.dic"
+type nul > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\unk.dic\unk.dic"
+type nul > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\dicrc"
+type nul > "%~dp0dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\matrix.bin"
+
 :: Vérifier l'existence de l'exécutable
 if not exist "dist\Simple_TTS_GUI\Simple_TTS_GUI.exe" (
     echo ERREUR: L'exécutable n'a pas été créé >> "%BUILD_ERROR%"
