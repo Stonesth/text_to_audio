@@ -54,12 +54,15 @@ def install_certificate(cert_path):
     site_packages = site.getsitepackages()[0]
     print(f"Dossier site-packages : {site_packages}")
     
+    # Convertir les chemins pour éviter les problèmes d'échappement
+    cert_path_safe = certifi_path.replace('\\', '/')
+    
     # Créer un fichier .pth pour ajouter les variables d'environnement
     env_pth_path = os.path.join(site_packages, "ssl_cert_env.pth")
     with open(env_pth_path, 'w') as env_file:
-        env_file.write(f"import os; os.environ['SSL_CERT_FILE'] = '{certifi_path}'\n")
-        env_file.write(f"import os; os.environ['REQUESTS_CA_BUNDLE'] = '{certifi_path}'\n")
-        env_file.write(f"import os; os.environ['CURL_CA_BUNDLE'] = '{certifi_path}'\n")
+        env_file.write(f"import os; os.environ['SSL_CERT_FILE'] = r'{cert_path_safe}'\n")
+        env_file.write(f"import os; os.environ['REQUESTS_CA_BUNDLE'] = r'{cert_path_safe}'\n")
+        env_file.write(f"import os; os.environ['CURL_CA_BUNDLE'] = r'{cert_path_safe}'\n")
     
     print(f"Variables d'environnement permanentes configurées dans : {env_pth_path}")
     return True
