@@ -77,6 +77,6 @@ issueを英語で書く必要はありません。
 
 ------------------- ERROR DETAILS ------------------------
 arguments: 
-[ifs] no such file or directory: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\mecabrc
+[ifs] no such file or directory: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\dicrc
 ----------------------------------------------------------
 
