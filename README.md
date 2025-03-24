@@ -1,6 +1,6 @@
 # Simple_TTS
 
-Script de synthèse vocale utilisant différents modèles pour générer de l'audio en français et en anglais.
+Script de synthèse vocale utilisant différents modèles pour générer de l'audio en français, en anglais et en néerlandais.
 
 ## Installation
 
@@ -51,14 +51,14 @@ python Simple_TTS.py --lang 0 --en-model 4 --text-file text_en.txt --use-cuda
 # VITS CSS10 (par défaut)
 python Simple_TTS.py --lang 1 --fr-model 0 --text-file text_fr.txt --use-cuda
 
-# Tacotron2-DDC CSS10
+# YourTTS - voix masculine
 python Simple_TTS.py --lang 1 --fr-model 1 --text-file text_fr.txt --use-cuda
 
-# YourTTS
-python Simple_TTS.py --lang 1 --fr-model 2 --text-file text_fr.txt --use-cuda --yourtts-speaker male-en-2
+# YourTTS - voix féminine
+python Simple_TTS.py --lang 1 --fr-model 2 --text-file text_fr.txt --use-cuda
 
-# YourTTS avec speaker spécifique
-python Simple_TTS.py --lang 1 --fr-model 3 --text-file text_fr.txt --use-cuda --yourtts-speaker female-en-5
+# VITS (autre modèle)
+python Simple_TTS.py --lang 1 --fr-model 3 --text-file text_fr.txt --use-cuda
 
 # XTTS v2 (nécessite un fichier audio de référence)
 python Simple_TTS.py --lang 1 --fr-model 4 --text-file text_fr.txt --use-cuda --reference-audio voice.wav
@@ -78,7 +78,17 @@ python Simple_TTS.py --lang 1 --fr-model 4 --text-file text_fr.txt --use-cuda --
 python Simple_TTS.py --lang 2 --en-model 3 --text-file text_en.txt --use-cuda --speaker VCTK_p304
 ```
 
-### 4. Options supplémentaires
+### 4. Modèles Néerlandais (--lang 3)
+
+```bash
+# VITS CSS10 néerlandais (modèle natif, meilleure qualité)
+python Simple_TTS.py --lang 3 --nl-model 0 --text-file text_nl.txt --use-cuda
+
+# YourTTS pour le néerlandais
+python Simple_TTS.py --lang 3 --nl-model 1 --text-file text_nl.txt --use-cuda
+```
+
+### 5. Options supplémentaires
 
 #### Vitesse de parole
 ```bash
@@ -105,7 +115,7 @@ python Simple_TTS_GUI.py
 ```
 
 L'interface graphique offre :
-- Sélection de la langue
+- Sélection de la langue (Anglais, Français, VCTK, Néerlandais)
 - Choix du modèle
 - Sélection des voix VCTK
 - Support CUDA
