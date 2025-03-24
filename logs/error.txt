@@ -77,6 +77,6 @@ issueを英語で書く必要はありません。
 
 ------------------- ERROR DETAILS ------------------------
 arguments: 
-[ifs] no such file or directory: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\dicrc
+) [tokenizer_->open(param)] tokenizer.cpp(103) [unkdic_.open(create_filename (prefix, UNK_DIC_FILE).c_str())] dictionary.cpp(79) [dmmap_->open(file, mode)] no such file or directory: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dis
 ----------------------------------------------------------
 
