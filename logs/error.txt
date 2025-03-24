@@ -1,9 +1,8 @@
-.\configure_certificat.bat
-===== CONFIGURATION DU CERTIFICAT SSL POUR PYTHON =====
+ .\ssl_fix.bat
+===== CONFIGURATION SSL SIMPLE ET DIRECTE =====
 
-Activation de l'environnement virtuel Python...
-Configuration temporaire des variables d'environnement SSL...
-Installation/mise u00e0 jour de certifi...
+Activation de l'environnement virtuel...
+Installation/mise ├á jour de certifi...
 Error processing line 1 of C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\ssl_cert_env.pth:
 
   Traceback (most recent call last):
@@ -29,7 +28,7 @@ Error processing line 1 of C:\Users\JF30LB\Projects\python\Projects\text_to_audi
 
 Remainder of file ignored
 Requirement already satisfied: certifi in c:\users\jf30lb\projects\python\projects\text_to_audio\venv_py310\lib\site-packages (2025.1.31)
-Configuration permanente du certificat SSL...
+Recherche du bundle de certificats...
 Error processing line 1 of C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\ssl_cert_env.pth:
 
   Traceback (most recent call last):
@@ -54,14 +53,46 @@ Error processing line 1 of C:\Users\JF30LB\Projects\python\Projects\text_to_audi
   SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
 
 Remainder of file ignored
-  File "C:\Users\JF30LB\Projects\python\Projects\text_to_audio\setup_certificate.py", line 91
-    cert_path = r""""
-                    ^
-SyntaxError: unterminated string literal (detected at line 91)
+Bundle trouv├⌐ : C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\certifi\cacert.pem
+Ajout du certificat au bundle...
+D├⌐finition des variables d'environnement syst├¿me...
 
-Configuration terminu00e9e !
+RÉUSSITE : la valeur spécifiée a été enregistrée.
 
-Vous pouvez maintenant fermer cette fenu00eatre et lancer votre application Python.
+RÉUSSITE : la valeur spécifiée a été enregistrée.
+
+RÉUSSITE : la valeur spécifiée a été enregistrée.
+
+Test de la configuration SSL...
+Error processing line 1 of C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\ssl_cert_env.pth:
+
+  Traceback (most recent call last):
+    File "C:\Progra~1\Python310\lib\site.py", line 186, in addpackage
+      exec(line)
+    File "<string>", line 1
+      import os; os.environ['SSL_CERT_FILE'] = 'C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\certifi\cacert.pem'
+                                                                                                   
+                                                    ^
+  SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
+
+Remainder of file ignored
+Error processing line 1 of C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\ssl_cert_env.pth:
+
+  Traceback (most recent call last):
+    File "C:\Progra~1\Python310\lib\site.py", line 186, in addpackage
+      exec(line)
+    File "<string>", line 1
+      import os; os.environ['SSL_CERT_FILE'] = 'C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\certifi\cacert.pem'
+                                                                                                   
+                                                    ^
+  SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
+
+Remainder of file ignored
+ERREUR: HTTPSConnectionPool(host='httpbin.org', port=443): Max retries exceeded with url: /get (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:997)')))
+
+Configuration termin├⌐e !
+Si le test a ├⌐chou├⌐, essayez de red├⌐marrer votre terminal et r├⌐ex├⌐cutez le test:
+  python test_ssl.py
 
 Appuyez sur une touche pour continuer...
 PS C:\Users\JF30LB\Projects\python\Projects\text_to_audio>
