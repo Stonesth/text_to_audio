@@ -1,1 +1,82 @@
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\JF30LB\\Projects\\python\\Projects\\text_to_audio\\dist\\Simple_TTS_GUI\\_internal\\unidic_lite\\dicdir\\version'
+Traceback (most recent call last):
+  File "MeCab\__init__.py", line 133, in __init__
+RuntimeError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "Simple_TTS_GUI.py", line 27, in <module>
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\api.py", line 12, in <module>
+    from TTS.utils.synthesizer import Synthesizer
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\utils\synthesizer.py", line 11, in <module>
+    from TTS.tts.configs.vits_config import VitsConfig
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\tts\configs\vits_config.py", line 5, in <module>
+    from TTS.tts.models.vits import VitsArgs, VitsAudioConfig
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\tts\models\vits.py", line 33, in <module>
+    from TTS.tts.utils.text.characters import BaseCharacters, BaseVocabulary, _characters, _pad, _phonemes, _punctuations
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\tts\utils\text\__init__.py", line 1, in <module>
+    from TTS.tts.utils.text.tokenizer import TTSTokenizer
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\tts\utils\text\tokenizer.py", line 5, in <module>
+    from TTS.tts.utils.text.phonemizers import DEF_LANG_TO_PHONEMIZER, get_phonemizer_by_name
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\tts\utils\text\phonemizers\__init__.py", line 10, in <module>
+    from TTS.tts.utils.text.phonemizers.ja_jp_phonemizer import JA_JP_Phonemizer
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\tts\utils\text\phonemizers\ja_jp_phonemizer.py", line 3, in <module>
+    from TTS.tts.utils.text.japanese.phonemizer import japanese_text_to_phonemes
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "PyInstaller\loader\pyimod02_importers.py", line 450, in exec_module
+  File "TTS\tts\utils\text\japanese\phonemizer.py", line 355, in <module>
+    _TAGGER = MeCab.Tagger()
+  File "MeCab\__init__.py", line 135, in __init__
+RuntimeError: 
+----------------------------------------------------------
+
+Failed initializing MeCab. Please see the README for possible solutions:
+
+    https://github.com/SamuraiT/mecab-python3#common-issues
+
+If you are still having trouble, please file an issue here, and include the
+ERROR DETAILS below:
+
+    https://github.com/SamuraiT/mecab-python3/issues
+
+issueを英語で書く必要はありません。
+
+------------------- ERROR DETAILS ------------------------
+arguments: 
+[ifs] no such file or directory: C:\Users\JF30LB\Projects\python\Projects\text_to_audio\dist\Simple_TTS_GUI\_internal\unidic_lite\dicdir\mecabrc
+----------------------------------------------------------
+
