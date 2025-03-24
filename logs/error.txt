@@ -1,135 +1,26 @@
-<Configuration>
-    <Properties>
-        <property name="filePattern">${date:yyyy-MM-dd-HH_mm_ss}</property>
-        <property name="filePatternTF-5599">${date:yyyy-MM-dd-HH_mm}</property>
-        <property name="filePatternTF-CASF410B">${date:yyyy-MM-dd-HH_mm}</property>
-    </Properties>
-    <Appenders>
-        <File name="file" fileName="../logs/application${filePattern}.log" append="false">
-            <PatternLayout pattern="%d{ABSOLUTE} %-5p %c:%L - %m%n"/>
-        </File>
-        <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{ABSOLUTE} %-5p %c:%L - %m%n"/>
-        </Console>
-        <File name="SQLLog" fileName="../logs/sql${filePattern}.log">
-            <PatternLayout pattern="%d{ABSOLUTE} %-5p %c:%L - %m%n"/>
-        </File>
-        <!-- New log file appender for the TF-5599-->
-        <RollingFile name="TF-5599" fileName="../logs/TF-5599/TF-5599.log"
-                     filePattern="../logs/TF-5599/TF-5599-%d{yyyy-MM-dd-HH-mm}-%i.log">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm} %-5p %c{1}:%L - %m%n"/>
-            <Policies>
-                <TimeBasedTriggeringPolicy interval="5" modulate="true"/>
-                <Delete basePath="../logs/TF-5599/TF-5599" maxAge="2d">
-                    <IfFileName glob="TF-5599-*.log"/>
-                </Delete>
-            </Policies>
-        </RollingFile>
-        <!-- New log file appender for the I2D160L-->
-        <RollingFile name="I2D160L" fileName="../logs/I2D/I2D160/I2D160L.log"
-                     filePattern="../logs/I2D/I2D160/I2D160L-%d{yyyy-MM-dd-HH-mm}-%i.log">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm} %-5p %c{1}:%L - %m%n"/>
-            <Policies>
-                <TimeBasedTriggeringPolicy interval="5" modulate="true"/>
-                <Delete basePath="../logs/I2D/I2D160" maxAge="2d">
-                    <IfFileName glob="I2D160L-*.log"/>
-                </Delete>
-            </Policies>
-        </RollingFile>
-        <!-- New log file appender for the I2D160N-->
-        <RollingFile name="I2D160N" fileName="../logs/I2D/I2D160/I2D160N.log"
-                     filePattern="../logs/I2D/I2D160/I2D160N-%d{yyyy-MM-dd-HH-mm}-%i.log">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm} %-5p %c{1}:%L - %m%n"/>
-            <Policies>
-                <TimeBasedTriggeringPolicy interval="5" modulate="true"/>
-                <Delete basePath="../logs/I2D/I2D160" maxAge="2d">
-                    <IfFileName glob="I2D160N-*.log"/>
-                </Delete>
-            </Policies>
-        </RollingFile>
-    </Appenders>
-    <Loggers>
+python Simple_TTS_GUI.py
+Error processing line 1 of C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\ssl_cert_env.pth:
 
-        <!--  work-around for internal bug -->
-        <Logger name="innowake.mee.natural.runtime.sysout" level="info"/>
-        <Logger name="innowake.mee.base.execption.rethrow" level="off"/>
+  Traceback (most recent call last):
+    File "C:\Progra~1\Python310\lib\site.py", line 186, in addpackage
+      exec(line)
+    File "<string>", line 1
+      import os; os.environ['SSL_CERT_FILE'] = 'C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\certifi\cacert.pem'
+                                                                                                                 
+                                      ^
+  SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
 
-        <Logger name="org.springframework" level="info"/>
+Remainder of file ignored
+Error processing line 1 of C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\ssl_cert_env.pth:
 
+  Traceback (most recent call last):
+    File "C:\Progra~1\Python310\lib\site.py", line 186, in addpackage
+      exec(line)
+    File "<string>", line 1
+      import os; os.environ['SSL_CERT_FILE'] = 'C:\Users\JF30LB\Projects\python\Projects\text_to_audio\venv_py310\lib\site-packages\certifi\cacert.pem'
+                                                                                                                 
+                                      ^
+  SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
 
-        <Logger name="innowake.mee.natural.api.move" level="off"/>
-
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <!-- Specific Logger                                                     -->
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <Logger name="innowake.lib.license" level="error"/>
-        <Logger name="innowake.mee.base.memory.layout" level="warn"/>
-
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <!-- Performance Logger                                                  -->
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <Logger name="prof" level="off"/>
-        <Logger name="innowake.mee.natural.runtime.performance" level="off"/>
-        <Logger name="prof.mee.runtime.cobol.api" level="off"/>
-        <Logger name="com.innowake.gen" level="trace"/>
-
-
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <!-- TF-5599                                                         -->
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <Logger name="nn.fliba.gen.procedures" level="debug" additivity="false">
-            <AppenderRef ref="TF-5599"/>
-        </Logger>
-        <Logger name="nn.fliba.gen.batchmanager" level="debug" additivity="false">
-            <AppenderRef ref="TF-5599"/>
-        </Logger>
-
-
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <!-- ============== I2D160                                             -->
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <!-- I2D160L =>   CASF410B                                                   -->
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <Logger name="nn.fliba.gen.procedures.Casf410bCoda2Inlezen" level="debug" additivity="false">
-            <AppenderRef ref="I2D160L"/>
-        </Logger>
-        <Logger name="nn.fliba.gen.batchmanager.CASF410B" level="debug" additivity="false">
-            <AppenderRef ref="I2D160L"/>
-        </Logger>
-
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <!-- I2D160N =>  CASF415B                                                   -->
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <Logger name="nn.fliba.gen.actions.CasZoekBest" level="debug" additivity="false">
-            <AppenderRef ref="I2D160N"/>
-        </Logger>
-        <Logger name="nn.fliba.gen.actions.CasZoekBestZeroBalancingCashpool" level="debug" additivity="false">
-            <AppenderRef ref="I2D160N"/>
-        </Logger>
-        <Logger name="nn.fliba.gen.actions.CasZoekBestLifeAllerlei" level="debug" additivity="false">
-            <AppenderRef ref="I2D160N"/>
-        </Logger>
-        <Logger name="nn.fliba.gen.procedures.Casf415bVerwerkCodaBetaling" level="debug" additivity="false">
-            <AppenderRef ref="I2D160N"/>
-        </Logger>
-        <Logger name="nn.fliba.gen.batchmanager.CASF415B" level="debug" additivity="false">
-            <AppenderRef ref="I2D160N"/>
-        </Logger>
-
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <!-- Root Logger                                                         -->
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <Root level="trace">
-            <AppenderRef ref="file"/>
-            <!-- <AppenderRef ref="SQLLog" /> -->
-        </Root>
-
-
-        <Logger name="com.innowake.genTargeting.PerfStatNew" additivity="false" level="trace">
-            <appender-ref ref="SQLLog"/>
-        </Logger>
-
-    </Loggers>
-
-
-</Configuration>
+Remainder of file ignored
+Module typeguard_env chargé avec succès
