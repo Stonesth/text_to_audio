@@ -687,20 +687,15 @@ class MainWindow(QMainWindow):
                 return
 
         # Vérification pour XTTS qui nécessite un fichier audio de référence
-        if (self.lang_combo.currentIndex() == 2 and  # Français
-            self.model_combo.currentIndex() == 0 and  # XTTS v2
-            not self.ref_audio_path.text() or self.ref_audio_path.text() == "Non sélectionné"):
-            
-            msg = QMessageBox(self)
-            msg.setIcon(QMessageBox.Icon.Warning)
-            msg.setText("Audio de référence requis")
-            msg.setInformativeText(
-                "Le modèle XTTS v2 nécessite un fichier audio de référence pour fonctionner.\n\n"
-                "Veuillez sélectionner un fichier audio."
-            )
-            msg.addButton("OK", QMessageBox.ButtonRole.AcceptRole)
-            msg.exec()
-            return
+        if self.lang_combo.currentIndex() == 2 and "XTTS v2" in self.model_combo.currentText():
+            if not self.ref_audio_path.text() or self.ref_audio_path.text() == "Non sélectionné":
+                msg = QMessageBox(self)
+                msg.setIcon(QMessageBox.Icon.Warning)
+                msg.setText("Audio de référence requis")
+                msg.setInformativeText("Un fichier audio de référence est nécessaire pour le modèle XTTS v2 en français.")
+                msg.setWindowTitle("Attention")
+                msg.exec()
+                return
 
         # Validation du texte avant génération
         text = self.text_edit.toPlainText().strip()
@@ -775,9 +770,14 @@ class MainWindow(QMainWindow):
         }
         
         # Ajout des paramètres spécifiques selon le modèle
-        if self.model_combo.currentText() == "XTTS v2":
+        if self.lang_combo.currentIndex() == 2 and "XTTS v2" in self.model_combo.currentText():
             if not self.ref_audio_path.text() or self.ref_audio_path.text() == "Non sélectionné":
-                self.log_text.append("Erreur : Veuillez sélectionner un fichier audio de référence pour XTTS.")
+                msg = QMessageBox(self)
+                msg.setIcon(QMessageBox.Icon.Warning)
+                msg.setText("Audio de référence requis")
+                msg.setInformativeText("Un fichier audio de référence est nécessaire pour le modèle XTTS v2 en français.")
+                msg.setWindowTitle("Attention")
+                msg.exec()
                 return
             params["reference_audio"] = self.ref_audio_path.text()
         
