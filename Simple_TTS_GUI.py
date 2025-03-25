@@ -105,10 +105,14 @@ class TTSWorker(QThread):
                     self.progress.emit("Modèle YourTTS chargé avec succès")
                     
                     # Config pour YourTTS en français
+                    # Respecter le choix du genre sélectionné dans l'interface
+                    speaker_id = 'male-en-2' if self.params['xtts_gender'] == 'Homme' else 'female-en-5'
+                    self.progress.emit(f"- Speaker ID sélectionné: {speaker_id}")
+                    
                     kwargs = {
                         'language': 'fr-fr',
                         'speaker_wav': self.params.get('reference_audio'),
-                        'speaker': 'female-en-5'  # Ajout du paramètre speaker manquant
+                        'speaker': speaker_id  # Utiliser le bon ID de speaker en fonction du genre choisi
                     }
                     
                     # Génération
@@ -464,6 +468,11 @@ class MainWindow(QMainWindow):
         self.xtts_gender_combo.setCurrentIndex(1)  # Femme par défaut
         self.xtts_gender_layout.addWidget(self.xtts_gender_label)
         self.xtts_gender_layout.addWidget(self.xtts_gender_combo)
+        
+        # Masquer le sélecteur de genre (tout en le conservant fonctionnel)
+        self.xtts_gender_label.hide()
+        self.xtts_gender_combo.hide()
+        
         self.main_layout.addLayout(self.xtts_gender_layout)
 
         # CUDA
@@ -562,30 +571,40 @@ class MainWindow(QMainWindow):
     def update_model_list(self, lang_index):
         """Met à jour la liste des modèles en fonction de la langue."""
         self.model_combo.clear()
+        
+        # Liste complète des modèles avec drapeaux d'affichage
         if lang_index == 0:  # Anglais (VCTK)
-            self.model_combo.addItems([
-                "VITS"
-            ])
+            models = [
+                {"name": "VITS", "show": True}
+            ]
         elif lang_index == 1:  # Anglais
-            self.model_combo.addItems([
-                "Jenny (féminine)",
-                "Tacotron2-DDC (féminine)",
-                "Glow-TTS (midel féminine)",
-                "Speedy-Speech (midel féminine)",
-                "Neural HMM (féminine)"
-            ])
+            models = [
+                {"name": "Jenny (féminine)", "show": True},
+                {"name": "Tacotron2-DDC (féminine)", "show": True},
+                # Options masquées (ne fonctionne pas bien)
+                {"name": "Glow-TTS (midel féminine)", "show": False},
+                {"name": "Speedy-Speech (midel féminine)", "show": False},
+                {"name": "Neural HMM (féminine)", "show": False}
+            ]
         elif lang_index == 2:  # Français
-            self.model_combo.addItems([
-                "XTTS v2 (Voix reference)",
-                "VITS (bug)",
-                "YourTTS (féminine)",
-                "YourTTS (masculin)"
-            ])
+            models = [
+                {"name": "XTTS v2 (Voix reference)", "show": True},
+                # Options masquées (ne fonctionne pas bien)
+                {"name": "VITS (bug)", "show": False},
+                {"name": "YourTTS (féminine)", "show": False},
+                {"name": "YourTTS (masculin)", "show": False}
+            ]
         elif lang_index == 3:  # Néerlandais
-            self.model_combo.addItems([
-                "VITS",
-                "YourTTS"
-            ])
+            models = [
+                {"name": "VITS", "show": True},
+                # Option masquée (ne fonctionne pas bien)
+                {"name": "YourTTS", "show": False}
+            ]
+
+        # N'ajouter que les modèles avec show=True à la liste déroulante
+        for model in models:
+            if model["show"]:
+                self.model_combo.addItem(model["name"])
 
         self.update_ui_elements()
 
